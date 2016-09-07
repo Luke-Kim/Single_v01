@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".detail.ProfileActivity">
+
+    <FrameLayout
+        android:id="@+id/my_frame"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/my_toolbar"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="ProfileAcitivity"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbar"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="2"
+        android:background="@drawable/abc_cab_background_top_mtrl_alpha">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/image_userImage"
+            android:src="@mipmap/ic_launcher"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="금나래 Keum, narae"
+            android:id="@+id/txt_userName"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/image_userImage"
+            android:layout_toEndOf="@+id/image_userImage" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="로그아웃"
+            android:id="@+id/btn_logout"
+            android:layout_below="@+id/txt_userName"
+            android:layout_toRightOf="@+id/image_userImage"
+            android:layout_toEndOf="@+id/image_userImage" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="이메일"
+            android:id="@+id/textView40"
+            android:layout_marginTop="53dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="휴대전화"
+            android:id="@+id/textView41"
+            android:layout_below="@+id/txt_email"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="35dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="singleplay@gmail.com"
+            android:id="@+id/txt_email"
+            android:layout_alignTop="@+id/textView40"
+            android:layout_toRightOf="@+id/textView41"
+            android:layout_marginLeft="55dp"
+            android:layout_marginStart="55dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBaseline="@+id/textView40" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="010-1124-1234"
+            android:id="@+id/txt_phone"
+            android:layout_alignTop="@+id/textView41"
+            android:layout_alignLeft="@+id/txt_email"
+            android:layout_alignStart="@+id/txt_email"
+            android:layout_alignBaseline="@+id/textView41"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="변경"
+            android:id="@+id/btn_change"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:background="@drawable/couponframe"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/frameLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="periodStart"
+            android:id="@+id/txt_periodStart"
+            android:layout_alignParentTop="true"
+            android:layout_alignRight="@+id/txt_periodEnd"
+            android:layout_alignEnd="@+id/txt_periodEnd"
+            android:layout_marginTop="15dp"
+            android:paddingRight="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="couponName"
+            android:id="@+id/txt_couponName"
+            android:layout_above="@+id/txt_periodEnd"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="couponNo"
+            android:id="@+id/txt_couponNo"
+            android:layout_alignTop="@+id/txt_periodStart"
+            android:layout_alignLeft="@+id/txt_couponName"
+            android:layout_alignStart="@+id/txt_couponName"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="periodEnd"
+            android:id="@+id/txt_periodEnd"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="15dp"
+            android:paddingRight="20dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

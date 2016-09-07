@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:button="@drawable/check_selector"
+        android:checked="false"
+        android:text="월"/>
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/checkBox2"
+        android:layout_toRightOf="@+id/checkBox2"
+        android:button="@drawable/check_selector"
+        android:checked="false"
+        android:text="화"/>
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/checkBox3"
+        android:layout_toRightOf="@+id/checkBox3"
+        android:button="@drawable/check_selector"
+        android:checked="false"
+        android:text="수"/>
+
+    <CheckBox
+        android:id="@+id/checkBox5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/checkBox4"
+        android:layout_toRightOf="@+id/checkBox4"
+        android:button="@drawable/check_selector"
+        android:checked="false"
+        android:text="목"/>
+
+    <CheckBox
+        android:id="@+id/checkBox6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/checkBox5"
+        android:layout_toRightOf="@+id/checkBox5"
+        android:button="@drawable/check_selector"
+        android:checked="false"
+        android:text="금"/>
+
+    <CheckBox
+        android:id="@+id/checkBox7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/checkBox6"
+        android:layout_toRightOf="@+id/checkBox6"
+        android:button="@drawable/check_selector"
+        android:checked="false"
+        android:text="토"/>
+
+    <CheckBox
+        android:id="@+id/checkBox11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/check_selector"
+        android:checked="false"
+        android:text="일"
+        android:layout_alignBottom="@+id/checkBox7"
+        android:layout_toRightOf="@+id/checkBox7"
+        android:layout_toEndOf="@+id/checkBox7"/>
+</LinearLayout>

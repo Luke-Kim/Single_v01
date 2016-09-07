@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.tacademy.singleplay.login.SignInActivity"
+    android:padding="@dimen/abc_action_bar_icon_vertical_padding_material">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/radio_group">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="no"
+                android:id="@+id/btn_no_acpt"
+                android:layout_toRightOf="@+id/radioButton7"
+                android:layout_toEndOf="@+id/radioButton7"
+                android:checked="true" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="동의합니다"
+                android:id="@+id/acpt"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="121dp" />
+        </RadioGroup>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textView12"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:scrollbars="horizontal"
+            android:text="회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관회원가입 약관"
+            android:id="@+id/signin_text"
+            android:layout_below="@+id/textView12"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/radio_group"
+            android:background="@drawable/abc_list_pressed_holo_dark" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="8">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:id="@+id/btn_ok"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</LinearLayout>

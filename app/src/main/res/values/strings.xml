@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SinglePlay</string>
+
+    <string name="move_profile">프로필 내역 수정하기</string>
+    <string name="coupon_count">쿠폰</string>
+    <string name="booking_list">예매 내역</string>
+    <string name="checked_booking">예매 내역</string>
+
+    <string name="event_notice">이벤트 및 공지사항</string>
+    <string name="push_notify">Push 알림설정</string>
+    <string name="inquiry">문의사항</string>
+    <string name="action_back">뒤로가기</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

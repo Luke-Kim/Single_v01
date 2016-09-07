@@ -1,0 +1,270 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tacademy.singleplay.PushActivity">
+
+
+
+    <FrameLayout
+        android:id="@+id/my_frame"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/my_toolbar"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="CheckedBookingActivity"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/image_poster"
+            android:elevation="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/txt_play_name"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="35dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginBottom="40dp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="공연명(영문)"
+            android:id="@+id/textView"
+            android:layout_alignBottom="@+id/txt_play_name"
+            android:layout_toRightOf="@+id/txt_play_name"
+            android:layout_toEndOf="@+id/txt_play_name"
+            android:textColor="#ffffff"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="공연 시간"
+            android:id="@+id/textView27"
+            android:textColor="#000000"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="공연 장소"
+            android:id="@+id/textView28"
+            android:textColor="#000000"
+            android:layout_below="@+id/txt_play_day"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="좌석"
+            android:id="@+id/textView29"
+            android:textColor="#000000"
+            android:layout_below="@+id/txt_place_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="총 결제금액"
+            android:id="@+id/textView31"
+            android:textColor="#ff0f0f"
+            android:layout_below="@+id/textView29"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="13dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="예매번호"
+            android:id="@+id/textView32"
+            android:textColor="#ff0f0f"
+            android:layout_below="@+id/txt_settlement"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView33"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="2016년 8월 26일 토요일"
+            android:id="@+id/txt_play_day"
+            android:layout_alignTop="@+id/textView27"
+            android:layout_alignLeft="@+id/txt_settlement"
+            android:layout_alignStart="@+id/txt_settlement"
+            android:textColor="#000000"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="삼성카드 블루스퀘어홀"
+            android:id="@+id/txt_place_name"
+            android:layout_alignTop="@+id/textView28"
+            android:layout_alignLeft="@+id/txt_play_day"
+            android:layout_alignStart="@+id/txt_play_day"
+            android:textColor="#000000"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="VIP석 J12"
+            android:id="@+id/txt_seat_class"
+            android:layout_alignTop="@+id/textView29"
+            android:layout_alignLeft="@+id/txt_place_name"
+            android:layout_alignStart="@+id/txt_place_name"
+            android:textColor="#000000"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="74,000원"
+            android:id="@+id/txt_settlement"
+            android:layout_alignTop="@+id/textView31"
+            android:layout_centerHorizontal="true"
+            android:textColor="#000000"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="2016-0826-1515"
+            android:id="@+id/txt_reservation_no"
+            android:layout_alignTop="@+id/textView32"
+            android:layout_alignLeft="@+id/txt_settlement"
+            android:layout_alignStart="@+id/txt_settlement"
+            android:textColor="#000000"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="현장결제"
+            android:id="@+id/textView39"
+            android:textColor="#7e7a7a"
+            android:layout_alignBaseline="@+id/txt_settlement"
+            android:layout_alignBottom="@+id/txt_settlement"
+            android:layout_toRightOf="@+id/txt_place_name"
+            android:layout_toEndOf="@+id/txt_place_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/txt_seat_info"
+            android:layout_above="@+id/textView31"
+            android:layout_toRightOf="@+id/txt_seat_class"
+            android:layout_toEndOf="@+id/txt_seat_class"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Text"
+            android:id="@+id/txt_play_time"
+            android:layout_alignTop="@+id/txt_play_day"
+            android:layout_toRightOf="@+id/txt_play_day"
+            android:layout_toEndOf="@+id/txt_play_day"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예약 취소"
+            android:id="@+id/btn_cancel"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="예약확인"
+            android:id="@+id/btn_confirm"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/btn_cancel" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="확인"
+            android:id="@+id/btn_finish"
+            android:visibility="invisible"
+            android:layout_alignTop="@+id/btn_cancel"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".detail.UserActivity">
+
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:id="@+id/appbar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
+
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--app:layout_scrollFlags="scroll|enterAlways">-->
+
+            <!--<include-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_width="match_parent"-->
+                <!--layout="@layout/view_back"/>-->
+        <!--</android.support.v7.widget.Toolbar>-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <FrameLayout
+        android:id="@+id/my_frame"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/my_toolbar"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="UserActivity"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/inquiry_img" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="금나래, Keum narae"
+            android:id="@+id/textview"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/inquiry_img"
+            android:layout_toEndOf="@+id/inquiry_img"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profileView"
+            android:text="프로필 내역 수정하기"
+            android:layout_below="@+id/textview"
+            android:layout_alignLeft="@+id/textview"
+            android:layout_alignStart="@+id/textview"
+            android:layout_marginTop="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_login"
+            android:text="로그인"
+            android:layout_alignTop="@+id/profileView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="적립금"
+                android:id="@+id/button"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/btn_coupon"
+                android:layout_toEndOf="@+id/btn_coupon"
+                android:layout_marginLeft="103dp"
+                android:layout_marginStart="103dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="쿠폰"
+                android:id="@+id/btn_coupon"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/button_material_light">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="5"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/relativeLayout"
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/booking_list"
+                android:id="@+id/bookingView"
+                android:layout_marginLeft="55dp"
+                android:layout_marginStart="55dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/relativeLayout2"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/event_notice"
+                android:id="@+id/eventView"
+
+                android:layout_marginLeft="55dp"
+                android:layout_marginStart="55dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/relativeLayout3"
+            android:layout_below="@+id/relativeLayout2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/push_notify"
+                android:id="@+id/pushView"
+
+                android:layout_marginLeft="55dp"
+                android:layout_marginStart="55dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/relativeLayout4"
+            android:layout_below="@+id/relativeLayout3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/inquiry"
+                android:id="@+id/inquiryView"
+
+                android:layout_marginLeft="55dp"
+                android:layout_marginStart="55dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

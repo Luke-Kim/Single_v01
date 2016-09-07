@@ -1,0 +1,195 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context=".LocationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_seoul"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="#de5555" />
+
+            <android.support.v7.widget.GridLayout
+                android:id="@+id/grid_seoul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:columnCount="2"
+                app:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+
+                <TextView
+                    android:id="@+id/text_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+
+                <TextView
+                    android:id="@+id/text_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+
+                <TextView
+                    android:id="@+id/text_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+
+                <TextView
+                    android:id="@+id/text_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+
+                <TextView
+                    android:id="@+id/text_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+
+                <TextView
+                    android:id="@+id/text_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+
+                <TextView
+                    android:id="@+id/text_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+
+                <TextView
+                    android:id="@+id/text_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+
+                <TextView
+                    android:id="@+id/text_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center"
+                    android:text="서울 전체"
+                    app:layout_columnWeight="1"
+                    app:layout_gravity="center_vertical"
+                    app:layout_rowWeight="1" />
+            </android.support.v7.widget.GridLayout>
+
+            <ImageView
+                android:id="@+id/image_gg"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="#a27a7a" />
+
+            <ImageView
+                android:id="@+id/image_chch"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="#6b1d1d" />
+
+            <ImageView
+                android:id="@+id/image_gb"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="#f0c8c8" />
+
+            <ImageView
+                android:id="@+id/image_gn"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="#f90505" />
+
+            <ImageView
+                android:id="@+id/image_jn"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="#33bba9" />
+
+            <ImageView
+                android:id="@+id/image_jb"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="#f9b6ed" />
+
+            <ImageView
+                android:id="@+id/image_jj"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="#a2a0e4" />
+
+            <ImageView
+                android:id="@+id/Image_gw"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="#fff314" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

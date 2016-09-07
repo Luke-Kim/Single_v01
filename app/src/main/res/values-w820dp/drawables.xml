@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="select_item">#40ff0000</drawable>
+    <drawable name="item_pressed">#4000ff00</drawable>
+    <drawable name="item_normal">@android:color/transparent</drawable>
+</resources>

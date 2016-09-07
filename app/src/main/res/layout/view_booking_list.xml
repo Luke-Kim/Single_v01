@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+    <RelativeLayout
+        android:id="@+id/layout_booking_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_poster"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:scaleType="fitXY"
+            android:layout_alignParentBottom="true"
+            android:cropToPadding="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/text_place_name"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/text_play_day"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/text_place_name"
+            android:layout_toEndOf="@+id/text_place_name"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New text"
+            android:id="@+id/text_play_time"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/text_play_day"
+            android:layout_toEndOf="@+id/text_play_day"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/text_play_name"
+            android:layout_above="@+id/text_place_name"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="영어이름"
+            android:id="@+id/textView51"
+            android:layout_alignBottom="@+id/text_play_name"
+            android:layout_toRightOf="@+id/text_play_name"
+            android:layout_toEndOf="@+id/text_play_name"
+            android:elevation="0dp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/text_sale_price"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/text_star_score"
+            android:layout_alignTop="@+id/textView51"
+            android:layout_alignRight="@+id/text_play_time"
+            android:layout_alignEnd="@+id/text_play_time"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/text_price"
+            android:layout_above="@+id/text_sale_price"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="#ffffff"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
