@@ -14,7 +14,7 @@ import okhttp3.ResponseBody;
  */
 public abstract class AbstractRequest<T> extends NetworkRequest<T> {
 
-    private final static String HOST = "ec2-52-78-118-8.ap-northeast-2.compute.amazonaws.com";
+    private final static String HOST = "mm";
     private final static int HTTPS_PORT = 443;
     private final static int HTTP_PORT=80;
 
