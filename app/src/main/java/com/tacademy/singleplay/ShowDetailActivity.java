@@ -16,16 +16,19 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.data.SignInData;
+import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingListAdd;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowDetail;
 import com.tacademy.singleplay.login.InsertPersonInfoActivity;
 import com.tacademy.singleplay.login.LoginActivity;
+import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.pay.BookingPersonInfoActivity;
 import com.tacademy.singleplay.request.BookingListAddRequest;
 import com.tacademy.singleplay.request.ShowDetailReqest;
+import com.tacademy.singleplay.request.WishListDeletRequest;
 import com.tacademy.singleplay.wishpopup.WishPopupActivity;
 
 import java.util.Arrays;
@@ -83,10 +86,9 @@ public class ShowDetailActivity extends AppCompatActivity {
 
     CastingAdapter mAdapter;
 
-    public static final String EXTRA_PLAYID = "play id";
-    int playId;
-
     SignInData signInData;
+
+    String playId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,16 +101,12 @@ public class ShowDetailActivity extends AppCompatActivity {
         mAdapter = new CastingAdapter(getLayoutInflater());
         pager.setAdapter(mAdapter);
 
-        Intent intent = getIntent();
-        playId = intent.getIntExtra(EXTRA_PLAYID, 0);
-
-        Toast.makeText(ShowDetailActivity.this, "" + playId, Toast.LENGTH_SHORT).show();
-        //Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        final ShowDetailReqest reqest = new ShowDetailReqest(MyApplication.getContext(), "" + playId);
+        playId = BookingManager.getInstance().getPlayId();
+        final ShowDetailReqest reqest = new ShowDetailReqest(MyApplication.getContext(), playId);
         NetworkManager.getInstance().getNetworkData(reqest, new NetworkManager.OnResultListener<ResultsList<ShowDetail>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<ShowDetail>> request, ResultsList<ShowDetail> result) {
@@ -132,6 +130,11 @@ public class ShowDetailActivity extends AppCompatActivity {
                 Glide.with(MyApplication.getContext())
                         .load(result.getResult().getPoster()) //배열되있길래 [0]처리
                         .into(posterView);
+                if (result.getResult().getIsWish() == 1) {
+                    btn_wish.setChecked(true);
+                } else {
+                    btn_wish.setChecked(false);
+                }
             }
 
             @Override
@@ -150,8 +153,7 @@ public class ShowDetailActivity extends AppCompatActivity {
                     startActivity(wish_intent);
                 } else {
                     Toast.makeText(ShowDetailActivity.this, "위시리스트 해제", Toast.LENGTH_SHORT).show();
-
-
+//                    WishListDeletRequest request = new WishListDeletRequest(MyApplication.getContext(), )
                 }
             }
         });

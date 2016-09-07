@@ -30,6 +30,7 @@ public class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAd
         switch (position) {
             case 0 :
                 return TotalFragment.newInstance("" + action, "" + sort);
+
             case 1 :
                 return MusicalFragment.newInstance(""+action, ""+theme, ""+sort);
 
@@ -51,7 +52,7 @@ public class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAd
 
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
 }
