@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -26,6 +29,8 @@ import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.DiscountRequest;
 
+import org.w3c.dom.Text;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -36,8 +41,18 @@ public class SelectPayActivity extends AppCompatActivity {
     RecyclerView listView;
     @BindView(R.id.text_point)
     TextView pointView;
+    @BindView(R.id.edit_point)
+    EditText inputView;
+    @BindView(R.id.text_total)
+    TextView totalView;
+    @BindView(R.id.text_ori)
+    TextView oriView;
+    @BindView(R.id.text_discount)
+    TextView discountView;
 
     CouponAdapter mAdapter;
+
+    int totalPrice, oriPrice, discountPrice, usePoint;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +60,20 @@ public class SelectPayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_pay);
         ButterKnife.bind(this);
 
+        oriPrice = BookingManager.getInstance().getOriPrice();
+        oriView.setText("" + oriPrice);
+        totalView.setText("" + oriPrice);
+
         mAdapter = new CouponAdapter();
         mAdapter.setOnAdapterItemClickListener(new CouponAdapter.OnCouponAdapterItemClickLIstener() {
             @Override
             public void onCouponAdapterItemClick(View view, DiscountCoupons coupons, int position) {
                 BookingManager.getInstance().setUseCoupon(coupons.getCouponNo() + "");
+                BookingManager.getInstance().setCouponPercent(coupons.getSaveOff());
+//                totalPrice = BookingManager.getInstance().getTotalPrice();
+//                totalView.setText(totalPrice + "");
+//                discountPrice = totalPrice - oriPrice;
+//                discountView.setText("" + discountPrice);
             }
         });
 
@@ -62,7 +86,6 @@ public class SelectPayActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Discount>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Discount>> request, ResultsList<Discount> result) {
-                BookingManager.getInstance().setUseMileage("" + result.getResults().getMileage());
                 pointView.setText("" + result.getResults().getMileage());
                 DiscountCoupons[] datas = result.getResults().getCoupons();
                 mAdapter.clear();
@@ -75,14 +98,34 @@ public class SelectPayActivity extends AppCompatActivity {
             }
         });
 
-        final RadioGroup radioGroup = (RadioGroup)findViewById(R.id.radioGroup_paid);
+        inputView.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                BookingManager.getInstance().setUseMileage("" + inputView.getText().toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+//                totalPrice = BookingManager.getInstance().getTotalPrice();
+//                totalView.setText(totalPrice + "");
+//                discountPrice = totalPrice - oriPrice;
+//                discountView.setText("" + discountPrice);
+            }
+        });
+
+        final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup_paid);
 
         radioGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int id = radioGroup.getCheckedRadioButtonId();
-                RadioButton radioButton = (RadioButton)findViewById(id);
-                if(radioButton != null) {
+                RadioButton radioButton = (RadioButton) findViewById(id);
+                if (radioButton != null) {
                     Toast.makeText(SelectPayActivity.this, "현재는 선택이 불가능 합니다", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -92,7 +135,7 @@ public class SelectPayActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        Button btn = (Button)findViewById(R.id.btn_complete);
+        Button btn = (Button) findViewById(R.id.btn_complete);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +146,7 @@ public class SelectPayActivity extends AppCompatActivity {
             }
         });
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.activity_menu, menu);
@@ -114,14 +158,14 @@ public class SelectPayActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case android.R.id.home :
+            case android.R.id.home:
                 intent = new Intent(SelectPayActivity.this, BookingSeatInfoActivity.class);
                 startActivity(intent);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 finish();
                 break;
-            case R.id.detail_menu :
+            case R.id.detail_menu:
                 intent = new Intent(SelectPayActivity.this, UserActivity.class);
                 startActivity(intent);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

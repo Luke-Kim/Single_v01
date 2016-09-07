@@ -15,6 +15,7 @@ import android.widget.Button;
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.bookingdetail.EmptySeatAdapter;
+import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.EmptySeat;
 import com.tacademy.singleplay.data2.EmptySeatInfo;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -65,6 +66,7 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
             public void onSeatAdapterClickListener(View view, EmptySeatInfo emptySeatInfo, int posion) {
                 BookingManager.getInstance().setUsableSeatNo(emptySeatInfo.getUsableSeatNo() + "");
                 BookingManager.getInstance().setSeatClass(emptySeatInfo.getSeatClass());
+                BookingManager.getInstance().setOriPrice(emptySeatInfo.getPrice());
             }
         });
 

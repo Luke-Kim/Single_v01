@@ -30,6 +30,9 @@ public class BookingManager {
     private String useCoupon;
     private String useMileage;
     private String settlement;
+    private int totalPrice;
+    private int oriPrice = 0;
+    private int couponPercent = 1;
 
     //        playId           공연 ID
 //        playName      공연 이름
@@ -113,6 +116,7 @@ public class BookingManager {
 
     public void setUseMileage(String useMileage) {
         this.useMileage = useMileage;
+//        setTotalPrice();
     }
 
     public String getSettlement() {
@@ -122,4 +126,30 @@ public class BookingManager {
     public void setSettlement(String settlement) {
         this.settlement = settlement;
     }
+
+    public int getOriPrice() {
+        return oriPrice;
+    }
+
+    public void setOriPrice(int oriPrice) {
+        this.oriPrice = oriPrice;
+    }
+
+    public int getCouponPercent() {
+        return couponPercent/100;
+    }
+
+    public void setCouponPercent(int couponPercent) {
+        this.couponPercent = couponPercent;
+//        setTotalPrice();
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice() {
+//        totalPrice = (oriPrice * couponPercent) - Integer.parseInt(useMileage);
+    }
+
 }

@@ -18,17 +18,24 @@ import okhttp3.RequestBody;
  */
 public class BookingRequest extends AbstractRequest<Booking> {
     Request request;
-    public BookingRequest(Context context, String userId, String playId, String playName,
-                            String usableSeatNo, String seatClass ) {
+    public BookingRequest(Context context, String playId, String playName,
+                            String usableSeatNo, String seatClass, String booker,
+                          String bookerPhone, String bookerEmail, String useCoupon,
+                          String useMileage, String settlement ) {
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment("reservations")
                 .build();
         RequestBody body = new FormBody.Builder()
-                .add("userId", userId)
                 .add("playId", playId)
                 .add("playName", playName)
                 .add("usableSeatNo", usableSeatNo)
                 .add("seatClass", seatClass)
+                .add("booker", booker)
+                .add("bookerPhone", bookerPhone)
+                .add("bookerEmail", bookerEmail)
+                .add("useCoupon", useCoupon)
+                .add("useMileage", useMileage)
+                .add("settlement", settlement)
                 .build();
         request = new Request.Builder()
                 .url(url)
