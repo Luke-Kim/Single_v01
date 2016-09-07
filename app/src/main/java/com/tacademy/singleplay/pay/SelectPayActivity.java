@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +19,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.Discount;
 import com.tacademy.singleplay.data2.DiscountCoupons;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -27,6 +30,7 @@ import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.BookingRequest;
 import com.tacademy.singleplay.request.DiscountRequest;
 
 import org.w3c.dom.Text;
@@ -50,9 +54,13 @@ public class SelectPayActivity extends AppCompatActivity {
     @BindView(R.id.text_discount)
     TextView discountView;
 
+    private static final String KEY_COUPON = "coupon";
+    private static final String KEY_POINT = "point";
+
     CouponAdapter mAdapter;
 
-    int totalPrice, oriPrice, discountPrice, usePoint;
+    int totalPrice, oriPrice, discountPrice = 0, discountPercent, usePoint;
+    int discountCoupon = 0, discountPoint = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,19 +69,17 @@ public class SelectPayActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         oriPrice = BookingManager.getInstance().getOriPrice();
+        totalPrice = BookingManager.getInstance().getTotalPrice();
         oriView.setText("" + oriPrice);
-        totalView.setText("" + oriPrice);
+        totalView.setText("" + totalPrice);
 
         mAdapter = new CouponAdapter();
         mAdapter.setOnAdapterItemClickListener(new CouponAdapter.OnCouponAdapterItemClickLIstener() {
             @Override
             public void onCouponAdapterItemClick(View view, DiscountCoupons coupons, int position) {
                 BookingManager.getInstance().setUseCoupon(coupons.getCouponNo() + "");
-                BookingManager.getInstance().setCouponPercent(coupons.getSaveOff());
-//                totalPrice = BookingManager.getInstance().getTotalPrice();
-//                totalView.setText(totalPrice + "");
-//                discountPrice = totalPrice - oriPrice;
-//                discountView.setText("" + discountPrice);
+                discountPercent = coupons.getSaveOff();
+                priceCalculator(KEY_COUPON, oriPrice * discountPercent / 100);
             }
         });
 
@@ -106,15 +112,16 @@ public class SelectPayActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                BookingManager.getInstance().setUseMileage("" + inputView.getText().toString());
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-//                totalPrice = BookingManager.getInstance().getTotalPrice();
-//                totalView.setText(totalPrice + "");
-//                discountPrice = totalPrice - oriPrice;
-//                discountView.setText("" + discountPrice);
+                String inputPoint = inputView.getText().toString();
+                if (!TextUtils.isEmpty(inputPoint)) {
+                    BookingManager.getInstance().setUseMileage(inputPoint);
+                    priceCalculator(KEY_POINT, Integer.parseInt(inputPoint));
+                }
             }
         });
 
@@ -139,10 +146,33 @@ public class SelectPayActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SelectPayActivity.this, CheckedBookingActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                BookingRequest request = new BookingRequest(MyApplication.getContext(),
+                        BookingManager.getInstance().getPlayId(),
+                        BookingManager.getInstance().getPlayName(),
+                        BookingManager.getInstance().getUsableSeatNo(),
+                        BookingManager.getInstance().getSeatClass(),
+                        BookingManager.getInstance().getBooker(),
+                        BookingManager.getInstance().getBookerPhone(),
+                        BookingManager.getInstance().getBookerEmail(),
+                        BookingManager.getInstance().getUseCoupon(),
+                        BookingManager.getInstance().getUseMileage(),
+                        BookingManager.getInstance().getTotalPrice() + "");
+                NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Booking>>() {
+                    @Override
+                    public void onSuccess(NetworkRequest<ResultsList<Booking>> request, ResultsList<Booking> result) {
+                        Toast.makeText(SelectPayActivity.this, "예약성공", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SelectPayActivity.this, CheckedBookingActivity.class);
+                        startActivity(intent);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    }
+
+                    @Override
+                    public void onFail(NetworkRequest<ResultsList<Booking>> request, int errorCode, String errorMessage, Throwable e) {
+                        Toast.makeText(SelectPayActivity.this, "예약실패", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
     }
@@ -176,5 +206,18 @@ public class SelectPayActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void priceCalculator(String Key, int discountPrice) {
+        if (Key == KEY_COUPON) {
+            discountCoupon = discountPrice;
+        } else if (Key == KEY_POINT) {
+            discountPoint = discountPrice;
+        }
+        this.discountPrice = discountCoupon + discountPoint;
+        totalPrice = oriPrice - this.discountPrice;
+        totalView.setText(totalPrice + "");
+        discountView.setText(this.discountPrice + "");
+        BookingManager.getInstance().setTotalPrice(totalPrice);
     }
 }

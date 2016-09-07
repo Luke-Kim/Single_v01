@@ -3,6 +3,7 @@ package com.tacademy.singleplay.manager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.text.TextUtils;
 
 import com.tacademy.singleplay.MyApplication;
 
@@ -31,8 +32,8 @@ public class BookingManager {
     private String useMileage;
     private String settlement;
     private int totalPrice;
-    private int oriPrice = 0;
-    private int couponPercent = 1;
+    private int oriPrice;
+    private int couponPercent;
 
     //        playId           공연 ID
 //        playName      공연 이름
@@ -111,7 +112,11 @@ public class BookingManager {
     }
 
     public String getUseMileage() {
-        return useMileage;
+        if (TextUtils.isEmpty(useMileage)) {
+            return "0";
+        } else {
+            return useMileage;
+        }
     }
 
     public void setUseMileage(String useMileage) {
@@ -119,13 +124,14 @@ public class BookingManager {
 //        setTotalPrice();
     }
 
-    public String getSettlement() {
-        return settlement;
+    public int getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setSettlement(String settlement) {
-        this.settlement = settlement;
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
+
 
     public int getOriPrice() {
         return oriPrice;
@@ -136,7 +142,7 @@ public class BookingManager {
     }
 
     public int getCouponPercent() {
-        return couponPercent/100;
+        return couponPercent;
     }
 
     public void setCouponPercent(int couponPercent) {
@@ -144,12 +150,6 @@ public class BookingManager {
 //        setTotalPrice();
     }
 
-    public int getTotalPrice() {
-        return totalPrice;
-    }
 
-    public void setTotalPrice() {
-//        totalPrice = (oriPrice * couponPercent) - Integer.parseInt(useMileage);
-    }
 
 }
