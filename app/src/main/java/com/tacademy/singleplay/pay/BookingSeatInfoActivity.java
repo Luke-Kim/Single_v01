@@ -52,7 +52,6 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
 
         // photoview opensource 설정
         mAttacher = new PhotoViewAttacher(seat_image);
-        mAttacher.setScaleType(ImageView.ScaleType.FIT_XY);
 
         /////////////////////////////////// photoview
 
@@ -124,9 +123,12 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<EmptySeat>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<EmptySeat>> request, ResultsList<EmptySeat> result) {
+
+
                 EmptySeatInfo[] datas = result.getResult().getSeatInfo();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
+
             }
 
             @Override
@@ -141,5 +143,6 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
         Glide.with(MyApplication.getContext())
                 .load(emptySeat.getPlaceImage())
                 .into(seat_image);
+
     }
 }
