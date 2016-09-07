@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
 import com.tacademy.singleplay.data2.Booking;
+import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowDetail;
 
 import java.lang.reflect.Type;
@@ -16,7 +17,7 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-08-30.
  */
-public class BookingRequest extends AbstractRequest<Booking> {
+public class BookingRequest extends AbstractRequest<ResultsList<Booking>> {
     Request request;
     public BookingRequest(Context context, String playId, String playName,
                             String usableSeatNo, String seatClass, String booker,
@@ -46,7 +47,7 @@ public class BookingRequest extends AbstractRequest<Booking> {
 
     @Override
     protected Type getType() {
-        return new  TypeToken<Booking>(){}.getType();
+        return new  TypeToken<ResultsList<Booking>>(){}.getType();
     }
 
     @Override

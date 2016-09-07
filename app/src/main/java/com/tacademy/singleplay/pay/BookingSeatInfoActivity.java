@@ -67,6 +67,7 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
                 BookingManager.getInstance().setUsableSeatNo(emptySeatInfo.getUsableSeatNo() + "");
                 BookingManager.getInstance().setSeatClass(emptySeatInfo.getSeatClass());
                 BookingManager.getInstance().setOriPrice(emptySeatInfo.getPrice());
+                BookingManager.getInstance().setTotalPrice(emptySeatInfo.getPrice());
             }
         });
 

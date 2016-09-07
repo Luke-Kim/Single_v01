@@ -44,7 +44,7 @@
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:text="보유 적립금"
@@ -52,7 +52,7 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/textView"
@@ -67,16 +67,8 @@
             android:id="@+id/text_point"
             android:layout_above="@+id/textView8"
             android:layout_toRightOf="@+id/textView"
-            android:layout_toEndOf="@+id/textView" />
-
-        <EditText
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/edit_point"
-            android:layout_below="@+id/text_point"
-            android:layout_toRightOf="@+id/textView"
             android:layout_toEndOf="@+id/textView"
-            android:layout_alignBottom="@+id/textView8" />
+            android:layout_alignParentTop="true" />
 
         <ImageView
             android:layout_width="20dp"
@@ -93,6 +85,20 @@
             android:layout_alignTop="@+id/edit_point"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_point"
+            android:textColor="@android:color/black"
+            android:inputType="number"
+            android:hint="0"
+            android:textIsSelectable="false"
+            android:layout_below="@+id/text_point"
+            android:layout_toRightOf="@+id/textView"
+            android:layout_alignBottom="@+id/textView8"
+            android:layout_alignRight="@+id/text_point"
+            android:layout_alignEnd="@+id/text_point" />
 
     </RelativeLayout>
 
