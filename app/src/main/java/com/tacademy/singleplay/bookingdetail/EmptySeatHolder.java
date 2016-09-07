@@ -7,10 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.EmptySeat;
 import com.tacademy.singleplay.data2.EmptySeatInfo;
-
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -82,5 +79,6 @@ public class EmptySeatHolder extends RecyclerView.ViewHolder
         seatInfoView.setText(seatList.getSeatInfo());
         priceView.setText(""+seatList.getPrice());
 //        priceView.setText(EmptySeat.class.);
+
     }
 }

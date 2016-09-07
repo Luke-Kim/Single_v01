@@ -11,11 +11,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.bookingdetail.EmptySeatAdapter;
-import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.EmptySeat;
 import com.tacademy.singleplay.data2.EmptySeatInfo;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -27,6 +28,7 @@ import com.tacademy.singleplay.request.EmptySeatRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class BookingSeatInfoActivity extends AppCompatActivity {
     @BindView(R.id.my_toolbar)
@@ -34,6 +36,9 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
     @Nullable@BindView(R.id.seat_rv)
     RecyclerView recyclerView;
 
+    @BindView(R.id.seat_image)
+    ImageView seat_image;
+    PhotoViewAttacher mAttacher;
 
     EmptySeatAdapter mAdapter;
 
@@ -44,6 +49,12 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         final Button btn = (Button)findViewById(R.id.btn_nextstep);
+
+        // photoview opensource 설정
+        mAttacher = new PhotoViewAttacher(seat_image);
+        mAttacher.setScaleType(ImageView.ScaleType.FIT_XY);
+
+        /////////////////////////////////// photoview
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -109,7 +120,6 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
 
         String playId = BookingManager.getInstance().getPlayId();
         EmptySeatRequest request = new EmptySeatRequest(MyApplication.getContext(), playId);
-
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<EmptySeat>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<EmptySeat>> request, ResultsList<EmptySeat> result) {
@@ -123,5 +133,12 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
 
             }
         });
+    }
+    EmptySeat emptySeat;
+    public void setData(EmptySeat emptySeat) {
+        this.emptySeat = emptySeat;
+        Glide.with(MyApplication.getContext())
+                .load(emptySeat.getPlaceImage())
+                .into(seat_image);
     }
 }

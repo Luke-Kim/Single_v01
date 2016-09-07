@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.tacademy.singleplay.MainActivity;
 import com.tacademy.singleplay.PushActivity;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data.SignInData;
@@ -50,25 +49,22 @@ public class UserActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
         });
-        loginView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(signInData != null){
-                    Intent intent = new Intent(UserActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    finish();
-                }else {
+
+        if(signInData != null) {
+            loginView.setText(" ");
+        } else {
+            loginView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
                     Intent intent = new Intent(UserActivity.this, LoginActivity.class);
                     startActivity(intent);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     finish();
                 }
+            });
+        }
 
-            }
-        });
     }
 
     @Override
