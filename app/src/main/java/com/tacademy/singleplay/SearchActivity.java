@@ -7,6 +7,12 @@ import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.Search;
+import com.tacademy.singleplay.manager.NetworkManager;
+import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.SearchRequest;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -15,6 +21,7 @@ public class SearchActivity extends AppCompatActivity {
     @BindView(R.id.edit_title)
     EditText titleView;
 
+    private static final String KEYWORD = "2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,19 @@ public class SearchActivity extends AppCompatActivity {
     public void onSearch() {
         String title = titleView.getText().toString();
         if (!TextUtils.isEmpty(title)) {
+            SearchRequest request = new SearchRequest(MyApplication.getContext(), KEYWORD, title);
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Search[]>>() {
+                @Override
+                public void onSuccess(NetworkRequest<ResultsList<Search[]>> request, ResultsList<Search[]> result) {
+//                    Toast.makeText(SearchActivity.this, "검색 성공", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFail(NetworkRequest<ResultsList<Search[]>> request, int errorCode, String errorMessage, Throwable e) {
+
+                }
+            });
+
             Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
             intent.putExtra(SearchResultActivity.TITLE, title);
             startActivity(new Intent(SearchActivity.this, SearchResultActivity.class));
