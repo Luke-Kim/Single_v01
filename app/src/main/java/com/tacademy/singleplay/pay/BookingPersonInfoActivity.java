@@ -19,6 +19,7 @@ import com.tacademy.singleplay.ShowDetailActivity;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.UserInfo;
 import com.tacademy.singleplay.detail.UserActivity;
+import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.UserInfoRequest;
@@ -58,6 +59,9 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
         btn_move_seat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                BookingManager.getInstance().setBooker(nameView.getText().toString());
+                BookingManager.getInstance().setBookerPhone(phoneView.getText().toString());
+                BookingManager.getInstance().setBookerEmail(emailView.getText().toString());
                 Intent intent = new Intent(BookingPersonInfoActivity.this, BookingSeatInfoActivity.class);
                 startActivity(intent);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

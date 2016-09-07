@@ -21,6 +21,7 @@ import com.tacademy.singleplay.data2.DiscountCoupons;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.detail.CheckedBookingActivity;
 import com.tacademy.singleplay.detail.UserActivity;
+import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.DiscountRequest;
@@ -48,7 +49,7 @@ public class SelectPayActivity extends AppCompatActivity {
         mAdapter.setOnAdapterItemClickListener(new CouponAdapter.OnCouponAdapterItemClickLIstener() {
             @Override
             public void onCouponAdapterItemClick(View view, DiscountCoupons coupons, int position) {
-                // 쿠폰누르면 BookingManager에 쿠폰번호 추가해줄꺼
+                BookingManager.getInstance().setUseCoupon(coupons.getCouponNo() + "");
             }
         });
 
@@ -61,7 +62,8 @@ public class SelectPayActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Discount>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Discount>> request, ResultsList<Discount> result) {
-                //pointView.setText("" + result.getResult().getMileage());
+                BookingManager.getInstance().setUseMileage("" + result.getResults().getMileage());
+                pointView.setText("" + result.getResults().getMileage());
                 DiscountCoupons[] datas = result.getResults().getCoupons();
                 mAdapter.clear();
                 mAdapter.addAll(datas);

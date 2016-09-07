@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
@@ -64,15 +63,11 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
         mAdapter.setOnSeatAdapterClickListener(new EmptySeatAdapter.OnSeatAdapterClickListener() {
             @Override
             public void onSeatAdapterClickListener(View view, EmptySeatInfo emptySeatInfo, int posion) {
-                Toast.makeText(BookingSeatInfoActivity.this, "좌석 : ", Toast.LENGTH_SHORT).show();
+                BookingManager.getInstance().setUsableSeatNo(emptySeatInfo.getUsableSeatNo() + "");
+                BookingManager.getInstance().setSeatClass(emptySeatInfo.getSeatClass());
             }
         });
-//        mAdapter.setOnAdapterItemClickListener(new SeatInfoRecycleAdapter.OnShowAdapterItemClickLIstener() {
-//            @Override
-//            public void onShowAdapterItemClick(View view, SeatData seatData, int position) {
-//                Toast.makeText(BookingSeatInfoActivity.this, "좌석 : " + seatData.seatInfo, Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
         recyclerView.setAdapter(mAdapter);
         LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
@@ -126,11 +121,5 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
     }
-
-
 }

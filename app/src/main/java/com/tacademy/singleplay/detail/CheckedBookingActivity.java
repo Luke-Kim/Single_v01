@@ -19,6 +19,7 @@ import com.tacademy.singleplay.MainActivity;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.BookingDetail;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.BookingDetailRequest;
@@ -65,6 +66,18 @@ public class CheckedBookingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+//        Toast.makeText(CheckedBookingActivity.this, "" +
+//                "" + BookingManager.getInstance().getPlayId() +
+//                "" + BookingManager.getInstance().getPlayName() +
+//                "" + BookingManager.getInstance().getUsableSeatNo() +
+//                "" + BookingManager.getInstance().getSeatClass() +
+//                "" + BookingManager.getInstance().getBooker() +
+//                "" + BookingManager.getInstance().getBookerEmail() +
+//                "" + BookingManager.getInstance().getBookerPhone()+
+//                "" + BookingManager.getInstance().getUseCoupon() +
+//                "" + BookingManager.getInstance().getUseMileage() +
+//                "", Toast.LENGTH_SHORT).show();
 
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override

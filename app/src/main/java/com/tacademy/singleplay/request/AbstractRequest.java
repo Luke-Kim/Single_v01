@@ -14,7 +14,7 @@ import okhttp3.ResponseBody;
  */
 public abstract class AbstractRequest<T> extends NetworkRequest<T> {
 
-    private final static String HOST = "mm";
+    private final static String HOST = "ec2-52-78-118-8.ap-northeast-2.compute.amazonaws.com";
     private final static int HTTPS_PORT = 443;
     private final static int HTTP_PORT=80;
 
@@ -34,25 +34,6 @@ public abstract class AbstractRequest<T> extends NetworkRequest<T> {
         return builder;
     }
 
-//        @Override
-//    protected T parse(ResponseBody body) throws IOException { //뭐가 들어올지 몰라서 T라고 해놓은 것, 구조가 달라도 일단 들어오게 한거다
-//        String text = body.string();
-//        Gson gson = new Gson();
-//        NetworkResultTemp temp = gson.fromJson(text, NetworkResultTemp.class);
-//
-//        if (temp.getCode() == 1) {
-//            T result = gson.fromJson(text, getType());
-//            return result;
-//        } else if (temp.getCode() == 2) {
-//            Type type = new TypeToken<NetworkResult<String>>(){}.getType();
-//            NetworkResult<String> result = gson.fromJson(text, type);
-//            throw new IOException(result.getResult());
-//        } else {
-//            T result = gson.fromJson(text, getType(temp.getCode()));
-//            return result;
-//        }
-//    }
-
     @Override
     protected T parse(ResponseBody body) throws IOException {
         String text = body.string();
@@ -60,10 +41,6 @@ public abstract class AbstractRequest<T> extends NetworkRequest<T> {
         T temp = gson.fromJson(text, getType());
         return temp;
     }
-
-//    protected Type getType(int code) {
-//        return getType();
-//    }
 
     protected abstract Type getType();
 }
