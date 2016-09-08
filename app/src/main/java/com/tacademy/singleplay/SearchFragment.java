@@ -9,8 +9,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.tacademy.singleplay.data.ShowData;
+import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.Search;
+import com.tacademy.singleplay.data2.ShowList;
+import com.tacademy.singleplay.manager.NetworkManager;
+import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.SearchRequest;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -20,11 +30,16 @@ import com.tacademy.singleplay.data.ShowData;
 public class SearchFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_MESSAGE = "param1";
+    private static final String ARG_TITLE = "param1";
 
     // TODO: Rename and change types of parameters
-    private String message;
-    MainRecyclerAdapter mainRecyclerAdapter;
+
+    private static final String KEYWORD = "2";
+    private String title;
+    SearchAdapter mAdapter;
+
+    @BindView(R.id.fragment_search_rv)
+    RecyclerView listView;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -41,7 +56,7 @@ public class SearchFragment extends Fragment {
     public static SearchFragment newInstance(String message) {
         SearchFragment fragment = new SearchFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_MESSAGE, message);
+        args.putString(ARG_TITLE, message);
         fragment.setArguments(args);
         return fragment;
     }
@@ -49,9 +64,18 @@ public class SearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mAdapter = new SearchAdapter();
         if (getArguments() != null) {
-            message = getArguments().getString(ARG_MESSAGE);
+            title = getArguments().getString(ARG_TITLE);
         }
+        mAdapter.setOnAdapterItemClickListener(new SearchAdapter.OnSearchAdapterItemClickLIstener() {
+            @Override
+            public void onSearchAdapterItemClick(View view, Search showList, int position) {
+                int playId = showList.getPlayId();
+                String playName = showList.getPlayName();
+                ((SearchResultActivity) getActivity()).goDetailActivity(playId, playName);
+            }
+        });
     }
 
     @Override
@@ -59,38 +83,32 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_search, container, false);
-
-
-        mainRecyclerAdapter = new MainRecyclerAdapter();
-        mainRecyclerAdapter.setOnAdapterItemClickListener(new MainRecyclerAdapter.OnShowAdapterItemClickLIstener() {
-            @Override
-            public void onShowAdapterItemClick(View view, ShowData showData, int position) {
-                Intent intent = new Intent(getContext(), ShowDetailActivity.class);
-                startActivity(intent);
-
-            }
-        });
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.fragment_search_rv);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
 
+        ButterKnife.bind(this, view);
+        listView.setHasFixedSize(true);
+        listView.setLayoutManager(layoutManager);
+        listView.setAdapter(mAdapter);
 
-        recyclerView.setAdapter(mainRecyclerAdapter);
-        initData();
-
+        setRequest();
         return view;
     }
-    private void initData() {
 
-        ShowData[] item = new ShowData[5];
-        item[0] = new ShowData(R.drawable.a, "#1");
-        item[1] = new ShowData(R.drawable.b, "#2");
-        item[2] = new ShowData(R.drawable.c, "#3");
-        item[3] = new ShowData(R.drawable.d, "#4");
-        item[4] = new ShowData(R.drawable.e, "#5");
+    private void setRequest() {
+        SearchRequest request = new SearchRequest(MyApplication.getContext(), KEYWORD, title);
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Search[]>>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultsList<Search[]>> request, ResultsList<Search[]> result) {
+                Search[] datas = result.getResults();
+                mAdapter.clear();
+                mAdapter.addAll(datas);
+            }
 
-        for (int i = 0; i < 5; i++) mainRecyclerAdapter.add(item[i]);
-
+            @Override
+            public void onFail(NetworkRequest<ResultsList<Search[]>> request, int errorCode, String errorMessage, Throwable e) {
+            }
+        });
     }
+
+
 }

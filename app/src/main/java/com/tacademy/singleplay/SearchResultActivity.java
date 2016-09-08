@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tacademy.singleplay.manager.BookingManager;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -21,7 +23,7 @@ public class SearchResultActivity extends AppCompatActivity {
     TextView titleView;
 
     public static final String TITLE = "title";
-
+    String title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +36,8 @@ public class SearchResultActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         Intent intent = getIntent();
-        String title = intent.getStringExtra(TITLE);
+        title = intent.getStringExtra(TITLE);
         titleView.setText(title);
-
         Toast.makeText(SearchResultActivity.this, title, Toast.LENGTH_SHORT).show();
 
         init();
@@ -46,7 +47,7 @@ public class SearchResultActivity extends AppCompatActivity {
     public void init() {
         FragmentTransaction ft = getSupportFragmentManager()
                 .beginTransaction();
-                ft.replace(R.id.search_container, new SearchFragment())
+                ft.replace(R.id.search_container, SearchFragment.newInstance(title))
                 .commit();
     }
 
@@ -58,5 +59,12 @@ public class SearchResultActivity extends AppCompatActivity {
             finish();
         }
         return true;
+    }
+
+    public void goDetailActivity(int playId, String playName) {
+        BookingManager.getInstance().setPlayId(""+playId);
+        BookingManager.getInstance().setPlayName(playName);
+        Intent intent = new Intent(SearchResultActivity.this, ShowDetailActivity.class);
+        startActivity(intent);
     }
 }

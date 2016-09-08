@@ -21,8 +21,6 @@ public class SearchActivity extends AppCompatActivity {
     @BindView(R.id.edit_title)
     EditText titleView;
 
-    private static final String KEYWORD = "2";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,19 +33,9 @@ public class SearchActivity extends AppCompatActivity {
     public void onSearch() {
         final String title = titleView.getText().toString();
         if (!TextUtils.isEmpty(title)) {
-            SearchRequest request = new SearchRequest(MyApplication.getContext(), KEYWORD, title);
-            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Search[]>>() {
-                @Override
-                public void onSuccess(NetworkRequest<ResultsList<Search[]>> request, ResultsList<Search[]> result) {
-                    Toast.makeText(SearchActivity.this, title + "에 대한 검색", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SearchActivity.this, SearchResultActivity.class));
-                }
-
-                @Override
-                public void onFail(NetworkRequest<ResultsList<Search[]>> request, int errorCode, String errorMessage, Throwable e) {
-                    Toast.makeText(SearchActivity.this, "검색 실패", Toast.LENGTH_SHORT).show();
-                }
-            });
+            Intent intent = new Intent(SearchActivity.this, SearchResultActivity.class);
+            intent.putExtra(SearchResultActivity.TITLE, title);
+            startActivity(intent);
         }
         else {
             Toast.makeText(SearchActivity.this, "제목을 입력해 주세요", Toast.LENGTH_SHORT).show();
