@@ -18,7 +18,8 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:hint="제목, 배우 등으로 검색해보세요."/>
+        android:hint="제목, 배우 등으로 검색해보세요."
+        android:textColor="@color/abc_search_url_text_selected"/>
 
     <Button
         android:id="@+id/btn_search"

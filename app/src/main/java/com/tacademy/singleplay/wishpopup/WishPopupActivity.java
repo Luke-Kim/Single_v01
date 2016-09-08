@@ -1,10 +1,12 @@
 package com.tacademy.singleplay.wishpopup;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Display;
 import android.view.Gravity;
 
 import com.tacademy.singleplay.R;
@@ -25,6 +27,7 @@ public class WishPopupActivity extends AppCompatActivity {
     public static final String EXTRA_PLAYID = "play id";
     int playId;
 
+    private Display display;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,14 @@ public class WishPopupActivity extends AppCompatActivity {
         Intent intent = new Intent();
         playId = intent.getIntExtra(EXTRA_PLAYID, 0);
 
+        display = WishPopupActivity.this.getWindowManager().getDefaultDisplay();
+
+        Rect rc = new Rect();
+        getWindow().getDecorView().getWindowVisibleDisplayFrame(rc);
+
         setFinishOnTouchOutside(true);
-        this.getWindow().setGravity(Gravity.BOTTOM | Gravity.CENTER);
+        this.getWindow().setGravity(Gravity.BOTTOM);
+        this.getWindow().setLayout(display.getWidth(), 320);
         LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mAdapter = new WishPopAdater();
 
