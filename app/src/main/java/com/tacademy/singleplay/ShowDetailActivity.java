@@ -20,6 +20,7 @@ import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingListAdd;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowDetail;
+import com.tacademy.singleplay.data2.WishListDelete;
 import com.tacademy.singleplay.login.InsertPersonInfoActivity;
 import com.tacademy.singleplay.login.LoginActivity;
 import com.tacademy.singleplay.manager.BookingManager;
@@ -89,6 +90,7 @@ public class ShowDetailActivity extends AppCompatActivity {
     SignInData signInData;
 
     String playId;
+    int wishId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +137,7 @@ public class ShowDetailActivity extends AppCompatActivity {
                 } else {
                     btn_wish.setChecked(false);
                 }
+                wishId = result.getResult().getWid();
             }
 
             @Override
@@ -151,9 +154,20 @@ public class ShowDetailActivity extends AppCompatActivity {
                     Intent wish_intent = new Intent(ShowDetailActivity.this, WishPopupActivity.class);
 //                    wish_intent.putExtra(ShowDetailActivity.EXTRA_PLAYID, playId);
                     startActivity(wish_intent);
-                } else {
-                    Toast.makeText(ShowDetailActivity.this, "위시리스트 해제", Toast.LENGTH_SHORT).show();
-//                    WishListDeletRequest request = new WishListDeletRequest(MyApplication.getContext(), )
+                } else if (!isChecked){
+                    WishListDeletRequest request = new WishListDeletRequest(MyApplication.getContext(), wishId+"");
+                    NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<WishListDelete>() {
+                        @Override
+                        public void onSuccess(NetworkRequest<WishListDelete> request, WishListDelete result) {
+                            Toast.makeText(ShowDetailActivity.this, "위시리스트 해제", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFail(NetworkRequest<WishListDelete> request, int errorCode, String errorMessage, Throwable e) {
+                            Toast.makeText(ShowDetailActivity.this, "위시리스트 해제 실패", Toast.LENGTH_SHORT).show();
+                            btn_wish.setChecked(true);
+                        }
+                    });
                 }
             }
         });

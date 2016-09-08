@@ -16,7 +16,8 @@
         android:id="@+id/edit_title"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:hint="제목, 배우 등으로 검색해보세요."/>
 
     <Button
         android:id="@+id/btn_search"

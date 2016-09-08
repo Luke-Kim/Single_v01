@@ -22,6 +22,7 @@ public class WishListDeletRequest extends AbstractRequest<WishListDelete> {
                 .build();
         request = new Request.Builder()
                 .url(url)
+                .delete()
                 .tag(context)
                 .build();
     }

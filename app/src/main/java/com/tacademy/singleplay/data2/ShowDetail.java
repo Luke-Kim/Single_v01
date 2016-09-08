@@ -19,6 +19,15 @@ public class ShowDetail {
     private String placeName;
     private String poster;
     private int saleSprice;
+    private int wid;
+
+    public int getWid() {
+        return wid;
+    }
+
+    public void setWid(int wid) {
+        this.wid = wid;
+    }
 
     public int getVIPprice() {
         return this.VIPprice;
