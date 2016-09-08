@@ -38,8 +38,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:id="@+id/relativeLayout5"
-            android:background="@drawable/underlin">
+            android:id="@+id/relativeLayout5">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -139,8 +138,7 @@
                 android:layout_below="@+id/edit_email"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="17dp"
-                android:layout_marginBottom="17dp"
-                android:background="@drawable/underlin" />
+                android:layout_marginBottom="17dp" />
 
             <EditText
                 android:layout_width="match_parent"

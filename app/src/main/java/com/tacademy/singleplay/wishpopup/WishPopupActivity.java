@@ -1,12 +1,14 @@
 package com.tacademy.singleplay.wishpopup;
 
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.Gravity;
+import android.widget.RelativeLayout;
 
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -21,8 +23,8 @@ public class WishPopupActivity extends AppCompatActivity {
 
     @BindView(R.id.rcv_wish_pop)
     RecyclerView rcv;
-//    @BindView(R.id.wish_popup_layout)
-//    RelativeLayout wish_popup_layout;
+    @BindView(R.id.layout)
+    RelativeLayout layout;
 
     WishPopAdater mAdapter;
     public static final String EXTRA_PLAYID = "play id";
@@ -41,20 +43,12 @@ public class WishPopupActivity extends AppCompatActivity {
 
         display = WishPopupActivity.this.getWindowManager().getDefaultDisplay();
 
-//        String display_height = String.valueOf(wish_popup_layout.getHeight());
-
-//        Log.i("Layout Height - ", display_height);
-
-//        int display_height = wish_popup_layout.getHeight();
-
-//        Log.d("testView", "Height : " + wish_popup_layout.getHeight() );
-
-//        Log.d("testView", "Hei : " + display.getHeight() );
+        Rect rc = new Rect();
+        getWindow().getDecorView().getWindowVisibleDisplayFrame(rc);
 
         setFinishOnTouchOutside(true);
         this.getWindow().setGravity(Gravity.BOTTOM);
-        this.getWindow().setLayout(display.getWidth(), 380);
-//        this.getWindow().setLayout(display.getWidth(), (int)(display.getHeight()*0.2));
+        this.getWindow().setLayout(display.getWidth(), (int) (display.getHeight()*0.2));
         LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mAdapter = new WishPopAdater();
 

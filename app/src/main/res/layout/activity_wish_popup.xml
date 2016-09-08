@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/wish_popup_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
+    android:layout_height="130dp"
     tools:context="com.tacademy.singleplay.wishpopup.WishPopupActivity"
-    android:background="#ffffff">
+    android:background="#ffffff"
+    android:id="@+id/layout">
 
 
     <android.support.v7.widget.RecyclerView

@@ -5,9 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.tacademy.singleplay.PushActivity"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    tools:context="com.tacademy.singleplay.PushActivity">
 
 
 
@@ -33,13 +31,12 @@
         >
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="match_parent"
             android:id="@+id/image_poster"
             android:elevation="0dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="16dp" />
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -70,8 +67,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/underlin">
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        >
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,7 +81,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -94,8 +92,7 @@
             android:textColor="#000000"
             android:layout_below="@+id/txt_play_day"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp" />
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -106,8 +103,7 @@
             android:textColor="#000000"
             android:layout_below="@+id/txt_place_name"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp" />
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -136,24 +132,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="예매취소는 공연시간 3시간 전까지 가능합니다."
+            android:text="Small Text"
             android:id="@+id/textView33"
-            android:layout_below="@+id/txt_reservation_no"
+            android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="18dp" />
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="2016년 8월 26일 토"
+            android:text="2016년 8월 26일 토요일"
             android:id="@+id/txt_play_day"
-            android:textColor="#000000"
             android:layout_alignTop="@+id/textView27"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="122dp" />
+            android:layout_alignLeft="@+id/txt_settlement"
+            android:layout_alignStart="@+id/txt_settlement"
+            android:textColor="#000000"
+            android:layout_marginBottom="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -161,10 +156,11 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="삼성카드 블루스퀘어홀"
             android:id="@+id/txt_place_name"
-            android:textColor="#000000"
             android:layout_alignTop="@+id/textView28"
             android:layout_alignLeft="@+id/txt_play_day"
-            android:layout_alignStart="@+id/txt_play_day" />
+            android:layout_alignStart="@+id/txt_play_day"
+            android:textColor="#000000"
+            android:layout_marginBottom="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -221,8 +217,7 @@
             android:id="@+id/txt_seat_info"
             android:layout_above="@+id/textView31"
             android:layout_toRightOf="@+id/txt_seat_class"
-            android:layout_toEndOf="@+id/txt_seat_class"
-            android:layout_marginLeft="10dp" />
+            android:layout_toEndOf="@+id/txt_seat_class"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -232,58 +227,7 @@
             android:id="@+id/txt_play_time"
             android:layout_alignTop="@+id/txt_play_day"
             android:layout_toRightOf="@+id/txt_play_day"
-            android:layout_toEndOf="@+id/txt_play_day"
-            android:layout_marginLeft="10dp" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView5"
-            android:layout_below="@+id/textView27"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/underlin"
-            android:layout_marginTop="3dp" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView7"
-            android:layout_below="@+id/textView28"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/dot_line"
-            android:layout_marginTop="3dp" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView8"
-            android:layout_below="@+id/textView29"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/dot_line"
-            android:layout_marginTop="3dp" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView9"
-            android:layout_below="@+id/textView31"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/dot_line"
-            android:layout_marginTop="3dp" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView10"
-            android:layout_below="@+id/textView32"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/dot_line"
-            android:layout_marginTop="3dp" />
+            android:layout_toEndOf="@+id/txt_play_day"/>
 
     </RelativeLayout>
 
@@ -295,27 +239,26 @@
         android:layout_alignParentEnd="true">
 
         <Button
-            android:layout_width="155dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="예약 취소"
             android:id="@+id/btn_cancel"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:background="@drawable/basic_button"
-            android:textColor="#ffffff"
-            android:layout_marginTop="3dp" />
+            android:textColor="#ffffff" />
 
         <Button
-            android:layout_width="155dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="예약확인"
             android:id="@+id/btn_confirm"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="false"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/btn_cancel"
             android:background="@drawable/basic_button"
-            android:textColor="#ffffff"
-            android:layout_marginTop="4dp" />
+            android:textColor="#ffffff" />
 
         <Button
             android:layout_width="match_parent"
