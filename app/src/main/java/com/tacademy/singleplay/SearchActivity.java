@@ -30,6 +30,7 @@ public class SearchActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         this.getWindow().setGravity(Gravity.TOP);
+        this.setVisible(false);
 
     }
     @OnClick(R.id.btn_search)
