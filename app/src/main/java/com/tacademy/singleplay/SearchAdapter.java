@@ -49,7 +49,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchHolder>
     }
 
     public interface OnSearchAdapterItemClickLIstener {
-        public void onSearchAdapterItemClick(View view, Search showList, int position);
+        public void onSearchAdapterItemClick(View view, Search search, int position);
     }
 
     OnSearchAdapterItemClickLIstener listener;

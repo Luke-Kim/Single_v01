@@ -159,6 +159,7 @@ public class LocationFragment extends Fragment {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Location[]>> request, ResultsList<Location[]> result) {
                 Toast.makeText(MyApplication.getContext(), "지역검색 성공", Toast.LENGTH_SHORT).show();
+              //나래가 아직 어떻게 결과를 보여줄지 못정했음.
             }
 
             @Override
