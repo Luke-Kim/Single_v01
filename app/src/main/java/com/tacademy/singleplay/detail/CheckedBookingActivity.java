@@ -16,12 +16,15 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.MainActivity;
+import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.BookingCancel;
 import com.tacademy.singleplay.data2.BookingDetail;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.BookingCancelRequest;
 import com.tacademy.singleplay.request.BookingDetailRequest;
 
 import butterknife.BindView;
@@ -57,6 +60,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
 //    @BindView(R.id.txt_reservation_no)
 //    TextView txt_reservation_no;
 
+    int rsvId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,18 +70,6 @@ public class CheckedBookingActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-//        Toast.makeText(CheckedBookingActivity.this, "" +
-//                "" + BookingManager.getInstance().getPlayId() +
-//                "" + BookingManager.getInstance().getPlayName() +
-//                "" + BookingManager.getInstance().getUsableSeatNo() +
-//                "" + BookingManager.getInstance().getSeatClass() +
-//                "" + BookingManager.getInstance().getBooker() +
-//                "" + BookingManager.getInstance().getBookerEmail() +
-//                "" + BookingManager.getInstance().getBookerPhone()+
-//                "" + BookingManager.getInstance().getUseCoupon() +
-//                "" + BookingManager.getInstance().getUseMileage() +
-//                "", Toast.LENGTH_SHORT).show();
 
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +126,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 Glide.with(image_poster.getContext())
                         .load(result.getResult().getPoster())
                         .into(image_poster);
-
+                rsvId = result.getResult().getRsvId();
             }
 
             @Override
@@ -142,8 +134,6 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 Toast.makeText(CheckedBookingActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 
 
@@ -178,10 +168,23 @@ public class CheckedBookingActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(CheckedBookingActivity.this, "예매가 취소되었습니다", Toast.LENGTH_SHORT).show();
-                txt_reservation_no.setText("예약 취소된 공연입니다");
-                btn_confirm.setVisibility(View.INVISIBLE);
-                btn_cancel.setVisibility(View.INVISIBLE);
-                btn_finish.setVisibility(View.VISIBLE);
+                BookingCancelRequest request = new BookingCancelRequest(MyApplication.getContext(), ""+rsvId);
+                NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingCancel>() {
+                    @Override
+                    public void onSuccess(NetworkRequest<BookingCancel> request, BookingCancel result) {
+                        Toast.makeText(CheckedBookingActivity.this, "성공", Toast.LENGTH_SHORT).show();
+
+                        txt_reservation_no.setText("예약 취소된 공연입니다");
+                        btn_confirm.setVisibility(View.INVISIBLE);
+                        btn_cancel.setVisibility(View.INVISIBLE);
+                        btn_finish.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onFail(NetworkRequest<BookingCancel> request, int errorCode, String errorMessage, Throwable e) {
+                        Toast.makeText(CheckedBookingActivity.this, "실패", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
         simpleDialog.setNegativeButton("아니요", new DialogInterface.OnClickListener() {

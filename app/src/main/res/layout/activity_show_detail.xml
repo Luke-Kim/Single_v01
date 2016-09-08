@@ -36,7 +36,7 @@
                 android:id="@+id/btn_wish"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:checked="false"
+                android:checked="true"
                 android:button="@drawable/wish_check_selector"
                 android:layout_marginRight="16dp"
                 android:layout_gravity="right|bottom" />

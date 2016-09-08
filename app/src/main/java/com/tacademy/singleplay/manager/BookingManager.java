@@ -104,6 +104,9 @@ public class BookingManager {
     }
 
     public String getUseCoupon() {
+        if (TextUtils.isEmpty(useCoupon)) {
+            return "0";
+        }
         return useCoupon;
     }
 

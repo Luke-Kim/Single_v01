@@ -33,7 +33,6 @@ public class SearchResultActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
-
         Intent intent = getIntent();
         String title = intent.getStringExtra(TITLE);
         titleView.setText(title);

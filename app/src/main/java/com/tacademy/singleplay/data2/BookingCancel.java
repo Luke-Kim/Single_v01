@@ -1,6 +1,6 @@
 package com.tacademy.singleplay.data2;
 
-public class WishListDelete {
+public class BookingCancel {
     private int code;
     private String message;
 
