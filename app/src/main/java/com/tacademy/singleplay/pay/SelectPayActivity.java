@@ -13,9 +13,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,8 +36,6 @@ import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.BookingRequest;
 import com.tacademy.singleplay.request.DiscountRequest;
-
-import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,6 +55,14 @@ public class SelectPayActivity extends AppCompatActivity {
     TextView oriView;
     @BindView(R.id.text_discount)
     TextView discountView;
+    @BindView(R.id.chk_coupon)
+    CheckBox chk_coupon;
+    @BindView(R.id.chk_mileage)
+    CheckBox chk_mileage;
+    @BindView(R.id.mileage_layout)
+    RelativeLayout mileage_layout;
+    @BindView(R.id.coupon_conainer)
+    FrameLayout coupon_layout;
 
     private static final String KEY_COUPON = "coupon";
     private static final String KEY_POINT = "point";
@@ -80,6 +90,30 @@ public class SelectPayActivity extends AppCompatActivity {
                 BookingManager.getInstance().setUseCoupon(coupons.getCouponNo() + "");
                 discountPercent = coupons.getSaveOff();
                 priceCalculator(KEY_COUPON, oriPrice * discountPercent / 100);
+            }
+        });
+
+        coupon_layout.setVisibility(View.GONE);
+        mileage_layout.setVisibility(View.GONE);
+        chk_coupon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    coupon_layout.setVisibility(View.VISIBLE);
+                } else {
+                    coupon_layout.setVisibility(View.GONE);
+                }
+            }
+        });
+
+        chk_mileage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    mileage_layout.setVisibility(View.VISIBLE);
+                } else {
+                    mileage_layout.setVisibility(View.GONE);
+                }
             }
         });
 

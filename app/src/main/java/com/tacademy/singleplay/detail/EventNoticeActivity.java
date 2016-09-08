@@ -93,5 +93,4 @@ public class EventNoticeActivity extends AppCompatActivity {
             }
         });
     }
-
 }
