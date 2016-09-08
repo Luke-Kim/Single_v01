@@ -53,7 +53,6 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="위키드"
                 android:id="@+id/text_play_name"
-
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/img_category"
                 android:layout_toEndOf="@+id/img_category"
@@ -200,10 +199,22 @@
                 android:layout_alignLeft="@+id/img_category"
                 android:layout_alignStart="@+id/img_category" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/textView23"
+                android:background="@drawable/underlin"
+                android:layout_below="@+id/text_theme"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="1dp" />
+
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:background="@drawable/underlin"
             android:layout_height="wrap_content">
 
             <TextView

@@ -1,19 +1,13 @@
 package com.tacademy.singleplay;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.Display;
 import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.Search;
-import com.tacademy.singleplay.manager.NetworkManager;
-import com.tacademy.singleplay.manager.NetworkRequest;
-import com.tacademy.singleplay.request.SearchRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
