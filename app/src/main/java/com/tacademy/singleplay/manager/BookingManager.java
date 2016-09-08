@@ -1,11 +1,6 @@
 package com.tacademy.singleplay.manager;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
-
-import com.tacademy.singleplay.MyApplication;
 
 
 /**

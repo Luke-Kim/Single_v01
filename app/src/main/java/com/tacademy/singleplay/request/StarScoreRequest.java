@@ -3,8 +3,7 @@ package com.tacademy.singleplay.request;
 import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.ShowScore;
+import com.tacademy.singleplay.data2.StarScore;
 
 import java.lang.reflect.Type;
 
@@ -16,17 +15,13 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-08-30.
  */
-public class ShowScoreRequest extends AbstractRequest<ResultsList<ShowScore>> {
+public class StarScoreRequest extends AbstractRequest<StarScore> {
     Request request;
-    public ShowScoreRequest(Context context, String userId, String playId, String playName, String starScore) {
+    public StarScoreRequest(Context context) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment("reviews")
                 .build();
         RequestBody body = new FormBody.Builder()
-                .add("userId", userId)
-                .add("playId", playId)
-                .add("playName", playName)
-                .add("starScore", starScore)
                 .build();
 
         request = new Request.Builder()
@@ -39,7 +34,7 @@ public class ShowScoreRequest extends AbstractRequest<ResultsList<ShowScore>> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultsList<String>>(){}.getType();
+        return new TypeToken<StarScore>(){}.getType();
     }
 
     @Override

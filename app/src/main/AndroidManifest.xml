@@ -97,9 +97,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".wishpopup.WishPopupActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.BottomSheetDialog.NoActionBar"
+        <activity android:name=".wishpopup.WishPopupActivity" android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.BottomSheetDialog"
             android:exported="true"/>
     </application>
 

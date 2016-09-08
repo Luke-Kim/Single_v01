@@ -21,7 +21,6 @@ import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.BookingCancel;
 import com.tacademy.singleplay.data2.BookingDetail;
 import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.BookingCancelRequest;
@@ -78,6 +77,8 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 startActivity(intent);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+//                startActivity(new Intent(CheckedBookingActivity.this, StarScoreActivity.class));
             }
         });
 
@@ -91,10 +92,12 @@ public class CheckedBookingActivity extends AppCompatActivity {
         btn_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(CheckedBookingActivity.this, MainActivity.class);
                 startActivity(intent);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
             }
         });
 
@@ -160,6 +163,8 @@ public class CheckedBookingActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
     private void DialogSimple() {
         AlertDialog.Builder simpleDialog = new AlertDialog.Builder(this);
