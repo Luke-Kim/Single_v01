@@ -4,8 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -13,6 +11,15 @@
         android:icon="@drawable/launcher"
         android:label="@string/app_name"
         android:supportsRtl="true">
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <activity android:name="com.facebook.FacebookActivity"
+                  android:configChanges=
+                      "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+                  android:label="@string/app_name" />
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"

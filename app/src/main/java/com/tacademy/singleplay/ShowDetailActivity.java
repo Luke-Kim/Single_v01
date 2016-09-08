@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.data.SignInData;
-import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingListAdd;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowDetail;
@@ -155,7 +154,7 @@ public class ShowDetailActivity extends AppCompatActivity {
 //                    wish_intent.putExtra(ShowDetailActivity.EXTRA_PLAYID, playId);
                     startActivity(wish_intent);
                 } else if (!isChecked){
-                    WishListDeletRequest request = new WishListDeletRequest(MyApplication.getContext(), wishId+"");
+                    WishListDeletRequest request = new WishListDeletRequest(MyApplication.getContext(), wishId + "");
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<WishListDelete>() {
                         @Override
                         public void onSuccess(NetworkRequest<WishListDelete> request, WishListDelete result) {
