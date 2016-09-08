@@ -15,15 +15,13 @@ import okhttp3.Request;
 /**
  * Created by Tacademy on 2016-08-30.
  */
-public class LocationRequest extends AbstractRequest<ArrayList<Location>>{
+public class LocationRequest extends AbstractRequest<ResultsList<Location[]>>{
     Request request;
     public LocationRequest(Context context, String action, String location) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegment("playlists")
-                .addPathSegment("action=")
-                .addPathSegment(action)
-                .addPathSegment("location=")
-                .addPathSegment(location)
+                .addQueryParameter("action", action)
+                .addQueryParameter("location", location)
                 .build();
         request = new Request.Builder()
                 .url(url)
@@ -33,7 +31,7 @@ public class LocationRequest extends AbstractRequest<ArrayList<Location>>{
 
     @Override
     protected Type getType() {
-        return new  TypeToken<ResultsList<ArrayList<Location>>>(){}.getType();
+        return new  TypeToken<ResultsList<Location[]>>(){}.getType();
     }
 
     @Override

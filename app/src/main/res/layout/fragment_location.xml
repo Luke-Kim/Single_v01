@@ -21,8 +21,9 @@
             <ImageView
                 android:id="@+id/image_seoul"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="#de5555" />
+                android:layout_height="130dp"
+                android:src="@drawable/filter_img_1"
+                android:scaleType="fitXY"/>
 
             <android.support.v7.widget.GridLayout
                 android:id="@+id/grid_seoul"
@@ -33,9 +34,9 @@
                 app:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/text_1"
+                    android:id="@+id/seoul_total"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
                     android:text="서울 전체"
@@ -44,100 +45,100 @@
                     app:layout_rowWeight="1" />
 
                 <TextView
-                    android:id="@+id/text_2"
+                    android:id="@+id/seoul_gangnam"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
-                    android:text="서울 전체"
+                    android:text="강남구/송파구"
                     app:layout_columnWeight="1"
                     app:layout_gravity="center_vertical"
                     app:layout_rowWeight="1" />
 
                 <TextView
-                    android:id="@+id/text_3"
+                    android:id="@+id/seoul_seocho"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
-                    android:text="서울 전체"
+                    android:text="서초구/관악구/동작구"
                     app:layout_columnWeight="1"
                     app:layout_gravity="center_vertical"
                     app:layout_rowWeight="1" />
 
                 <TextView
-                    android:id="@+id/text_4"
+                    android:id="@+id/seoul_junggu"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
-                    android:text="서울 전체"
+                    android:text="중구/동대문구/성동구"
                     app:layout_columnWeight="1"
                     app:layout_gravity="center_vertical"
                     app:layout_rowWeight="1" />
 
                 <TextView
-                    android:id="@+id/text_5"
+                    android:id="@+id/seoul_jonglo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
-                    android:text="서울 전체"
+                    android:text="종로구"
                     app:layout_columnWeight="1"
                     app:layout_gravity="center_vertical"
                     app:layout_rowWeight="1" />
 
                 <TextView
-                    android:id="@+id/text_6"
+                    android:id="@+id/seoul_mafo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
-                    android:text="서울 전체"
+                    android:text="마포구/서대문구/용산구"
                     app:layout_columnWeight="1"
                     app:layout_gravity="center_vertical"
                     app:layout_rowWeight="1" />
 
                 <TextView
-                    android:id="@+id/text_7"
+                    android:id="@+id/seoul_youngdengfo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
-                    android:text="서울 전체"
+                    android:text="영등포구/강서구/양천구"
                     app:layout_columnWeight="1"
                     app:layout_gravity="center_vertical"
                     app:layout_rowWeight="1" />
 
                 <TextView
-                    android:id="@+id/text_8"
+                    android:id="@+id/seoul_guro"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
-                    android:text="서울 전체"
+                    android:text="구로구/금천구"
                     app:layout_columnWeight="1"
                     app:layout_gravity="center_vertical"
                     app:layout_rowWeight="1" />
 
                 <TextView
-                    android:id="@+id/text_9"
+                    android:id="@+id/seoul_gangbuck"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
-                    android:text="서울 전체"
+                    android:text="강북구/성북구/노원구"
                     app:layout_columnWeight="1"
                     app:layout_gravity="center_vertical"
                     app:layout_rowWeight="1" />
 
                 <TextView
-                    android:id="@+id/text_10"
+                    android:id="@+id/seoul_junglang"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="0dp"
                     android:gravity="center"
-                    android:text="서울 전체"
+                    android:text="중랑구/강동구/광진구"
                     app:layout_columnWeight="1"
                     app:layout_gravity="center_vertical"
                     app:layout_rowWeight="1" />
@@ -146,50 +147,58 @@
             <ImageView
                 android:id="@+id/image_gg"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="#a27a7a" />
+                android:layout_height="130dp"
+                android:src="@drawable/filter_img_2"
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:id="@+id/image_chch"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="#6b1d1d" />
+                android:layout_height="130dp"
+                android:src="@drawable/filter_img_3"
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:id="@+id/image_gb"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="#f0c8c8" />
+                android:layout_height="130dp"
+                android:src="@drawable/filter_img_4"
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:id="@+id/image_gn"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="#f90505" />
+                android:layout_height="130dp"
+                android:src="@drawable/filter_img_5"
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:id="@+id/image_jn"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="#33bba9" />
+                android:layout_height="130dp"
+                android:src="@drawable/filter_img_6"
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:id="@+id/image_jb"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="#f9b6ed" />
+                android:layout_height="130dp"
+                android:src="@drawable/filter_img_7"
+                android:scaleType="fitXY" />
 
             <ImageView
                 android:id="@+id/image_jj"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="#a2a0e4" />
+                android:layout_height="130dp"
+                android:src="@drawable/filter_img_8"
+                android:scaleType="fitXY" />
 
             <ImageView
-                android:id="@+id/Image_gw"
+                android:id="@+id/image_gw"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:src="#fff314" />
+                android:layout_height="130dp"
+                android:src="@drawable/filter_img_9"
+                android:scaleType="fitXY" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

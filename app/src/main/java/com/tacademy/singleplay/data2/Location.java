@@ -2,12 +2,11 @@ package com.tacademy.singleplay.data2;
 
 public class Location {
     private int playId;
-    private String salePrice;
-    private String thema;
-    private String price;
+    private int salePrice;
+    private int price;
     private String playName;
     private String playTime;
-    private int starScore;
+    private double starScore;
     private String playDay;
     private String placeName;
     private String poster;
@@ -20,27 +19,19 @@ public class Location {
         this.playId = playId;
     }
 
-    public String getSalePrice() {
+    public int getSalePrice() {
         return this.salePrice;
     }
 
-    public void setSalePrice(String salePrice) {
+    public void setSalePrice(int salePrice) {
         this.salePrice = salePrice;
     }
 
-    public String getThema() {
-        return this.thema;
-    }
-
-    public void setThema(String thema) {
-        this.thema = thema;
-    }
-
-    public String getPrice() {
+    public int getPrice() {
         return this.price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -60,11 +51,11 @@ public class Location {
         this.playTime = playTime;
     }
 
-    public int getStarScore() {
+    public double getStarScore() {
         return this.starScore;
     }
 
-    public void setStarScore(int starScore) {
+    public void setStarScore(double starScore) {
         this.starScore = starScore;
     }
 
