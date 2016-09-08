@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:gravity="center">
 
     <CheckBox
         android:button="@drawable/check_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="뮤지컬"
-        android:id="@+id/checkBox8"
+        android:id="@+id/checkBox_musical"
         android:checked="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -21,11 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="오페라"
-        android:id="@+id/checkBox9"
+        android:id="@+id/checkBox_opera"
         android:checked="false"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/checkBox8"
-        android:layout_toEndOf="@+id/checkBox8"/>
+        android:layout_toRightOf="@+id/checkBox_musical"
+        android:layout_toEndOf="@+id/checkBox_musical"/>
 
     <CheckBox
         android:button="@drawable/check_selector"
@@ -35,6 +36,7 @@
         android:id="@+id/checkBox10"
         android:checked="false"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/checkBox9"
-        android:layout_toEndOf="@+id/checkBox9"/>
-</LinearLayout>
+        android:layout_toRightOf="@+id/checkBox_opera"
+        android:layout_toEndOf="@+id/checkBox_opera"/>
+
+</RelativeLayout>

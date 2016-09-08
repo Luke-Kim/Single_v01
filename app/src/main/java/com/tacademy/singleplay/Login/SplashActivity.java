@@ -28,7 +28,9 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         };
-        handler.sendEmptyMessageDelayed(0, 2000);
+//        handler.sendEmptyMessageDelayed(0, 2000);
+        handler.sendEmptyMessageDelayed(0, 1000);
+
     }
 
     @Override

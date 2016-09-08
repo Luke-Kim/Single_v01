@@ -16,10 +16,10 @@ import java.util.List;
 /**
  * Created by Tacademy on 2016-09-06.
  */
-public class EmptySeatAdapter extends RecyclerView.Adapter<EmptySeatHolder>
-                                implements EmptySeatHolder.OnSeatItemClickListener{
+public class EmptySeatAdapter extends RecyclerView.Adapter<EmptySeatHolder> implements EmptySeatHolder.OnSeatItemClickListener{
 
     List<EmptySeatInfo> items = new ArrayList<>();
+
     public void clear() {
         items.clear();
         notifyDataSetChanged();

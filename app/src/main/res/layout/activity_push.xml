@@ -8,34 +8,6 @@
     android:layout_height="match_parent"
     tools:context="com.tacademy.singleplay.PushActivity">
 
-    <!--<android.support.design.widget.AppBarLayout-->
-        <!--android:id="@+id/appbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
-
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="?attr/actionBarSize"-->
-            <!--app:layout_scrollFlags="scroll|enterAlways">-->
-
-            <!--<include-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="match_parent"-->
-                <!--layout="@layout/view_back"-->
-                <!--/>-->
-            <!--<TextView-->
-                <!--android:id="@+id/text_bookinglist"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="?attr/actionBarSize"-->
-                <!--android:gravity="center"-->
-                <!--android:text="@string/booking_list"/>-->
-
-        <!--</android.support.v7.widget.Toolbar>-->
-
-    <!--</android.support.design.widget.AppBarLayout>-->
-
     <FrameLayout
         android:id="@+id/my_frame"
         android:layout_width="match_parent"
@@ -51,30 +23,21 @@
             android:text="PushActivity"/>
     </FrameLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/appbar">
+        android:layout_below="@+id/appbar"
+        android:weightSum="1">
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Push 알림"
-                android:id="@+id/textView3"
-                android:layout_below="@+id/appbar"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="left|bottom"
-                android:paddingLeft="30dp"/>
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout7"
+            android:background="#ffffff">
 
             <Switch
                 android:layout_width="wrap_content"
@@ -86,11 +49,29 @@
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="right|center_vertical"
                 android:paddingRight="30dp"/>
-        </FrameLayout>
 
-        <FrameLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Push 알림"
+                android:id="@+id/textView3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="left|center_vertical"
+                android:paddingLeft="30dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:id="@+id/relativeLayout8"
+            android:layout_below="@+id/relativeLayout7"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="17dp"
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,97 +79,222 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="요일"
                 android:id="@+id/textView40"
-                android:layout_marginTop="22dp"
-                android:layout_below="@+id/textView3"
-                android:layout_alignLeft="@+id/textView3"
-                android:layout_alignStart="@+id/textView3"
-                android:layout_gravity="left|bottom"
-                android:paddingLeft="30dp"/>
+                android:layout_gravity="left|top"
+                android:paddingLeft="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_check_day"
-                android:layout_alignTop="@+id/textView40"
-                android:layout_alignRight="@+id/push_notice_switch"
-                android:layout_alignEnd="@+id/push_notice_switch"
                 android:checked="false"
                 android:text="전체선택"
-                android:layout_gravity="right|bottom"
-                android:paddingRight="30dp"/>
-        </FrameLayout>
+                android:layout_gravity="right|top"
+                android:paddingRight="30dp"
+                android:layout_alignBottom="@+id/textView40"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <include
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                layout="@layout/view_day"/>
+                android:layout_below="@+id/textView40"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:contextClickable="false"
+                android:gravity="center">
+
+                <CheckBox
+                    android:id="@+id/checkBox_mon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:button="@drawable/check_selector"
+                    android:checked="false"
+                    android:text="월"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox_tue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/checkBox_mon"
+                    android:layout_toRightOf="@+id/checkBox_mon"
+                    android:button="@drawable/check_selector"
+                    android:checked="false"
+                    android:text="화"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox_wed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/checkBox_tue"
+                    android:layout_toRightOf="@+id/checkBox_tue"
+                    android:button="@drawable/check_selector"
+                    android:checked="false"
+                    android:text="수"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox_thur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/checkBox_wed"
+                    android:layout_toRightOf="@+id/checkBox_wed"
+                    android:button="@drawable/check_selector"
+                    android:checked="false"
+                    android:text="목"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox_fri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/checkBox_thur"
+                    android:layout_toRightOf="@+id/checkBox_thur"
+                    android:button="@drawable/check_selector"
+                    android:checked="false"
+                    android:text="금"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox_sat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/checkBox_fri"
+                    android:layout_toRightOf="@+id/checkBox_fri"
+                    android:button="@drawable/check_selector"
+                    android:checked="false"
+                    android:text="토"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox_sun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/check_selector"
+                    android:checked="false"
+                    android:text="일"
+                    android:layout_alignBottom="@+id/checkBox_sat"
+                    android:layout_toRightOf="@+id/checkBox_sat"
+                    android:layout_toEndOf="@+id/checkBox_sat"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout6"
+            android:layout_marginTop="17dp"
+            android:layout_below="@+id/relativeLayout8"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="장르"
-                android:id="@+id/textView41"
-                android:layout_below="@+id/textView40"
-                android:layout_alignLeft="@+id/textView40"
-                android:layout_alignStart="@+id/textView40"
-                android:layout_marginTop="149dp"
-                android:paddingLeft="30dp"/>
+                android:id="@+id/textView10"
+                android:paddingLeft="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_total_category"
+                android:id="@+id/btn_check_category"
                 android:checked="false"
                 android:text="전체선택"
-                android:layout_alignBottom="@+id/textView41"
-                android:layout_alignRight="@+id/switch2"
-                android:layout_alignEnd="@+id/switch2"
-                android:layout_gravity="right|bottom"
-                android:paddingRight="30dp"/>
-        </FrameLayout>
+                android:paddingRight="30dp"
+                android:layout_alignBottom="@+id/textView10"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
 
-        <FrameLayout
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView10"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center">
+
+                <CheckBox
+                    android:button="@drawable/check_selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="뮤지컬"
+                    android:id="@+id/checkBox_musical"
+                    android:checked="false"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"/>
+
+                <CheckBox
+                    android:button="@drawable/check_selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="오페라"
+                    android:id="@+id/checkBox_opera"
+                    android:checked="false"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/checkBox_musical"
+                    android:layout_toEndOf="@+id/checkBox_musical"/>
+
+                <CheckBox
+                    android:button="@drawable/check_selector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="콘서트"
+                    android:id="@+id/checkBox_concert"
+                    android:checked="false"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/checkBox_opera"
+                    android:layout_toEndOf="@+id/checkBox_opera"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/relativeLayout5"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/relativeLayout6"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#ffffff">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="♡ 위시리스트 공연 알람"
-                android:id="@+id/textView42"
-                android:layout_marginTop="100dp"
-                android:layout_below="@+id/textView41"
-                android:layout_alignLeft="@+id/textView41"
-                android:layout_alignStart="@+id/textView41"
-                android:layout_gravity="left|top"
-                android:paddingLeft="20dp"/>
+                android:id="@+id/textView11"
+                android:paddingLeft="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
 
             <Switch
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/switch2"
+                android:id="@+id/switch1"
                 android:checked="false"
-                android:layout_alignBottom="@+id/textView42"
-                android:layout_alignRight="@+id/btn_check_day"
-                android:layout_alignEnd="@+id/btn_check_day"
-                android:layout_gravity="right|bottom"
-                android:paddingRight="20dp"/>
+                android:paddingRight="20dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
 
-            <include
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/view_categoty"
-                android:layout_gravity="center_horizontal|top"/>
-        </FrameLayout>
-
-    </LinearLayout>
-
-
+    </RelativeLayout>
 
 </LinearLayout>
