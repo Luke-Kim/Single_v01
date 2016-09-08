@@ -3,7 +3,9 @@ package com.tacademy.singleplay;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayout;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -27,6 +29,7 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
 
+        this.getWindow().setGravity(Gravity.TOP);
 
     }
     @OnClick(R.id.btn_search)

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:orientation="horizontal"
-    tools:context="com.tacademy.singleplay.SearchActivity">
+    tools:context="com.tacademy.singleplay.SearchActivity"
+    android:background="@android:color/white">
 
     <Button
         android:id="@+id/btn_search_cancel"

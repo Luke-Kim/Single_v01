@@ -82,11 +82,14 @@
         <activity
             android:name=".login.InsertPersonInfoActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".SearchActivity"/>
+        <activity
+            android:name=".SearchActivity"
+            android:theme="@style/Theme.Design.BottomSheetDialog.NoActionBar"/>
         <activity android:name=".SearchResultActivity"/>
 
         <activity
             android:name=".login.SplashActivity"
+            android:theme="@style/AppTheme.SplashStyle"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -94,8 +97,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".wishpopup.WishPopupActivity" android:screenOrientation="portrait"
-            android:theme="@style/Theme.Design.BottomSheetDialog"
+        <activity android:name=".wishpopup.WishPopupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.BottomSheetDialog.NoActionBar"
             android:exported="true"/>
     </application>
 
