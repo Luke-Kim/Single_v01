@@ -29,7 +29,7 @@ public class SearchActivity extends AppCompatActivity {
 
         setFinishOnTouchOutside(true);
         this.getWindow().setGravity(Gravity.TOP);
-        this.getWindow().setLayout(display.getWidth(), 600);
+        this.getWindow().setLayout(display.getWidth(), 300);
         this.setVisible(false);
 
     }
