@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.Gravity;
-import android.widget.RelativeLayout;
 
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -23,8 +22,8 @@ public class WishPopupActivity extends AppCompatActivity {
 
     @BindView(R.id.rcv_wish_pop)
     RecyclerView rcv;
-    @BindView(R.id.layout)
-    RelativeLayout layout;
+//    @BindView(R.id.wish_popup_layout)
+//    RelativeLayout wish_popup_layout;
 
     WishPopAdater mAdapter;
     public static final String EXTRA_PLAYID = "play id";
@@ -45,6 +44,7 @@ public class WishPopupActivity extends AppCompatActivity {
 
         Rect rc = new Rect();
         getWindow().getDecorView().getWindowVisibleDisplayFrame(rc);
+
 
         setFinishOnTouchOutside(true);
         this.getWindow().setGravity(Gravity.BOTTOM);

@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.data2.ResultsList;
@@ -24,6 +26,11 @@ public class WishListActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.wishList_rv)
     RecyclerView recyclerView;
+    @BindView(R.id.no_wish)
+    ImageView no_wish;
+    @BindView(R.id.txt_no_wish)
+    TextView txt_no_wish;
+
     WishListAdapter wishListAdapter;
 
     @Override
@@ -81,6 +88,10 @@ public class WishListActivity extends AppCompatActivity {
                 public void onSuccess(NetworkRequest<ResultsList<WishList[]>> request, ResultsList<WishList[]> result) {
                     Toast.makeText(WishListActivity.this, "성공"+result.getResults()[0].getPlaceName(), Toast.LENGTH_SHORT).show();
                     wishListAdapter.addAll(result.getResults());
+                    if(result != null){
+                        txt_no_wish.setVisibility(View.GONE);
+                        no_wish.setVisibility(View.GONE);
+                    }
                 }
 
                 @Override

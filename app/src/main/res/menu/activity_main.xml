@@ -6,20 +6,20 @@
     <item
         android:id="@+id/menu_wishlist"
         android:title="위시리스트"
-        android:icon="@android:drawable/ic_menu_crop"
+        android:icon="@drawable/wishlist_icon"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/menu_detail"
         android:title="더보기"
-        android:icon="@drawable/menu_btn"
+        android:icon="@drawable/moreview_icon"
         app:showAsAction="always"
         app:actionViewClass = ""/>
 
     <item
-        android:id="@+id/menu_finish"
-        android:title="뒤로가기"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:id="@+id/search_main"
+        android:title="검색"
+        android:icon="@drawable/search_iocn"
         android:visible="false"
         app:showAsAction="always"/>
 

@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="EventDetailActivity"/>
+            android:text="이벤트 및 공지사항"
+            android:textColor="#000000"
+            android:textSize="22dp" />
     </FrameLayout>
 
     <ImageView

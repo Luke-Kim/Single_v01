@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.tacademy.singleplay.inquirydetail.InquiryPagerAdapter;
 import com.tacademy.singleplay.R;
 
 import butterknife.BindView;
@@ -32,7 +31,7 @@ public class InquiryActivity extends AppCompatActivity {
     ViewPager pager;
 
 
-    InquiryPagerAdapter mAdapter;
+    com.tacademy.singleplay.inquirydetail.InquiryPagerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class InquiryActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        mAdapter = new InquiryPagerAdapter(getSupportFragmentManager());
+        mAdapter = new com.tacademy.singleplay.inquirydetail.InquiryPagerAdapter(getSupportFragmentManager());
         pager.setAdapter(mAdapter);
         inquiry_tabs.setupWithViewPager(pager);
         inquiry_tabs.removeAllTabs();

@@ -75,8 +75,13 @@ public class UserActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @OnClick(R.id.btn_coupon)
-    public void btn_couponClick(){
+//    @OnClick(R.id.btn_coupon)
+//    public void btn_couponClick(){
+//        Intent intent = new Intent(UserActivity.this, CouponActivity.class);
+//        startActivity(intent);
+//    }
+    @OnClick(R.id.coupon_layout)
+    public void coupon_layoutClick(){
         Intent intent = new Intent(UserActivity.this, CouponActivity.class);
         startActivity(intent);
     }

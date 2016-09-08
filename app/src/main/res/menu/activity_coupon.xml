@@ -4,7 +4,7 @@
     <item
         android:id="@+id/menu_finish"
         android:title="뒤로가기"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:icon="@drawable/moreview_icon"
         app:showAsAction="always"
         app:actionViewClass = ""/>
 </menu>

@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="WishListActivity"/>
+            android:text="위시리스트"
+            android:textSize="22dp"
+            android:textColor="#000000" />
     </FrameLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -27,4 +29,22 @@
         android:layout_height="match_parent"
         android:id="@+id/wishList_rv"
         android:layout_below="@+id/my_frame"/>
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="109dp"
+        android:id="@+id/no_wish"
+        android:src="@drawable/wish_no_contents"
+        android:layout_alignTop="@+id/wishList_rv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="168dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="아직 위시리스트가 없어요!"
+        android:id="@+id/txt_no_wish"
+        android:layout_below="@+id/no_wish"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

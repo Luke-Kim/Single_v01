@@ -40,7 +40,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="UserActivity"/>
+            android:text="더보기"
+            android:textSize="22dp"
+            android:textColor="#000000"
+            android:background="@drawable/underlin" />
     </FrameLayout>
 
     <RelativeLayout
@@ -50,7 +53,9 @@
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:id="@+id/inquiry_img" />
+            android:id="@+id/inquiry_img"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,7 +65,8 @@
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/inquiry_img"
             android:layout_toEndOf="@+id/inquiry_img"
-            android:layout_marginTop="15dp" />
+            android:layout_marginTop="15dp"
+            android:textColor="#000000" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,39 +89,124 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/abc_ab_share_pack_mtrl_alpha"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/inquiry_img"
+            android:background="@drawable/underlin">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="적립금"
-                android:id="@+id/button"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/btn_coupon"
-                android:layout_toEndOf="@+id/btn_coupon"
-                android:layout_marginLeft="103dp"
-                android:layout_marginStart="103dp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="쿠폰"
-                android:id="@+id/btn_coupon"
-                android:layout_alignParentTop="true"
+            <RelativeLayout
+                android:layout_width="180dp"
+                android:layout_height="48dp"
+                android:id="@+id/coupon_layout"
+                android:onClick=""
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="COUPON"
+                    android:id="@+id/textView23"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="n"
+                    android:id="@+id/coupon_count"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/textView23"
+                    android:layout_toStartOf="@+id/textView23"
+                    android:layout_marginRight="5dp"
+                    android:textColor="#ff7777" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/imageView15"
+                    android:src="@drawable/more_coupon"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="15dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="쿠폰"
+                    android:id="@+id/textView37"
+                    android:textColor="#000000"
+                    android:layout_alignTop="@+id/coupon_count"
+                    android:layout_toRightOf="@+id/imageView15"
+                    android:layout_toEndOf="@+id/imageView15" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="180dp"
+                android:layout_height="48dp"
+                android:id="@+id/relativeLayout11"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/imageView16"
+                    android:src="@drawable/more_point"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="POINT"
+                    android:id="@+id/textView36"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginRight="16dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="123"
+                    android:id="@+id/txt_mileage"
+                    android:textColor="#ff7777"
+                    android:layout_alignTop="@+id/textView36"
+                    android:layout_toLeftOf="@+id/textView36"
+                    android:layout_toStartOf="@+id/textView36"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="적립금"
+                    android:id="@+id/textView38"
+                    android:textColor="#000000"
+                    android:layout_alignTop="@+id/txt_mileage"
+                    android:layout_toRightOf="@+id/imageView16"
+                    android:layout_toEndOf="@+id/imageView16" />
+            </RelativeLayout>
         </RelativeLayout>
 
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="14dp"
         android:background="@color/button_material_light">
 
     </RelativeLayout>
@@ -125,7 +216,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="5"
         android:weightSum="1">
 
         <RelativeLayout
@@ -138,16 +228,26 @@
             android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/booking_list"
                 android:id="@+id/bookingView"
-                android:layout_marginLeft="55dp"
-                android:layout_marginStart="55dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:paddingLeft="50dp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/more_reser"
+                android:scaleType="fitXY"
+                android:id="@+id/imageView11"
+                android:layout_alignTop="@+id/bookingView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -160,64 +260,102 @@
             android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/event_notice"
                 android:id="@+id/eventView"
-
-                android:layout_marginLeft="55dp"
-                android:layout_marginStart="55dp"
+                android:paddingLeft="50dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/more_notice"
+                android:scaleType="fitXY"
+                android:id="@+id/imageView12"
+                android:layout_alignTop="@+id/eventView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/relativeLayout3"
-            android:layout_below="@+id/relativeLayout2"
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha"
+            android:layout_below="@+id/relativeLayout4"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
+            android:layout_alignParentStart="true">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/push_notify"
                 android:id="@+id/pushView"
-
-                android:layout_marginLeft="55dp"
-                android:layout_marginStart="55dp"
+                android:paddingLeft="50dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/more_setting"
+                android:scaleType="fitXY"
+                android:id="@+id/imageView13"
+                android:layout_alignTop="@+id/pushView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp" />
+
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/relativeLayout4"
-            android:layout_below="@+id/relativeLayout3"
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha"
+            android:layout_below="@+id/relativeLayout2"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
+            android:layout_alignParentStart="true">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/inquiry"
                 android:id="@+id/inquiryView"
-
-                android:layout_marginLeft="55dp"
-                android:layout_marginStart="55dp"
+                android:paddingLeft="50dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/more_qna"
+                android:scaleType="fitXY"
+                android:id="@+id/imageView14"
+                android:layout_alignTop="@+id/inquiryView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp" />
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/button_material_light"
+            android:layout_below="@+id/relativeLayout3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 
 

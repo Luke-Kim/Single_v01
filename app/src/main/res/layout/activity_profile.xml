@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="ProfileAcitivity"/>
+            android:text="프로필 수정 및 로그아웃"
+            android:textSize="22dp"
+            android:textColor="#000000" />
     </FrameLayout>
 
     <RelativeLayout
