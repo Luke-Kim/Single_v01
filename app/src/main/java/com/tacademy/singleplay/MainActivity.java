@@ -18,7 +18,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
@@ -100,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                //Toast.makeText(MainActivity.this, ""+position, Toast.LENGTH_SHORT).show();
                 category = position;
                 mAdapter.setShowList(action, category, sort);
 
@@ -144,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
                 mAdapter.setShowList(action, category, sort);
                 break;
         }
-        Toast.makeText(MainActivity.this, ""+sort, Toast.LENGTH_SHORT).show();
     }
 
     public void setAction(int action) {
@@ -173,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
             detail.setVisible(false);
             wishlist.setVisible(false);
             back.setVisible(true);
-            Toast.makeText(MainActivity.this, "click title", Toast.LENGTH_SHORT).show();
             Animation anim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_up_in);
             ft.beginTransaction()
                     .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_up_out)
@@ -187,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
             wishlist.setVisible(true);
             back.setVisible(false);
             toolbarTitleView.setText("서울");
-            Toast.makeText(MainActivity.this, "click title 2", Toast.LENGTH_SHORT).show();
             ft.beginTransaction()
                     .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_up_out)
                     .remove(lf)
@@ -214,16 +209,16 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
 //        super.onBackPressed();
         if (isLocation) {
+            isLocation = false;
             detail.setVisible(true);
             wishlist.setVisible(true);
             back.setVisible(false);
-            Toast.makeText(MainActivity.this, "click title 3", Toast.LENGTH_SHORT).show();
-            tabPagerContainer.setVisibility(View.VISIBLE);
-            isLocation = false;
+            toolbarTitleView.setText("서울");
             ft.beginTransaction()
-                    .replace(R.id.location_container, lf)
+                    .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_up_out)
                     .remove(lf)
                     .commit();
+            return;
         }
         if (isSearch) {
             toolbar.setVisibility(View.VISIBLE);
@@ -267,7 +262,6 @@ public class MainActivity extends AppCompatActivity {
                 detail.setVisible(true);
                 wishlist.setVisible(true);
                 back.setVisible(false);
-                Toast.makeText(MainActivity.this, "click title 4", Toast.LENGTH_SHORT).show();
                 ft.beginTransaction()
                         .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_up_out)
                         .remove(lf)

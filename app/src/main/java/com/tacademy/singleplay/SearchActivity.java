@@ -1,10 +1,12 @@
 package com.tacademy.singleplay;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayout;
 import android.text.TextUtils;
+import android.view.Display;
 import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import butterknife.OnClick;
 public class SearchActivity extends AppCompatActivity {
     @BindView(R.id.edit_title)
     EditText titleView;
+    private Display display;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +32,11 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         ButterKnife.bind(this);
 
-        this.getWindow().setGravity(Gravity.TOP);
-        this.setVisible(false);
+        setFinishOnTouchOutside(true);
+        display = SearchActivity.this.getWindowManager().getDefaultDisplay();
 
+        this.getWindow().setLayout(display.getWidth(), 200);
+        this.getWindow().setGravity(Gravity.TOP);
     }
     @OnClick(R.id.btn_search)
     public void onSearch() {
