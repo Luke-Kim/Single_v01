@@ -7,7 +7,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.WishListAdd;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,13 +26,13 @@ public class WishPopHolder extends RecyclerView.ViewHolder {
 
     }
 
-    WishListAdd wishLiastadd;
-    public void setData(WishListAdd wishLiastadd){
-        this.wishLiastadd = wishLiastadd;
-        Glide.with(wish_img.getContext())
-                .load(wishLiastadd.getThumbnail()) // string
-                .into(wish_img);
-    }
+//    WishListAdd wishLiastadd;
+//    public void setData(WishListAdd wishLiastadd){
+//        this.wishLiastadd = wishLiastadd;
+//        Glide.with(wish_img.getContext())
+//                .load(wishLiastadd.getThumbnail()) // string
+//                .into(wish_img);
+//    }
 
     public void setData(String wishLiastadd){
         Glide.with(wish_img.getContext())

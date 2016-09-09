@@ -15,8 +15,8 @@ import okhttp3.ResponseBody;
 public abstract class AbstractRequest<T> extends NetworkRequest<T> {
 
     private final static String HOST = "ec2-52-78-118-8.ap-northeast-2.compute.amazonaws.com";
-    private final static int HTTPS_PORT = 4433;
-    private final static int HTTP_PORT=8080;
+    private final static int HTTPS_PORT = 4433; // 실섭 4433 // 더미 443;
+    private final static int HTTP_PORT= 8080; // 8080 // 80
 
     protected HttpUrl.Builder getBaseUrlBuilder() { //각 Request들이 생성자에서 호출하여 builder를 받아감.
         HttpUrl.Builder builder = new HttpUrl.Builder();

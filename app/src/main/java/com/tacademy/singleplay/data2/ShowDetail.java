@@ -20,6 +20,14 @@ public class ShowDetail {
     private String poster;
     private int saleSprice;
     private int wid;
+    private int uid;
+
+    public int getUid(){
+        return uid;
+    }
+    public void setUid() {
+        this.uid = uid;
+    }
 
     public int getWid() {
         return wid;

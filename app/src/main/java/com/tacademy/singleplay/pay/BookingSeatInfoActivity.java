@@ -161,7 +161,7 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
                                 return false;
                             }
                         }).diskCacheStrategy(DiskCacheStrategy.ALL).into(seat_image);
-                
+
                 EmptySeatInfo[] datas = result.getResult().getSeatInfo();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
