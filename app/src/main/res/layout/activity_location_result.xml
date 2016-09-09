@@ -8,26 +8,25 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.tacademy.singleplay.SearchResultActivity">
-
+    tools:context="com.tacademy.singleplay.LocationResultActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolBar"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:gravity="center">
 
         <TextView
-            android:id="@+id/text_title"
+            android:id="@+id/text_toolbarTitle"
             android:layout_width="100dp"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="center_horizontal|bottom"
             android:gravity="center" />
     </android.support.v7.widget.Toolbar>
 
-    <FrameLayout
-        android:id="@+id/search_container"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/location_rc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

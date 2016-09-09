@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.search_iocn);
 
         pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -294,6 +295,12 @@ public class MainActivity extends AppCompatActivity {
         BookingManager.getInstance().setPlayId(""+playId);
         BookingManager.getInstance().setPlayName(playName);
         Intent intent = new Intent(MainActivity.this, ShowDetailActivity.class);
+        startActivity(intent);
+    }
+
+    public void goLocationResultActivity(String location) {
+        Intent intent = new Intent(MainActivity.this, LocationResultActivity.class);
+        intent.putExtra("location", location);
         startActivity(intent);
     }
 }
