@@ -1,6 +1,7 @@
 package com.tacademy.singleplay.request;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.tacademy.singleplay.data2.FaceBook;
@@ -16,15 +17,16 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-08-30.
  */
-public class FacebookRecuest extends AbstractRequest<ResultsList<FaceBook>> {
+public class FacebookLoginRequest extends AbstractRequest<ResultsList<FaceBook>> {
     Request request;
-    public FacebookRecuest(Context context, String token) {
+    public FacebookLoginRequest(Context context, String token) {
         HttpUrl url = getBaseUrlBuilder()
-                .addPathSegment("/auth/facebook/token")
+                .addPathSegments("auth/facebook/token")
                 .build();
 
         RequestBody body = new FormBody.Builder()
                 .add("access_token", token)
+                .add("registration_token", "1234" )
                 .build();
 
         request = new Request.Builder()
@@ -32,6 +34,7 @@ public class FacebookRecuest extends AbstractRequest<ResultsList<FaceBook>> {
                 .post(body)
                 .tag(context)
                 .build();
+        Log.i("url",url.toString());
     }
 
     @Override

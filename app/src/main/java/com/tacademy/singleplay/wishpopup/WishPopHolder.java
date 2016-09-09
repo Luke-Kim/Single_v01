@@ -2,11 +2,13 @@ package com.tacademy.singleplay.wishpopup;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.WishListAdd;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,21 +25,15 @@ public class WishPopHolder extends RecyclerView.ViewHolder {
     public WishPopHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
-
     }
 
-//    WishListAdd wishLiastadd;
-//    public void setData(WishListAdd wishLiastadd){
-//        this.wishLiastadd = wishLiastadd;
-//        Glide.with(wish_img.getContext())
-//                .load(wishLiastadd.getThumbnail()) // string
-//                .into(wish_img);
-//    }
-
-    public void setData(String wishLiastadd){
+    WishListAdd wishListAdd = new WishListAdd();
+    public void setData(String wishListAdd){
+        this.wishListAdd.setThumbnail(wishListAdd);
+        Log.i("wish",this.wishListAdd.getThumbnail());
         Glide.with(wish_img.getContext())
-                .load(wishLiastadd) // string
+                .load(this.wishListAdd.getThumbnail()) // string
                 .into(wish_img);
-    }
 
+    }
 }

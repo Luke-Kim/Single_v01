@@ -1,12 +1,12 @@
 package com.tacademy.singleplay.wishpopup;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.Gravity;
+import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -26,7 +26,7 @@ public class WishPopupActivity extends AppCompatActivity {
 //    RelativeLayout wish_popup_layout;
 
     WishPopAdater mAdapter;
-    public static final String EXTRA_PLAYID = "play id";
+//    public static final String EXTRA_PLAYID = "play id";
     String playId;
 
     private Display display;
@@ -37,7 +37,7 @@ public class WishPopupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wish_popup);
         ButterKnife.bind(this);
 
-        Intent intent = getIntent();
+//        Intent intent = getIntent();
 //        playId = intent.getIntExtra(EXTRA_PLAYID, 0);
         playId = BookingManager.getInstance().getPlayId();
 
@@ -49,12 +49,12 @@ public class WishPopupActivity extends AppCompatActivity {
         setFinishOnTouchOutside(true);
         this.getWindow().setGravity(Gravity.BOTTOM);
         this.getWindow().setLayout(display.getWidth(), 450);
-        LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mAdapter = new WishPopAdater();
 
 
         rcv.setAdapter(mAdapter);
-        rcv.setLayoutManager(lm);
+        rcv.setLayoutManager(layoutManager);
         rcv.setHasFixedSize(true);
 
         initData();
@@ -63,16 +63,16 @@ public class WishPopupActivity extends AppCompatActivity {
     private void initData() {
         WishListAddRequest request = new WishListAddRequest(this, playId);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<String[]>>() {
-                    @Override
-                    public void onSuccess(NetworkRequest<ResultsList<String[]>> request, ResultsList<String[]> result) {
-                        mAdapter.addAll(result.getResults());
-                    }
+            @Override
+            public void onSuccess(NetworkRequest<ResultsList<String[]>> request, ResultsList<String[]> result) {
+                Toast.makeText(WishPopupActivity.this, "성공", Toast.LENGTH_SHORT).show();
+                mAdapter.addAll(result.getResults());
+            }
 
-                    @Override
-                    public void onFail(NetworkRequest<ResultsList<String[]>> request, int errorCode, String errorMessage, Throwable e) {
-
-                    }
-                }
-        );
+            @Override
+            public void onFail(NetworkRequest<ResultsList<String[]>> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(WishPopupActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

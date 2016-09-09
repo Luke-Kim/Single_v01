@@ -3,7 +3,6 @@ package com.tacademy.singleplay.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -18,6 +17,11 @@ import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.FaceBook;
+import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.manager.NetworkManager;
+import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.FacebookLoginRequest;
 
 import java.util.Arrays;
 
@@ -116,8 +120,22 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(LoginActivity.this, "login manager...", Toast.LENGTH_SHORT).show();
-                AccessToken token = AccessToken.getCurrentAccessToken();
-                Log.i("jeahyun : ", token.getToken()+"");
+                AccessToken accessToken = AccessToken.getCurrentAccessToken();
+//                Log.i("jeahyun : ", accessToken.getToken()+"");
+                String token = accessToken.getToken();
+                FacebookLoginRequest request = new FacebookLoginRequest(LoginActivity.this, token);
+                NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
+                    @Override
+                    public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
+                        Toast.makeText(LoginActivity.this, "성공", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginActivity.this, SignInActivity.class));
+                    }
+
+                    @Override
+                    public void onFail(NetworkRequest<ResultsList<FaceBook>> request, int errorCode, String errorMessage, Throwable e) {
+                        Toast.makeText(LoginActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
 
             @Override
