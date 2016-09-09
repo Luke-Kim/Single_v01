@@ -148,24 +148,22 @@ public class ShowDetailActivity extends AppCompatActivity {
         btn_wish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
-
 
         btn_wish.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(uid == 0){
+                if (uid != 0) {
                     Toast.makeText(ShowDetailActivity.this, "로그인 후 사용해 주세요", Toast.LENGTH_SHORT).show();
                     btn_wish.setChecked(false);
                 } else {
-                    if(isChecked) {
+                    if (isChecked) {
                         Toast.makeText(ShowDetailActivity.this, "위시리스트 등록", Toast.LENGTH_SHORT).show();
                         Intent wish_intent = new Intent(ShowDetailActivity.this, WishPopupActivity.class);
 //                    wish_intent.putExtra(ShowDetailActivity.EXTRA_PLAYID, playId);
                         startActivity(wish_intent);
-                    } else if (!isChecked){
+                    } else if (!isChecked) {
                         WishListDeletRequest request = new WishListDeletRequest(MyApplication.getContext(), wishId + "");
                         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<WishListDelete>() {
                             @Override
@@ -183,22 +181,23 @@ public class ShowDetailActivity extends AppCompatActivity {
                 }
             }
         });
+
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (signInData != null) {
                     BookingListAddRequest request = new BookingListAddRequest(MyApplication.getContext());
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingListAdd>() {
-                                @Override
-                                public void onSuccess(NetworkRequest<BookingListAdd> request, BookingListAdd result) {
-                                    Toast.makeText(ShowDetailActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
+                        @Override
+                        public void onSuccess(NetworkRequest<BookingListAdd> request, BookingListAdd result) {
+                            Toast.makeText(ShowDetailActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
 
-                                @Override
-                                public void onFail(NetworkRequest<BookingListAdd> request, int errorCode, String errorMessage, Throwable e) {
-                                    Toast.makeText(ShowDetailActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                        @Override
+                        public void onFail(NetworkRequest<BookingListAdd> request, int errorCode, String errorMessage, Throwable e) {
+                            Toast.makeText(ShowDetailActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
                     Intent intent = new Intent(ShowDetailActivity.this, BookingPersonInfoActivity.class);
                     startActivity(intent);

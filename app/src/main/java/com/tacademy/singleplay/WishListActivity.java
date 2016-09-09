@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.WishList;
+import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.WishListRequest;
@@ -61,7 +62,9 @@ public class WishListActivity extends AppCompatActivity {
         wishListAdapter.setOnWishAdapterItemCLickListener(new WishListAdapter.OnWishAdapterItemClickListener() {
             @Override
             public void onWishAdapterItemClick(View view, WishList wishList, int position) {
-                startActivity(new Intent(WishListActivity.this, ShowDetailActivity.class));
+                int playId = wishList.getPlayId();
+                String playName = wishList.getPlayName();
+                goDetailActivity(playId, playName);
             }
         });
 
@@ -74,6 +77,12 @@ public class WishListActivity extends AppCompatActivity {
 
     }
 
+    public void goDetailActivity(int playId, String playName) {
+        BookingManager.getInstance().setPlayId(""+playId);
+        BookingManager.getInstance().setPlayName(playName);
+        Intent intent = new Intent(WishListActivity.this, ShowDetailActivity.class);
+        startActivity(intent);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == android.R.id.home) {
