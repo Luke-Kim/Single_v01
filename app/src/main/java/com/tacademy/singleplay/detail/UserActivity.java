@@ -61,21 +61,21 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-        if(signInData != null) {
-            loginView.setVisibility(View.GONE);
-        } else {
-            profileView.setVisibility(View.GONE);
-            loginView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(UserActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    finish();
-                }
-            });
-        }
+//        if(signInData != null) {
+//            loginView.setVisibility(View.GONE);
+//        } else {
+//            profileView.setVisibility(View.GONE);
+//            loginView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Intent intent = new Intent(UserActivity.this, LoginActivity.class);
+//                    startActivity(intent);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                    finish();
+//                }
+//            });
+//        }
         // 임시로 리퀘스트에서 데이터 받아 이름에 표시하기
         initData();
     }
@@ -122,7 +122,7 @@ public class UserActivity extends AppCompatActivity {
 
     public void initData() {
 
-        String userName = user_name.getText().toString();
+        final String userName = user_name.getText().toString();
 //        String userImage = imageView.getDrawable().toString();
         String userEmail = "asdf";
         String userPhone = "asdf";
@@ -134,8 +134,24 @@ public class UserActivity extends AppCompatActivity {
                 Toast.makeText(UserActivity.this, "성공", Toast.LENGTH_SHORT).show();
 
 //                imageView.setImageResource(Integer.parseInt(result.getResult().getProfileImg()+""));
-                user_name.setText(result.getResult().getUserName()+"");
+                if(result.getResult().getUserName() == null){
+                    user_name.setVisibility(View.GONE);
+                    profileView.setVisibility(View.GONE);
+                    loginView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(UserActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            finish();
+                        }
+                    });
+                } else {
+                    user_name.setText(result.getResult().getUserName()+"");
+                    loginView.setVisibility(View.GONE);
 
+                }
             }
 
             @Override
