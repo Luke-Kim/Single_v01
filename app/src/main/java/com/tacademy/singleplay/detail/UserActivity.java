@@ -4,15 +4,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tacademy.singleplay.PushActivity;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data.SignInData;
+import com.tacademy.singleplay.data2.Profile;
+import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.login.InsertPersonInfoActivity;
 import com.tacademy.singleplay.login.LoginActivity;
+import com.tacademy.singleplay.manager.NetworkManager;
+import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,6 +32,10 @@ public class UserActivity extends AppCompatActivity {
     TextView profileView;
     @BindView(R.id.txt_login)
     TextView loginView;
+    @BindView(R.id.user_name)
+    TextView user_name;
+
+    String userImage = "asdf";
 
     SignInData signInData;
 
@@ -51,8 +62,9 @@ public class UserActivity extends AppCompatActivity {
         });
 
         if(signInData != null) {
-            loginView.setText(" ");
+            loginView.setVisibility(View.GONE);
         } else {
+            profileView.setVisibility(View.GONE);
             loginView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -64,7 +76,8 @@ public class UserActivity extends AppCompatActivity {
                 }
             });
         }
-
+        // 임시로 리퀘스트에서 데이터 받아 이름에 표시하기
+        initData();
     }
 
     @Override
@@ -105,6 +118,32 @@ public class UserActivity extends AppCompatActivity {
     public void inquiryClick(){
         Intent intent = new Intent(UserActivity.this, InquiryActivity.class);
         startActivity(intent);
+    }
+
+    public void initData() {
+
+        String userName = user_name.getText().toString();
+//        String userImage = imageView.getDrawable().toString();
+        String userEmail = "asdf";
+        String userPhone = "asdf";
+
+        ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Profile>>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultsList<Profile>> request, ResultsList<Profile> result) {
+                Toast.makeText(UserActivity.this, "성공", Toast.LENGTH_SHORT).show();
+
+//                imageView.setImageResource(Integer.parseInt(result.getResult().getProfileImg()+""));
+                user_name.setText(result.getResult().getUserName()+"");
+
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ResultsList<Profile>> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(UserActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+                Log.i("onfail",errorMessage+" , "+errorCode );
+            }
+        });
     }
 
 }
