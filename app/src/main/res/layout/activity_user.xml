@@ -61,7 +61,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="금나래, Keum narae"
             android:id="@+id/user_name"
             android:layout_marginTop="21dp"
             android:textColor="#000000"
@@ -73,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/profileView"
-            android:text="프로필 수정 및 로그아웃"
+
             android:layout_below="@+id/user_name"
             android:layout_toRightOf="@+id/inquiry_img"
             android:layout_marginTop="8dp" />

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingRight="8dp">
 
 
     <RelativeLayout
@@ -16,47 +20,82 @@
         android:id="@+id/frameLayout">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
-            android:text="periodStart"
+            android:text="start"
             android:id="@+id/txt_periodStart"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/txt_periodEnd"
-            android:layout_alignEnd="@+id/txt_periodEnd"
-            android:layout_marginTop="15dp"
             android:paddingRight="20dp"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            android:textColor="@color/couponString"
+            android:layout_alignTop="@+id/textView42"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:text="couponName"
             android:id="@+id/txt_couponName"
-            android:layout_above="@+id/txt_periodEnd"
+            android:maxLines="2"
+            android:textColor="@color/couponString"
+            android:layout_below="@+id/coupon_perc"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="18dp"
-            android:layout_marginStart="18dp"/>
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="27dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="55dp"
             android:layout_height="wrap_content"
-            android:text="couponNo"
-            android:id="@+id/txt_couponNo"
-            android:layout_alignTop="@+id/txt_periodStart"
-            android:layout_alignLeft="@+id/txt_couponName"
-            android:layout_alignStart="@+id/txt_couponName" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="periodEnd"
+            android:text="end"
             android:id="@+id/txt_periodEnd"
-            android:layout_alignParentBottom="true"
+            android:paddingRight="20dp"
+            android:textColor="@color/couponString"
+            android:layout_alignBaseline="@+id/txt_couponName"
+            android:layout_alignBottom="@+id/txt_couponName"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="15dp"
-            android:paddingRight="20dp"/>
+            android:layout_marginRight="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="COUPON"
+            android:id="@+id/textView42"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/couponString" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="15%"
+            android:id="@+id/coupon_perc"
+            android:layout_below="@+id/textView42"
+            android:layout_alignLeft="@+id/textView42"
+            android:layout_alignStart="@+id/textView42"
+            android:textStyle="bold"
+            android:textColor="@color/couponString"
+            android:layout_marginTop="6dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="~"
+            android:id="@+id/textView48"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/couponString"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/txt_periodEnd"
+            android:layout_alignStart="@+id/txt_periodEnd" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -18,8 +18,8 @@ public class CouponViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.txt_couponName)
     TextView txt_couponName;
-    @BindView(R.id.txt_couponNo)
-    TextView txt_couponNo;
+    @BindView(R.id.coupon_perc)
+    TextView txt_coupon_perc;
     @BindView(R.id.txt_periodStart)
     TextView txt_periodStart;
     @BindView(R.id.txt_periodEnd)
@@ -36,7 +36,7 @@ public class CouponViewHolder extends RecyclerView.ViewHolder {
         this.coupon = coupon;
 //        image_coupon.setImageResource(coupon.getImage());
         txt_couponName.setText(coupon.getCouponName());
-        txt_couponNo.setText(coupon.getCouponNo() + "");
+        txt_coupon_perc.setText(coupon.getSaveOff() + "%");
         txt_periodStart.setText(coupon.getPeriodStart());
         txt_periodEnd.setText(coupon.getPeriodEnd());
     }

@@ -149,6 +149,8 @@ public class UserActivity extends AppCompatActivity {
                     });
                 } else {
                     user_name.setText(result.getResult().getUserName()+"");
+                    profileView.setText("프로필 수정 및 로그아웃");
+                    profileView.setVisibility(View.VISIBLE);
                     loginView.setVisibility(View.GONE);
 
                 }

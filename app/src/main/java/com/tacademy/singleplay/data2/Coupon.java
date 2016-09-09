@@ -3,6 +3,7 @@ package com.tacademy.singleplay.data2;
 public class Coupon {
     private String couponName;
     private int couponNo;
+    private int saveOff;
     private String periodStart;
     private String periodEnd;
 
@@ -12,6 +13,14 @@ public class Coupon {
 
     public void setCouponName(String couponName) {
         this.couponName = couponName;
+    }
+
+    public int getSaveOff() {
+        return this.saveOff;
+    }
+
+    public void setSaveoff(int saveOff) {
+        this.saveOff = saveOff;
     }
 
     public int getCouponNo() {
