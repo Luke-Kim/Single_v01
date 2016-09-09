@@ -19,21 +19,19 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.tacademy.singleplay.R;
 
-import java.util.Arrays;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btn_facebook)
     Button facebookButton;
-//    @BindView(R.id.btn_naver)
-//    Button btn_naver;
-//    @BindView(R.id.btn_kakao)
-//    Button btn_kakao;
+    @BindView(R.id.btn_naver)
+    Button btn_naver;
+    @BindView(R.id.btn_kakao)
+    Button btn_kakao;
 
     CallbackManager callbackManager;
-    LoginManager mLoginManager;
+    LoginManager mLoginManager; // 버튼과 똑같이 로그인 할 수 있는 역할이다.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,20 +52,38 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         setButtonLabel();
+
+        btn_naver.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        btn_kakao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
-    private  void setButtonLabel() {
+    private  void setButtonLabel() { // 로그인하거나 로그아웃 하면 버튼의 라벨이 바뀜
         if(isLogin()) {
-            facebookButton.setText("logout");
+            facebookButton.setText("facebook_logout");
         } else {
-            facebookButton.setText("login");
+            facebookButton.setText("facebook_login");
         }
 
     }
     AccessTokenTracker mTracker;
 
     @Override
-    protected void onStart() {
+    protected void onStart() { //로그인 되어있는지 아닌지 트래킹하고 싶은 경우 액세스 토큰 이용
         super.onStart();
         if (mTracker == null) {
             mTracker = new AccessTokenTracker() {
@@ -92,9 +108,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginFacebook() {
-        mLoginManager.setDefaultAudience(DefaultAudience.FRIENDS);
-        mLoginManager.setLoginBehavior(LoginBehavior.NATIVE_WITH_FALLBACK);
-        mLoginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        mLoginManager.setDefaultAudience(DefaultAudience.FRIENDS); // 공개범위 설정
+        mLoginManager.setLoginBehavior(LoginBehavior.NATIVE_WITH_FALLBACK); //로그인 대행해주는 agent로 무엇을 쓸 건지 정함, NATIVE_WITH_FALLBACK : 페이스북 있으면 페북 띄워주고, 없으면 웹화면 띄워주겠다 라는 의미
+        mLoginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() { // 콜백매니저 등록
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(LoginActivity.this, "login manager...", Toast.LENGTH_SHORT).show();
@@ -112,10 +128,10 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        mLoginManager.logInWithReadPermissions(this, Arrays.asList("email"));
+//        mLoginManager.logInWithReadPermissions(this, Arrays.asList("email"));
     }
 
-    private boolean isLogin() { //이거 가지고 로그인 여부를 확인 할수 있음
+    private boolean isLogin() { //액세스 토큰(로그인을 하면 가지는 정보) 가지고 로그인 여부를 확인 할수 있음!
         AccessToken token = AccessToken.getCurrentAccessToken();
         return token != null;
     }
