@@ -32,6 +32,7 @@ public class LocationFragment extends Fragment {
     android.support.v7.widget.GridLayout seoulView;
 
     private static final String ACTION = "1";
+    LocationAdapter mAdapter;
 
     public LocationFragment() {
         // Required empty public constructor
@@ -44,6 +45,7 @@ public class LocationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_location, container, false);
         ButterKnife.bind(this, view);
+        mAdapter = new LocationAdapter();
         return view;
     }
 
@@ -159,7 +161,9 @@ public class LocationFragment extends Fragment {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Location[]>> request, ResultsList<Location[]> result) {
                 Toast.makeText(MyApplication.getContext(), "지역검색 성공", Toast.LENGTH_SHORT).show();
-              //나래가 아직 어떻게 결과를 보여줄지 못정했음.
+                Location[] datas = result.getResults();
+                mAdapter.clear();
+                mAdapter.addAll(datas);
             }
 
             @Override

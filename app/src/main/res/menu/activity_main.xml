@@ -17,9 +17,9 @@
         app:actionViewClass = ""/>
 
     <item
-        android:id="@+id/search_main"
-        android:title="검색"
-        android:icon="@drawable/search_iocn"
+        android:id="@+id/menu_finish"
+        android:title="지역검색"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
         android:visible="false"
         app:showAsAction="always"/>
 
