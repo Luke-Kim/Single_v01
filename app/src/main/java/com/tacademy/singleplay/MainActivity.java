@@ -144,7 +144,20 @@ public class MainActivity extends AppCompatActivity {
                 mAdapter.setShowList(action, category, sort);
                 break;
         }
-        Toast.makeText(MainActivity.this, ""+sort, Toast.LENGTH_SHORT).show();
+        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager());
+        mAdapter.setShowList(action, category, sort);
+
+        pager.setAdapter(mAdapter);
+        tabs.setupWithViewPager(pager);
+        tabs.removeAllTabs();
+
+        tabs.addTab(tabs.newTab().setText("전체"));
+        tabs.addTab(tabs.newTab().setText("뮤지컬"));
+        tabs.addTab(tabs.newTab().setText("오페라"));
+        tabs.addTab(tabs.newTab().setText("콘서트"));
+        tabs.addTab(tabs.newTab().setText("MD추천"));
+        pager.setCurrentItem(category);
+//        Toast.makeText(MainActivity.this, ""+sort, Toast.LENGTH_SHORT).show();
     }
 
     public void setAction(int action) {
