@@ -70,6 +70,7 @@ public class MainShowHolder extends RecyclerView.ViewHolder {
         Glide.with(MyApplication.getContext())
                 .load(showList.getPoster())
                 .into(poster);
+        poster.setBackgroundResource(R.drawable.gradation);
 //        Drawable postor;
 //        postor = poster.getDrawable();
 //        posterView.setBackground(postor);

@@ -10,6 +10,7 @@ import android.view.Gravity;
 
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.WishListAddRequest;
@@ -26,7 +27,7 @@ public class WishPopupActivity extends AppCompatActivity {
 
     WishPopAdater mAdapter;
     public static final String EXTRA_PLAYID = "play id";
-    int playId;
+    String playId;
 
     private Display display;
 
@@ -36,8 +37,9 @@ public class WishPopupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wish_popup);
         ButterKnife.bind(this);
 
-        Intent intent = new Intent();
-        playId = intent.getIntExtra(EXTRA_PLAYID, 0);
+        Intent intent = getIntent();
+//        playId = intent.getIntExtra(EXTRA_PLAYID, 0);
+        playId = BookingManager.getInstance().getPlayId();
 
         display = WishPopupActivity.this.getWindowManager().getDefaultDisplay();
 
@@ -59,7 +61,7 @@ public class WishPopupActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        WishListAddRequest request = new WishListAddRequest(this, EXTRA_PLAYID);
+        WishListAddRequest request = new WishListAddRequest(this, playId);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<String[]>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<String[]>> request, ResultsList<String[]> result) {

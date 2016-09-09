@@ -19,12 +19,14 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:hint="제목, 배우 등으로 검색해보세요."
-        android:textColor="@color/abc_search_url_text_selected"/>
+        android:textColor="@android:color/black"
+        android:background="@null"
+        android:textCursorDrawable="@android:drawable/dark_header"/>
 
     <Button
         android:id="@+id/btn_search"
         android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:text="검색"/>
+        android:background="@drawable/search_iocn" />
 
 </LinearLayout>

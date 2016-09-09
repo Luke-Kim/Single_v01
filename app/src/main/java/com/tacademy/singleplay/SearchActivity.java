@@ -32,6 +32,8 @@ public class SearchActivity extends AppCompatActivity {
         this.getWindow().setLayout(display.getWidth(), 200);
         this.setVisible(false);
 
+//        titleView.setCursorVisible(false);
+
     }
     @OnClick(R.id.btn_search)
     public void onSearch() {

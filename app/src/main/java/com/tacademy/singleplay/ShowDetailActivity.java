@@ -88,6 +88,7 @@ public class ShowDetailActivity extends AppCompatActivity {
 
     SignInData signInData;
 
+    boolean isCheckSet = false;
     String playId;
     int wishId;
 
@@ -120,21 +121,19 @@ public class ShowDetailActivity extends AppCompatActivity {
                 dayView.setText(result.getResult().getPlayDay());
                 timeView.setText(result.getResult().getPlayTime()); //배열이길래 [0]처리
                 timeTwoView.setText(result.getResult().getPlayTime());
-                vipPriceView.setText(result.getResult().getVIPprice()+"");
-                vipSaleView.setText(result.getResult().getSaleVIPprice()+"");
-                rPriceView.setText(result.getResult().getRprice()+"");
-                rSaleView.setText(result.getResult().getSaleRprice()+"");
-                sPriceView.setText(result.getResult().getSprice()+"");
-                sSaleView.setText(result.getResult().getSaleSprice()+"");
-                scoreView.setText(result.getResult().getStarScore()+"");
-                reviewCountView.setText(result.getResult().getUserCount()+"");
+                vipPriceView.setText(result.getResult().getVIPprice() + "");
+                vipSaleView.setText(result.getResult().getSaleVIPprice() + "");
+                rPriceView.setText(result.getResult().getRprice() + "");
+                rSaleView.setText(result.getResult().getSaleRprice() + "");
+                sPriceView.setText(result.getResult().getSprice() + "");
+                sSaleView.setText(result.getResult().getSaleSprice() + "");
+                scoreView.setText(result.getResult().getStarScore() + "");
+                reviewCountView.setText(result.getResult().getUserCount() + "");
                 Glide.with(MyApplication.getContext())
                         .load(result.getResult().getPoster()) //배열되있길래 [0]처리
                         .into(posterView);
                 if (result.getResult().getIsWish() == 1) {
                     btn_wish.setChecked(true);
-                } else {
-                    btn_wish.setChecked(false);
                 }
                 wishId = result.getResult().getWid();
             }
@@ -145,15 +144,23 @@ public class ShowDetailActivity extends AppCompatActivity {
             }
         });
 
+        btn_wish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
         btn_wish.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(isChecked) {
+                if (isChecked) {
                     Toast.makeText(ShowDetailActivity.this, "위시리스트 등록", Toast.LENGTH_SHORT).show();
                     Intent wish_intent = new Intent(ShowDetailActivity.this, WishPopupActivity.class);
-//                    wish_intent.putExtra(ShowDetailActivity.EXTRA_PLAYID, playId);
+                    wish_intent.putExtra(WishPopupActivity.EXTRA_PLAYID, playId);
                     startActivity(wish_intent);
-                } else if (!isChecked){
+                } else if (!isChecked) {
                     WishListDeletRequest request = new WishListDeletRequest(MyApplication.getContext(), wishId + "");
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<WishListDelete>() {
                         @Override
@@ -176,16 +183,16 @@ public class ShowDetailActivity extends AppCompatActivity {
                 if (signInData != null) {
                     BookingListAddRequest request = new BookingListAddRequest(MyApplication.getContext());
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingListAdd>() {
-                                @Override
-                                public void onSuccess(NetworkRequest<BookingListAdd> request, BookingListAdd result) {
-                                    Toast.makeText(ShowDetailActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
+                        @Override
+                        public void onSuccess(NetworkRequest<BookingListAdd> request, BookingListAdd result) {
+                            Toast.makeText(ShowDetailActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
 
-                                @Override
-                                public void onFail(NetworkRequest<BookingListAdd> request, int errorCode, String errorMessage, Throwable e) {
-                                    Toast.makeText(ShowDetailActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                        @Override
+                        public void onFail(NetworkRequest<BookingListAdd> request, int errorCode, String errorMessage, Throwable e) {
+                            Toast.makeText(ShowDetailActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
                     Intent intent = new Intent(ShowDetailActivity.this, BookingPersonInfoActivity.class);
                     startActivity(intent);
