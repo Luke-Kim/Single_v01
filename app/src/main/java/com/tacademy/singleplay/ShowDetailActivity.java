@@ -89,7 +89,6 @@ public class ShowDetailActivity extends AppCompatActivity {
     SignInData signInData;
 
     boolean isCheckSet = false;
-    String playId;
     int wishId;
     int uid;
 
@@ -108,7 +107,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        playId = BookingManager.getInstance().getPlayId();
+        String playId = BookingManager.getInstance().getPlayId();
         ShowDetailReqest reqest = new ShowDetailReqest(MyApplication.getContext(), playId);
         NetworkManager.getInstance().getNetworkData(reqest, new NetworkManager.OnResultListener<ResultsList<ShowDetail>>() {
             @Override

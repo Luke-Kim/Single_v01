@@ -16,7 +16,7 @@ import okhttp3.Request;
  */
 public class BookingDetailRequest extends AbstractRequest<ResultsList<BookingDetail>> {
     Request request;
-    public BookingDetailRequest(Context context, String rid) {
+    public BookingDetailRequest(Context context, String  rid) {
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment("reservations")
                 .addPathSegment(rid)
@@ -26,6 +26,7 @@ public class BookingDetailRequest extends AbstractRequest<ResultsList<BookingDet
                 .tag(context)
                 .build();
     }
+
 
     @Override
     protected Type getType() {

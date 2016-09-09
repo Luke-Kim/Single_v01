@@ -36,6 +36,7 @@ public class UserActivity extends AppCompatActivity {
     TextView user_name;
 
     String userImage = "asdf";
+    int uid;
 
     SignInData signInData;
 
@@ -61,22 +62,6 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-//        if(signInData != null) {
-//            loginView.setVisibility(View.GONE);
-//        } else {
-//            profileView.setVisibility(View.GONE);
-//            loginView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(UserActivity.this, LoginActivity.class);
-//                    startActivity(intent);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    finish();
-//                }
-//            });
-//        }
-        // 임시로 리퀘스트에서 데이터 받아 이름에 표시하기
         initData();
     }
 
@@ -152,7 +137,6 @@ public class UserActivity extends AppCompatActivity {
                     profileView.setText("프로필 수정 및 로그아웃");
                     profileView.setVisibility(View.VISIBLE);
                     loginView.setVisibility(View.GONE);
-
                 }
             }
 
@@ -162,6 +146,8 @@ public class UserActivity extends AppCompatActivity {
                 Log.i("onfail",errorMessage+" , "+errorCode );
             }
         });
+
+
     }
 
 }

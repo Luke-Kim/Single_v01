@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -44,6 +45,15 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
 
     @BindView(R.id.seat_image)
     ImageView seat_image;
+
+    @BindView(R.id.show_time)
+    TextView show_time;
+    @BindView(R.id.show_location)
+    TextView show_location;
+    @BindView(R.id.show_day)
+    TextView show_day;
+    @BindView(R.id.show_name)
+    TextView show_name;
 
     PhotoViewAttacher mAttacher;
     EmptySeatAdapter mAdapter;
@@ -133,11 +143,10 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<EmptySeat>> request, ResultsList<EmptySeat> result) {
                 Toast.makeText(BookingSeatInfoActivity.this, "성공", Toast.LENGTH_SHORT).show();
-
-//                Glide.with(MyApplication.getContext())
-//                        .load(result.getResult().getPlaceImage())
-//                        .error(R.drawable.a)
-//                        .into(seat_image);
+                show_day.setText(result.getResult().getPlayDay());
+                show_time.setText(result.getResult().getPlayTime());
+                show_location.setText(result.getResult().getPlaceName());
+                show_name.setText(result.getResult().getPlayName());
 
                 Glide.with(BookingSeatInfoActivity.this)
                         .load(result.getResult().getPlaceImage())

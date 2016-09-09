@@ -66,6 +66,7 @@ public class SelectPayActivity extends AppCompatActivity {
 
     private static final String KEY_COUPON = "coupon";
     private static final String KEY_POINT = "point";
+    public static int rsvid;
 
     CouponAdapter mAdapter;
 
@@ -194,6 +195,7 @@ public class SelectPayActivity extends AppCompatActivity {
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Booking>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<Booking>> request, ResultsList<Booking> result) {
+
                         Toast.makeText(SelectPayActivity.this, "예약성공", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SelectPayActivity.this, CheckedBookingActivity.class);
                         startActivity(intent);

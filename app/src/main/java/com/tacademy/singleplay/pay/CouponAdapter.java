@@ -5,10 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tacademy.singleplay.MainShowHolder;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.DiscountCoupons;
-import com.tacademy.singleplay.data2.ShowList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +28,7 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponHolder>
     public void addAll(DiscountCoupons[] coupon) {
         items.addAll(Arrays.asList(coupon));
         notifyDataSetChanged();
-    }
+}
 
 
     @Override

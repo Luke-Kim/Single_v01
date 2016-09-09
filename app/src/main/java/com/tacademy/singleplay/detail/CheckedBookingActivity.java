@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.MainActivity;
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingCancel;
 import com.tacademy.singleplay.data2.BookingDetail;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -49,6 +50,8 @@ public class CheckedBookingActivity extends AppCompatActivity {
     TextView txt_reservation_no;
     @BindView(R.id.image_poster)
     ImageView image_poster;
+    @BindView(R.id.txt_place_name)
+    TextView txt_place_name;
 
     @BindView(R.id.btn_confirm)
     Button btn_confirm;
@@ -58,8 +61,9 @@ public class CheckedBookingActivity extends AppCompatActivity {
     Button btn_finish;
 //    @BindView(R.id.txt_reservation_no)
 //    TextView txt_reservation_no;
-
+    String rid;
     int rsvId;
+    Booking booking;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,8 +116,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
     }
 
     public void initData() {
-
-        BookingDetailRequest request = new BookingDetailRequest(this, "8");
+        BookingDetailRequest request = new BookingDetailRequest(this, rid);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<BookingDetail>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<BookingDetail>> request, ResultsList<BookingDetail> result) {
@@ -122,6 +125,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 txt_play_name.setText(result.getResult().getPlayName());
                 txt_play_day.setText(result.getResult().getPlayDay());
                 txt_play_time.setText(result.getResult().getPlayTime());
+                txt_place_name.setText(result.getResult().getPlaceName());
                 txt_seat_class.setText(result.getResult().getSeatClass());
                 txt_seat_info.setText(result.getResult().getSeatInfo());
                 txt_settlement.setText(result.getResult().getSettlement()+"");
