@@ -83,6 +83,9 @@ public class EventNoticeActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<ResultsList<EventNotice[]>> request, ResultsList<EventNotice[]> result) {
                 eventNoticeAdapter.addAll(result.getResults());
                 Toast.makeText(EventNoticeActivity.this, "성공", Toast.LENGTH_SHORT).show();
+                if (result != null){
+
+                }
             }
 
             @Override

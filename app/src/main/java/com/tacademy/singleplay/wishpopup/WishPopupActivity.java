@@ -1,7 +1,6 @@
 package com.tacademy.singleplay.wishpopup;
 
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -42,13 +41,12 @@ public class WishPopupActivity extends AppCompatActivity {
 
         display = WishPopupActivity.this.getWindowManager().getDefaultDisplay();
 
-        Rect rc = new Rect();
-        getWindow().getDecorView().getWindowVisibleDisplayFrame(rc);
-
+//        Rect rc = new Rect();
+//        getWindow().getDecorView().getWindowVisibleDisplayFrame(rc);
 
         setFinishOnTouchOutside(true);
         this.getWindow().setGravity(Gravity.BOTTOM);
-        this.getWindow().setLayout(display.getWidth(), (int) (display.getHeight()*0.2));
+        this.getWindow().setLayout(display.getWidth(), 450);
         LinearLayoutManager lm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mAdapter = new WishPopAdater();
 
