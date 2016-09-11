@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
         mLoginManager.logInWithReadPermissions(this, Arrays.asList("email"));
     }
 
-    private boolean isLogin() { //이거 가지고 로그인 여부를 확인 할수 있음
+    private boolean isLogin() { //token 값 가지고 로그인 여부를 확인 할수 있음
         AccessToken token = AccessToken.getCurrentAccessToken();
         return token != null;
     }

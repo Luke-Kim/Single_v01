@@ -1,7 +1,6 @@
 package com.tacademy.singleplay.pay;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -77,6 +76,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<UserInfo>>() {
                 @Override
                 public void onSuccess(NetworkRequest<ResultsList<UserInfo>> request, ResultsList<UserInfo> result) {
+                    Toast.makeText(BookingPersonInfoActivity.this, "성공" + result.getResult().getName(), Toast.LENGTH_SHORT).show();
                     nameView.setText(result.getResult().getName());
                     phoneView.setText(result.getResult().getPhone());
                     emailView.setText(result.getResult().getEmail());
@@ -84,7 +84,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
 
                 @Override
                 public void onFail(NetworkRequest<ResultsList<UserInfo>> request, int errorCode, String errorMessage, Throwable e) {
-
+                    Toast.makeText(BookingPersonInfoActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
                 }
             });
         } else {

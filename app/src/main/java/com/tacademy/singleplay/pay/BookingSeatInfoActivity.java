@@ -139,6 +139,7 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
 
     private void initData() {
         String playId = BookingManager.getInstance().getPlayId();
+//        Log.i("playID", playId);
         EmptySeatRequest request = new EmptySeatRequest(MyApplication.getContext(), playId);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<EmptySeat>>() {
             @Override

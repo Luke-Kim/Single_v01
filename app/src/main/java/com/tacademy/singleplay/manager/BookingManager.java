@@ -29,7 +29,7 @@ public class BookingManager {
     private int totalPrice;
     private int oriPrice;
     private int couponPercent;
-//    private String rid;
+    private String rid;
 
     //        playId           공연 ID
 //        playName      공연 이름
@@ -51,13 +51,13 @@ public class BookingManager {
         this.playId = playId;
     }
 
-//    public String getRid() {
-//        return rid;
-//    }
-//
-//    public void setRid(String rid) {
-//        this.rid = rid;
-//    }
+    public String getRid() {
+        return rid;
+    }
+
+    public void setRid(String rid) {
+        this.rid = rid;
+    }
 
     public String getPlayName() {
         return playName;

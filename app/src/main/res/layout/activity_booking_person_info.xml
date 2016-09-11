@@ -63,7 +63,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="22dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginBottom="22dp" />
+                android:layout_marginBottom="22dp"
+                android:checked="false" />
 
             <ImageView
                 android:layout_width="360dp"

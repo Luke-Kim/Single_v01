@@ -192,7 +192,7 @@ public class ShowDetailActivity extends AppCompatActivity {
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingListAdd>() {
                                 @Override
                                 public void onSuccess(NetworkRequest<BookingListAdd> request, BookingListAdd result) {
-                                    Toast.makeText(ShowDetailActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ShowDetailActivity.this, "성공"+result.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
 
                                 @Override
@@ -205,7 +205,7 @@ public class ShowDetailActivity extends AppCompatActivity {
                     startActivity(intent);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                } else {
+                } else if(uid != 0) {
                     Toast.makeText(ShowDetailActivity.this, "회원가입 후 사용해주세요", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ShowDetailActivity.this, LoginActivity.class);
                     startActivity(intent);

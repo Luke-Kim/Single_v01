@@ -22,6 +22,7 @@ import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingCancel;
 import com.tacademy.singleplay.data2.BookingDetail;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.BookingCancelRequest;
@@ -116,6 +117,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
     }
 
     public void initData() {
+        String rid = BookingManager.getInstance().getRid();
         BookingDetailRequest request = new BookingDetailRequest(this, rid);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<BookingDetail>>() {
             @Override
