@@ -1,5 +1,9 @@
 package com.tacademy.singleplay;
 
+import android.annotation.TargetApi;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.os.Build;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,10 +37,13 @@ public class CastingAdapter extends PagerAdapter{
         return items.size();
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View view = inflater.inflate(R.layout.view_casting, null);
         ImageView img = (ImageView)view.findViewById(R.id.image_photo);
+        img.setBackground(new ShapeDrawable(new OvalShape()));
+        img.setClipToOutline(true);
         Glide.with(MyApplication.getContext())
                 .load(items.get(position))
                 .into(img);

@@ -74,7 +74,7 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        btn.setEnabled(false);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +90,7 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
         mAdapter.setOnSeatAdapterClickListener(new EmptySeatAdapter.OnSeatAdapterClickListener() {
             @Override
             public void onSeatAdapterClickListener(View view, EmptySeatInfo emptySeatInfo, int posion) {
+                btn.setEnabled(true);
                 BookingManager.getInstance().setUsableSeatNo(emptySeatInfo.getUsableSeatNo() + "");
                 BookingManager.getInstance().setSeatClass(emptySeatInfo.getSeatClass());
                 BookingManager.getInstance().setOriPrice(emptySeatInfo.getPrice());
@@ -147,7 +148,6 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
                 show_time.setText(result.getResult().getPlayTime());
                 show_location.setText(result.getResult().getPlaceName());
                 show_name.setText(result.getResult().getPlayName());
-
                 Glide.with(BookingSeatInfoActivity.this)
                         .load(result.getResult().getPlaceImage())
                         .listener(new RequestListener<String, GlideDrawable>() {
@@ -184,14 +184,5 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
         });
     }
 
-
-//    EmptySeat emptySeat;
-//    public void setData(EmptySeat emptySeat) {
-//        this.emptySeat = emptySeat;
-//        Glide.with(MyApplication.getContext())
-//                .load(emptySeat.getPlaceImage())
-//                .into(seat_image);
-//
-//    }
 
 }
