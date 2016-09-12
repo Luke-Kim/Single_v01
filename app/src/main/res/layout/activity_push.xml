@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/relativeLayout7"
-            android:background="#ffffff"
+            android:background="@drawable/underlin"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true">
@@ -53,7 +53,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_gravity="left|center_vertical"
-                android:layout_marginLeft="16dp" />
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp" />
 
             <Switch
                 android:layout_width="wrap_content"
@@ -78,7 +80,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="17dp"
-            android:background="#ffffff">
+            android:background="@drawable/underlin">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -238,7 +240,7 @@
             android:layout_below="@+id/relativeLayout8"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:background="#ffffff">
+            android:background="@drawable/underlin">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -246,10 +248,11 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="장르"
                 android:id="@+id/textView10"
-                android:paddingLeft="30dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -258,9 +261,9 @@
                 android:checked="false"
                 android:text="전체선택"
                 android:paddingRight="30dp"
-                android:layout_alignBottom="@+id/textView10"
+                android:layout_alignTop="@+id/textView10"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
+                android:layout_alignParentEnd="true" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -271,37 +274,40 @@
                 android:gravity="center">
 
                 <CheckBox
-                    android:button="@drawable/check_selector"
+                    android:button="@drawable/push_musical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="뮤지컬"
                     android:id="@+id/checkBox_musical"
                     android:checked="false"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"/>
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="18dp" />
 
                 <CheckBox
-                    android:button="@drawable/check_selector"
+                    android:button="@drawable/push_opera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="오페라"
                     android:id="@+id/checkBox_opera"
                     android:checked="false"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/checkBox_musical"
-                    android:layout_toEndOf="@+id/checkBox_musical"/>
+                    android:layout_toEndOf="@+id/checkBox_musical"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginBottom="19dp" />
 
                 <CheckBox
-                    android:button="@drawable/check_selector"
+                    android:button="@drawable/push_concert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="콘서트"
                     android:id="@+id/checkBox_concert"
                     android:checked="false"
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/checkBox_opera"
-                    android:layout_toEndOf="@+id/checkBox_opera"/>
+                    android:layout_toEndOf="@+id/checkBox_opera"
+                    android:layout_marginTop="16dp" />
             </RelativeLayout>
 
         </RelativeLayout>
@@ -314,18 +320,20 @@
             android:layout_below="@+id/relativeLayout6"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:background="#ffffff">
+            android:background="@drawable/underlin">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="♡ 위시리스트 공연 알람"
+                android:text="위시리스트 공연 알람"
                 android:id="@+id/textView11"
-                android:paddingLeft="20dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="18dp" />
 
             <Switch
                 android:layout_width="wrap_content"
