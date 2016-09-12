@@ -117,7 +117,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
     }
 
     public void initData() {
-        String rid = BookingManager.getInstance().getRid();
+        rid = BookingManager.getInstance().getRid();
         BookingDetailRequest request = new BookingDetailRequest(this, rid);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<BookingDetail>>() {
             @Override

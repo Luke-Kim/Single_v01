@@ -37,6 +37,7 @@ public class FacebookLoginRequest extends AbstractRequest<ResultsList<FaceBook>>
         Log.i("url",url.toString());
     }
 
+
     @Override
     protected Type getType() {
         return new TypeToken<ResultsList<FaceBook>>(){}.getType();

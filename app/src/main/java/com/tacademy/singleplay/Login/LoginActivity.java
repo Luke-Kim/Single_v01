@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
     LoginManager mLoginManager;
+    public static String token2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                 AccessToken accessToken = AccessToken.getCurrentAccessToken();
 //                Log.i("jeahyun : ", accessToken.getToken()+"");
                 String token = accessToken.getToken();
+                token2 = token;
                 FacebookLoginRequest request = new FacebookLoginRequest(LoginActivity.this, token);
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
                     @Override
