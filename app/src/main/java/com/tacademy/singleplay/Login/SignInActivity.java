@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.tacademy.singleplay.MainActivity;
 import com.tacademy.singleplay.R;
 
 import butterknife.BindView;
@@ -51,7 +52,7 @@ public class SignInActivity extends AppCompatActivity {
                         btn_ok.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(SignInActivity.this, InsertPersonInfoActivity.class);
+                                Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

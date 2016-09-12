@@ -18,7 +18,6 @@ import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data.SignInData;
 import com.tacademy.singleplay.data2.Profile;
 import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.login.InsertPersonInfoActivity;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.ProfileRequest;
@@ -51,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
-        signInData = InsertPersonInfoActivity.signInData;
+//        signInData = InsertPersonInfoActivity.signInData;
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -67,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
                 String name = null;
                 String email = null;
                 String phone = null;
-                signInData = new SignInData(name, phone);
+//                signInData = new SignInData(name, phone);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 finish();

@@ -15,12 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.tacademy.singleplay.data.SignInData;
 import com.tacademy.singleplay.data2.BookingListAdd;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowDetail;
 import com.tacademy.singleplay.data2.WishListDelete;
-import com.tacademy.singleplay.login.InsertPersonInfoActivity;
 import com.tacademy.singleplay.login.LoginActivity;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
@@ -86,7 +84,7 @@ public class ShowDetailActivity extends AppCompatActivity {
 
     CastingAdapter mAdapter;
 
-    SignInData signInData;
+//    SignInData signInData;
 
     boolean isCheckSet = false;
     String playId;
@@ -101,7 +99,7 @@ public class ShowDetailActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_show_detail);
         ButterKnife.bind(this);
-        signInData = InsertPersonInfoActivity.signInData;
+//        signInData = InsertPersonInfoActivity.signInData;
 
         mAdapter = new CastingAdapter(getLayoutInflater());
         pager.setAdapter(mAdapter);
@@ -154,9 +152,6 @@ public class ShowDetailActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (uid != 0) {
-                    Toast.makeText(ShowDetailActivity.this, "로그인 후 사용해 주세요", Toast.LENGTH_SHORT).show();
-                    btn_wish.setChecked(false);
-                } else {
                     if(isStart == false) {
                         if (isChecked) {
                             Toast.makeText(ShowDetailActivity.this, "위시리스트 등록", Toast.LENGTH_SHORT).show();
@@ -179,6 +174,9 @@ public class ShowDetailActivity extends AppCompatActivity {
                             });
                         }
                     }
+                } else {
+                    Toast.makeText(ShowDetailActivity.this, "로그인 후 사용해 주세요", Toast.LENGTH_SHORT).show();
+                    btn_wish.setChecked(false);
                 }
             }
         });
@@ -186,14 +184,27 @@ public class ShowDetailActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (signInData == null) {
-                    Intent intent = new Intent(ShowDetailActivity.this, BookingPersonInfoActivity.class);
+                if (uid == 0) {
+                    Toast.makeText(ShowDetailActivity.this, "회원가입 후 사용해주세요", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(ShowDetailActivity.this, LoginActivity.class);
                     startActivity(intent);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                } else if(uid != 0) {
-                    Toast.makeText(ShowDetailActivity.this, "회원가입 후 사용해주세요", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(ShowDetailActivity.this, LoginActivity.class);
+                } else {
+                    BookingListAddRequest request = new BookingListAddRequest(MyApplication.getContext());
+                    NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingListAdd>() {
+                        @Override
+                        public void onSuccess(NetworkRequest<BookingListAdd> request, BookingListAdd result) {
+                            Toast.makeText(ShowDetailActivity.this, "성공"+result.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onFail(NetworkRequest<BookingListAdd> request, int errorCode, String errorMessage, Throwable e) {
+                            Toast.makeText(ShowDetailActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    Intent intent = new Intent(ShowDetailActivity.this, BookingPersonInfoActivity.class);
                     startActivity(intent);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

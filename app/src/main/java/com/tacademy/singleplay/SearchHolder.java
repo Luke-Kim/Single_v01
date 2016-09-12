@@ -1,7 +1,6 @@
 package com.tacademy.singleplay;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -18,23 +17,23 @@ import butterknife.ButterKnife;
  */
 public class SearchHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.search_place_name)
+    @BindView(R.id.text_place_name)
     TextView placeNameView;
-    @BindView(R.id.search_play_day)
+    @BindView(R.id.text_play_day)
     TextView playDayView;
-    @BindView(R.id.search_play_time)
+    @BindView(R.id.text_play_time)
     TextView playTimeView;
-    @BindView(R.id.search_play_name)
+    @BindView(R.id.text_play_name)
     TextView playNameView;
-    @BindView(R.id.search_sale_price)
+    @BindView(R.id.text_sale_price)
     TextView salePriceView;
-    @BindView(R.id.search_star_score)
+    @BindView(R.id.text_star_score)
     TextView starScoreView;
-    @BindView(R.id.search_price)
+    @BindView(R.id.text_price)
     TextView priceView;
-    @BindView(R.id.layout_search_list)
+    @BindView(R.id.layout_show_list)
     RelativeLayout posterView;
-    @BindView(R.id.image_search_poster)
+    @BindView(R.id.image_poster)
     ImageView poster;
 
 

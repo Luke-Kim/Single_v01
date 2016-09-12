@@ -195,7 +195,7 @@ public class SelectPayActivity extends AppCompatActivity {
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Booking>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<Booking>> request, ResultsList<Booking> result) {
-
+                        BookingManager.getInstance().setRid("" + result.getResult().getRsvId());
                         Toast.makeText(SelectPayActivity.this, "예약성공", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SelectPayActivity.this, CheckedBookingActivity.class);
                         startActivity(intent);

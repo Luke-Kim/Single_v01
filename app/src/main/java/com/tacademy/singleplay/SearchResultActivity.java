@@ -38,6 +38,7 @@ public class SearchResultActivity extends AppCompatActivity {
         Intent intent = getIntent();
         title = intent.getStringExtra(TITLE);
         titleView.setText(title);
+        Toast.makeText(SearchResultActivity.this, title, Toast.LENGTH_SHORT).show();
 
         init();
     }
