@@ -3,7 +3,6 @@ package com.tacademy.singleplay.data2;
 public class ResultsList<T> {
     private T results;
     private T result;
-
     private String code;
     private String error;
 
