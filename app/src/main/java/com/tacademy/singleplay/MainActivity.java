@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
+import com.tacademy.singleplay.manager.ShowListManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,25 +66,49 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         backPressedCloseHandler = new BackPressedCloseHandler(this);
+        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager());
+
+        ShowListManager.getInstance().setSort("0");
+        ShowListManager.getInstance().setPosition(0);
+
+        setPager();
 
         toolbarTitleView.setText("서울");
-        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager());
-        mAdapter.setShowList(action, category, sort);
-
-        pager.setAdapter(mAdapter);
-        tabs.setupWithViewPager(pager);
-        tabs.removeAllTabs();
-
-        tabs.addTab(tabs.newTab().setText("전체"));
-        tabs.addTab(tabs.newTab().setText("뮤지컬"));
-        tabs.addTab(tabs.newTab().setText("오페라"));
-        tabs.addTab(tabs.newTab().setText("콘서트"));
-        tabs.addTab(tabs.newTab().setText("MD추천"));
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                changeRadio(i);
+                switch (i) {
+                    case R.id.radioButton_score:
+                        ShowListManager.getInstance().setSort("0");
+                        break;
+                    case R.id.radioButton_new:
+                        ShowListManager.getInstance().setSort("1");
+                        break;
+                    case R.id.radioButton_discount:
+                        ShowListManager.getInstance().setSort("2");
+                        break;
+                }
+                setPager();
+
+            }
+        });
+
+        tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                ShowListManager.getInstance().setPosition(position);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
 
@@ -94,25 +119,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowCustomEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.search_iocn);
 
-        pager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                //Toast.makeText(MainActivity.this, ""+position, Toast.LENGTH_SHORT).show();
-                category = position;
-                mAdapter.setShowList(action, category, sort);
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
         radioScore.setChecked(true);
     }
 
@@ -120,62 +126,6 @@ public class MainActivity extends AppCompatActivity {
     LocationFragment lf = new LocationFragment();
     boolean isLocation = false;
 
-    private static final int ACTION_SHOW = 0;
-
-    private static final int SORT_SCORE = 0;
-    private static final int SORT_NEW = 1;
-    private static final int SORT_DISCOUNT = 2;
-
-    public int action = ACTION_SHOW;
-    public int category = 0;
-    public int sort = SORT_SCORE;
-
-    private void changeRadio(int id) {
-        switch (id) {
-            case R.id.radioButton_score :
-                sort = SORT_SCORE;
-                mAdapter.setShowList(action, category, sort);
-                break;
-            case R.id.radioButton_new :
-                sort = SORT_NEW;
-                mAdapter.setShowList(action, category, sort);
-                break;
-            case R.id.radioButton_discount :
-                sort = SORT_DISCOUNT;
-                mAdapter.setShowList(action, category, sort);
-                break;
-        }
-        mAdapter = new FragmentPagerAdapter(getSupportFragmentManager());
-        mAdapter.setShowList(action, category, sort);
-
-        pager.setAdapter(mAdapter);
-        tabs.setupWithViewPager(pager);
-        tabs.removeAllTabs();
-
-        tabs.addTab(tabs.newTab().setText("전체"));
-        tabs.addTab(tabs.newTab().setText("뮤지컬"));
-        tabs.addTab(tabs.newTab().setText("오페라"));
-        tabs.addTab(tabs.newTab().setText("콘서트"));
-        tabs.addTab(tabs.newTab().setText("MD추천"));
-        pager.setCurrentItem(category);
-//        Toast.makeText(MainActivity.this, ""+sort, Toast.LENGTH_SHORT).show();
-    }
-
-    public void setAction(int action) {
-        this.action = action;
-    }
-
-    public int getAction() {
-        return action;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public int getSort() {
-        return sort;
-    }
 
     @OnClick(R.id.text_toolbarTitle)
     public void onToolbarTitle() {
@@ -289,6 +239,20 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    public void setPager() {
+        int posion = ShowListManager.getInstance().getPosition();
+        pager.setAdapter(mAdapter);
+        tabs.setupWithViewPager(pager);
+        tabs.setTabMode(TabLayout.MODE_FIXED);
+        tabs.removeAllTabs();
+        tabs.addTab(tabs.newTab().setText("전체"));
+        tabs.addTab(tabs.newTab().setText("뮤지컬"));
+        tabs.addTab(tabs.newTab().setText("오페라"));
+        tabs.addTab(tabs.newTab().setText("콘서트"));
+        tabs.addTab(tabs.newTab().setText("MD추천"));
+        pager.setCurrentItem(posion);
     }
 
     public void goDetailActivity(int playId, String playName) {

@@ -2,12 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.ConcertFragment">
+    tools:context="com.begentgroup.sampledesignsupport.main.ThemeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/fragment_concert_rv"
+        android:id="@+id/fragment_theme_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbar">
+
+
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
