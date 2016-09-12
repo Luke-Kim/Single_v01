@@ -4,12 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tacademy.singleplay.PushActivity;
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data.SignInData;
+import com.tacademy.singleplay.data2.Profile;
+import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.login.LoginActivity;
+import com.tacademy.singleplay.manager.NetworkManager;
+import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,13 +33,13 @@ public class UserActivity extends AppCompatActivity {
     TextView loginView;
     @BindView(R.id.user_name)
     TextView user_name;
-    @BindView(R.id.txt_mileage)
-    TextView txt_mileage;
-    @BindView(R.id.coupon_count)
-    TextView txt_coupon_cnt;
 
     String userImage = "asdf";
+    int uid;
 
+    SignInData signInData;
+
+    public int SIGNIN_CHECK;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +72,11 @@ public class UserActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //    @OnClick(R.id.btn_coupon)
+//    public void btn_couponClick(){
+//        Intent intent = new Intent(UserActivity.this, CouponActivity.class);
+//        startActivity(intent);
+//    }
     @OnClick(R.id.coupon_layout)
     public void coupon_layoutClick(){
         Intent intent = new Intent(UserActivity.this, CouponActivity.class);
@@ -92,68 +106,50 @@ public class UserActivity extends AppCompatActivity {
 
     public void initData() {
 
-//        final String userName = user_name.getText().toString();
-//        String userEmail = "asdf";
-//        String userPhone = "asdf";
-//
-//        ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
-//        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Profile>>() {
-//            @Override
-//            public void onSuccess(NetworkRequest<ResultsList<Profile>> request, ResultsList<Profile> result) {
-//                Toast.makeText(UserActivity.this, "성공", Toast.LENGTH_SHORT).show();
-//
-////                imageView.setImageResource(Integer.parseInt(result.getResult().getProfileImg()+""));
-//                if(result.getResult().getUserName() == null){
-//                    user_name.setVisibility(View.GONE);
-//                    profileView.setVisibility(View.GONE);
-//                    loginView.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View view) {
-//                            Intent intent = new Intent(UserActivity.this, LoginActivity.class);
-//                            startActivity(intent);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                            finish();
-//                        }
-//                    });
-//                } else {
-//                    user_name.setText(result.getResult().getUserName()+"");
-//                    profileView.setText("프로필 수정 및 로그아웃");
-//                    profileView.setVisibility(View.VISIBLE);
-//                    loginView.setVisibility(View.GONE);
-//                }
-//            }
-//
-//            @Override
-//            public void onFail(NetworkRequest<ResultsList<Profile>> request, int errorCode, String errorMessage, Throwable e) {
-//                Toast.makeText(UserActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
-//                Log.i("onfail",errorMessage+" , "+errorCode );
-//            }
-//        });
-//        String token = LoginActivity.token2;
-//        FacebookLoginRequest fr = new FacebookLoginRequest(this, token);
-//        NetworkManager.getInstance().getNetworkData(fr, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
-//            @Override
-//            public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
-////                user_name.setVisibility(View.GONE);
-////                    profileView.setVisibility(View.GONE);
-////                    loginView.setOnClickListener(new View.OnClickListener() {
-////                        @Override
-////                        public void onClick(View view) {
-////                            Intent intent = new Intent(UserActivity.this, LoginActivity.class);
-////                            startActivity(intent);
-////                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-////                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-////                            finish();
-////                        }
-////                    });
-//            }
-//
-//            @Override
-//            public void onFail(NetworkRequest<ResultsList<FaceBook>> request, int errorCode, String errorMessage, Throwable e) {
-//
-//            }
-//        });
+        final String userName = user_name.getText().toString();
+//        String userImage = imageView.getDrawable().toString();
+        String userEmail = "asdf";
+        String userPhone = "asdf";
+
+
+
+
+        ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Profile>>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultsList<Profile>> request, ResultsList<Profile> result) {
+                Toast.makeText(UserActivity.this, "성공", Toast.LENGTH_SHORT).show();
+
+//                imageView.setImageResource(Integer.parseInt(result.getResult().getProfileImg()+""));
+                if(result.getResult().getUserName() != null){
+                    user_name.setText(result.getResult().getUserName()+"");
+                    profileView.setText("프로필 수정 및 로그아웃");
+                    profileView.setVisibility(View.VISIBLE);
+                    loginView.setVisibility(View.GONE);
+                } else {
+                    user_name.setVisibility(View.GONE);
+                    profileView.setVisibility(View.GONE);
+                    loginView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(UserActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            finish();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ResultsList<Profile>> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(UserActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+                Log.i("onfail",errorMessage+" , "+errorCode );
+            }
+        });
+
+        String token = LoginActivity.token2;
     }
 
 }

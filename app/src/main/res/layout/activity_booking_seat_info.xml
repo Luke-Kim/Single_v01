@@ -53,7 +53,7 @@
                     android:layout_height="60dp"
                     android:id="@+id/show_poster"
                     android:scaleType="fitXY"
-                    android:src="@drawable/com_facebook_profile_picture_blank_square"
+                    android:src="@drawable/unwish"
                     android:layout_alignTop="@+id/show_name"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"

@@ -78,7 +78,9 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String a = emailView.getText().toString();
-                if(checkEmailForm(a) != false){ // 이메일 정규식 체크
+                if(phoneView.getText().length() < 10 || checkEmailForm(a) == false){ // 이메일 정규식과 핸드폰 번호 입력 체크
+                    Toast.makeText(BookingPersonInfoActivity.this, "알맞은 전화번호 / 이메일 형식을 넣어주세요", Toast.LENGTH_SHORT).show();
+                } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(BookingPersonInfoActivity.this);
                     builder.setTitle("가입정보 확인");
                     builder.setMessage("사용자 이름 : " + nameView.getText().toString() + "\n"
@@ -87,7 +89,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
                     builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(BookingPersonInfoActivity.this, "회원가입이 완료 되었습니다.", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(BookingPersonInfoActivity.this, "회원가입이 완료 되었습니다.", Toast.LENGTH_SHORT).show();
                             BookingManager.getInstance().setBooker(nameView.getText().toString());
                             BookingManager.getInstance().setBookerPhone(phoneView.getText().toString());
                             BookingManager.getInstance().setBookerEmail(emailView.getText().toString());
@@ -103,8 +105,6 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
                         }
                     });
                     builder.show();
-                } else {
-                    Toast.makeText(BookingPersonInfoActivity.this, "알맞은 이메일 형식을 넣어주세요", Toast.LENGTH_SHORT).show();
                 }
 //                Intent intent = new Intent(BookingPersonInfoActivity.this, BookingSeatInfoActivity.class);
 //                startActivity(intent);
@@ -150,19 +150,19 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                intent = new Intent(BookingPersonInfoActivity.this, ShowDetailActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                finish();
-                break;
-            case R.id.detail_menu:
-                intent = new Intent(BookingPersonInfoActivity.this, UserActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                switch (item.getItemId()) {
+                    case android.R.id.home:
+                        intent = new Intent(BookingPersonInfoActivity.this, ShowDetailActivity.class);
+                        startActivity(intent);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        finish();
+                        break;
+                    case R.id.detail_menu:
+                        intent = new Intent(BookingPersonInfoActivity.this, UserActivity.class);
+                        startActivity(intent);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 finish();
                 break;
             default:

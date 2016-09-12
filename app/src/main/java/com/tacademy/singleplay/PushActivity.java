@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -14,6 +15,8 @@ public class PushActivity extends AppCompatActivity {
 
     @BindView(R.id.my_toolbar)
     Toolbar toolbar;
+    @BindView(R.id.push_notice_switch)
+    Switch switch_notice;
 
     @BindView(R.id.btn_check_day)
     CheckBox btn_check_day;
@@ -82,6 +85,7 @@ public class PushActivity extends AppCompatActivity {
                     checkBox_fri.setChecked(isForced);
                     checkBox_sat.setChecked(isForced);
                     checkBox_sun.setChecked(isForced);
+                    switch_notice.setChecked(isForced);
                     isForced = false;
                 } else {
 //                    boolean checked = btn_check_day.isChecked();
@@ -104,6 +108,7 @@ public class PushActivity extends AppCompatActivity {
                     checkBox_musical.setChecked(isForced);
                     checkBox_opera.setChecked(isForced);
                     checkBox_concert.setChecked(isForced);
+                    switch_notice.setChecked(isChecked);
                     isForced = false;
                 } else {
                     checkBox_musical.setChecked(isForced);
@@ -112,6 +117,7 @@ public class PushActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
 
