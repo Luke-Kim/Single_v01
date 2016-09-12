@@ -2,13 +2,14 @@ package com.tacademy.singleplay.main;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tacademy.singleplay.MainActivity;
 import com.tacademy.singleplay.MainShowAdapter;
@@ -18,120 +19,98 @@ import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowList;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.manager.ShowListManager;
 import com.tacademy.singleplay.request.ShowListRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 /**
  * A simple {@link Fragment} subclass.
+ * Use the {@link ThemeFragment#newInstance} factory method to
+ * create an instance of this fragment.
  */
-public class MDRecFragment extends Fragment {
-
+public class ThemeFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private static final String ARG_PARAM3 = "param3";
+    private static final String ARG_ACTION = "param1";
+    private static final String ARG_THEME = "param2";
+    private static final String ARG_SORT = "param3";
 
     // TODO: Rename and change types of parameters
     private String action;
-    private String category;
+    private String theme;
     private String sort;
+    //    private boolean isStart = true;
+    MainShowAdapter mAdapter;
+
+
+    public ThemeFragment() {
+        // Required empty public constructor
+    }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @param action Parameter 1.
-     * @param category Parameter 2.
-     * @param sort Parameter 3.
-     * @return A new instance of fragment ShowListFragment.
+     * @param theme  Parameter 2.
+     * @param theme  Parameter 3.
+     * @return A new instance of fragment ThemeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MDRecFragment newInstance(String action, String category, String sort) {
-        MDRecFragment fragment = new MDRecFragment();
+    public static ThemeFragment newInstance(String action, String theme, String sort) {
+        ThemeFragment fragment = new ThemeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, action);
-        args.putString(ARG_PARAM2, category);
-        args.putString(ARG_PARAM3, sort);
+        args.putString(ARG_ACTION, action);
+        args.putString(ARG_THEME, theme);
+        args.putString(ARG_SORT, sort);
         fragment.setArguments(args);
         return fragment;
     }
 
-    @BindView(R.id.fragment_mdrec_rv)
+    TextView titleView;
+    @BindView(R.id.fragment_theme_rv)
     RecyclerView listView;
 
-    MainShowAdapter mAdapter;
-
-    public MDRecFragment() {
-    }
-
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAdapter = new MainShowAdapter();
         if (getArguments() != null) {
-            action = getArguments().getString(ARG_PARAM1);
-            category = getArguments().getString(ARG_PARAM2);
-            sort = getArguments().getString(ARG_PARAM3);
+            action = getArguments().getString(ARG_ACTION);
+            theme = getArguments().getString(ARG_THEME);
+            sort = getArguments().getString(ARG_SORT);
         }
-
         mAdapter.setOnAdapterItemClickListener(new MainShowAdapter.OnShowAdapterItemClickLIstener() {
             @Override
             public void onShowAdapterItemClick(View view, ShowList showList, int position) {
                 int playId = showList.getPlayId();
                 String playName = showList.getPlayName();
                 ((MainActivity) getActivity()).goDetailActivity(playId, playName);
+
             }
         });
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_mdrec, container, false);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-
+        View view = inflater.inflate(R.layout.fragment_theme, container, false);
         ButterKnife.bind(this, view);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         listView.setHasFixedSize(true);
         listView.setLayoutManager(layoutManager);
         listView.setAdapter(mAdapter);
 
-        return view;
-    }
+        sort = ShowListManager.getInstance().getSort();
 
-    @Override
-    public void onStart() {
-        super.onStart();
-//        setRequest();
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (getActivity() == null) return;
-        if (isVisibleToUser) {
-            setRequest();
-        }
-    }
-
-
-
-
-    public void setRequest() {
-        //Toast.makeText(getContext(), "hint : " + ((MainActivity) getActivity()).getCategory(), Toast.LENGTH_SHORT).show();
-//        Toast.makeText(getContext(), action + "  " + category + "  " + sort, Toast.LENGTH_SHORT).show();
-        ShowListRequest request = new ShowListRequest(MyApplication.getContext(), action, "3", sort);
-
+        ShowListRequest request = new ShowListRequest(MyApplication.getContext(), action, theme, sort);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<ShowList[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<ShowList[]>> request, ResultsList<ShowList[]> result) {
-//                Toast.makeText(getContext(), "성공", Toast.LENGTH_SHORT).show();
                 ShowList[] datas = result.getResults();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
@@ -139,8 +118,18 @@ public class MDRecFragment extends Fragment {
 
             @Override
             public void onFail(NetworkRequest<ResultsList<ShowList[]>> request, int errorCode, String errorMessage, Throwable e) {
-//                    Toast.makeText(getContext(), "실패", Toast.LENGTH_SHORT).show();
+
             }
         });
+        return view;
     }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (getActivity() == null) return;
+        if (isVisibleToUser) {
+        }
+    }
+
 }
