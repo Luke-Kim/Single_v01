@@ -187,7 +187,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (uid != 0) {
+                if (signInData != null) {
                     BookingListAddRequest request = new BookingListAddRequest(MyApplication.getContext());
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingListAdd>() {
                                 @Override

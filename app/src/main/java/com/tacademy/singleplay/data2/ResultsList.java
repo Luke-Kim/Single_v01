@@ -31,4 +31,6 @@ public class ResultsList<T> {
     public void setResults(T results) {
         this.results = results;
     }
+
+
 }
