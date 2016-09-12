@@ -38,7 +38,10 @@ public class WishPopupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wish_popup);
         ButterKnife.bind(this);
 
+//        Intent intent = getIntent();
+//        playId = intent.getIntExtra(EXTRA_PLAYID, 0);
         playId = BookingManager.getInstance().getPlayId();
+
         display = WishPopupActivity.this.getWindowManager().getDefaultDisplay();
 
         isWish = getIntent().getIntExtra("KEY_ISWISH", -1);
@@ -48,6 +51,7 @@ public class WishPopupActivity extends AppCompatActivity {
         this.getWindow().setLayout(display.getWidth(), 450);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mAdapter = new WishPopAdater();
+
 
         rcv.setAdapter(mAdapter);
         rcv.setLayoutManager(layoutManager);

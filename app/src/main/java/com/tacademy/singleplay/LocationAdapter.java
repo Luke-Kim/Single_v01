@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tacademy.singleplay.data2.Location;
-import com.tacademy.singleplay.data2.Search;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,7 +31,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationHolder>
 
     @Override
     public LocationHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_show_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_location_list, parent, false);
         LocationHolder lh = new LocationHolder(view);
         lh.setOnLocationItemClickListener(this);
         return lh;

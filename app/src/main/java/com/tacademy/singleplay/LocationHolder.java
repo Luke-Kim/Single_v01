@@ -30,7 +30,7 @@ public class LocationHolder extends RecyclerView.ViewHolder{
     TextView starScoreView;
     @BindView(R.id.text_price)
     TextView priceView;
-    @BindView(R.id.layout_show_list)
+    @BindView(R.id.layout_location_list)
     RelativeLayout posterView;
     @BindView(R.id.image_poster)
     ImageView poster;

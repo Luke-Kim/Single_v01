@@ -5,7 +5,7 @@
     android:layout_height="200dp">
 
     <RelativeLayout
-        android:id="@+id/layout_show_list"
+        android:id="@+id/layout_location_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
