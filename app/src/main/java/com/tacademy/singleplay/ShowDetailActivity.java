@@ -153,7 +153,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         btn_wish.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (uid == 0) {
+                if (uid != 0) {
                     Toast.makeText(ShowDetailActivity.this, "로그인 후 사용해 주세요", Toast.LENGTH_SHORT).show();
                     btn_wish.setChecked(false);
                 } else {
@@ -187,32 +187,20 @@ public class ShowDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (signInData == null) {
-                    BookingListAddRequest request = new BookingListAddRequest(MyApplication.getContext());
-                    NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingListAdd>() {
-                                @Override
-                                public void onSuccess(NetworkRequest<BookingListAdd> request, BookingListAdd result) {
-                                    Toast.makeText(ShowDetailActivity.this, "성공"+result.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-
-                                @Override
-                                public void onFail(NetworkRequest<BookingListAdd> request, int errorCode, String errorMessage, Throwable e) {
-                                    Toast.makeText(ShowDetailActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
                     Intent intent = new Intent(ShowDetailActivity.this, BookingPersonInfoActivity.class);
                     startActivity(intent);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                } else
+                } else if(uid != 0) {
                     Toast.makeText(ShowDetailActivity.this, "회원가입 후 사용해주세요", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ShowDetailActivity.this, LoginActivity.class);
                     startActivity(intent);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 }
-            });
-        }
+            }
+        });
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

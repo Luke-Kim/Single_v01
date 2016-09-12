@@ -99,6 +99,7 @@ public class SearchFragment extends Fragment {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Search[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Search[]>> request, ResultsList<Search[]> result) {
+                Toast.makeText(MyApplication.getContext(), title, Toast.LENGTH_SHORT).show();
                 Search[] datas = result.getResults();
                 mAdapter.clear();
                 mAdapter.addAll(datas);

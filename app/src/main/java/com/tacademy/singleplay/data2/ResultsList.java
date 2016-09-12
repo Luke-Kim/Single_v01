@@ -4,6 +4,7 @@ public class ResultsList<T> {
     private T results;
     private T result;
 
+    private String error;
     private String code;
 
     public T getResult() {
