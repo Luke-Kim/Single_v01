@@ -1,6 +1,9 @@
 package com.tacademy.singleplay.request;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.ResultsListTemp;
 import com.tacademy.singleplay.manager.NetworkRequest;
 
 import java.io.IOException;
@@ -38,8 +41,24 @@ public abstract class AbstractRequest<T> extends NetworkRequest<T> {
     protected T parse(ResponseBody body) throws IOException {
         String text = body.string();
         Gson gson = new Gson();
-        T temp = gson.fromJson(text, getType());
-        return temp;
+//        T temp = gson.fromJson(text, getType());
+//        return temp;
+        ResultsListTemp temp = gson.fromJson(text, ResultsListTemp.class);
+        if(temp.getCode() == 1) {
+            T result = gson.fromJson(text, getType());
+            return result;
+        } else if (temp.getCode() == 0) {
+            Type type = new TypeToken<ResultsList<String>>(){}.getType();
+            ResultsList<String> result = gson.fromJson(text, type);
+            throw new IOException(result.getResult());
+        } else {
+            T result = gson.fromJson(text, getType(temp.getCode()));
+            return result;
+        }
+    }
+
+    protected Type getType(int code) {
+        return getType();
     }
 
     protected abstract Type getType();

@@ -75,7 +75,7 @@ public class LocationResultActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<ResultsList<Location[]>> request, ResultsList<Location[]> result) {
                 Toast.makeText(MyApplication.getContext(), "지역검색 성공", Toast.LENGTH_SHORT).show();
                 Location[] datas = result.getResults();
-//                locationAdapter.clear();
+                locationAdapter.clear();
                 locationAdapter.addAll(datas);
             }
 

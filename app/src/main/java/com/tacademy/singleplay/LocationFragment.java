@@ -52,52 +52,52 @@ public class LocationFragment extends Fragment {
 
     @OnClick(R.id.seoul_total) //서울전체
     public void onTotal() {
-        setIntent("서울시 전체");
+        setIntent("서울시");
     }
 
     @OnClick(R.id.seoul_gangnam) //강남구/송파구
     public void onGangnam() {
-        setIntent("서울시 강남구");
+        setIntent("강남구/송파구");
     }
 
     @OnClick(R.id.seoul_seocho) //서초구/관악구/동작구
     public void onSeocho() {
-        setIntent("서울시 서초구");
+        setIntent("서초구/관악구/동작구");
     }
 
     @OnClick(R.id.seoul_junggu) //중구/동대문구/성동구
     public void onJunggu() {
-        setIntent("서울시 중구");
+        setIntent("중구/동대문구/성동구");
     }
 
     @OnClick(R.id.seoul_jonglo) //종로구
     public void onJonglo() {
-        setIntent("서울시 종로구");
+        setIntent("종로구");
     }
 
     @OnClick(R.id.seoul_mafo) //마포구/서대문구/용산구
     public void onMafo() {
-        setIntent("서울시 마포구");
+        setIntent("마포구/서대문구/용산구");
     }
 
     @OnClick(R.id.seoul_youngdengfo) //영등포구/강서구/양천구
     public void Youngdengfo() {
-        setIntent("서울시 영등포구");
+        setIntent("영등포구/강서구/양천구");
     }
 
     @OnClick(R.id.seoul_guro) //구로구/금천구
     public void onGuro() {
-        setIntent("서울시 구로구");
+        setIntent("구로구/금천구");
     }
 
     @OnClick(R.id.seoul_gangbuck) //강북구/성북구/노원구
     public void onGangbuck() {
-        setIntent("서울시 강북구");
+        setIntent("강북구/성북구/노원구");
     }
 
     @OnClick(R.id.seoul_junglang) //중랑구/강동구/광진구
     public void onJunglang() {
-        setIntent("서울시 중랑구");
+        setIntent("중랑구/강동구/광진구");
     }
 
     @OnClick(R.id.image_gg) //경기/인천
