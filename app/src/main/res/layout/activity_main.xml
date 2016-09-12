@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context="com.tacademy.singleplay.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context="com.tacademy.singleplay.MainActivity">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/text_toolbarTitle"
+            android:layout_width="100dp"
             android:layout_height="?attr/actionBarSize"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/text_toolbarTitle"
-                android:layout_width="100dp"
-                android:layout_height="?attr/actionBarSize"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal|bottom"/>
-        </android.support.v7.widget.Toolbar>
+            android:layout_gravity="center_horizontal|bottom"
+            android:background="@android:color/white"
+            android:gravity="center" />
+    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/search_container"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white"
         android:orientation="horizontal"
         android:visibility="gone">
 
@@ -32,7 +36,8 @@
             android:id="@+id/btn_search"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:src="@android:drawable/ic_menu_search"/>
+            android:background="@android:color/white"
+            android:src="@android:drawable/ic_menu_search" />
 
         <EditText
             android:layout_width="0dp"
@@ -40,25 +45,28 @@
             android:layout_weight="1"
             android:background="@null"
             android:hint="제목, 배우 등으로 검색해보세요"
-            android:textSize="15dp"/>
+            android:textSize="15dp" />
 
         <Button
             android:id="@+id/btn_search_cancel"
             android:layout_width="70dp"
             android:layout_height="match_parent"
+            android:background="@android:color/white"
             android:gravity="center"
-            android:text="X"/>
+            android:text="X" />
     </LinearLayout>
 
     <FrameLayout
         android:id="@+id/location_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
 
         <LinearLayout
             android:id="@+id/tab_pager_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/white"
             android:orientation="vertical">
 
             <android.support.design.widget.TabLayout
@@ -66,31 +74,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabMinWidth="72dp"
-                app:tabMode="fixed"></android.support.design.widget.TabLayout>
+                app:tabMode="fixed"
+                android:background="@android:color/white"></android.support.design.widget.TabLayout>
 
             <RadioGroup
                 android:id="@+id/view_radiogroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="191dp"
+                android:layout_height="23dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/filter_back"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButton_score"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="별점순"/>
+                    android:layout_width="71dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="top"
+                    android:layout_marginRight="-11.3dp"
+                    android:button="@drawable/filter_1_selector"
+                    android:checked="true"
+                    android:elegantTextHeight="false" />
 
                 <RadioButton
                     android:id="@+id/radioButton_new"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="최신순"/>
+                    android:layout_width="71dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="top"
+                    android:button="@drawable/filter_2_selector"
+                    android:elegantTextHeight="false"
+                    android:elevation="0dp" />
 
                 <RadioButton
                     android:id="@+id/radioButton_discount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="할인률순"/>
+                    android:layout_width="71dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="top"
+                    android:layout_marginLeft="-11.3dp"
+                    android:button="@drawable/filter_3_selector"
+                    android:elegantTextHeight="false"
+                    android:elevation="0dp" />
             </RadioGroup>
 
             <android.support.v4.view.ViewPager
