@@ -92,6 +92,8 @@ public class ShowDetailActivity extends AppCompatActivity {
     String playId;
     int wishId;
     int uid;
+    boolean isStart = true;
+    int isWish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,10 +135,13 @@ public class ShowDetailActivity extends AppCompatActivity {
                 Glide.with(MyApplication.getContext())
                         .load(result.getResult().getPoster()) //배열되있길래 [0]처리
                         .into(posterView);
-                if (result.getResult().getIsWish() == 1) {
+                isWish = result.getResult().getIsWish();
+                if (isWish == 1) {
                     btn_wish.setChecked(true);
                 }
                 wishId = result.getResult().getWid();
+
+                isStart = false;
             }
 
             @Override
@@ -145,14 +150,6 @@ public class ShowDetailActivity extends AppCompatActivity {
             }
         });
 
-        btn_wish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-
         btn_wish.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -160,25 +157,27 @@ public class ShowDetailActivity extends AppCompatActivity {
                     Toast.makeText(ShowDetailActivity.this, "로그인 후 사용해 주세요", Toast.LENGTH_SHORT).show();
                     btn_wish.setChecked(false);
                 } else {
-                    if(isChecked) {
-                        Toast.makeText(ShowDetailActivity.this, "위시리스트 등록", Toast.LENGTH_SHORT).show();
-                        Intent wish_intent = new Intent(ShowDetailActivity.this, WishPopupActivity.class);
-//                    wish_intent.putExtra(ShowDetailActivity.EXTRA_PLAYID, playId);
-                        startActivity(wish_intent);
-                    } else if (!isChecked){
-                        WishListDeletRequest request = new WishListDeletRequest(MyApplication.getContext(), wishId + "");
-                        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<WishListDelete>() {
-                            @Override
-                            public void onSuccess(NetworkRequest<WishListDelete> request, WishListDelete result) {
-                                Toast.makeText(ShowDetailActivity.this, "위시리스트 해제", Toast.LENGTH_SHORT).show();
-                            }
+                    if(isStart == false) {
+                        if (isChecked) {
+                            Toast.makeText(ShowDetailActivity.this, "위시리스트 등록", Toast.LENGTH_SHORT).show();
+                            Intent wish_intent = new Intent(ShowDetailActivity.this, WishPopupActivity.class);
+                            wish_intent.putExtra("KEY_ISWISH", isWish);
+                            startActivity(wish_intent);
+                        } else if (!isChecked) {
+                            WishListDeletRequest request = new WishListDeletRequest(MyApplication.getContext(), wishId + "");
+                            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<WishListDelete>() {
+                                @Override
+                                public void onSuccess(NetworkRequest<WishListDelete> request, WishListDelete result) {
+                                    Toast.makeText(ShowDetailActivity.this, "위시리스트 해제", Toast.LENGTH_SHORT).show();
+                                }
 
-                            @Override
-                            public void onFail(NetworkRequest<WishListDelete> request, int errorCode, String errorMessage, Throwable e) {
-                                Toast.makeText(ShowDetailActivity.this, "위시리스트 해제 실패", Toast.LENGTH_SHORT).show();
-                                btn_wish.setChecked(true);
-                            }
-                        });
+                                @Override
+                                public void onFail(NetworkRequest<WishListDelete> request, int errorCode, String errorMessage, Throwable e) {
+                                    Toast.makeText(ShowDetailActivity.this, "위시리스트 해제 실패", Toast.LENGTH_SHORT).show();
+                                    btn_wish.setChecked(true);
+                                }
+                            });
+                        }
                     }
                 }
             }
@@ -187,7 +186,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (signInData != null) {
+                if (signInData == null) {
                     BookingListAddRequest request = new BookingListAddRequest(MyApplication.getContext());
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingListAdd>() {
                                 @Override

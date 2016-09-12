@@ -14,8 +14,6 @@ public class ResultsList<T> {
         this.result = result;
     }
 
-
-
     public String getCode() {
         return code;
     }
@@ -32,5 +30,11 @@ public class ResultsList<T> {
         this.results = results;
     }
 
+    public String getError() {
+        return error;
+    }
 
+    public void setError(String error) {
+        this.error = error;
+    }
 }

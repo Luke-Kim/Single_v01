@@ -28,6 +28,7 @@ public class WishPopupActivity extends AppCompatActivity {
     WishPopAdater mAdapter;
 //    public static final String EXTRA_PLAYID = "play id";
     String playId;
+    int isWish;
 
     private Display display;
 
@@ -37,21 +38,16 @@ public class WishPopupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wish_popup);
         ButterKnife.bind(this);
 
-//        Intent intent = getIntent();
-//        playId = intent.getIntExtra(EXTRA_PLAYID, 0);
         playId = BookingManager.getInstance().getPlayId();
-
         display = WishPopupActivity.this.getWindowManager().getDefaultDisplay();
 
-//        Rect rc = new Rect();
-//        getWindow().getDecorView().getWindowVisibleDisplayFrame(rc);
+        isWish = getIntent().getIntExtra("KEY_ISWISH", -1);
 
         setFinishOnTouchOutside(true);
         this.getWindow().setGravity(Gravity.BOTTOM);
         this.getWindow().setLayout(display.getWidth(), 450);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mAdapter = new WishPopAdater();
-
 
         rcv.setAdapter(mAdapter);
         rcv.setLayoutManager(layoutManager);
@@ -65,8 +61,12 @@ public class WishPopupActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<String[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<String[]>> request, ResultsList<String[]> result) {
-                Toast.makeText(WishPopupActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                mAdapter.addAll(result.getResults());
+//                if (isWish == 0) {
+//                    mAdapter.addAll(result.getResults());
+//                } else  {
+                    String errorMessage = result.getError();
+                    Toast.makeText(WishPopupActivity.this, ""+errorMessage, Toast.LENGTH_SHORT).show();
+//                }
             }
 
             @Override
