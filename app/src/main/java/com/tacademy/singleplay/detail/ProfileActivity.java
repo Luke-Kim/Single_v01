@@ -14,9 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
-import com.tacademy.singleplay.MainActivity;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.SignInData;
 import com.tacademy.singleplay.data2.Profile;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.manager.NetworkManager;
@@ -43,10 +41,6 @@ public class ProfileActivity extends AppCompatActivity {
     @BindView(R.id.txt_phone)
     EditText txt_phone;
 
-    LoginManager mLoginManager;
-
-    SignInData signInData;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,14 +51,12 @@ public class ProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        mLoginManager = LoginManager.getInstance();
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(ProfileActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
-                logoutFacebook();
-                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-//
+                LoginManager.getInstance().logOut();
+                Intent intent = new Intent(ProfileActivity.this, UserActivity.class);
 //                String name = null;
 //                String email = null;
 //                String phone = null;
@@ -99,20 +91,17 @@ public class ProfileActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<ResultsList<Profile>> request, ResultsList<Profile> result) {
                 Toast.makeText(ProfileActivity.this, "성공", Toast.LENGTH_SHORT).show();
 //                imageView.setImageResource(Integer.parseInt(result.getResult().getProfileImg()+""));
-                textView.setText(result.getResult().getUserName()+"");
-                txt_email.setText(result.getResult().getUserEmail()+"");
+                textView.setText(result.getResult().getUserName());
+                txt_email.setText(result.getResult().getUserEmail());
                 txt_phone.setText(result.getResult().getUserPhone()+"");
             }
 
             @Override
             public void onFail(NetworkRequest<ResultsList<Profile>> request, int errorCode, String errorMessage, Throwable e) {
                 Toast.makeText(ProfileActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
-                Log.i("onfail",errorMessage+" , "+errorCode );
+                Log.i("onfail ",errorMessage+" , "+errorCode );
             }
         });
     }
 
-    private void logoutFacebook() {
-        mLoginManager.logOut();
-    }
 }

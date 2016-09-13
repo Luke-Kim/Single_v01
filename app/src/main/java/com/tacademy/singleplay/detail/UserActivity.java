@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.tacademy.singleplay.PushActivity;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.SignInData;
 import com.tacademy.singleplay.data2.FaceBook;
 import com.tacademy.singleplay.data2.Profile;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -42,10 +41,9 @@ public class UserActivity extends AppCompatActivity {
 
     String userImage = "asdf";
     int uid;
+    String token;
 
-    SignInData signInData;
 
-    public int SIGNIN_CHECK;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +74,7 @@ public class UserActivity extends AppCompatActivity {
                 finish();
             }
         });
+
 
         initData();
     }
@@ -126,7 +125,7 @@ public class UserActivity extends AppCompatActivity {
 //        String userImage = imageView.getDrawable().toString();
         String userEmail = "";
         String userPhone = "";
-        String token = LoginActivity.token2;
+        token = LoginActivity.token2;
 
         if(token == null) {
             ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
