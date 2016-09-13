@@ -2,7 +2,6 @@ package com.tacademy.singleplay;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -85,22 +84,13 @@ public class WishListActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(NetworkRequest<ResultsList<WishList[]>> request, ResultsList<WishList[]> result) {
                     Toast.makeText(WishListActivity.this, "성공", Toast.LENGTH_SHORT).show();
-//                    wishListAdapter.addAll(result.getResults());
-                    if(result != null){
-                        wishListAdapter.addAll(result.getResults());
-                    } else if (result == null){
-                        new CountDownTimer(2000, 1000) {  // 위시리스트에 아무것도 없는 경우 3초 동안 이미지 보여줌!
-                            public void onTick(long millisUntilFinished) {
-                                txt_no_wish.setVisibility(View.VISIBLE);
-                                no_wish.setVisibility(View.VISIBLE);
-                            }
+                    wishListAdapter.addAll(result.getResults());
 
-                            public void onFinish() {
-                                txt_no_wish.setVisibility(View.GONE);
-                                no_wish.setVisibility(View.GONE);
-                            }
-                        }.start();
-//                        Toast.makeText(WishListActivity.this, "result가 널이 아니니?"+result, Toast.LENGTH_SHORT).show();
+                    int wishItemCNT = wishListAdapter.getItemCount();
+
+                    if (wishItemCNT == 0) {
+                        txt_no_wish.setVisibility(View.VISIBLE);
+                        no_wish.setVisibility(View.VISIBLE);
                     }
                 }
 
