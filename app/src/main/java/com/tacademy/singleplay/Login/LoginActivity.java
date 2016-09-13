@@ -20,7 +20,6 @@ import com.facebook.login.LoginResult;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.FaceBook;
 import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.manager.LoginCheckManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.FacebookLoginRequest;
@@ -33,9 +32,14 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btn_facebook)
     Button facebookButton;
+//    @BindView(R.id.btn_naver)
+//    Button btn_naver;
+//    @BindView(R.id.btn_kakao)
+//    Button btn_kakao;
 
     CallbackManager callbackManager;
     LoginManager mLoginManager;
+    public static String token2;
 
 
     @Override
@@ -58,6 +62,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         setButtonLabel();
+
+//        btn_naver.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//        btn_kakao.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
     }
 
     private  void setButtonLabel() {
@@ -103,19 +125,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(LoginActivity.this, "login manager...", Toast.LENGTH_SHORT).show();
                 AccessToken accessToken = AccessToken.getCurrentAccessToken();
+//                Log.i("jeahyun : ", accessToken.getToken()+"");
                 String token = accessToken.getToken();
+                token2 = token;
                 FacebookLoginRequest request = new FacebookLoginRequest(LoginActivity.this, token);
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
                         Toast.makeText(LoginActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                        String userName = result.getResult().getName();
-                        int couponCnt = result.getResult().getCouponCnt();
-                        int mileage = result.getResult().getMileage();
-                        LoginCheckManager.getInstance().setCheckLogin(true);
-                        LoginCheckManager.getInstance().setUserName(userName);
-                        LoginCheckManager.getInstance().setCouponCnt(couponCnt);
-                        LoginCheckManager.getInstance().setMileage(mileage);
                         startActivity(new Intent(LoginActivity.this, SignInActivity.class));
                     }
 

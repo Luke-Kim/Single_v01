@@ -63,6 +63,6 @@ public class CastingAdapter extends PagerAdapter{
 
     @Override
     public float getPageWidth(int position) {
-        return 0.35f;
+        return 0.25f;
     }
 }
