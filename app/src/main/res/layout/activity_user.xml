@@ -48,9 +48,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="179dp"
-        android:focusable="false"
-        android:background="@color/background_floating_material_light">
+        android:layout_height="179dp">
 
         <ImageView
             android:layout_width="80dp"
@@ -103,8 +101,7 @@
                 android:onClick=""
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="#ffffff">
+                android:layout_alignParentStart="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -121,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="n"
+                    android:text="0"
                     android:id="@+id/coupon_count"
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/textView23"
@@ -157,8 +154,7 @@
                 android:id="@+id/relativeLayout11"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:background="#ffffff">
+                android:layout_alignParentEnd="true">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -186,7 +182,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="123"
+                    android:text="0"
                     android:id="@+id/txt_mileage"
                     android:textColor="#ff7777"
                     android:layout_alignTop="@+id/textView36"
@@ -221,8 +217,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:weightSum="1"
-        android:background="@drawable/underline">
+        android:weightSum="1">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -231,7 +226,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/relativeLayout"
-            android:background="@color/background_material_light">
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
 
             <TextView
                 android:layout_width="match_parent"
@@ -263,7 +258,7 @@
             android:layout_below="@+id/relativeLayout"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:background="@color/background_material_light">
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha">
 
             <TextView
                 android:layout_width="match_parent"
@@ -292,10 +287,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/relativeLayout3"
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha"
             android:layout_below="@+id/relativeLayout4"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@color/background_material_light">
+            android:layout_alignParentStart="true">
 
             <TextView
                 android:layout_width="match_parent"
@@ -325,10 +320,10 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/relativeLayout4"
+            android:background="@drawable/abc_ab_share_pack_mtrl_alpha"
             android:layout_below="@+id/relativeLayout2"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@color/background_material_light">
+            android:layout_alignParentStart="true">
 
             <TextView
                 android:layout_width="match_parent"
@@ -353,17 +348,17 @@
                 android:layout_marginLeft="16dp" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/button_material_light"
+            android:layout_below="@+id/relativeLayout3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/button_material_light"
-        android:layout_below="@+id/relativeLayout3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="center_horizontal" />
 
 
 </LinearLayout>
