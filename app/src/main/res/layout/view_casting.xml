@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="86dp"
-    android:layout_height="76dp"
+    android:layout_width="114dp"
+    android:layout_height="142dp"
     android:background="@drawable/casting_card_bg"
     android:orientation="vertical">
 
@@ -10,8 +10,10 @@
         android:scaleType="fitXY"
         android:layout_width="66dp"
         android:layout_height="66dp"
-        android:background="@drawable/casting_card_img"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/casting_card_img" />
 
 </RelativeLayout>
