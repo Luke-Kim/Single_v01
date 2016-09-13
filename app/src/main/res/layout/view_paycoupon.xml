@@ -7,7 +7,7 @@
     <FrameLayout
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:background="@drawable/pay_coupon"
+        android:background="@drawable/coupon_btn"
         android:layout_marginTop="17dp"
         android:layout_marginBottom="17dp"
         android:layout_marginLeft="7dp">
@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="New Text"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+             />
 
     </FrameLayout>
 
