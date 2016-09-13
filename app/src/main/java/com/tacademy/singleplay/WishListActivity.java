@@ -2,6 +2,7 @@ package com.tacademy.singleplay;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -65,15 +66,14 @@ public class WishListActivity extends AppCompatActivity {
     }
 
     public void goDetailActivity(int playId, String playName) {
-        BookingManager.getInstance().setPlayId("" + playId);
+        BookingManager.getInstance().setPlayId(""+playId);
         BookingManager.getInstance().setPlayName(playName);
         Intent intent = new Intent(WishListActivity.this, ShowDetailActivity.class);
         startActivity(intent);
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
+        if(item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -82,25 +82,32 @@ public class WishListActivity extends AppCompatActivity {
     private void initData() {
         WishListRequest request = new WishListRequest(this);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<WishList[]>>() {
-            @Override
-            public void onSuccess(NetworkRequest<ResultsList<WishList[]>> request, ResultsList<WishList[]> result) {
-                Toast.makeText(WishListActivity.this, "성공" + result, Toast.LENGTH_SHORT).show();
+                @Override
+                public void onSuccess(NetworkRequest<ResultsList<WishList[]>> request, ResultsList<WishList[]> result) {
+                    Toast.makeText(WishListActivity.this, "성공", Toast.LENGTH_SHORT).show();
+//                    wishListAdapter.addAll(result.getResults());
+                    if(result != null){
+                        wishListAdapter.addAll(result.getResults());
+                    } else if (result == null){
+                        new CountDownTimer(2000, 1000) {  // 위시리스트에 아무것도 없는 경우 3초 동안 이미지 보여줌!
+                            public void onTick(long millisUntilFinished) {
+                                txt_no_wish.setVisibility(View.VISIBLE);
+                                no_wish.setVisibility(View.VISIBLE);
+                            }
 
-                wishListAdapter.addAll(result.getResults());
-
-                int wishItemCNT = wishListAdapter.getItemCount();
-
-                if (wishItemCNT == 0) {
-                    txt_no_wish.setVisibility(View.VISIBLE);
-                    no_wish.setVisibility(View.VISIBLE);
+                            public void onFinish() {
+                                txt_no_wish.setVisibility(View.GONE);
+                                no_wish.setVisibility(View.GONE);
+                            }
+                        }.start();
+//                        Toast.makeText(WishListActivity.this, "result가 널이 아니니?"+result, Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-
-            @Override
-            public void onFail(NetworkRequest<ResultsList<WishList[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(WishListActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFail(NetworkRequest<ResultsList<WishList[]>> request, int errorCode, String errorMessage, Throwable e) {
+                    Toast.makeText(WishListActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+                }
+            });
     }
 }
