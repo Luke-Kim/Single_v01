@@ -66,6 +66,16 @@ public class UserActivity extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
         });
+        loginView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UserActivity.this, LoginActivity.class);
+                startActivity(intent);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                finish();
+            }
+        });
 
         initData();
     }
@@ -126,16 +136,6 @@ public class UserActivity extends AppCompatActivity {
                     Toast.makeText(UserActivity.this, "성공", Toast.LENGTH_SHORT).show();
                     user_name.setVisibility(View.GONE);
                     profileView.setVisibility(View.GONE);
-                    loginView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(UserActivity.this, LoginActivity.class);
-                            startActivity(intent);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            finish();
-                        }
-                    });
                 }
                 @Override
                 public void onFail(NetworkRequest<ResultsList<Profile>> request, int errorCode, String errorMessage, Throwable e) {
