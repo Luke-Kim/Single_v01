@@ -12,6 +12,7 @@ import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.login.DefaultAudience;
 import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
@@ -46,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         mLoginManager = LoginManager.getInstance(); // LoginManager 획득
 
@@ -137,6 +139,9 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFail(NetworkRequest<ResultsList<FaceBook>> request, int errorCode, String errorMessage, Throwable e) {
                         Toast.makeText(LoginActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+                        if (isLogin()) {
+                            //
+                        }
                     }
                 });
             }

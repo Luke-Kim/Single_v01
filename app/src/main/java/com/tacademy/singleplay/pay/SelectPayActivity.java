@@ -195,7 +195,7 @@ public class SelectPayActivity extends AppCompatActivity {
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Booking>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<Booking>> request, ResultsList<Booking> result) {
-                        BookingManager.getInstance().setRid("" + result.getResult().getRsvId());
+                        BookingManager.getInstance().setRid("" + result.getResult().getRsvId());// 여기서 rid를 넘겨줘야 한다!! , rid rvid 는 여기서 받아온다!!
                         Toast.makeText(SelectPayActivity.this, "예약성공", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SelectPayActivity.this, CheckedBookingActivity.class);
                         startActivity(intent);

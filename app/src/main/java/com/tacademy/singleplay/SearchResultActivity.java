@@ -1,17 +1,12 @@
 package com.tacademy.singleplay;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,15 +40,17 @@ public class SearchResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_result2);
         ButterKnife.bind(this);
 
-        ActionBar actionBar = getSupportActionBar();
+//        ActionBar actionBar = getSupportActionBar();
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowCustomEnabled(true);
+
         Intent intent = getIntent();
         title = intent.getStringExtra(TITLE);
         titleView.setText(title);
-        Toast.makeText(SearchResultActivity.this, title, Toast.LENGTH_SHORT).show();
+
+//        Toast.makeText(SearchResultActivity.this, title, Toast.LENGTH_SHORT).show();
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mAdapter = new SearchAdapter();
@@ -74,7 +71,7 @@ public class SearchResultActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Search[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Search[]>> request, ResultsList<Search[]> result) {
-                Toast.makeText(SearchResultActivity.this, ""+title, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchResultActivity.this, "성공" + title, Toast.LENGTH_SHORT).show();
                 Search[] datas = result.getResults();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
@@ -82,7 +79,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onFail(NetworkRequest<ResultsList<Search[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(SearchResultActivity.this, "키워드검색 실패", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchResultActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
     }

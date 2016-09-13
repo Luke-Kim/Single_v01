@@ -68,8 +68,8 @@ public class SearchFragment extends Fragment {
         mAdapter.setOnAdapterItemClickListener(new SearchAdapter.OnSearchAdapterItemClickLIstener() {
             @Override
             public void onSearchAdapterItemClick(View view, Search showList, int position) {
-                int playId = showList.getPlayId();
-                String playName = showList.getPlayName();
+                int playId = showList.getId();
+                String playName = showList.getName();
                 ((SearchResultActivity) getActivity()).goDetailActivity(playId, playName);
             }
         });
@@ -100,6 +100,7 @@ public class SearchFragment extends Fragment {
                 Search[] datas = result.getResults();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
+
             }
 
             @Override

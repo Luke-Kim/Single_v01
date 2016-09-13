@@ -18,23 +18,23 @@ import butterknife.ButterKnife;
  */
 public class SearchHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.text_place_name_search)
+    @BindView(R.id.text_place_name)
     TextView placeNameView;
-    @BindView(R.id.text_play_day_search)
+    @BindView(R.id.text_play_day)
     TextView playDayView;
-    @BindView(R.id.text_play_time_search)
+    @BindView(R.id.text_play_time)
     TextView playTimeView;
-    @BindView(R.id.text_play_name_search)
+    @BindView(R.id.text_play_name)
     TextView playNameView;
-    @BindView(R.id.text_sale_price_search)
+    @BindView(R.id.text_sale_price)
     TextView salePriceView;
-    @BindView(R.id.text_star_score_search)
+    @BindView(R.id.text_star_score)
     TextView starScoreView;
-    @BindView(R.id.text_price_search)
+    @BindView(R.id.text_price)
     TextView priceView;
     @BindView(R.id.layout_search_list)
     RelativeLayout posterView;
-    @BindView(R.id.image_poster_search)
+    @BindView(R.id.image_poster)
     ImageView poster;
 
 
@@ -64,12 +64,12 @@ public class SearchHolder extends RecyclerView.ViewHolder {
         placeNameView.setText(search.getPlaceName());
         playDayView.setText(search.getPlayDay());
         playTimeView.setText(search.getPlayTime());
-        playNameView.setText(search.getPlayName());
+        playNameView.setText(search.getName());
         salePriceView.setText(search.getSalePrice()+"");
-        starScoreView.setText(search.getStarScore()+"");
+        starScoreView.setText(search.getStar()+"");
         priceView.setText(search.getPrice()+"");
         Glide.with(MyApplication.getContext())
-                .load(search.getPoster())
+                .load(search.getPosterUrl())
                 .into(poster);
         Toast.makeText(MyApplication.getContext(), placeNameView.getText().toString(), Toast.LENGTH_SHORT).show();
     }

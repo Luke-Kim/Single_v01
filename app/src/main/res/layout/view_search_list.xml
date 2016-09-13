@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/image_poster_search"
+            android:id="@+id/image_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
@@ -22,7 +22,7 @@
 
 
         <TextView
-            android:id="@+id/text_place_name_search"
+            android:id="@+id/text_place_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -32,7 +32,7 @@
             android:textColor="#ffffff" />
 
         <TextView
-            android:id="@+id/text_play_day_search"
+            android:id="@+id/text_play_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -42,7 +42,7 @@
             android:textColor="#ffffff" />
 
         <TextView
-            android:id="@+id/text_play_time_search"
+            android:id="@+id/text_play_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -52,7 +52,7 @@
             android:textColor="#ffffff" />
 
         <TextView
-            android:id="@+id/text_play_name_search"
+            android:id="@+id/text_play_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/text_place_name"
@@ -72,7 +72,7 @@
             android:textColor="#ffffff" />
 
         <TextView
-            android:id="@+id/text_sale_price_search"
+            android:id="@+id/text_sale_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -82,7 +82,7 @@
             android:textColor="#ffffff" />
 
         <TextView
-            android:id="@+id/text_star_score_search"
+            android:id="@+id/text_star_score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/text_play_time"
@@ -92,7 +92,7 @@
             android:textColor="#ffffff" />
 
         <TextView
-            android:id="@+id/text_price_search"
+            android:id="@+id/text_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/text_sale_price"

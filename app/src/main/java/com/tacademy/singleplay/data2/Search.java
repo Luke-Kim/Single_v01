@@ -1,22 +1,30 @@
 package com.tacademy.singleplay.data2;
 
 public class Search {
-    private int playId;
+    private double star;
+    private String posterUrl;
     private int salePrice;
     private int price;
-    private String playName;
+    private String name;
     private String playTime;
-    private double starScore;
+    private int id;
     private String playDay;
     private String placeName;
-    private String poster;
 
-    public int getPlayId() {
-        return this.playId;
+    public double getStar() {
+        return this.star;
     }
 
-    public void setPlayId(int playId) {
-        this.playId = playId;
+    public void setStar(double star) {
+        this.star = star;
+    }
+
+    public String getPosterUrl() {
+        return this.posterUrl;
+    }
+
+    public void setPosterUrl(String posterUrl) {
+        this.posterUrl = posterUrl;
     }
 
     public int getSalePrice() {
@@ -35,12 +43,12 @@ public class Search {
         this.price = price;
     }
 
-    public String getPlayName() {
-        return this.playName;
+    public String getName() {
+        return this.name;
     }
 
-    public void setPlayName(String playName) {
-        this.playName = playName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPlayTime() {
@@ -51,12 +59,12 @@ public class Search {
         this.playTime = playTime;
     }
 
-    public double getStarScore() {
-        return this.starScore;
+    public int getId() {
+        return this.id;
     }
 
-    public void setStarScore(double starScore) {
-        this.starScore = starScore;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPlayDay() {
@@ -73,13 +81,5 @@ public class Search {
 
     public void setPlaceName(String placeName) {
         this.placeName = placeName;
-    }
-
-    public String getPoster() {
-        return this.poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
     }
 }
