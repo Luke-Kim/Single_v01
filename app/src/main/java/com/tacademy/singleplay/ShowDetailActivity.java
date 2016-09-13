@@ -1,6 +1,7 @@
 package com.tacademy.singleplay;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -82,6 +83,12 @@ public class ShowDetailActivity extends AppCompatActivity {
     CheckBox btn_wish;
     @BindView(R.id.img_category)
     ImageView category_img;
+    @BindView(R.id.vip_call)
+    TextView vip_call;
+    @BindView(R.id.r_call)
+    TextView r_call;
+    @BindView(R.id.s_call)
+    TextView s_call;
 
     CastingAdapter mAdapter;
 
@@ -136,8 +143,20 @@ public class ShowDetailActivity extends AppCompatActivity {
                 reviewCountView.setText(result.getResult().getUserCount() + "");
                 int[] list= result.getResult().getUsableSeat();
                 vipEmptyView.setText(list[0]+"");
+                if(list[0] == 0 ){
+                    vip_call.setText("좌석없음");
+                    vipEmptyView.setTextColor(Color.WHITE);
+                }
                 rEmptyView.setText(list[1]+"");
+                if(list[1] == 0 ){
+                    r_call.setText("좌석없음");
+                    rEmptyView.setTextColor(Color.WHITE);
+                }
                 sEmptyView.setText(list[2]+"");
+                if(list[2] == 0 ){
+                    r_call.setText("좌석없음");
+                    sEmptyView.setTextColor(Color.WHITE);
+                }
                 Glide.with(MyApplication.getContext())
                         .load(result.getResult().getPoster()) //배열되있길래 [0]처리
                         .into(posterView);

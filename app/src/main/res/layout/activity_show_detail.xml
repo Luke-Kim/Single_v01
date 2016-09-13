@@ -228,7 +228,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="17dp"
                 android:text="좌석정보"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginLeft="16dp" />
 
             <TextView
                 android:id="@+id/text_time_two"
@@ -254,7 +255,8 @@
                 android:layout_marginTop="24dp"
                 android:text="VIP"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:layout_marginLeft="16dp" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -265,7 +267,8 @@
                 android:layout_below="@+id/textView15"
                 android:text="R"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:layout_marginLeft="16dp" />
 
             <TextView
                 android:id="@+id/textView17"
@@ -277,7 +280,8 @@
                 android:layout_marginBottom="17dp"
                 android:text="S"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:layout_marginLeft="16dp" />
 
             <TextView
                 android:id="@+id/text_vip_empty"
@@ -287,7 +291,8 @@
                 android:layout_alignStart="@+id/text_time_two"
                 android:layout_alignTop="@+id/textView15"
                 android:text="2"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
                 android:id="@+id/text_r_empty"
@@ -297,7 +302,8 @@
                 android:layout_alignStart="@+id/text_vip_empty"
                 android:layout_below="@+id/text_vip_empty"
                 android:text="2"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
                 android:id="@+id/text_s_empty"
@@ -308,7 +314,7 @@
                 android:layout_below="@+id/text_r_empty"
                 android:text="1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#b0b0b0" />
+                android:textColor="@color/abc_secondary_text_material_light" />
 
             <TextView
                 android:id="@+id/text_vip_sale"
@@ -319,7 +325,8 @@
                 android:layout_alignTop="@+id/text_vip_empty"
                 android:text="60000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:layout_marginRight="16dp" />
 
             <TextView
                 android:id="@+id/text_r_sale"
@@ -329,7 +336,8 @@
                 android:layout_below="@+id/text_vip_sale"
                 android:text="30000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:layout_marginRight="16dp" />
 
             <TextView
                 android:id="@+id/text_s_sale"
@@ -339,43 +347,48 @@
                 android:layout_below="@+id/text_r_sale"
                 android:text="15000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="16dp" />
 
             <TextView
                 android:id="@+id/text_vip_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/text_r_price"
-                android:layout_alignRight="@+id/text_r_price"
-                android:layout_alignTop="@+id/text_vip_sale"
                 android:text="120000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#746e6e" />
+                android:textColor="#746e6e"
+                android:paddingRight="40dp"
+                android:layout_above="@+id/text_r_sale"
+                android:layout_toLeftOf="@+id/text_vip_sale"
+                android:layout_toStartOf="@+id/text_vip_sale" />
 
             <TextView
                 android:id="@+id/text_r_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/text_vip_price"
-                android:layout_marginRight="28dp"
-                android:layout_toLeftOf="@+id/text_vip_sale"
                 android:text="60000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#746e6e" />
+                android:textColor="#746e6e"
+                android:paddingRight="40dp"
+                android:layout_below="@+id/text_vip_sale"
+                android:layout_toLeftOf="@+id/text_vip_sale"
+                android:layout_toStartOf="@+id/text_vip_sale" />
 
             <TextView
                 android:id="@+id/text_s_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/text_r_price"
-                android:layout_marginRight="28dp"
-                android:layout_toLeftOf="@+id/text_vip_sale"
                 android:text="25000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#746e6e" />
+                android:textColor="#746e6e"
+                android:paddingRight="40dp"
+                android:layout_below="@+id/text_r_sale"
+                android:layout_alignLeft="@+id/text_r_price"
+                android:layout_alignStart="@+id/text_r_price" />
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/vip_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/text_vip_empty"
@@ -384,7 +397,7 @@
                 android:text="좌석 남음" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/r_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/text_r_empty"
@@ -393,10 +406,10 @@
                 android:text="좌석 남음" />
 
             <TextView
-                android:id="@+id/textView20"
+                android:id="@+id/s_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView19"
+                android:layout_below="@+id/r_call"
                 android:layout_toEndOf="@+id/text_r_empty"
                 android:layout_toRightOf="@+id/text_r_empty"
                 android:text="좌석 남음" />
