@@ -13,11 +13,13 @@ import android.widget.Toast;
 import com.tacademy.singleplay.PushActivity;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data.SignInData;
+import com.tacademy.singleplay.data2.FaceBook;
 import com.tacademy.singleplay.data2.Profile;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.login.LoginActivity;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.FacebookLoginRequest;
 import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
@@ -33,6 +35,10 @@ public class UserActivity extends AppCompatActivity {
     TextView loginView;
     @BindView(R.id.user_name)
     TextView user_name;
+    @BindView(R.id.coupon_count)
+    TextView coupone_count;
+    @BindView(R.id.txt_mileage)
+    TextView txt_mileage;
 
     String userImage = "asdf";
     int uid;
@@ -108,25 +114,16 @@ public class UserActivity extends AppCompatActivity {
 
         final String userName = user_name.getText().toString();
 //        String userImage = imageView.getDrawable().toString();
-        String userEmail = "asdf";
-        String userPhone = "asdf";
+        String userEmail = "";
+        String userPhone = "";
+        String token = LoginActivity.token2;
 
-
-
-
-        ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Profile>>() {
-            @Override
-            public void onSuccess(NetworkRequest<ResultsList<Profile>> request, ResultsList<Profile> result) {
-                Toast.makeText(UserActivity.this, "성공", Toast.LENGTH_SHORT).show();
-
-//                imageView.setImageResource(Integer.parseInt(result.getResult().getProfileImg()+""));
-                if(result.getResult().getUserName() != null){
-                    user_name.setText(result.getResult().getUserName()+"");
-                    profileView.setText("프로필 수정 및 로그아웃");
-                    profileView.setVisibility(View.VISIBLE);
-                    loginView.setVisibility(View.GONE);
-                } else {
+        if(token == null) {
+            ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Profile>>() {
+                @Override
+                public void onSuccess(NetworkRequest<ResultsList<Profile>> request, ResultsList<Profile> result) {
+                    Toast.makeText(UserActivity.this, "성공", Toast.LENGTH_SHORT).show();
                     user_name.setVisibility(View.GONE);
                     profileView.setVisibility(View.GONE);
                     loginView.setOnClickListener(new View.OnClickListener() {
@@ -140,16 +137,30 @@ public class UserActivity extends AppCompatActivity {
                         }
                     });
                 }
-            }
-
-            @Override
-            public void onFail(NetworkRequest<ResultsList<Profile>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(UserActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
-                Log.i("onfail",errorMessage+" , "+errorCode );
-            }
-        });
-
-        String token = LoginActivity.token2;
+                @Override
+                public void onFail(NetworkRequest<ResultsList<Profile>> request, int errorCode, String errorMessage, Throwable e) {
+                    Toast.makeText(UserActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+                    Log.i("onfail",errorMessage+" , "+errorCode );
+                }
+            });
+        } else {
+            FacebookLoginRequest request = new FacebookLoginRequest(this, token);
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
+                @Override
+                public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
+                    Toast.makeText(UserActivity.this, "token 성공", Toast.LENGTH_SHORT).show();
+                    user_name.setText(result.getResult().getName());
+                    coupone_count.setText(result.getResult().getCouponCnt()+"");
+                    txt_mileage.setText(result.getResult().getMileage()+"");
+                    profileView.setText("프로필 수정 및 로그아웃");
+                    profileView.setVisibility(View.VISIBLE);
+                    loginView.setVisibility(View.GONE);
+                }
+                @Override
+                public void onFail(NetworkRequest<ResultsList<FaceBook>> request, int errorCode, String errorMessage, Throwable e) {
+                    Toast.makeText(UserActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
-
 }

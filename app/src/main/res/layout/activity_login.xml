@@ -24,25 +24,6 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="kakao"
-            android:id="@+id/btn_kakao"
-            android:layout_marginTop="49dp"
-            android:layout_alignTop="@+id/btn_facebook"
-            android:layout_alignLeft="@+id/btn_facebook"
-            android:layout_alignStart="@+id/btn_facebook" />
-
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Naver"
-            android:id="@+id/btn_naver"
-            android:layout_below="@+id/btn_kakao"
-            android:layout_alignLeft="@+id/btn_kakao"
-            android:layout_alignStart="@+id/btn_kakao" />
-
         <!--<com.facebook.login.widget.LoginButton-->
             <!--android:id="@+id/login_button"-->
             <!--android:layout_width="wrap_content"-->

@@ -184,6 +184,4 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

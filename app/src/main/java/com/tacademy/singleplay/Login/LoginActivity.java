@@ -31,10 +31,10 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btn_facebook)
     Button facebookButton;
-    @BindView(R.id.btn_naver)
-    Button btn_naver;
-    @BindView(R.id.btn_kakao)
-    Button btn_kakao;
+//    @BindView(R.id.btn_naver)
+//    Button btn_naver;
+//    @BindView(R.id.btn_kakao)
+//    Button btn_kakao;
 
     CallbackManager callbackManager;
     LoginManager mLoginManager;
@@ -61,23 +61,23 @@ public class LoginActivity extends AppCompatActivity {
         });
         setButtonLabel();
 
-        btn_naver.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-        btn_kakao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        btn_naver.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
+//        btn_kakao.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
     }
 
     private  void setButtonLabel() {
