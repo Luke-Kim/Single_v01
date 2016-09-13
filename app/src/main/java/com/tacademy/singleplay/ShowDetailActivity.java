@@ -1,6 +1,7 @@
 package com.tacademy.singleplay;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -123,13 +124,20 @@ public class ShowDetailActivity extends AppCompatActivity {
                 timeView.setText(result.getResult().getPlayTime()); //배열이길래 [0]처리
                 timeTwoView.setText(result.getResult().getPlayTime());
                 vipPriceView.setText(result.getResult().getVIPprice() + "");
+                vipPriceView.setPaintFlags(vipPriceView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); // 취소선 넣기
                 vipSaleView.setText(result.getResult().getSaleVIPprice() + "");
                 rPriceView.setText(result.getResult().getRprice() + "");
+                rPriceView.setPaintFlags(rPriceView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); // 취소선 넣기
                 rSaleView.setText(result.getResult().getSaleRprice() + "");
                 sPriceView.setText(result.getResult().getSprice() + "");
+                sPriceView.setPaintFlags(sPriceView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);  // 취소선 넣기
                 sSaleView.setText(result.getResult().getSaleSprice() + "");
                 scoreView.setText(result.getResult().getStarScore() + "");
                 reviewCountView.setText(result.getResult().getUserCount() + "");
+                int[] list= result.getResult().getUsableSeat();
+                vipEmptyView.setText(list[0]+"");
+                rEmptyView.setText(list[1]+"");
+                sEmptyView.setText(list[2]+"");
                 Glide.with(MyApplication.getContext())
                         .load(result.getResult().getPoster()) //배열되있길래 [0]처리
                         .into(posterView);
