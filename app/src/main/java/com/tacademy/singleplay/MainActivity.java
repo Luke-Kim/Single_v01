@@ -73,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
         setPager();
 
-        toolbarTitleView.setText("서울");
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -133,11 +131,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (!isLocation) {
             isLocation = true;
-            toolbarTitleView.setText("지역");
             detail.setVisible(false);
             wishlist.setVisible(false);
             back.setVisible(true);
-            Toast.makeText(MainActivity.this, "click title", Toast.LENGTH_SHORT).show();
             Animation anim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_up_in);
             ft.beginTransaction()
                     .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_up_out)
@@ -150,8 +146,6 @@ public class MainActivity extends AppCompatActivity {
             detail.setVisible(true);
             wishlist.setVisible(true);
             back.setVisible(false);
-            toolbarTitleView.setText("서울");
-            Toast.makeText(MainActivity.this, "click title 2", Toast.LENGTH_SHORT).show();
             ft.beginTransaction()
                     .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_up_out)
                     .remove(lf)
@@ -181,13 +175,14 @@ public class MainActivity extends AppCompatActivity {
             detail.setVisible(true);
             wishlist.setVisible(true);
             back.setVisible(false);
-            Toast.makeText(MainActivity.this, "click title 3", Toast.LENGTH_SHORT).show();
             tabPagerContainer.setVisibility(View.VISIBLE);
             isLocation = false;
             ft.beginTransaction()
                     .replace(R.id.location_container, lf)
+                    .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_up_out)
                     .remove(lf)
                     .commit();
+            return;
         }
         if (isSearch) {
             toolbar.setVisibility(View.VISIBLE);

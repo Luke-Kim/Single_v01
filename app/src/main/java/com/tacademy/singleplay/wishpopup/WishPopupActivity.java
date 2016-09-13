@@ -65,12 +65,12 @@ public class WishPopupActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<String[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<String[]>> request, ResultsList<String[]> result) {
-//                if (isWish == 0) {
-//                    mAdapter.addAll(result.getResults());
-//                } else  {
+                if (isWish == 0) {
+                    mAdapter.addAll(result.getResults());
+                } else  {
                     String errorMessage = result.getError();
                     Toast.makeText(WishPopupActivity.this, ""+errorMessage, Toast.LENGTH_SHORT).show();
-//                }
+                }
             }
 
             @Override

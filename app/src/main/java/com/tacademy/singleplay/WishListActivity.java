@@ -41,17 +41,6 @@ public class WishListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wish_list);
         ButterKnife.bind(this);
 
-//        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        ImageButton backButton = (ImageButton)toolbar.findViewById(R.id.image_btn_back);
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
-
-        //Toolbar toolbar = (Toolbar)findViewById(R.id.my_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -68,7 +57,6 @@ public class WishListActivity extends AppCompatActivity {
             }
         });
 
-//        RecyclerView recyclerView=(RecyclerView)findViewById(R.id.wishList_rv);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(wishListAdapter);

@@ -9,9 +9,12 @@
 
     <Button
         android:id="@+id/btn_search_cancel"
-        android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:text="취소"/>
+        android:layout_width="40dp"
+        android:layout_height="22dp"
+        android:background="@drawable/search_cancle"
+        android:layout_marginBottom="17dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="3dp" />
 
     <EditText
         android:id="@+id/edit_title"
@@ -19,14 +22,20 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:hint="제목, 배우 등으로 검색해보세요."
+        android:textColorHint="@android:color/darker_gray"
         android:textColor="@android:color/black"
         android:background="@null"
-        android:textCursorDrawable="@android:drawable/dark_header"/>
+        android:textCursorDrawable="@android:drawable/dark_header"
+        android:textSize="13dp"
+        android:textIsSelectable="false" />
 
     <Button
         android:id="@+id/btn_search"
-        android:layout_width="50dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/search_iocn" />
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/search_iocn"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginRight="16dp" />
 
 </LinearLayout>

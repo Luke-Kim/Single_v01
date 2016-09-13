@@ -75,13 +75,14 @@ public class SearchResultActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Search[]>> request, ResultsList<Search[]> result) {
                 Toast.makeText(SearchResultActivity.this, ""+title, Toast.LENGTH_SHORT).show();
+                Search[] datas = result.getResults();
                 mAdapter.clear();
-                mAdapter.addAll(result.getResults());
+                mAdapter.addAll(datas);
             }
 
             @Override
             public void onFail(NetworkRequest<ResultsList<Search[]>> request, int errorCode, String errorMessage, Throwable e) {
-
+                Toast.makeText(SearchResultActivity.this, "키워드검색 실패", Toast.LENGTH_SHORT).show();
             }
         });
     }

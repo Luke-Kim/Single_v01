@@ -134,6 +134,7 @@ public class ShowDetailActivity extends AppCompatActivity {
                         .load(result.getResult().getPoster()) //배열되있길래 [0]처리
                         .into(posterView);
                 isWish = result.getResult().getIsWish();
+                Toast.makeText(ShowDetailActivity.this, "위시 여부 : " + isWish, Toast.LENGTH_SHORT).show();
                 if (isWish == 1) {
                     btn_wish.setChecked(true);
                 }
@@ -148,6 +149,7 @@ public class ShowDetailActivity extends AppCompatActivity {
             }
         });
 
+        Toast.makeText(ShowDetailActivity.this, ""+isWish, Toast.LENGTH_SHORT).show();
         btn_wish.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {

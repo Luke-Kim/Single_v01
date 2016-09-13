@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.data2.Search;
@@ -17,23 +18,23 @@ import butterknife.ButterKnife;
  */
 public class SearchHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.text_place_name)
+    @BindView(R.id.text_place_name_search)
     TextView placeNameView;
-    @BindView(R.id.text_play_day)
+    @BindView(R.id.text_play_day_search)
     TextView playDayView;
-    @BindView(R.id.text_play_time)
+    @BindView(R.id.text_play_time_search)
     TextView playTimeView;
-    @BindView(R.id.text_play_name)
+    @BindView(R.id.text_play_name_search)
     TextView playNameView;
-    @BindView(R.id.text_sale_price)
+    @BindView(R.id.text_sale_price_search)
     TextView salePriceView;
-    @BindView(R.id.text_star_score)
+    @BindView(R.id.text_star_score_search)
     TextView starScoreView;
-    @BindView(R.id.text_price)
+    @BindView(R.id.text_price_search)
     TextView priceView;
-    @BindView(R.id.layout_show_list)
+    @BindView(R.id.layout_search_list)
     RelativeLayout posterView;
-    @BindView(R.id.image_poster)
+    @BindView(R.id.image_poster_search)
     ImageView poster;
 
 
@@ -70,5 +71,6 @@ public class SearchHolder extends RecyclerView.ViewHolder {
         Glide.with(MyApplication.getContext())
                 .load(search.getPoster())
                 .into(poster);
+        Toast.makeText(MyApplication.getContext(), placeNameView.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 }

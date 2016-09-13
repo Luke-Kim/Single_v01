@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,394 +9,398 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@android:color/white"
         android:orientation="vertical">
+
         <FrameLayout
             android:id="@+id/my_frame"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00ffffff">
+            android:background="@android:color/white">
 
             <ImageView
+                android:id="@+id/image_poster"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:id="@+id/image_poster"
-                android:scaleType="fitXY"
-                android:layout_alignParentTop="true" />
+                android:layout_alignParentTop="true"
+                android:background="@android:color/white"
+                android:scaleType="fitXY" />
 
             <android.support.v7.widget.Toolbar
+                android:id="@+id/my_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:id="@+id/my_toolbar"
-                android:background="#00ffffff"/>
+                android:background="@android:color/white" />
 
             <CheckBox
+                android:id="@+id/btn_wish"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:id="@+id/btn_wish"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:checked="false"
-                android:button="@drawable/wish_check_selector"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right|bottom"
                 android:layout_marginRight="16dp"
-                android:layout_gravity="right|bottom" />
+                android:button="@drawable/wish_check_selector"
+                android:checked="false" />
 
         </FrameLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttom_bg">
 
             <TextView
+                android:id="@+id/text_play_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="위키드"
-                android:id="@+id/text_play_name"
                 android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/img_category"
-                android:layout_toEndOf="@+id/img_category"
+                android:layout_marginBottom="20dp"
                 android:layout_marginLeft="6dp"
-                android:layout_marginBottom="20dp" />
+                android:layout_toEndOf="@+id/img_category"
+                android:layout_toRightOf="@+id/img_category"
+                android:text="위키드"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <ImageView
+                android:id="@+id/imageView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@drawable/recommend_star"
-                android:id="@+id/imageView6"
-                android:layout_below="@+id/text_play_name"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_below="@+id/text_play_name"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="16dp" />
+                android:scaleType="fitXY"
+                android:src="@drawable/recommend_star" />
 
             <TextView
+                android:id="@+id/text_star_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="8.5"
-                android:id="@+id/text_star_score"
-                android:layout_below="@+id/text_play_name"
-                android:layout_toRightOf="@+id/imageView6"
-                android:layout_toEndOf="@+id/imageView6"
-                android:layout_marginTop="3dp"
                 android:layout_alignBaseline="@+id/imageView6"
+                android:layout_below="@+id/text_play_name"
+                android:layout_marginTop="3dp"
+                android:layout_toEndOf="@+id/imageView6"
+                android:layout_toRightOf="@+id/imageView6"
+                android:text="8.5"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#000000" />
 
             <TextView
+                android:id="@+id/text_review_cnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="22"
-                android:id="@+id/text_review_cnt"
                 android:layout_alignBaseline="@+id/text_star_score"
                 android:layout_alignBottom="@+id/text_star_score"
                 android:layout_toLeftOf="@+id/textView13"
-                android:layout_toStartOf="@+id/textView13" />
+                android:layout_toStartOf="@+id/textView13"
+                android:text="22"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="공연장소"
                 android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/imageView6"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="16dp" />
+                android:text="공연장소"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
+                android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="공연시간"
-                android:id="@+id/textView5"
-                android:layout_below="@+id/textView2"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView2"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="3dp"
-                android:layout_marginLeft="16dp" />
+                android:text="공연시간"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
+                android:id="@+id/text_place"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="삼성카드 블루스퀘어 서울 용산구 이태원로 249"
-                android:id="@+id/text_place"
-                android:textColor="#000000"
                 android:layout_alignBaseline="@+id/textView2"
                 android:layout_alignBottom="@+id/textView2"
-                android:layout_toRightOf="@+id/textView2"
+                android:layout_marginLeft="12dp"
                 android:layout_toEndOf="@+id/textView2"
-                android:layout_marginLeft="12dp" />
+                android:layout_toRightOf="@+id/textView2"
+                android:text="삼성카드 블루스퀘어 서울 용산구 이태원로 249"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000000" />
 
             <TextView
+                android:id="@+id/text_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="2016년 8월 31일"
-                android:id="@+id/text_day"
-                android:layout_alignTop="@+id/textView5"
                 android:layout_alignLeft="@+id/text_place"
                 android:layout_alignStart="@+id/text_place"
-                android:textColor="#000000"
-                android:layout_marginBottom="5dp" />
+                android:layout_alignTop="@+id/textView5"
+                android:layout_marginBottom="5dp"
+                android:text="2016년 8월 31일"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000000" />
 
             <TextView
+                android:id="@+id/text_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="PM 5:00"
-                android:id="@+id/text_time"
-                android:textColor="#000000"
                 android:layout_alignTop="@+id/text_day"
-                android:layout_toRightOf="@+id/text_day"
-                android:layout_toEndOf="@+id/text_day"
+                android:layout_marginBottom="17dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginBottom="17dp" />
+                android:layout_toEndOf="@+id/text_day"
+                android:layout_toRightOf="@+id/text_day"
+                android:text="PM 5:00"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000000" />
 
             <TextView
+                android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="명 평가"
-                android:id="@+id/textView13"
                 android:layout_alignBaseline="@+id/text_review_cnt"
                 android:layout_alignBottom="@+id/text_review_cnt"
+                android:layout_alignEnd="@+id/text_play_name"
                 android:layout_alignRight="@+id/text_play_name"
-                android:layout_alignEnd="@+id/text_play_name" />
+                android:text="명 평가" />
 
             <TextView
+                android:id="@+id/waiting_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="남은시간 데이터x"
-                android:id="@+id/waiting_time"
+                android:layout_alignBottom="@+id/text_time"
                 android:layout_alignTop="@+id/text_time"
-                android:layout_toRightOf="@+id/text_time"
                 android:layout_toEndOf="@+id/text_time"
-                android:layout_alignBottom="@+id/text_time" />
+                android:layout_toRightOf="@+id/text_time"
+                android:text="남은시간 데이터x" />
 
             <ImageView
+                android:id="@+id/img_category"
                 android:layout_width="33dp"
                 android:layout_height="15dp"
-                android:id="@+id/img_category"
-                android:scaleType="fitXY"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="6dp" />
+                android:layout_marginTop="6dp"
+                android:scaleType="fitXY" />
 
             <TextView
+                android:id="@+id/text_theme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="      "
-                android:id="@+id/text_theme"
-                android:layout_alignTop="@+id/img_category"
                 android:layout_alignLeft="@+id/img_category"
-                android:layout_alignStart="@+id/img_category" />
+                android:layout_alignStart="@+id/img_category"
+                android:layout_alignTop="@+id/img_category"
+                android:text="      "
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
+                android:id="@+id/textView23"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:id="@+id/textView23"
-                android:background="@drawable/underlin"
-                android:layout_below="@+id/text_theme"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="1dp" />
+                android:layout_below="@+id/text_theme"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="@drawable/underlin"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
 
             <TextView
+                android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="좌석정보"
-                android:id="@+id/textView14"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="17dp" />
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="17dp"
+                android:text="좌석정보"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
+                android:id="@+id/text_time_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="PM 5:00"
-                android:id="@+id/text_time_two"
+                android:layout_alignBaseline="@+id/textView14"
                 android:layout_alignBottom="@+id/textView14"
-                android:layout_toRightOf="@+id/textView14"
-                android:layout_toEndOf="@+id/textView14"
                 android:layout_marginLeft="23dp"
                 android:layout_marginStart="23dp"
                 android:layout_marginTop="10dp"
-                android:layout_alignBaseline="@+id/textView14" />
+                android:layout_toEndOf="@+id/textView14"
+                android:layout_toRightOf="@+id/textView14"
+                android:text="PM 5:00"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="VIP"
                 android:id="@+id/textView15"
-                android:textColor="#000000"
-                android:layout_below="@+id/textView14"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="24dp" />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="R"
-                android:id="@+id/textView16"
-                android:layout_below="@+id/textView15"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView14"
+                android:layout_marginTop="24dp"
+                android:text="VIP"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#000000" />
 
             <TextView
+                android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="S"
-                android:id="@+id/textView17"
-                android:layout_below="@+id/textView16"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:textColor="#000000"
-                android:layout_marginBottom="17dp" />
+                android:layout_below="@+id/textView15"
+                android:text="R"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000000" />
 
             <TextView
+                android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView16"
+                android:layout_marginBottom="17dp"
+                android:text="S"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="2"
+                android:textColor="#000000" />
+
+            <TextView
                 android:id="@+id/text_vip_empty"
-                android:layout_alignTop="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/text_time_two"
-                android:layout_alignStart="@+id/text_time_two" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_alignStart="@+id/text_time_two"
+                android:layout_alignTop="@+id/textView15"
                 android:text="2"
-                android:id="@+id/text_r_empty"
-                android:layout_below="@+id/text_vip_empty"
-                android:layout_alignLeft="@+id/text_vip_empty"
-                android:layout_alignStart="@+id/text_vip_empty" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
+                android:id="@+id/text_r_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="1"
+                android:layout_alignLeft="@+id/text_vip_empty"
+                android:layout_alignStart="@+id/text_vip_empty"
+                android:layout_below="@+id/text_vip_empty"
+                android:text="2"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            <TextView
                 android:id="@+id/text_s_empty"
-                android:layout_below="@+id/text_r_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/text_r_empty"
                 android:layout_alignStart="@+id/text_r_empty"
+                android:layout_below="@+id/text_r_empty"
+                android:text="1"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#b0b0b0" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="60000"
                 android:id="@+id/text_vip_sale"
-                android:layout_alignTop="@+id/text_vip_empty"
-                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="30000"
-                android:id="@+id/text_r_sale"
-                android:layout_below="@+id/text_vip_sale"
                 android:layout_alignParentRight="true"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="15000"
-                android:id="@+id/text_s_sale"
-                android:layout_below="@+id/text_r_sale"
-                android:layout_alignParentRight="true"
-                android:textColor="#000000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="120000"
-                android:id="@+id/text_vip_price"
-                android:layout_alignTop="@+id/text_vip_sale"
-                android:layout_alignRight="@+id/text_r_price"
-                android:layout_alignEnd="@+id/text_r_price"
-                android:textColor="#746e6e" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="60000"
-                android:id="@+id/text_r_price"
-                android:layout_below="@+id/text_vip_price"
-                android:layout_toLeftOf="@+id/text_vip_sale"
-                android:layout_marginRight="28dp"
-                android:textColor="#746e6e" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="25000"
-                android:id="@+id/text_s_price"
-                android:layout_below="@+id/text_r_price"
-                android:layout_toLeftOf="@+id/text_vip_sale"
-                android:layout_marginRight="28dp"
-                android:textColor="#746e6e" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="좌석 남음"
-                android:id="@+id/textView18"
                 android:layout_alignTop="@+id/text_vip_empty"
+                android:text="60000"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/text_r_sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/text_vip_sale"
+                android:text="30000"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/text_s_sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/text_r_sale"
+                android:text="15000"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/text_vip_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/text_r_price"
+                android:layout_alignRight="@+id/text_r_price"
+                android:layout_alignTop="@+id/text_vip_sale"
+                android:text="120000"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#746e6e" />
+
+            <TextView
+                android:id="@+id/text_r_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_vip_price"
+                android:layout_marginRight="28dp"
+                android:layout_toLeftOf="@+id/text_vip_sale"
+                android:text="60000"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#746e6e" />
+
+            <TextView
+                android:id="@+id/text_s_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_r_price"
+                android:layout_marginRight="28dp"
+                android:layout_toLeftOf="@+id/text_vip_sale"
+                android:text="25000"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#746e6e" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/text_vip_empty"
+                android:layout_toEndOf="@+id/text_vip_empty"
                 android:layout_toRightOf="@+id/text_vip_empty"
-                android:layout_toEndOf="@+id/text_vip_empty" />
+                android:text="좌석 남음" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="좌석 남음"
                 android:id="@+id/textView19"
-                android:layout_alignTop="@+id/text_r_empty"
-                android:layout_toRightOf="@+id/text_r_empty"
-                android:layout_toEndOf="@+id/text_r_empty" />
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="좌석 남음"
-                android:id="@+id/textView20"
-                android:layout_below="@+id/textView19"
+                android:layout_alignTop="@+id/text_r_empty"
+                android:layout_toEndOf="@+id/text_r_empty"
                 android:layout_toRightOf="@+id/text_r_empty"
-                android:layout_toEndOf="@+id/text_r_empty" />
+                android:text="좌석 남음" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView19"
+                android:layout_toEndOf="@+id/text_r_empty"
+                android:layout_toRightOf="@+id/text_r_empty"
+                android:text="좌석 남음" />
 
         </RelativeLayout>
 
@@ -406,22 +409,23 @@
             android:layout_height="142dp">
 
             <android.support.v4.view.ViewPager
+                android:id="@+id/castPager"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/castPager"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
         </RelativeLayout>
+
         <Button
+            android:id="@+id/btn_next"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/basic_button"
             android:text="예매 하기"
-            android:id="@+id/btn_next"
-            android:textSize="22dp"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:textSize="22dp" />
 
     </LinearLayout>
 
