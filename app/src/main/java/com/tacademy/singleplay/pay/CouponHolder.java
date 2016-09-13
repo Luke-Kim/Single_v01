@@ -5,7 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.Discount;
 import com.tacademy.singleplay.data2.DiscountCoupons;
+import com.tacademy.singleplay.data2.ShowList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,4 +43,5 @@ public class CouponHolder extends RecyclerView.ViewHolder {
         this.discountCoupons = discountCoupons;
         percentView.setText("" + discountCoupons.getSaveOff()+"%");
     }
+
 }

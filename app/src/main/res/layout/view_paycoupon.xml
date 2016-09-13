@@ -14,12 +14,12 @@
 
         <TextView
             android:id="@+id/text_percent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
             android:text="New Text"
             android:textSize="20dp"
-             />
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/coupon_btn" />
 
     </FrameLayout>
 

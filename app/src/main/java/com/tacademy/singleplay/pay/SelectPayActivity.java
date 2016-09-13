@@ -63,9 +63,6 @@ public class SelectPayActivity extends AppCompatActivity {
     RelativeLayout mileage_layout;
     @BindView(R.id.coupon_conainer)
     FrameLayout coupon_layout;
-    @BindView(R.id.coupon_perc)
-    TextView coupon_txt;
-
 
     private static final String KEY_COUPON = "coupon";
     private static final String KEY_POINT = "point";
@@ -96,7 +93,6 @@ public class SelectPayActivity extends AppCompatActivity {
                 priceCalculator(KEY_COUPON, oriPrice * discountPercent / 100);
             }
         });
-
 
         coupon_layout.setVisibility(View.GONE);
         mileage_layout.setVisibility(View.GONE);

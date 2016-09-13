@@ -65,14 +65,15 @@ public class WishListActivity extends AppCompatActivity {
     }
 
     public void goDetailActivity(int playId, String playName) {
-        BookingManager.getInstance().setPlayId(""+playId);
+        BookingManager.getInstance().setPlayId("" + playId);
         BookingManager.getInstance().setPlayName(playName);
         Intent intent = new Intent(WishListActivity.this, ShowDetailActivity.class);
         startActivity(intent);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -81,23 +82,25 @@ public class WishListActivity extends AppCompatActivity {
     private void initData() {
         WishListRequest request = new WishListRequest(this);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<WishList[]>>() {
-                @Override
-                public void onSuccess(NetworkRequest<ResultsList<WishList[]>> request, ResultsList<WishList[]> result) {
-                    Toast.makeText(WishListActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                    wishListAdapter.addAll(result.getResults());
+            @Override
+            public void onSuccess(NetworkRequest<ResultsList<WishList[]>> request, ResultsList<WishList[]> result) {
+                Toast.makeText(WishListActivity.this, "성공" + result, Toast.LENGTH_SHORT).show();
 
-                    int wishItemCNT = wishListAdapter.getItemCount();
+                wishListAdapter.addAll(result.getResults());
 
-                    if (wishItemCNT == 0) {
-                        txt_no_wish.setVisibility(View.VISIBLE);
-                        no_wish.setVisibility(View.VISIBLE);
-                    }
+                int wishItemCNT = wishListAdapter.getItemCount();
+
+                if (wishItemCNT == 0) {
+                    txt_no_wish.setVisibility(View.VISIBLE);
+                    no_wish.setVisibility(View.VISIBLE);
                 }
+            }
 
-                @Override
-                public void onFail(NetworkRequest<ResultsList<WishList[]>> request, int errorCode, String errorMessage, Throwable e) {
-                    Toast.makeText(WishListActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
-                }
-            });
+
+            @Override
+            public void onFail(NetworkRequest<ResultsList<WishList[]>> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(WishListActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
