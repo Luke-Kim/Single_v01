@@ -405,7 +405,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="142dp">
+            android:layout_height="90dp">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/castPager"
