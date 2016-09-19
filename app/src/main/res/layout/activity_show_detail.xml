@@ -5,216 +5,211 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.tacademy.singleplay.ShowDetailActivity">
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        android:orientation="vertical">
-
-        <FrameLayout
-            android:id="@+id/my_frame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white">
-
-            <ImageView
-                android:id="@+id/image_poster"
-                android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:layout_alignParentTop="true"
-                android:background="@android:color/white"
-                android:scaleType="fitXY" />
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/my_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"/>
-
-            <CheckBox
-                android:id="@+id/btn_wish"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right|bottom"
-                android:layout_marginRight="16dp"
-                android:button="@drawable/wish_check_selector"
-                android:checked="false" />
-
-        </FrameLayout>
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/buttom_bg">
+            android:id="@+id/layout_header">
 
-            <TextView
-                android:id="@+id/text_play_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="6dp"
-                android:layout_toEndOf="@+id/img_category"
-                android:layout_toRightOf="@+id/img_category"
-                android:text="위키드"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/text_play_name"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/recommend_star" />
-
-            <TextView
-                android:id="@+id/text_star_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/imageView6"
-                android:layout_below="@+id/text_play_name"
-                android:layout_marginTop="3dp"
-                android:layout_toEndOf="@+id/imageView6"
-                android:layout_toRightOf="@+id/imageView6"
-                android:text="8.5"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/text_review_cnt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/text_star_score"
-                android:layout_alignBottom="@+id/text_star_score"
-                android:layout_toLeftOf="@+id/textView13"
-                android:layout_toStartOf="@+id/textView13"
-                android:text="22"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/imageView6"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="5dp"
-                android:text="공연장소"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textView2"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="3dp"
-                android:text="공연시간"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            <TextView
-                android:id="@+id/text_place"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/textView2"
-                android:layout_alignBottom="@+id/textView2"
-                android:layout_marginLeft="12dp"
-                android:layout_toEndOf="@+id/textView2"
-                android:layout_toRightOf="@+id/textView2"
-                android:text="삼성카드 블루스퀘어 서울 용산구 이태원로 249"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/text_day"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/text_place"
-                android:layout_alignStart="@+id/text_place"
-                android:layout_alignTop="@+id/textView5"
-                android:layout_marginBottom="5dp"
-                android:text="2016년 8월 31일"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/text_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/text_day"
-                android:layout_marginBottom="17dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_toEndOf="@+id/text_day"
-                android:layout_toRightOf="@+id/text_day"
-                android:text="PM 5:00"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/text_review_cnt"
-                android:layout_alignBottom="@+id/text_review_cnt"
-                android:layout_alignEnd="@+id/text_play_name"
-                android:layout_alignRight="@+id/text_play_name"
-                android:text="명 평가" />
-
-            <TextView
-                android:id="@+id/waiting_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/text_time"
-                android:layout_alignTop="@+id/text_time"
-                android:layout_toEndOf="@+id/text_time"
-                android:layout_toRightOf="@+id/text_time"
-                android:text="남은시간 데이터x" />
-
-            <ImageView
-                android:id="@+id/img_category"
-                android:layout_width="33dp"
-                android:layout_height="15dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="6dp"
-                android:scaleType="fitXY" />
-
-            <TextView
-                android:id="@+id/text_theme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/img_category"
-                android:layout_alignStart="@+id/img_category"
-                android:layout_alignTop="@+id/img_category"
-                android:text="      "
-                android:textAppearance="?android:attr/textAppearanceSmall" />
-
-            <TextView
-                android:id="@+id/textView23"
+            <FrameLayout
+                android:id="@+id/my_frame"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/text_theme"
-                android:layout_marginTop="1dp"
+                android:layout_height="wrap_content"
                 android:background="@android:color/white"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:elevation="0dp">
+
+                <ImageView
+                    android:id="@+id/image_poster"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_alignParentTop="true"
+                    android:background="@android:color/white"
+                    android:scaleType="fitXY" />
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/my_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"/>
+            </FrameLayout>
+
+            <RelativeLayout
+                android:id="@+id/checkbox_relativelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/buttom_bg"
+                android:layout_below="@+id/my_frame">
+
+                <TextView
+                    android:id="@+id/text_play_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_toEndOf="@+id/img_category"
+                    android:layout_toRightOf="@+id/img_category"
+                    android:text="위키드"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/text_play_name"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/recommend_star" />
+
+                <TextView
+                    android:id="@+id/text_star_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/imageView6"
+                    android:layout_below="@+id/text_play_name"
+                    android:layout_marginTop="3dp"
+                    android:layout_toEndOf="@+id/imageView6"
+                    android:layout_toRightOf="@+id/imageView6"
+                    android:text="8.5"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/text_review_cnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/text_star_score"
+                    android:layout_alignBottom="@+id/text_star_score"
+                    android:layout_toLeftOf="@+id/textView13"
+                    android:layout_toStartOf="@+id/textView13"
+                    android:text="22"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/imageView6"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="5dp"
+                    android:text="공연장소"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="3dp"
+                    android:text="공연시간"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                <TextView
+                    android:id="@+id/text_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/textView2"
+                    android:layout_alignBottom="@+id/textView2"
+                    android:layout_marginLeft="12dp"
+                    android:layout_toEndOf="@+id/textView2"
+                    android:layout_toRightOf="@+id/textView2"
+                    android:text="삼성카드 블루스퀘어 서울 용산구 이태원로 249"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/text_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/text_place"
+                    android:layout_alignStart="@+id/text_place"
+                    android:layout_alignTop="@+id/textView5"
+                    android:layout_marginBottom="5dp"
+                    android:text="2016년 8월 31일"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/text_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/text_day"
+                    android:layout_marginBottom="17dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_toEndOf="@+id/text_day"
+                    android:layout_toRightOf="@+id/text_day"
+                    android:text="PM 5:00"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#000000" />
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/text_review_cnt"
+                    android:layout_alignBottom="@+id/text_review_cnt"
+                    android:layout_alignEnd="@+id/text_play_name"
+                    android:layout_alignRight="@+id/text_play_name"
+                    android:text="명 평가" />
+
+                <TextView
+                    android:id="@+id/waiting_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/text_time"
+                    android:layout_alignTop="@+id/text_time"
+                    android:layout_toEndOf="@+id/text_time"
+                    android:layout_toRightOf="@+id/text_time"
+                    android:text="남은시간 데이터x" />
+
+                <ImageView
+                    android:id="@+id/img_category"
+                    android:layout_width="33dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="6dp"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/text_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/img_category"
+                    android:layout_alignStart="@+id/img_category"
+                    android:layout_alignTop="@+id/img_category"
+                    android:text="      "
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+                <FrameLayout
+                    android:id="@+id/wish_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/text_play_name"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                </FrameLayout>
+            </RelativeLayout>
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_below="@+id/layout_header"
+            android:id="@+id/layout_center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white">
@@ -229,7 +224,7 @@
                 android:layout_marginTop="17dp"
                 android:text="좌석정보"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_marginLeft="16dp" />
+                android:layout_marginLeft="16dp"/>
 
             <TextView
                 android:id="@+id/text_time_two"
@@ -256,7 +251,7 @@
                 android:text="VIP"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#000000"
-                android:layout_marginLeft="16dp" />
+                android:layout_marginLeft="16dp"/>
 
             <TextView
                 android:id="@+id/textView16"
@@ -268,7 +263,7 @@
                 android:text="R"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#000000"
-                android:layout_marginLeft="16dp" />
+                android:layout_marginLeft="16dp"/>
 
             <TextView
                 android:id="@+id/textView17"
@@ -281,7 +276,7 @@
                 android:text="S"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#000000"
-                android:layout_marginLeft="16dp" />
+                android:layout_marginLeft="16dp"/>
 
             <TextView
                 android:id="@+id/text_vip_empty"
@@ -291,8 +286,7 @@
                 android:layout_alignStart="@+id/text_time_two"
                 android:layout_alignTop="@+id/textView15"
                 android:text="2"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/abc_secondary_text_material_light" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/text_r_empty"
@@ -302,8 +296,7 @@
                 android:layout_alignStart="@+id/text_vip_empty"
                 android:layout_below="@+id/text_vip_empty"
                 android:text="2"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/abc_secondary_text_material_light" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <TextView
                 android:id="@+id/text_s_empty"
@@ -314,7 +307,7 @@
                 android:layout_below="@+id/text_r_empty"
                 android:text="1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/abc_secondary_text_material_light" />
+                android:textColor="#b0b0b0" />
 
             <TextView
                 android:id="@+id/text_vip_sale"
@@ -326,7 +319,7 @@
                 android:text="60000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#000000"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"/>
 
             <TextView
                 android:id="@+id/text_r_sale"
@@ -337,7 +330,7 @@
                 android:text="30000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#000000"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"/>
 
             <TextView
                 android:id="@+id/text_s_sale"
@@ -348,8 +341,7 @@
                 android:text="15000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#000000"
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"/>
 
             <TextView
                 android:id="@+id/text_vip_price"
@@ -358,10 +350,11 @@
                 android:text="120000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#746e6e"
-                android:paddingRight="40dp"
-                android:layout_above="@+id/text_r_sale"
-                android:layout_toLeftOf="@+id/text_vip_sale"
-                android:layout_toStartOf="@+id/text_vip_sale" />
+                android:layout_alignBaseline="@+id/text_vip_sale"
+                android:layout_alignBottom="@+id/text_vip_sale"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="80dp"/>
 
             <TextView
                 android:id="@+id/text_r_price"
@@ -370,10 +363,11 @@
                 android:text="60000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#746e6e"
-                android:paddingRight="40dp"
-                android:layout_below="@+id/text_vip_sale"
-                android:layout_toLeftOf="@+id/text_vip_sale"
-                android:layout_toStartOf="@+id/text_vip_sale" />
+                android:layout_alignBaseline="@+id/text_r_sale"
+                android:layout_alignBottom="@+id/text_r_sale"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="80dp"/>
 
             <TextView
                 android:id="@+id/text_s_price"
@@ -382,10 +376,11 @@
                 android:text="25000"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#746e6e"
-                android:paddingRight="40dp"
-                android:layout_below="@+id/text_r_sale"
-                android:layout_alignLeft="@+id/text_r_price"
-                android:layout_alignStart="@+id/text_r_price" />
+                android:layout_alignBaseline="@+id/text_s_sale"
+                android:layout_alignBottom="@+id/text_s_sale"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="80dp"/>
 
             <TextView
                 android:id="@+id/vip_call"
@@ -409,14 +404,16 @@
                 android:id="@+id/s_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/r_call"
-                android:layout_toEndOf="@+id/text_r_empty"
-                android:layout_toRightOf="@+id/text_r_empty"
-                android:text="좌석 남음" />
+                android:text="좌석 남음"
+                android:layout_alignTop="@+id/text_s_empty"
+                android:layout_toRightOf="@+id/text_s_empty"
+                android:layout_toEndOf="@+id/text_s_empty"/>
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:layout_below="@+id/layout_center"
+            android:id="@+id/layout_bottom"
             android:layout_width="match_parent"
             android:layout_height="90dp">
 
@@ -427,7 +424,6 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
-
         </RelativeLayout>
 
         <Button
@@ -437,8 +433,19 @@
             android:background="@drawable/basic_button"
             android:text="예매 하기"
             android:textColor="#ffffff"
-            android:textSize="22dp" />
-
-    </LinearLayout>
+            android:textSize="22dp"
+            android:layout_below="@+id/layout_bottom"
+            />
+        <CheckBox
+            android:id="@+id/btn_wish"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="190dp"
+            android:layout_marginRight="16dp"
+            android:button="@drawable/wish_check_selector"
+            android:checked="false" />
+    </RelativeLayout>
 
 </ScrollView>

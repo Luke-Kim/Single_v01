@@ -107,7 +107,6 @@ public class ShowDetailActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_show_detail);
         ButterKnife.bind(this);
-//        signInData = InsertPersonInfoActivity.signInData;
 
         mAdapter = new CastingAdapter(getLayoutInflater());
         pager.setAdapter(mAdapter);
