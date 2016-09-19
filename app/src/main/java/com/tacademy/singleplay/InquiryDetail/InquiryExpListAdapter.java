@@ -10,22 +10,23 @@ import android.widget.TextView;
 import com.tacademy.singleplay.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Tacademy on 2016-09-02.
  */
 public class InquiryExpListAdapter extends BaseExpandableListAdapter {
-
+    private Context context;
     private ArrayList<String> group = null;
-    private ArrayList<ArrayList<String>> child = null;
-    private LayoutInflater inflater = null;
+    private HashMap<String, ArrayList<String>> child = null;
+    private LayoutInflater inflater;
     InqExpViewHolder inqExpViewHolder = null;
 
-    public InquiryExpListAdapter(Context context, ArrayList<String> group, ArrayList<ArrayList<String>> child) {
+    public InquiryExpListAdapter(Context context, ArrayList<String> group, HashMap<String, ArrayList<String>> arrayChild) {
         super();
         this.inflater = LayoutInflater.from(context);
         this.group = group;
-        this.child = child;
+        this.child = arrayChild;
     }
     // 그룹 포지션을 반환한다.
     @Override
@@ -69,13 +70,13 @@ public class InquiryExpListAdapter extends BaseExpandableListAdapter {
     // 차일드뷰를 반환한다.
     @Override
     public String getChild(int groupPosition, int childPosition) {
-        return child.get(groupPosition).get(childPosition);
+        return child.get(group.get(groupPosition)).get(childPosition);
     }
 
     // 차일드뷰 사이즈를 반환한다.
     @Override
     public int getChildrenCount(int groupPosition) {
-        return child.get(groupPosition).size();
+        return child.get(group.get(groupPosition)).size();
     }
 
     // 차일드뷰 ID를 반환한다.

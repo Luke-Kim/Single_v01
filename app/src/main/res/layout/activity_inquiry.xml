@@ -23,7 +23,8 @@
             android:gravity="center"
             android:text="자주묻는 질문"
             android:textSize="22dp"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textStyle="bold" />
     </FrameLayout>
 
 

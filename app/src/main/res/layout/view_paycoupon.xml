@@ -7,7 +7,6 @@
     <FrameLayout
         android:layout_width="100dp"
         android:layout_height="70dp"
-        android:background="@drawable/coupon_btn"
         android:layout_marginTop="17dp"
         android:layout_marginBottom="17dp"
         android:layout_marginLeft="7dp">
@@ -20,6 +19,13 @@
             android:textSize="20dp"
             android:gravity="center_vertical|center_horizontal"
             android:background="@drawable/coupon_btn" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/coupon_img"
+            android:layout_gravity="center"
+            android:src="@drawable/coupon_btn" />
 
     </FrameLayout>
 

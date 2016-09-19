@@ -21,7 +21,8 @@
             android:gravity="center"
             android:text="예매 내역"
             android:textColor="#000000"
-            android:textSize="22dp" />
+            android:textSize="22dp"
+            android:textStyle="bold" />
     </FrameLayout>
 
     <android.support.v7.widget.RecyclerView
