@@ -11,6 +11,15 @@ public class BookingDetail {
     private String poster;
     private String reservationNo;
     private int settlement;
+    private int status;
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getSeatClass() {
         return this.seatClass;

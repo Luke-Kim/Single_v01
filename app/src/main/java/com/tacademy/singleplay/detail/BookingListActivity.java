@@ -11,8 +11,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingList;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.BookingListRequest;
@@ -44,6 +46,7 @@ public class BookingListActivity extends AppCompatActivity {
         bookingListAdapter.setOnAdapterItemClickListener(new BookingListAdapter.OnBookingAdapterItemClickLIstener() {
             @Override
             public void onBookingAdapterItemClick(View view, BookingList bookingList, int position) {
+                BookingManager.getInstance().setRid("" + bookingList.getRsvId());
                 startActivity(new Intent(BookingListActivity.this, CheckedBookingActivity.class));
                 finish();
             }

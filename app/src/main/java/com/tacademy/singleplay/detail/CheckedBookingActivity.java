@@ -63,7 +63,8 @@ public class CheckedBookingActivity extends AppCompatActivity {
 //    @BindView(R.id.txt_reservation_no)
 //    TextView txt_reservation_no;
     String rid;
-    int rsvId;
+    String rsvId;
+    int status;
     Booking booking;
 
     @Override
@@ -135,7 +136,16 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 Glide.with(image_poster.getContext())
                         .load(result.getResult().getPoster())
                         .into(image_poster);
-                rsvId = result.getResult().getRsvId();
+                rsvId = "" + result.getResult().getRsvId();
+                status = result.getResult().getStatus();
+                Toast.makeText(CheckedBookingActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
+
+                if (status == 0 ) {
+                    txt_reservation_no.setText("예약 취소된 공연입니다");
+                    btn_confirm.setVisibility(View.INVISIBLE);
+                    btn_cancel.setVisibility(View.INVISIBLE);
+                    btn_finish.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
