@@ -3,8 +3,8 @@ package com.tacademy.singleplay.request;
 import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
+import com.tacademy.singleplay.data2.Logout;
 import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.UserInfo;
 
 import java.lang.reflect.Type;
 
@@ -12,16 +12,16 @@ import okhttp3.HttpUrl;
 import okhttp3.Request;
 
 /**
- * Created by Tacademy on 2016-09-06.
+ * Created by Tacademy on 2016-09-19.
  */
-public class UserInfoRequest extends AbstractRequest<ResultsList<UserInfo>> {
+public class LogoutRequest extends AbstractRequest<ResultsList<Logout>> {
     Request request;
-
-    public UserInfoRequest(Context context) {
-        HttpUrl url = getBaseUrlHttpsBuilder()
-                .addPathSegment("users")
-                .addPathSegment("me")
+    public LogoutRequest(Context context) {
+        HttpUrl url = getBaseUrlBuilder()
+                .addPathSegment("auth")
+                .addPathSegment("logout")
                 .build();
+
 
         request = new Request.Builder()
                 .url(url)
@@ -31,7 +31,7 @@ public class UserInfoRequest extends AbstractRequest<ResultsList<UserInfo>> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultsList<UserInfo>>(){}.getType();
+        return new TypeToken<ResultsList<Logout>>(){}.getType();
     }
 
     @Override

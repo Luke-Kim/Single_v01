@@ -14,11 +14,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.login.LoginManager;
+import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.Logout;
 import com.tacademy.singleplay.data2.Profile;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.LogoutRequest;
 import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
@@ -54,13 +58,21 @@ public class ProfileActivity extends AppCompatActivity {
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ProfileActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
                 LoginManager.getInstance().logOut();
+                PropertyManager.getInstance().setCheckLogin(false);
+                LogoutRequest request = new LogoutRequest(MyApplication.getContext());
+                NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Logout>>() {
+                    @Override
+                    public void onSuccess(NetworkRequest<ResultsList<Logout>> request, ResultsList<Logout> result) {
+                        Toast.makeText(ProfileActivity.this, "로그아웃 성공", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFail(NetworkRequest<ResultsList<Logout>> request, int errorCode, String errorMessage, Throwable e) {
+                        Toast.makeText(ProfileActivity.this, "로그아웃 실패", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 Intent intent = new Intent(ProfileActivity.this, UserActivity.class);
-//                String name = null;
-//                String email = null;
-//                String phone = null;
-////                signInData = new SignInData(name, phone);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 finish();

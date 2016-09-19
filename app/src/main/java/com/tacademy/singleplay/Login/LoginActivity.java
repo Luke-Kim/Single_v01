@@ -17,12 +17,19 @@ import com.facebook.login.DefaultAudience;
 import com.facebook.login.LoginBehavior;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.FaceBook;
+import com.tacademy.singleplay.data2.Logout;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.UserInfo;
+import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.manager.UserInfoManager;
 import com.tacademy.singleplay.request.FacebookLoginRequest;
+import com.tacademy.singleplay.request.LogoutRequest;
+import com.tacademy.singleplay.request.UserInfoRequest;
 
 import java.util.Arrays;
 
@@ -32,10 +39,6 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.btn_facebook)
     Button facebookButton;
-//    @BindView(R.id.btn_naver)
-//    Button btn_naver;
-//    @BindView(R.id.btn_kakao)
-//    Button btn_kakao;
 
     CallbackManager callbackManager;
     LoginManager mLoginManager;
@@ -54,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         facebookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isLogin()) {
+                if (isLogin()) {
                     logoutFacebook();
                 } else {
                     loginFacebook();
@@ -62,34 +65,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         setButtonLabel();
-
-//        btn_naver.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//        btn_kakao.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(LoginActivity.this, SignInActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
     }
 
-    private  void setButtonLabel() {
-        if(isLogin()) {
+    private void setButtonLabel() {
+        if (isLogin()) {
             facebookButton.setText("logout");
         } else {
             facebookButton.setText("login");
         }
 
     }
+
     AccessTokenTracker mTracker;
 
     @Override
@@ -115,6 +101,20 @@ public class LoginActivity extends AppCompatActivity {
 
     private void logoutFacebook() {
         mLoginManager.logOut();
+        PropertyManager.getInstance().setCheckLogin(false);
+        clearUserInfo();
+        LogoutRequest request = new LogoutRequest(MyApplication.getContext());
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Logout>>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultsList<Logout>> request, ResultsList<Logout> result) {
+                Toast.makeText(LoginActivity.this, "로그아웃 성공", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ResultsList<Logout>> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(LoginActivity.this, "로그아웃 실패", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void loginFacebook() {
@@ -128,17 +128,20 @@ public class LoginActivity extends AppCompatActivity {
 //                Log.i("jeahyun : ", accessToken.getToken()+"");
                 String token = accessToken.getToken();
                 token2 = token;
+//                login(token);
                 FacebookLoginRequest request = new FacebookLoginRequest(LoginActivity.this, token);
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
                         Toast.makeText(LoginActivity.this, "성공", Toast.LENGTH_SHORT).show();
+                        getUserInfo();
+                        PropertyManager.getInstance().setCheckLogin(true);
                         startActivity(new Intent(LoginActivity.this, SignInActivity.class));
                     }
 
                     @Override
                     public void onFail(NetworkRequest<ResultsList<FaceBook>> request, int errorCode, String errorMessage, Throwable e) {
-                        Toast.makeText(LoginActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
                         if (isLogin()) {
                             //
                         }
@@ -159,14 +162,51 @@ public class LoginActivity extends AppCompatActivity {
         mLoginManager.logInWithReadPermissions(this, Arrays.asList("email"));
     }
 
+    private void login(String token) {
+
+    }
+
     private boolean isLogin() { //token 값 가지고 로그인 여부를 확인 할수 있음
-        AccessToken token = AccessToken.getCurrentAccessToken();
-        return token != null;
+//        AccessToken token = AccessToken.getCurrentAccessToken();
+//        return token != null;
+        return PropertyManager.getInstance().isCheckLogin();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void getUserInfo() {
+        UserInfoRequest request = new UserInfoRequest(MyApplication.getContext());
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<UserInfo>>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultsList<UserInfo>> request, ResultsList<UserInfo> result) {
+                UserInfoManager.getInstance().setPhone(result.getResult().getPhone());
+                UserInfoManager.getInstance().setCoupons(result.getResult().getCoupons());
+                UserInfoManager.getInstance().setName(result.getResult().getName());
+                UserInfoManager.getInstance().setTheme(result.getResult().getTheme());
+                UserInfoManager.getInstance().setDay(result.getResult().getDay());
+                UserInfoManager.getInstance().setEmail(result.getResult().getEmail());
+                UserInfoManager.getInstance().setMileage(result.getResult().getMileage());
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ResultsList<UserInfo>> request, int errorCode, String errorMessage, Throwable e) {
+
+            }
+        });
+    }
+
+    public void clearUserInfo() {
+        UserInfoManager.getInstance().setPhone("");
+        UserInfoManager.getInstance().setCoupons(0);
+        UserInfoManager.getInstance().setName("");
+        int[] theme = {0, 0, 0};
+        UserInfoManager.getInstance().setTheme(theme);
+        int[] day = {0, 0, 0, 0, 0, 0, 0,};
+        UserInfoManager.getInstance().setDay(day);
+        UserInfoManager.getInstance().setMileage(0);
     }
 }

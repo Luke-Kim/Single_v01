@@ -1,11 +1,11 @@
 package com.tacademy.singleplay.data2;
 
-public class FaceBook {
+public class Logout {
     private int code;
     private String message;
 
     public int getCode() {
-        return code;
+        return this.code;
     }
 
     public void setCode(int code) {
@@ -13,7 +13,7 @@ public class FaceBook {
     }
 
     public String getMessage() {
-        return message;
+        return this.message;
     }
 
     public void setMessage(String message) {

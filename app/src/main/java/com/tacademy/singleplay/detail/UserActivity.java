@@ -10,15 +10,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.tacademy.singleplay.PushActivity;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.FaceBook;
 import com.tacademy.singleplay.data2.Profile;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.login.LoginActivity;
+import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
-import com.tacademy.singleplay.request.FacebookLoginRequest;
 import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
@@ -40,8 +40,8 @@ public class UserActivity extends AppCompatActivity {
     TextView txt_mileage;
 
     String userImage = "asdf";
-    int uid;
     String token;
+    boolean checkLogin;
 
 
     @Override
@@ -81,7 +81,7 @@ public class UserActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -93,28 +93,31 @@ public class UserActivity extends AppCompatActivity {
 //        startActivity(intent);
 //    }
     @OnClick(R.id.coupon_layout)
-    public void coupon_layoutClick(){
+    public void coupon_layoutClick() {
         Intent intent = new Intent(UserActivity.this, CouponActivity.class);
         startActivity(intent);
     }
 
     @OnClick(R.id.pushView)
-    public void pushClick(){
+    public void pushClick() {
         Intent intent = new Intent(UserActivity.this, PushActivity.class);
         startActivity(intent);
     }
+
     @OnClick(R.id.bookingView)
-    public void bookingClick(){
+    public void bookingClick() {
         Intent intent = new Intent(UserActivity.this, BookingListActivity.class);
         startActivity(intent);
     }
+
     @OnClick(R.id.eventView)
-    public void eventClick(){
+    public void eventClick() {
         Intent intent = new Intent(UserActivity.this, EventNoticeActivity.class);
         startActivity(intent);
     }
+
     @OnClick(R.id.inquiryView)
-    public void inquiryClick(){
+    public void inquiryClick() {
         Intent intent = new Intent(UserActivity.this, InquiryActivity.class);
         startActivity(intent);
     }
@@ -125,9 +128,12 @@ public class UserActivity extends AppCompatActivity {
 //        String userImage = imageView.getDrawable().toString();
         String userEmail = "";
         String userPhone = "";
-        token = LoginActivity.token2;
+        checkLogin = PropertyManager.getInstance().isCheckLogin();
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        String token = LoginActivity.token2;
 
-        if(token == null) {
+        Toast.makeText(UserActivity.this, "" + checkLogin, Toast.LENGTH_SHORT).show();
+        if (!checkLogin) {
             ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Profile>>() {
                 @Override
@@ -136,30 +142,43 @@ public class UserActivity extends AppCompatActivity {
                     user_name.setVisibility(View.GONE);
                     profileView.setVisibility(View.GONE);
                 }
+
                 @Override
                 public void onFail(NetworkRequest<ResultsList<Profile>> request, int errorCode, String errorMessage, Throwable e) {
                     Toast.makeText(UserActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
-                    Log.i("onfail",errorMessage+" , "+errorCode );
+                    Log.i("onfail", errorMessage + " , " + errorCode);
                 }
             });
         } else {
-            FacebookLoginRequest request = new FacebookLoginRequest(this, token);
-            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
-                @Override
-                public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
-                    Toast.makeText(UserActivity.this, "token 성공", Toast.LENGTH_SHORT).show();
-                    user_name.setText(result.getResult().getName());
-                    coupone_count.setText(result.getResult().getCouponCnt()+"");
-                    txt_mileage.setText(result.getResult().getMileage()+"");
-                    profileView.setText("프로필 수정 및 로그아웃");
-                    profileView.setVisibility(View.VISIBLE);
-                    loginView.setVisibility(View.GONE);
-                }
-                @Override
-                public void onFail(NetworkRequest<ResultsList<FaceBook>> request, int errorCode, String errorMessage, Throwable e) {
-                    Toast.makeText(UserActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
-                }
-            });
+//            getUserInfo();
+            profileView.setText("프로필 수정 및 로그아웃");
+            profileView.setVisibility(View.VISIBLE);
+            loginView.setVisibility(View.GONE);
         }
     }
+
+//    public void getUserInfo() {
+//        UserInfoRequest request = new UserInfoRequest(MyApplication.getContext());
+//        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<UserInfo>>() {
+//            @Override
+//            public void onSuccess(NetworkRequest<ResultsList<UserInfo>> request, ResultsList<UserInfo> result) {
+//                UserInfoManager.getInstance().setPhone(result.getResult().getPhone());
+//                UserInfoManager.getInstance().setCoupons(result.getResult().getCoupons());
+//                UserInfoManager.getInstance().setName(result.getResult().getName());
+//                UserInfoManager.getInstance().setTheme(result.getResult().getTheme());
+//                UserInfoManager.getInstance().setDay(result.getResult().getDay());
+//                UserInfoManager.getInstance().setEmail(result.getResult().getEmail());
+//                UserInfoManager.getInstance().setMileage(result.getResult().getMileage());
+//
+//                user_name.setText(UserInfoManager.getInstance().getName());
+//                coupone_count.setText(UserInfoManager.getInstance().getCoupons() + "");
+//                txt_mileage.setText(UserInfoManager.getInstance().getMileage() + "");
+//            }
+//
+//            @Override
+//            public void onFail(NetworkRequest<ResultsList<UserInfo>> request, int errorCode, String errorMessage, Throwable e) {
+//
+//            }
+//        });
+//    }
 }
