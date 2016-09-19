@@ -22,6 +22,7 @@ public class PropertyManager {
     SharedPreferences.Editor mEditor;
 
     private static final String KEY_CHECK_LOGIN = "check login";
+    private static final String PROPERTY_REG_TOKEN = "regtoken";
 
     public PropertyManager() {
         Context context = MyApplication.getContext();
@@ -37,7 +38,6 @@ public class PropertyManager {
         return mPrefs.getBoolean(KEY_CHECK_LOGIN, false);
     }
 
-    private static final String PROPERTY_REG_TOKEN = "regtoken";
     public void setRegistrationToken(String token) {
         mEditor.putString(PROPERTY_REG_TOKEN, token);
         mEditor.commit();

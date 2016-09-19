@@ -128,15 +128,16 @@ public class LoginActivity extends AppCompatActivity {
 //                Log.i("jeahyun : ", accessToken.getToken()+"");
                 String token = accessToken.getToken();
                 token2 = token;
+                String regid = PropertyManager.getInstance().getRegistrationToken();
 //                login(token);
-                FacebookLoginRequest request = new FacebookLoginRequest(LoginActivity.this, token);
+                FacebookLoginRequest request = new FacebookLoginRequest(LoginActivity.this, token, regid);
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
                         Toast.makeText(LoginActivity.this, "성공", Toast.LENGTH_SHORT).show();
                         getUserInfo();
                         PropertyManager.getInstance().setCheckLogin(true);
-                        startActivity(new Intent(LoginActivity.this, SignInActivity.class));
+                        startActivity(new Intent(LoginActivity.this, com.tacademy.singleplay.login.SignInActivity.class));
                     }
 
                     @Override

@@ -63,8 +63,10 @@ public class SplashActivity extends AppCompatActivity {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (accessToken != null) {
             String token = accessToken.getToken();
+            String regid = PropertyManager.getInstance().getRegistrationToken();
 
-            FacebookLoginRequest request = new FacebookLoginRequest(MyApplication.getContext(), token);
+
+            FacebookLoginRequest request = new FacebookLoginRequest(MyApplication.getContext(), token, regid);
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
                 @Override
                 public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
@@ -81,7 +83,8 @@ public class SplashActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
                     AccessToken accessToken = AccessToken.getCurrentAccessToken();
-                    FacebookLoginRequest request = new FacebookLoginRequest(MyApplication.getContext(), accessToken.getToken());
+                    FacebookLoginRequest request = new FacebookLoginRequest(MyApplication.getContext(), accessToken.getToken(),
+                                                                                                        PropertyManager.getInstance().getRegistrationToken());
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
                         @Override
                         public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {

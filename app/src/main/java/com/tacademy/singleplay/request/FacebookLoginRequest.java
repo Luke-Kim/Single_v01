@@ -19,14 +19,14 @@ import okhttp3.RequestBody;
  */
 public class FacebookLoginRequest extends AbstractRequest<ResultsList<FaceBook>> {
     Request request;
-    public FacebookLoginRequest(Context context, String token) {
+    public FacebookLoginRequest(Context context, String token, String regid) {
         HttpUrl url = getBaseUrlBuilder()
                 .addPathSegments("auth/facebook/token")
                 .build();
 
         RequestBody body = new FormBody.Builder()
                 .add("access_token", token)
-                .add("registration_token", "1234" )
+                .add("registration_token", regid)
                 .build();
 
         request = new Request.Builder()

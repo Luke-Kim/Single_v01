@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "783646340432",
+    "firebase_url": "https://singleplay-f9a12.firebaseio.com",
+    "project_id": "singleplay-f9a12",
+    "storage_bucket": "singleplay-f9a12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:783646340432:android:236dad40e8df9e6e",
+        "android_client_info": {
+          "package_name": "com.tacademy.singleplay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "783646340432-dii3b7mujkkjvsl8u11gqrla2eiiel6l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqIjW9duwwbSwMtmBSNkJ_o1ZAv7wNE-s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
