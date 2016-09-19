@@ -34,19 +34,19 @@
         android:layout_width="70dp"
         android:layout_height="109dp"
         android:id="@+id/no_wish"
-        android:visibility="gone"
         android:src="@drawable/wish_no_contents"
         android:layout_alignTop="@+id/wishList_rv"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="168dp" />
+        android:layout_marginTop="168dp"
+        android:visibility="gone" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="아직 위시리스트가 없어요!"
-        android:visibility="gone"
         android:id="@+id/txt_no_wish"
         android:layout_below="@+id/no_wish"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
 </RelativeLayout>

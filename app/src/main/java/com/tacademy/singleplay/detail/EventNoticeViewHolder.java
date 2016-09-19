@@ -51,7 +51,7 @@ public class EventNoticeViewHolder extends RecyclerView.ViewHolder {
         Glide.with(imageView.getContext())
                 .load(eventNotice.getImage())
                 .into(imageView);
-        textView.setText(eventNotice.getBoardNo()+"");
+        textView.setText(eventNotice.getBoardNo()+". 공지사항 / 이벤트");
     }
 }
 
