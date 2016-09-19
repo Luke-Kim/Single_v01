@@ -38,10 +38,12 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponHolder>
         ch.setOnCouponItemClickListener(this);
         return ch;
     }
+    public static int checkedPosition = -1;
 
     @Override
     public void onBindViewHolder(CouponHolder holder, int position) {
         CouponHolder ch = (CouponHolder)holder;
+        holder.setChecked(checkedPosition == position);
         ch.setData(items.get(position));
     }
 
@@ -61,8 +63,27 @@ public class CouponAdapter extends RecyclerView.Adapter<CouponHolder>
 
     @Override
     public void onCouponItemClick(View view, DiscountCoupons discountCoupons, int position) {
+        setCouponItemChecked(position, true);
         if (listener != null) {
             listener.onCouponAdapterItemClick(view, discountCoupons, position);
         }
     }
+
+    public void setCouponItemChecked(int position, boolean isChecked){
+        if (checkedPosition != position) {
+            if (isChecked) {
+                checkedPosition = position;
+                notifyDataSetChanged();
+            }
+        } else {
+            if (!isChecked) {
+                checkedPosition = -1;
+                notifyDataSetChanged();
+            }
+            checkedPosition = -1;
+            notifyDataSetChanged();
+        }
+    }
+
+
 }

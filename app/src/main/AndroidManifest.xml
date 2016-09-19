@@ -101,10 +101,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".login.InsertPersonInfoActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".SearchActivity"
             android:theme="@style/Theme.Design.BottomSheetDialog.NoActionBar" />
         <activity

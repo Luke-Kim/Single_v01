@@ -6,6 +6,24 @@ public class Profile {
     private String message;
     private String profileImg;
     private String userName;
+    private int coupon;
+    private int mileage;
+
+    public int getMileage() {
+        return this.mileage;
+    }
+
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
+
+    public int getCoupon() {
+        return this.coupon;
+    }
+
+    public void setCoupon(int coupon) {
+        this.coupon = coupon;
+    }
 
     public String getUserPhone() {
         return this.userPhone;

@@ -10,15 +10,14 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
 import com.tacademy.singleplay.PushActivity;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.Profile;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.login.LoginActivity;
-import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
@@ -129,18 +128,19 @@ public class UserActivity extends AppCompatActivity {
         String userEmail = "";
         String userPhone = "";
         checkLogin = PropertyManager.getInstance().isCheckLogin();
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        String token = LoginActivity.token2;
-
         Toast.makeText(UserActivity.this, "" + checkLogin, Toast.LENGTH_SHORT).show();
-        if (!checkLogin) {
+        if (checkLogin) {
             ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Profile>>() {
                 @Override
                 public void onSuccess(NetworkRequest<ResultsList<Profile>> request, ResultsList<Profile> result) {
                     Toast.makeText(UserActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                    user_name.setVisibility(View.GONE);
-                    profileView.setVisibility(View.GONE);
+                    profileView.setText("프로필 수정 및 로그아웃");
+                    profileView.setVisibility(View.VISIBLE);
+                    loginView.setVisibility(View.GONE);
+                    user_name.setText(result.getResult().getUserName());
+                    coupone_count.setText(result.getResult().getCoupon()+"");
+                    txt_mileage.setText(result.getResult().getMileage()+"");
                 }
 
                 @Override
@@ -151,34 +151,10 @@ public class UserActivity extends AppCompatActivity {
             });
         } else {
 //            getUserInfo();
-            profileView.setText("프로필 수정 및 로그아웃");
-            profileView.setVisibility(View.VISIBLE);
-            loginView.setVisibility(View.GONE);
+
+            user_name.setVisibility(View.GONE);
+            profileView.setVisibility(View.GONE);
         }
     }
 
-//    public void getUserInfo() {
-//        UserInfoRequest request = new UserInfoRequest(MyApplication.getContext());
-//        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<UserInfo>>() {
-//            @Override
-//            public void onSuccess(NetworkRequest<ResultsList<UserInfo>> request, ResultsList<UserInfo> result) {
-//                UserInfoManager.getInstance().setPhone(result.getResult().getPhone());
-//                UserInfoManager.getInstance().setCoupons(result.getResult().getCoupons());
-//                UserInfoManager.getInstance().setName(result.getResult().getName());
-//                UserInfoManager.getInstance().setTheme(result.getResult().getTheme());
-//                UserInfoManager.getInstance().setDay(result.getResult().getDay());
-//                UserInfoManager.getInstance().setEmail(result.getResult().getEmail());
-//                UserInfoManager.getInstance().setMileage(result.getResult().getMileage());
-//
-//                user_name.setText(UserInfoManager.getInstance().getName());
-//                coupone_count.setText(UserInfoManager.getInstance().getCoupons() + "");
-//                txt_mileage.setText(UserInfoManager.getInstance().getMileage() + "");
-//            }
-//
-//            @Override
-//            public void onFail(NetworkRequest<ResultsList<UserInfo>> request, int errorCode, String errorMessage, Throwable e) {
-//
-//            }
-//        });
-//    }
 }

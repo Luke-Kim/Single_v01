@@ -88,8 +88,12 @@ public class SelectPayActivity extends AppCompatActivity {
         mAdapter.setOnAdapterItemClickListener(new CouponAdapter.OnCouponAdapterItemClickLIstener() {
             @Override
             public void onCouponAdapterItemClick(View view, DiscountCoupons coupons, int position) {
+
                 BookingManager.getInstance().setUseCoupon(coupons.getCouponNo() + "");
                 discountPercent = coupons.getSaveOff();
+                if(CouponAdapter.checkedPosition == -1) {
+                    discountPercent = 0;
+                }
                 priceCalculator(KEY_COUPON, oriPrice * discountPercent / 100);
             }
         });

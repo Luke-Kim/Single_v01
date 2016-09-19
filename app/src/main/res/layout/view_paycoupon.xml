@@ -24,8 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/coupon_img"
-            android:layout_gravity="center"
-            android:src="@drawable/coupon_btn" />
+            android:layout_gravity="center" />
 
     </FrameLayout>
 
