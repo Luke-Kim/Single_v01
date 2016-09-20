@@ -58,17 +58,20 @@
                 android:layout_marginBottom="18dp" />
 
             <Switch
-                android:layout_width="39dp"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:id="@+id/push_notice_switch"
                 android:checked="false"
-                android:thumb="@drawable/circle"
                 android:track="@drawable/switch_btn"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="16dp"
-                android:switchMinWidth="39dp" />
+                android:switchMinWidth="39dp"
+                android:thumb="@drawable/circle_thumb"
+                android:longClickable="true"
+                android:allowUndo="false"
+                android:switchPadding="10dp" />
 
         </RelativeLayout>
 
@@ -112,7 +115,8 @@
                 android:layout_below="@+id/textView40"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:contextClickable="false">
+                android:contextClickable="false"
+                android:transitionGroup="true">
 
                 <CheckBox
                     android:id="@+id/checkBox_mon"
@@ -335,11 +339,11 @@
                 android:layout_marginBottom="18dp" />
 
             <Switch
-                android:layout_width="39dp"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:id="@+id/switch1"
                 android:checked="false"
-                android:thumb="@drawable/circle"
+                android:thumb="@drawable/circle_thumb"
                 android:track="@drawable/switch_btn"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"

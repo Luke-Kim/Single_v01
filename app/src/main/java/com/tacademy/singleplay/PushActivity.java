@@ -1,5 +1,7 @@
 package com.tacademy.singleplay;
 
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -45,8 +47,8 @@ public class PushActivity extends AppCompatActivity {
     @BindView(R.id.checkBox_concert)
     CheckBox checkBox_concert;
 
-
-
+    CheckBox[] weekView = new CheckBox[7];
+    CheckBox[] themeView = new CheckBox[3];
     //CheckBox checkView;
     boolean isForced = false;
 
@@ -56,27 +58,26 @@ public class PushActivity extends AppCompatActivity {
         setContentView(R.layout.activity_push);
         ButterKnife.bind(this);
 
+        weekView[0] = checkBox_mon;
+        weekView[1] = checkBox_tue;
+        weekView[2] = checkBox_wed;
+        weekView[3] = checkBox_thur;
+        weekView[4] = checkBox_fri;
+        weekView[5] = checkBox_sat;
+        weekView[6] = checkBox_sun;
+
+        themeView[0] = checkBox_musical;
+        themeView[1] = checkBox_opera;
+        themeView[2] = checkBox_concert;
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-//        checkView = (CheckBox)findViewById(R.id.checkBox_mon);
-//
-//        checkView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                boolean checked = checkView.isChecked();
-//                if(isForced) {
-//                    checkView.setChecked(true);
-//                }
-//            }
-//        }
-
         btn_check_day.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(btn_check_day.isChecked()) {
-//                    boolean checked = btn_check_day.isChecked();
+                if (btn_check_day.isChecked()) {
                     isForced = true;
                     checkBox_mon.setChecked(isForced);
                     checkBox_tue.setChecked(isForced);
@@ -88,7 +89,6 @@ public class PushActivity extends AppCompatActivity {
                     switch_notice.setChecked(isForced);
                     isForced = false;
                 } else {
-//                    boolean checked = btn_check_day.isChecked();
                     checkBox_mon.setChecked(isForced);
                     checkBox_tue.setChecked(isForced);
                     checkBox_wed.setChecked(isForced);
@@ -103,7 +103,7 @@ public class PushActivity extends AppCompatActivity {
         btn_check_category.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if(btn_check_category.isChecked()) {
+                if (btn_check_category.isChecked()) {
                     isForced = true;
                     checkBox_musical.setChecked(isForced);
                     checkBox_opera.setChecked(isForced);
@@ -120,34 +120,9 @@ public class PushActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-//    @OnClick(R.id.btn_check_day)
-//    public void onCheckDay() {
-//        if(btn_check_day.isChecked()) {
-//
-//        } else {
-//
-//        }
-//
-//    }
-//
-//
-//
-//
-//    @OnClick(R.id.btn_check_category)
-//    public void onCheckCategory() {
-//
-//    }
-
-
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);

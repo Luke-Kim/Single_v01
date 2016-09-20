@@ -1,13 +1,22 @@
 package com.tacademy.singleplay.data2;
 
 public class Push {
-    private String result;
+    private int code;
+    private String message;
 
-    public String getResult() {
-        return this.result;
+    public int getCode() {
+        return code;
     }
 
-    public void setResult(String result) {
-        this.result = result;
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

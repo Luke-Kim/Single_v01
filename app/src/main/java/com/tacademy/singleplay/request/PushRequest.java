@@ -18,15 +18,24 @@ import okhttp3.RequestBody;
 public class PushRequest extends AbstractRequest<ResultsList<Push>> {
     Request request;
 
-    public PushRequest(Context context, String day, String theme) {
+    public PushRequest(Context context, String[] day, String[] theme) {
         HttpUrl url = getBaseUrlBuilder()
-                .addPathSegment("/users/me")
+                .addPathSegment("users")
+                .addPathSegment("me")
+                .addQueryParameter("action", "push")
                 .build();
 
         RequestBody body = new FormBody.Builder()
-                .add("action","push")
-                .add("day", day)
-                .add("theme", theme)
+                .add("day", day[0])
+                .add("day", day[1])
+                .add("day", day[2])
+                .add("day", day[3])
+                .add("day", day[4])
+                .add("day", day[5])
+                .add("day", day[6])
+                .add("theme", theme[0])
+                .add("theme", theme[1])
+                .add("theme", theme[2])
                 .build();
 
         request = new Request.Builder()
