@@ -72,18 +72,6 @@ public class PushActivity extends AppCompatActivity {
         setContentView(R.layout.activity_push);
         ButterKnife.bind(this);
 
-        weekView[0] = checkBox_mon;
-        weekView[1] = checkBox_tue;
-        weekView[2] = checkBox_wed;
-        weekView[3] = checkBox_thur;
-        weekView[4] = checkBox_fri;
-        weekView[5] = checkBox_sat;
-        weekView[6] = checkBox_sun;
-
-        themeView[0] = checkBox_musical;
-        themeView[1] = checkBox_opera;
-        themeView[2] = checkBox_concert;
-
         if (PropertyManager.getInstance().isCheckLogin()) {
             for (int i = 0; i < 7; i++) {
                 isDay[i] = "" + UserInfoManager.getInstance().getDay()[i];
@@ -92,17 +80,7 @@ public class PushActivity extends AppCompatActivity {
                 isTheme[i] = "" + UserInfoManager.getInstance().getTheme()[i];
             }
 
-
-            for (int i = 0; i < 7; i++) {
-                if (isDay[i] == "1") {
-                    weekView[i].setChecked(true);
-                }
-            }
-            for (int i = 0; i < 3; i++) {
-                if (isTheme[i] == "1") {
-                    themeView[i].setChecked(true);
-                }
-            }
+            setCheckBox();
         }
 
         Toast.makeText(PushActivity.this, "" + isDay[0] + isDay[1] + isDay[2] + isDay[3] + isDay[4] + isDay[5] + isDay[6], Toast.LENGTH_SHORT).show();
@@ -314,6 +292,40 @@ public class PushActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void setCheckBox() {
+        if (isDay[0].equals("1")) {
+            checkBox_mon.setChecked(true);
+        }
+        if (isDay[1].equals("1")) {
+            checkBox_tue.setChecked(true);
+        }
+        if (isDay[2].equals("1")) {
+            checkBox_wed.setChecked(true);
+        }
+        if (isDay[3].equals("1")) {
+            checkBox_thur.setChecked(true);
+        }
+        if (isDay[4].equals("1")) {
+            checkBox_fri.setChecked(true);
+        }
+        if (isDay[5].equals("1")) {
+            checkBox_sat.setChecked(true);
+        }
+        if (isDay[6].equals("1")) {
+            checkBox_sun.setChecked(true);
+        }
+
+        if (isTheme[0].equals("1")) {
+            checkBox_musical.setChecked(true);
+        }
+        if (isTheme[1].equals("1")) {
+            checkBox_opera.setChecked(true);
+        }
+        if (isTheme[2].equals("1")) {
+            checkBox_concert.setChecked(true);
+        }
     }
 
     @Override
