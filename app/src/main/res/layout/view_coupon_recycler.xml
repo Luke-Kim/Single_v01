@@ -20,17 +20,18 @@
         android:id="@+id/frameLayout">
 
         <TextView
-            android:layout_width="55dp"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:text="start"
             android:id="@+id/txt_periodStart"
-            android:paddingRight="20dp"
+            android:paddingRight="5dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:textColor="@color/couponString"
             android:layout_alignTop="@+id/textView42"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="5dp" />
+            android:textSize="10dp"
+            android:layout_marginRight="8dp" />
 
         <TextView
             android:layout_width="80dp"
@@ -46,17 +47,18 @@
             android:layout_marginTop="27dp" />
 
         <TextView
-            android:layout_width="55dp"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:text="end"
             android:id="@+id/txt_periodEnd"
-            android:paddingRight="20dp"
+            android:paddingRight="5dp"
             android:textColor="@color/couponString"
             android:layout_alignBaseline="@+id/txt_couponName"
             android:layout_alignBottom="@+id/txt_couponName"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="5dp" />
+            android:textSize="10dp"
+            android:layout_marginRight="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -90,9 +92,10 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="~"
             android:id="@+id/textView48"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="8dp"
             android:textColor="@color/couponString"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
+            android:textSize="10dp"
             android:layout_centerVertical="true"
             android:layout_alignLeft="@+id/txt_periodEnd"
             android:layout_alignStart="@+id/txt_periodEnd" />

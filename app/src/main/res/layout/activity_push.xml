@@ -22,7 +22,7 @@
             android:gravity="center"
             android:text="Push 알람 설정"
             android:textColor="#000000"
-            android:textSize="22dp" />
+            android:textSize="17dp" />
     </FrameLayout>
 
     <RelativeLayout

@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="더보기"
-            android:textSize="22dp"
+            android:textSize="17dp"
             android:textColor="#000000"
             android:background="@drawable/underline"
             android:textStyle="bold" />
