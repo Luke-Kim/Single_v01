@@ -4,16 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.EventNotice;
 import com.tacademy.singleplay.data2.EventNoticeDetail;
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.manager.NetworkManager;
-import com.tacademy.singleplay.manager.NetworkRequest;
-import com.tacademy.singleplay.request.EventNoticeDetailRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,15 +22,20 @@ public class EventDetailActivity extends AppCompatActivity {
     @BindView(R.id.notice_img)
     ImageView imageView;
 
-//    EventNoticeDetail eventNoticeDetail;
+    EventNoticeAdapter mAdapter;
+
+    EventNoticeDetail eventNoticeDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
         ButterKnife.bind(this);
+        mAdapter = new EventNoticeAdapter();
 
-
+        Glide.with(imageView.getContext())
+                .load(eventNoticeDetail.getImage()+"")  //string 이니까 Image 말고 그냥 getResult()
+                .into(imageView);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -50,22 +52,13 @@ public class EventDetailActivity extends AppCompatActivity {
     }
 
     public void initData() {
-        EventNoticeDetailRequest request = new EventNoticeDetailRequest(this, "1");
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<EventNoticeDetail>>() {
+        mAdapter.setOnAdapterItemClickListener(new EventNoticeAdapter.OnEventNoticeAdapterItemClickLIstener() {
             @Override
-            public void onSuccess(NetworkRequest<ResultsList<EventNoticeDetail>> request, ResultsList<EventNoticeDetail> result) {
-                Glide.with(imageView.getContext())
-                        .load(result.getResult().getImage())  //string 이니까 Image 말고 그냥 getResult()
-                        .into(imageView);
+            public void onEventNoticeAdapterItemClick(View view, EventNotice eventNotice, int position) {
 
-                Toast.makeText(EventDetailActivity.this, "성공", Toast.LENGTH_SHORT).show();
-
-            }
-
-            @Override
-            public void onFail(NetworkRequest<ResultsList<EventNoticeDetail>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(EventDetailActivity.this, "실패", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 }

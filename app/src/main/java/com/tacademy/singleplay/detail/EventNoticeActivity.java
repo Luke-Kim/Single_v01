@@ -17,9 +17,11 @@ import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.EventNotice;
+import com.tacademy.singleplay.data2.EventNoticeDetail;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.request.EventNoticeDetailRequest;
 import com.tacademy.singleplay.request.EventNoticeRequest;
 
 import butterknife.BindView;
@@ -33,9 +35,11 @@ public class EventNoticeActivity extends AppCompatActivity {
     @Nullable
     @BindView(R.id.rc_event)
     RecyclerView recyclerView;
-    @Nullable @BindView(R.id.image_thumbnail)
+    @Nullable
+    @BindView(R.id.image_thumbnail)
     ImageView image_thumbnail;
-    @Nullable @BindView(R.id.txt_list)
+    @Nullable
+    @BindView(R.id.txt_list)
     TextView txt_list;
 
     @Override
@@ -53,8 +57,23 @@ public class EventNoticeActivity extends AppCompatActivity {
         eventNoticeAdapter.setOnAdapterItemClickListener(new EventNoticeAdapter.OnEventNoticeAdapterItemClickLIstener() {
             @Override
             public void onEventNoticeAdapterItemClick(View view, EventNotice eventNotice, int position) {
-                startActivity(new Intent(EventNoticeActivity.this, EventDetailActivity.class));
-                finish();
+                //화면이 먼저 디테일로 전환되는게 아니라 리퀘스트 요청하고 원하는 디테일 데이터를 다 받아와서 성공 되었을때 디테일 화면으로 전환 되어야한다!!
+                String bid = eventNotice.getBoardNo() + "";
+                EventNoticeDetailRequest request = new EventNoticeDetailRequest(EventNoticeActivity.this, bid);
+                NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<EventNoticeDetail>>() {
+                    @Override
+                    public void onSuccess(NetworkRequest<ResultsList<EventNoticeDetail>> request, ResultsList<EventNoticeDetail> result) {
+                        Toast.makeText(EventNoticeActivity.this, "성공", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(EventNoticeActivity.this, EventDetailActivity.class)); // 성공되면 디테일로 화면이 전환된다!!
+                        finish();
+                    }
+
+                    @Override
+                    public void onFail(NetworkRequest<ResultsList<EventNoticeDetail>> request, int errorCode, String errorMessage, Throwable e) {
+                        Toast.makeText(EventNoticeActivity.this, "실패", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
 
         });
@@ -70,7 +89,7 @@ public class EventNoticeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -83,7 +102,7 @@ public class EventNoticeActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<ResultsList<EventNotice[]>> request, ResultsList<EventNotice[]> result) {
                 eventNoticeAdapter.addAll(result.getResults());
                 Toast.makeText(EventNoticeActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                if (result != null){
+                if (result != null) {
 
                 }
             }

@@ -3,6 +3,7 @@ package com.tacademy.singleplay.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,9 +24,9 @@ import com.tacademy.singleplay.data2.FaceBook;
 import com.tacademy.singleplay.data2.Logout;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.UserInfo;
-import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.UserInfoManager;
 import com.tacademy.singleplay.request.FacebookLoginRequest;
 import com.tacademy.singleplay.request.LogoutRequest;
@@ -129,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                 String token = accessToken.getToken();
                 token2 = token;
                 String regid = PropertyManager.getInstance().getRegistrationToken();
-//                login(token);
+                Log.i("123123 : ", regid);
                 FacebookLoginRequest request = new FacebookLoginRequest(LoginActivity.this, token, regid);
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
                     @Override
