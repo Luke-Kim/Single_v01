@@ -19,10 +19,13 @@ import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.FaceBook;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.UserInfo;
 import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.manager.UserInfoManager;
 import com.tacademy.singleplay.request.FacebookLoginRequest;
+import com.tacademy.singleplay.request.UserInfoRequest;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -71,6 +74,7 @@ public class SplashActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
                     Toast.makeText(SplashActivity.this, "자동 로그인 성공", Toast.LENGTH_SHORT).show();
+                    getUserInfo();
                 }
 
                 @Override
@@ -89,6 +93,7 @@ public class SplashActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(NetworkRequest<ResultsList<FaceBook>> request, ResultsList<FaceBook> result) {
                             Toast.makeText(SplashActivity.this, "자동 로그인 성공", Toast.LENGTH_SHORT).show();
+                            getUserInfo();
                         }
 
                         @Override
@@ -111,6 +116,26 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
+    public void getUserInfo() {
+        UserInfoRequest request = new UserInfoRequest(MyApplication.getContext());
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<UserInfo>>() {
+            @Override
+            public void onSuccess(NetworkRequest<ResultsList<UserInfo>> request, ResultsList<UserInfo> result) {
+                UserInfoManager.getInstance().setPhone(result.getResult().getPhone());
+                UserInfoManager.getInstance().setCoupons(result.getResult().getCoupons());
+                UserInfoManager.getInstance().setName(result.getResult().getName());
+                UserInfoManager.getInstance().setTheme(result.getResult().getTheme());
+                UserInfoManager.getInstance().setDay(result.getResult().getDay());
+                UserInfoManager.getInstance().setEmail(result.getResult().getEmail());
+                UserInfoManager.getInstance().setMileage(result.getResult().getMileage());
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ResultsList<UserInfo>> request, int errorCode, String errorMessage, Throwable e) {
+
+            }
+        });
+    }
 
 
     @Override

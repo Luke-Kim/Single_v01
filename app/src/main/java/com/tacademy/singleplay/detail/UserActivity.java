@@ -18,6 +18,7 @@ import com.tacademy.singleplay.login.LoginActivity;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.manager.PropertyManager;
+import com.tacademy.singleplay.manager.UserInfoManager;
 import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
@@ -48,6 +49,7 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         ButterKnife.bind(this);
+        Toast.makeText(UserActivity.this, "이름 : " + UserInfoManager.getInstance().getCoupons(), Toast.LENGTH_SHORT).show();
 //        signInData = InsertPersonInfoActivity.signInData;
 
         setSupportActionBar(toolbar);
@@ -85,7 +87,6 @@ public class UserActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 
     @OnClick(R.id.coupon_layout)
@@ -127,28 +128,13 @@ public class UserActivity extends AppCompatActivity {
         checkLogin = PropertyManager.getInstance().isCheckLogin();
         Toast.makeText(UserActivity.this, "" + checkLogin, Toast.LENGTH_SHORT).show();
         if (checkLogin) {
-            ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
-            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Profile>>() {
-                @Override
-                public void onSuccess(NetworkRequest<ResultsList<Profile>> request, ResultsList<Profile> result) {
-                    Toast.makeText(UserActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                    profileView.setText("프로필 수정 및 로그아웃");
-                    profileView.setVisibility(View.VISIBLE);
-                    loginView.setVisibility(View.GONE);
-                    user_name.setText(result.getResult().getUserName());
-                    coupone_count.setText(result.getResult().getCoupon()+"");
-                    txt_mileage.setText(result.getResult().getMileage()+"");
-                }
-
-                @Override
-                public void onFail(NetworkRequest<ResultsList<Profile>> request, int errorCode, String errorMessage, Throwable e) {
-                    Toast.makeText(UserActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
-                    Log.i("onfail", errorMessage + " , " + errorCode);
-                }
-            });
+            profileView.setText("프로필 수정 및 로그아웃");
+            profileView.setVisibility(View.VISIBLE);
+            loginView.setVisibility(View.GONE);
+            user_name.setText(UserInfoManager.getInstance().getName());
+            coupone_count.setText("" + UserInfoManager.getInstance().getCoupons());
+            txt_mileage.setText("" + UserInfoManager.getInstance().getMileage());
         } else {
-//            getUserInfo();
-
             user_name.setVisibility(View.GONE);
             profileView.setVisibility(View.GONE);
         }

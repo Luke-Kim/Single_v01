@@ -22,11 +22,13 @@ import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.manager.UserInfoManager;
 import com.tacademy.singleplay.request.LogoutRequest;
 import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -51,6 +53,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
 //        signInData = InsertPersonInfoActivity.signInData;
+
+        txt_email.setText(UserInfoManager.getInstance().getEmail());
+        txt_phone.setText(UserInfoManager.getInstance().getPhone());
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -78,34 +83,19 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        initData();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void initData() {
-
-        String userName = textView.getText().toString();
-//        String userImage = imageView.getDrawable().toString();
+    @OnClick(R.id.btn_change)
+    public void onChange() {
         String userEmail = txt_email.getText().toString();
         String userPhone = txt_phone.getText().toString();
 
-        ProfileRequest request = new ProfileRequest(this, userName, userImage, userEmail, userPhone);
+        ProfileRequest request = new ProfileRequest(this, userEmail, userPhone);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Profile>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Profile>> request, ResultsList<Profile> result) {
                 Toast.makeText(ProfileActivity.this, "성공", Toast.LENGTH_SHORT).show();
-//                imageView.setImageResource(Integer.parseInt(result.getResult().getProfileImg()+""));
-                textView.setText(result.getResult().getUserName());
-                txt_email.setText(result.getResult().getUserEmail());
-                txt_phone.setText(result.getResult().getUserPhone()+"");
+
             }
 
             @Override
@@ -114,6 +104,14 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.i("onfail ",errorMessage+" , "+errorCode );
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

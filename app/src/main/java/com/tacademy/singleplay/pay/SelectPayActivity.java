@@ -70,7 +70,7 @@ public class SelectPayActivity extends AppCompatActivity {
 
     CouponAdapter mAdapter;
 
-    int totalPrice, oriPrice, discountPrice = 0, discountPercent, usePoint;
+    int totalPrice, oriPrice, discountPrice = 0, discountPercent, userPoint;
     int discountCoupon = 0, discountPoint = 0;
 
     @Override
@@ -131,7 +131,8 @@ public class SelectPayActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Discount>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Discount>> request, ResultsList<Discount> result) {
-                pointView.setText("" + result.getResults().getMileage());
+                userPoint = result.getResults().getMileage();
+                pointView.setText("" + userPoint);
                 DiscountCoupons[] datas = result.getResults().getCoupons();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
