@@ -124,7 +124,7 @@ public class PushActivity extends AppCompatActivity {
                     checkBox_sat.setChecked(isForced);
                     checkBox_sun.setChecked(isForced);
                     switch_notice.setChecked(isForced);
-                    for (int i = 0; i<7; i++) {
+                    for (int i = 0; i < 7; i++) {
                         isDay[i] = "1";
                     }
                     isForced = false;
@@ -136,7 +136,7 @@ public class PushActivity extends AppCompatActivity {
                     checkBox_fri.setChecked(isForced);
                     checkBox_sat.setChecked(isForced);
                     checkBox_sun.setChecked(isForced);
-                    for (int i = 0; i<7; i++) {
+                    for (int i = 0; i < 7; i++) {
                         isDay[i] = "0";
                     }
                 }
@@ -152,7 +152,7 @@ public class PushActivity extends AppCompatActivity {
                     checkBox_opera.setChecked(isForced);
                     checkBox_concert.setChecked(isForced);
                     switch_notice.setChecked(isChecked);
-                    for (int i = 0; i<3; i++) {
+                    for (int i = 0; i < 3; i++) {
                         isTheme[i] = "1";
                     }
                     isForced = false;
@@ -160,7 +160,7 @@ public class PushActivity extends AppCompatActivity {
                     checkBox_musical.setChecked(isForced);
                     checkBox_opera.setChecked(isForced);
                     checkBox_concert.setChecked(isForced);
-                    for (int i = 0; i<3; i++) {
+                    for (int i = 0; i < 3; i++) {
                         isTheme[i] = "0";
                     }
                 }
@@ -181,6 +181,16 @@ public class PushActivity extends AppCompatActivity {
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<Push>() {
                         @Override
                         public void onSuccess(NetworkRequest<Push> request, Push result) {
+                            int[] day = new int[7];
+                            int[] theme = new int[3];
+                            for (int i = 0; i < 7; i++) {
+                                day[i] = Integer.parseInt(isDay[i]);
+                            }
+                            for (int i = 0; i < 3; i++) {
+                                theme[i] = Integer.parseInt(isTheme[i]);
+                            }
+                            UserInfoManager.getInstance().setDay(day);
+                            UserInfoManager.getInstance().setTheme(theme);
                             Toast.makeText(PushActivity.this, "알람설정 성공", Toast.LENGTH_SHORT).show();
                         }
 
@@ -189,7 +199,7 @@ public class PushActivity extends AppCompatActivity {
                             Toast.makeText(PushActivity.this, "알람설정 실패 : " + errorCode, Toast.LENGTH_SHORT).show();
                         }
                     });
-                } else  {
+                } else {
                     Toast.makeText(PushActivity.this, "로그인후 사용해주삼", Toast.LENGTH_SHORT).show();
                 }
             }
