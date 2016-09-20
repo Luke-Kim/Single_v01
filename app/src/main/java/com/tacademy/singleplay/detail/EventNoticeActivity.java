@@ -63,8 +63,12 @@ public class EventNoticeActivity extends AppCompatActivity {
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<EventNoticeDetail>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<EventNoticeDetail>> request, ResultsList<EventNoticeDetail> result) {
+                        Log.d("result",result.getResult().getImage().toString());
                         Toast.makeText(EventNoticeActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(EventNoticeActivity.this, EventDetailActivity.class)); // 성공되면 디테일로 화면이 전환된다!!
+                        Intent intent = new Intent(EventNoticeActivity.this, EventDetailActivity.class);
+                        intent.putExtra("result",  result.getResult());
+
+                        startActivity(intent); // 성공되면 디테일로 화면이 전환된다!!
                         finish();
                     }
 

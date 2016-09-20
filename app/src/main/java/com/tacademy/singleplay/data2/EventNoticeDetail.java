@@ -1,6 +1,8 @@
 package com.tacademy.singleplay.data2;
 
-public class EventNoticeDetail {
+import java.io.Serializable;
+
+public class EventNoticeDetail implements Serializable {
     private String image;
 
     public String getImage() {
