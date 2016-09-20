@@ -8,25 +8,6 @@
     android:orientation="vertical"
     tools:context=".detail.UserActivity">
 
-    <!--<android.support.design.widget.AppBarLayout-->
-        <!--android:id="@+id/appbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
-
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="?attr/actionBarSize"-->
-            <!--app:layout_scrollFlags="scroll|enterAlways">-->
-
-            <!--<include-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="match_parent"-->
-                <!--layout="@layout/view_back"/>-->
-        <!--</android.support.v7.widget.Toolbar>-->
-
-    <!--</android.support.design.widget.AppBarLayout>-->
 
     <FrameLayout
         android:id="@+id/my_frame"
@@ -65,19 +46,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/user_name"
-            android:layout_marginTop="22dp"
             android:textColor="#000000"
-            android:layout_alignTop="@+id/inquiry_img"
-            android:layout_toLeftOf="@+id/profileView"
-            android:layout_toStartOf="@+id/profileView" />
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="123"
+            android:layout_above="@+id/profileView"
+            android:layout_alignLeft="@+id/profileView"
+            android:layout_alignStart="@+id/profileView" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/profileView"
-
-            android:layout_below="@+id/user_name"
+            android:text="123"
+            android:layout_marginLeft="47dp"
+            android:layout_marginStart="47dp"
+            android:layout_alignBottom="@+id/inquiry_img"
             android:layout_toRightOf="@+id/inquiry_img"
+            android:layout_toEndOf="@+id/inquiry_img"
+            android:layout_marginBottom="20dp"
             android:layout_marginTop="8dp" />
 
         <TextView
@@ -85,17 +72,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/txt_login"
             android:text="로그인"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="65dp"
             android:textColor="#000000"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/inquiry_img"
-            android:background="@drawable/underline">
+            android:background="@drawable/underline"
+            android:id="@+id/relativeLayout12">
 
             <RelativeLayout
                 android:layout_width="180dp"
@@ -105,7 +92,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:background="#ffffff">
+                android:background="@drawable/underline_lgtgray"
+                android:layout_alignParentTop="true">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -159,7 +147,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:background="#ffffff">
+                android:background="@drawable/underline_lgtgray"
+                android:layout_alignParentTop="true">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -177,11 +166,11 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="POINT"
                     android:id="@+id/textView36"
-                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_alignTop="@+id/textView38"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="18dp"
-                    android:layout_marginRight="16dp" />
+                    android:layout_marginEnd="20dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -202,7 +191,7 @@
                     android:text="적립금"
                     android:id="@+id/textView38"
                     android:textColor="#000000"
-                    android:layout_alignTop="@+id/txt_mileage"
+                    android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/imageView16"
                     android:layout_toEndOf="@+id/imageView16" />
             </RelativeLayout>
@@ -232,7 +221,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:id="@+id/relativeLayout"
-            android:background="@color/background_material_light">
+            android:background="@drawable/underline_lgtgray">
 
             <TextView
                 android:layout_width="match_parent"
@@ -264,7 +253,7 @@
             android:layout_below="@+id/relativeLayout"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:background="@color/background_material_light">
+            android:background="@drawable/underline_lgtgray">
 
             <TextView
                 android:layout_width="match_parent"
@@ -296,7 +285,7 @@
             android:layout_below="@+id/relativeLayout4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:background="@color/background_material_light">
+            android:background="@drawable/underline_lgtgray">
 
             <TextView
                 android:layout_width="match_parent"
@@ -329,7 +318,7 @@
             android:layout_below="@+id/relativeLayout2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:background="@color/background_material_light">
+            android:background="@drawable/underline_lgtgray">
 
             <TextView
                 android:layout_width="match_parent"

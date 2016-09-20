@@ -52,11 +52,10 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
-//        signInData = InsertPersonInfoActivity.signInData;
 
         txt_email.setText(UserInfoManager.getInstance().getEmail());
         txt_phone.setText(UserInfoManager.getInstance().getPhone());
-
+        textView.setText(UserInfoManager.getInstance().getName());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
