@@ -58,7 +58,7 @@
                 android:layout_marginBottom="18dp" />
 
             <Switch
-                android:layout_width="wrap_content"
+                android:layout_width="39dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/push_notice_switch"
                 android:checked="false"
@@ -67,7 +67,8 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"
+                android:switchMinWidth="39dp" />
 
         </RelativeLayout>
 
@@ -334,7 +335,7 @@
                 android:layout_marginBottom="18dp" />
 
             <Switch
-                android:layout_width="wrap_content"
+                android:layout_width="39dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/switch1"
                 android:checked="false"
@@ -343,7 +344,9 @@
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"
+                android:switchMinWidth="39dp"
+                android:nestedScrollingEnabled="false" />
         </RelativeLayout>
 
     </RelativeLayout>

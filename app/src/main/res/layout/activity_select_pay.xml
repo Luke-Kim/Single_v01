@@ -55,11 +55,10 @@
             android:background="@drawable/underline"
             android:layout_below="@+id/relativeLayout8"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true">
+            android:layout_alignParentStart="true">
 
             <EditText
-                android:layout_width="50dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/edit_point"
                 android:textColor="@android:color/black"
@@ -70,7 +69,8 @@
                 android:layout_alignRight="@+id/text_point"
                 android:layout_alignEnd="@+id/text_point"
                 android:layout_alignLeft="@+id/text_point"
-                android:layout_alignStart="@+id/text_point" />
+                android:layout_alignStart="@+id/text_point"
+                android:textSize="13dp" />
 
             <TextView
                 android:layout_width="wrap_content"

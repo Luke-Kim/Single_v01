@@ -160,7 +160,11 @@ public class SelectPayActivity extends AppCompatActivity {
                 String inputPoint = inputView.getText().toString();
                 if (!TextUtils.isEmpty(inputPoint)) {
                     BookingManager.getInstance().setUseMileage(inputPoint);
-                    priceCalculator(KEY_POINT, Integer.parseInt(inputPoint));
+                    if (Integer.parseInt(inputPoint) <=  userPoint) {
+                        priceCalculator(KEY_POINT, Integer.parseInt(inputPoint));
+                    } else {
+                        priceCalculator(KEY_POINT, userPoint);
+                    }
                 }
             }
         });
