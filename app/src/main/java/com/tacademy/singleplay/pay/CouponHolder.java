@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.DiscountCoupons;
+import com.tacademy.singleplay.data2.DiscountCoupons;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

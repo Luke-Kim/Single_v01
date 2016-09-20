@@ -25,10 +25,10 @@ import android.widget.Toast;
 
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.Booking;
-import com.tacademy.singleplay.data.Discount;
-import com.tacademy.singleplay.data.DiscountCoupons;
-import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data2.Booking;
+import com.tacademy.singleplay.data2.Discount;
+import com.tacademy.singleplay.data2.DiscountCoupons;
+import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.detail.CheckedBookingActivity;
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;

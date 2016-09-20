@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.BookingList;
+import com.tacademy.singleplay.data2.BookingList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

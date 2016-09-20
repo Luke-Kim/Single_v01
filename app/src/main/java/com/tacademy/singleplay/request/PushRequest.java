@@ -2,8 +2,9 @@ package com.tacademy.singleplay.request;
 
 import android.content.Context;
 
-import com.tacademy.singleplay.data.Push;
-import com.tacademy.singleplay.data.ResultsList;
+import com.google.gson.reflect.TypeToken;
+import com.tacademy.singleplay.data2.Push;
+import com.tacademy.singleplay.data2.ResultsList;
 
 import java.lang.reflect.Type;
 
@@ -15,17 +16,18 @@ import okhttp3.RequestBody;
 /**
  * Created by Tacademy on 2016-08-30.
  */
-public class PushRequest extends AbstractRequest<ResultsList<Push>> {
+public class PushRequest extends AbstractRequest<Push> {
     Request request;
 
-    public PushRequest(Context context, String[] day, String[] theme) {
-        HttpUrl url = getBaseUrlBuilder()
+    public PushRequest(Context context, String noti, String[] day, String[] theme) {
+        HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment("users")
                 .addPathSegment("me")
                 .addQueryParameter("action", "push")
                 .build();
 
         RequestBody body = new FormBody.Builder()
+                .add("noti", noti)
                 .add("day", day[0])
                 .add("day", day[1])
                 .add("day", day[2])
@@ -38,6 +40,20 @@ public class PushRequest extends AbstractRequest<ResultsList<Push>> {
                 .add("theme", theme[2])
                 .build();
 
+//        RequestBody body = new FormBody.Builder()
+//                .add("noti", "on")
+//                .add("day", "1")
+//                .add("day", "1")
+//                .add("day", "1")
+//                .add("day", "1")
+//                .add("day", "1")
+//                .add("day", "1")
+//                .add("day", "1")
+//                .add("theme", "1")
+//                .add("theme", "1")
+//                .add("theme", "1")
+//                .build();
+
         request = new Request.Builder()
                 .url(url)
                 .put(body) //PUT 방식이니까 post 대신 put!
@@ -47,11 +63,11 @@ public class PushRequest extends AbstractRequest<ResultsList<Push>> {
 
     @Override
     protected Type getType() {
-        return null;
+        return new  TypeToken<Push>(){}.getType();
     }
 
     @Override
     public Request getRequest() {
-        return null;
+        return request;
     }
 }

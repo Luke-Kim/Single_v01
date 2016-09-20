@@ -1,15 +1,17 @@
 package com.tacademy.singleplay.request;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
-import com.tacademy.singleplay.data.Profile;
-import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data2.Profile;
+import com.tacademy.singleplay.data2.ResultsList;
 
 import java.lang.reflect.Type;
 
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
+import okhttp3.MultipartBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 

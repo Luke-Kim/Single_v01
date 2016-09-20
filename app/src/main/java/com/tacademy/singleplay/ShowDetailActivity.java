@@ -17,10 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.tacademy.singleplay.data.BookingListAdd;
-import com.tacademy.singleplay.data.ResultsList;
-import com.tacademy.singleplay.data.ShowDetail;
-import com.tacademy.singleplay.data.WishListDelete;
+import com.tacademy.singleplay.data2.BookingListAdd;
+import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.ShowDetail;
+import com.tacademy.singleplay.data2.WishListDelete;
 import com.tacademy.singleplay.login.LoginActivity;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;

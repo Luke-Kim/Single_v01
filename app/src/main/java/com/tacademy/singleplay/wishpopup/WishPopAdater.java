@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.WishList;
+import com.tacademy.singleplay.data2.WishList;
 
 
 import java.util.ArrayList;

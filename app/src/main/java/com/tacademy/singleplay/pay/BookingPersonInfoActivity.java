@@ -20,8 +20,9 @@ import android.widget.Toast;
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.ShowDetailActivity;
-import com.tacademy.singleplay.data.ResultsList;
-import com.tacademy.singleplay.data.UserInfo;
+import com.tacademy.singleplay.data.SignInData;
+import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.UserInfo;
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
@@ -47,7 +48,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
     EditText phoneView;
     @BindView(R.id.edit_email)
     EditText emailView;
-//    static public SignInData signInData;
+    static public SignInData signInData;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {

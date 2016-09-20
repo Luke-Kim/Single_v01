@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.EventNotice;
+import com.tacademy.singleplay.data2.EventNotice;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -12,8 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tacademy.singleplay.data.ResultsList;
-import com.tacademy.singleplay.data.WishList;
+import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.WishList;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;

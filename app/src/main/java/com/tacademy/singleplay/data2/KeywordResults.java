@@ -1,14 +1,24 @@
-package com.tacademy.singleplay.data;
+package com.tacademy.singleplay.data2;
 
-public class BookingListResultsList {
+public class KeywordResults {
+    private int playId;
     private int salePrice;
     private int price;
     private String playName;
-    private double starScoreAvg;
+    private String theme;
     private String playTime;
+    private int starScore;
     private String playDay;
     private String placeName;
     private String poster;
+
+    public int getPlayId() {
+        return this.playId;
+    }
+
+    public void setPlayId(int playId) {
+        this.playId = playId;
+    }
 
     public int getSalePrice() {
         return this.salePrice;
@@ -34,12 +44,12 @@ public class BookingListResultsList {
         this.playName = playName;
     }
 
-    public double getStarScoreAvg() {
-        return this.starScoreAvg;
+    public String getTheme() {
+        return this.theme;
     }
 
-    public void setStarScoreAvg(double starScoreAvg) {
-        this.starScoreAvg = starScoreAvg;
+    public void setTheme(String theme) {
+        this.theme = theme;
     }
 
     public String getPlayTime() {
@@ -48,6 +58,14 @@ public class BookingListResultsList {
 
     public void setPlayTime(String playTime) {
         this.playTime = playTime;
+    }
+
+    public int getStarScore() {
+        return this.starScore;
+    }
+
+    public void setStarScore(int starScore) {
+        this.starScore = starScore;
     }
 
     public String getPlayDay() {

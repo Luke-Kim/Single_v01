@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.EventNotice;
+import com.tacademy.singleplay.data2.EventNotice;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

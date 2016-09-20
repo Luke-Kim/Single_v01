@@ -3,7 +3,7 @@ package com.tacademy.singleplay.request;
 import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
-import com.tacademy.singleplay.data.Keyword;
+import com.tacademy.singleplay.data2.Keyword;
 
 import java.lang.reflect.Type;
 

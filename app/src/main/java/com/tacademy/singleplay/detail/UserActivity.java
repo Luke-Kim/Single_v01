@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -11,9 +12,14 @@ import android.widget.Toast;
 
 import com.tacademy.singleplay.PushActivity;
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.data2.Profile;
+import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.login.LoginActivity;
+import com.tacademy.singleplay.manager.NetworkManager;
+import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.UserInfoManager;
+import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

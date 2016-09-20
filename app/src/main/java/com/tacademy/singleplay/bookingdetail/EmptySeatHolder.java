@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.EmptySeatInfo;
+import com.tacademy.singleplay.data2.EmptySeatInfo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

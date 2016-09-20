@@ -10,8 +10,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tacademy.singleplay.data.Location;
-import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data2.Location;
+import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.LocationRequest;

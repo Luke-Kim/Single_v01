@@ -9,8 +9,9 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.EventNotice;
-import com.tacademy.singleplay.data.EventNoticeDetail;
+import com.tacademy.singleplay.data2.EventNotice;
+import com.tacademy.singleplay.data2.EventNoticeDetail;
+import com.tacademy.singleplay.data2.ResultsList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +24,9 @@ public class EventDetailActivity extends AppCompatActivity {
     ImageView imageView;
 
     EventNoticeAdapter mAdapter;
-//    ResultsList<EventNoticeDetail> resultsList;
+
+
+    ResultsList<EventNoticeDetail> resultsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +34,9 @@ public class EventDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event_detail);
         ButterKnife.bind(this);
         mAdapter = new EventNoticeAdapter();
-
         EventNoticeDetail intent = (EventNoticeDetail)getIntent().getSerializableExtra("result");
-        //직렬화 된 객체를 받을때는 getSerializableExtra()로 받는다.
-
         Glide.with(imageView.getContext())
-                .load(intent.getImage())  //intent.getImage()는 getResult().getImage()한 것과 같다!
+                .load(intent.getImage())  //string 이니까 Image 말고 그냥 getResult()
                 .into(imageView);
 
         setSupportActionBar(toolbar);

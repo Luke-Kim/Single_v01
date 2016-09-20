@@ -16,9 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data.EventNotice;
-import com.tacademy.singleplay.data.EventNoticeDetail;
-import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data2.EventNotice;
+import com.tacademy.singleplay.data2.EventNoticeDetail;
+import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.EventNoticeDetailRequest;
@@ -63,11 +63,12 @@ public class EventNoticeActivity extends AppCompatActivity {
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<EventNoticeDetail>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<EventNoticeDetail>> request, ResultsList<EventNoticeDetail> result) {
-//                        Log.d("result",result.getResult().getImage().toString());
+                        Log.d("result",result.getResult().getImage().toString());
                         Toast.makeText(EventNoticeActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(EventNoticeActivity.this, EventDetailActivity.class); // 성공되면 디테일로 화면이 전환된다!!
-                        intent.putExtra("result",  result.getResult()); //intent에 뭔가 실어서 넘기는 방법 // intent 사용해서 Result 객체를 전달함. // 객체를 넘길때는 직렬화(Serializable)해서 넘겨야 한다.
-                        startActivity(intent);
+                        Intent intent = new Intent(EventNoticeActivity.this, EventDetailActivity.class);
+                        intent.putExtra("result",  result.getResult());
+
+                        startActivity(intent); // 성공되면 디테일로 화면이 전환된다!!
                         finish();
                     }
 
@@ -83,6 +84,8 @@ public class EventNoticeActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(eventNoticeAdapter);
         recyclerView.setLayoutManager(manager);
+
+
 //        recyclerView.setAdapter(new EventNoticeAdapter(getApplicationContext(), items, R.layout.activity_event_notice));
 
         initData();

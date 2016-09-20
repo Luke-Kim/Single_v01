@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tacademy.singleplay.data.ShowList;
+import com.tacademy.singleplay.data2.ShowList;
 
 import java.util.ArrayList;
 import java.util.Arrays;
