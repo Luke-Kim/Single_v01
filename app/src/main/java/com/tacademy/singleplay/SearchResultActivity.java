@@ -10,8 +10,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.Search;
+import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data.Search;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;

@@ -7,7 +7,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.tacademy.singleplay.data2.WishList;
+import com.tacademy.singleplay.data.WishList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

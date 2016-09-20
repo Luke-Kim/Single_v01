@@ -8,7 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.tacademy.singleplay.data2.Search;
+import com.tacademy.singleplay.data.Search;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

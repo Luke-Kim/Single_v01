@@ -3,8 +3,8 @@ package com.tacademy.singleplay.request;
 import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.WishList;
+import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data.WishList;
 
 import java.lang.reflect.Type;
 

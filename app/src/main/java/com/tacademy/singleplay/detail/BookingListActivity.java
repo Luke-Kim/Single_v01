@@ -11,9 +11,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.Booking;
-import com.tacademy.singleplay.data2.BookingList;
-import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data.BookingList;
+import com.tacademy.singleplay.data.ResultsList;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;

@@ -20,10 +20,10 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.FaceBook;
-import com.tacademy.singleplay.data2.Logout;
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.UserInfo;
+import com.tacademy.singleplay.data.FaceBook;
+import com.tacademy.singleplay.data.Logout;
+import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data.UserInfo;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.manager.PropertyManager;
@@ -126,11 +126,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Toast.makeText(LoginActivity.this, "login manager...", Toast.LENGTH_SHORT).show();
                 AccessToken accessToken = AccessToken.getCurrentAccessToken();
-//                Log.i("jeahyun : ", accessToken.getToken()+"");
+                Log.i("jeahyun : ", accessToken.getToken()+"");
                 String token = accessToken.getToken();
                 token2 = token;
                 String regid = PropertyManager.getInstance().getRegistrationToken();
-                Log.i("123123 : ", regid);
+//                Log.i("123123 : ", regid);
                 FacebookLoginRequest request = new FacebookLoginRequest(LoginActivity.this, token, regid);
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<FaceBook>>() {
                     @Override

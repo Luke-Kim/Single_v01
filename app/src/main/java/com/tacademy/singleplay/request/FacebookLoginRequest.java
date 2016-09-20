@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
-import com.tacademy.singleplay.data2.FaceBook;
-import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data.FaceBook;
+import com.tacademy.singleplay.data.ResultsList;
 
 import java.lang.reflect.Type;
 

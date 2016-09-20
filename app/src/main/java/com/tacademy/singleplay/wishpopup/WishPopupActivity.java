@@ -9,7 +9,7 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data.ResultsList;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;

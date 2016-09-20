@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.Search;
+import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data.Search;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.SearchRequest;

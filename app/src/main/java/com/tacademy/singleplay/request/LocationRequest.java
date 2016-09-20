@@ -3,11 +3,10 @@ package com.tacademy.singleplay.request;
 import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
-import com.tacademy.singleplay.data2.Location;
-import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data.Location;
+import com.tacademy.singleplay.data.ResultsList;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 
 import okhttp3.HttpUrl;
 import okhttp3.Request;

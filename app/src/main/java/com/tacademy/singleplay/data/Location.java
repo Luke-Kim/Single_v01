@@ -1,15 +1,23 @@
-package com.tacademy.singleplay.data2;
+package com.tacademy.singleplay.data;
 
-public class BookingList {
+public class Location {
+    private int playId;
     private int salePrice;
     private int price;
     private String playName;
     private String playTime;
     private double starScore;
-    private int rsvId;
     private String playDay;
     private String placeName;
     private String poster;
+
+    public int getPlayId() {
+        return this.playId;
+    }
+
+    public void setPlayId(int playId) {
+        this.playId = playId;
+    }
 
     public int getSalePrice() {
         return this.salePrice;
@@ -49,14 +57,6 @@ public class BookingList {
 
     public void setStarScore(double starScore) {
         this.starScore = starScore;
-    }
-
-    public int getRsvId() {
-        return this.rsvId;
-    }
-
-    public void setRsvId(int rsvId) {
-        this.rsvId = rsvId;
     }
 
     public String getPlayDay() {

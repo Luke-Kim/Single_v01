@@ -2,8 +2,8 @@ package com.tacademy.singleplay.request;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.ResultsListTemp;
+import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data.ResultsListTemp;
 import com.tacademy.singleplay.manager.NetworkRequest;
 
 import java.io.IOException;

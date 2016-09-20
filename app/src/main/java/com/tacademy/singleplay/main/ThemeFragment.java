@@ -9,14 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.MainActivity;
 import com.tacademy.singleplay.MainShowAdapter;
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.ShowList;
+import com.tacademy.singleplay.data.ResultsList;
+import com.tacademy.singleplay.data.ShowList;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.manager.ShowListManager;

@@ -2,8 +2,8 @@ package com.tacademy.singleplay.request;
 
 import android.content.Context;
 
-import com.tacademy.singleplay.data2.Push;
-import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data.Push;
+import com.tacademy.singleplay.data.ResultsList;
 
 import java.lang.reflect.Type;
 

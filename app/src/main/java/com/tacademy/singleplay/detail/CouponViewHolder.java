@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.Coupon;
+import com.tacademy.singleplay.data.Coupon;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
