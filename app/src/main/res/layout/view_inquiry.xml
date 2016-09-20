@@ -14,5 +14,6 @@
         android:text="Large Text"
         android:id="@+id/inq_title"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:textSize="15dp" />
 </LinearLayout>
