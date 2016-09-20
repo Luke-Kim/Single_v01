@@ -95,7 +95,8 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="16dp" />
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp" />
 
             <CheckBox
                 android:layout_width="wrap_content"
@@ -298,8 +299,8 @@
                     android:layout_toRightOf="@+id/checkBox_musical"
                     android:layout_toEndOf="@+id/checkBox_musical"
                     android:layout_marginTop="16dp"
-                    android:layout_marginRight="18dp"
-                    android:layout_marginBottom="19dp" />
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginRight="5dp" />
 
                 <CheckBox
                     android:button="@drawable/push_concert"
@@ -307,10 +308,9 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/checkBox_concert"
                     android:checked="false"
-                    android:layout_alignParentTop="true"
+                    android:layout_alignTop="@+id/checkBox_opera"
                     android:layout_toRightOf="@+id/checkBox_opera"
-                    android:layout_toEndOf="@+id/checkBox_opera"
-                    android:layout_marginTop="16dp" />
+                    android:layout_toEndOf="@+id/checkBox_opera" />
             </RelativeLayout>
 
         </RelativeLayout>
