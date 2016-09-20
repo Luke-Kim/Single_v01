@@ -95,11 +95,11 @@
                 android:layout_height="wrap_content"
                 android:text="New Text"
                 android:id="@+id/text_star_score"
-                android:layout_alignTop="@+id/text_play_name"
-                android:layout_toRightOf="@+id/text_place_name"
-                android:layout_toEndOf="@+id/text_place_name"
-                android:layout_marginLeft="5dp"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:layout_alignBaseline="@+id/text_play_name"
+                android:layout_alignBottom="@+id/text_play_name"
+                android:layout_toRightOf="@+id/imageView17"
+                android:layout_toEndOf="@+id/imageView17" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -111,6 +111,18 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="5dp"
                 android:textColor="#ffffff" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView17"
+                android:src="@drawable/recommend_star"
+                android:layout_alignTop="@+id/text_play_name"
+                android:layout_toRightOf="@+id/text_play_name"
+                android:layout_toEndOf="@+id/text_play_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginRight="2dp" />
         </RelativeLayout>
 
     </RelativeLayout>

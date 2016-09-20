@@ -131,7 +131,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 txt_place_name.setText(result.getResult().getPlaceName());
                 txt_seat_class.setText(result.getResult().getSeatClass());
                 txt_seat_info.setText(result.getResult().getSeatInfo());
-                txt_settlement.setText(result.getResult().getSettlement()+"");
+                txt_settlement.setText(result.getResult().getSettlement()+"원");
                 txt_reservation_no.setText(result.getResult().getReservationNo());
                 Glide.with(image_poster.getContext())
                         .load(result.getResult().getPoster())

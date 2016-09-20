@@ -38,6 +38,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/inquiry_img"
+            android:src="@drawable/com_facebook_profile_picture_blank_square"
             android:layout_marginLeft="16dp"
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp" />
@@ -50,22 +51,21 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="123"
-            android:layout_above="@+id/profileView"
-            android:layout_alignLeft="@+id/profileView"
-            android:layout_alignStart="@+id/profileView" />
+            android:layout_alignTop="@+id/inquiry_img"
+            android:layout_toRightOf="@+id/inquiry_img"
+            android:layout_toEndOf="@+id/inquiry_img"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/profileView"
             android:text="123"
-            android:layout_marginLeft="47dp"
-            android:layout_marginStart="47dp"
-            android:layout_alignBottom="@+id/inquiry_img"
-            android:layout_toRightOf="@+id/inquiry_img"
-            android:layout_toEndOf="@+id/inquiry_img"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="8dp" />
+            android:layout_below="@+id/user_name"
+            android:layout_alignLeft="@+id/user_name"
+            android:layout_alignStart="@+id/user_name"
+            android:layout_marginTop="6dp" />
 
         <TextView
             android:layout_width="wrap_content"
