@@ -7,8 +7,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.tacademy.singleplay.MyApplication;
-import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.ShowList;
 
 import butterknife.BindView;
@@ -34,6 +32,8 @@ public class MainShowHolder extends RecyclerView.ViewHolder {
     RelativeLayout posterView;
     @BindView(R.id.image_poster)
     ImageView poster;
+    @BindView(R.id.show_list_layout)
+    RelativeLayout show_layout;
 
 
 

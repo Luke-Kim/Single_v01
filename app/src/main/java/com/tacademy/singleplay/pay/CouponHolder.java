@@ -1,5 +1,6 @@
 package com.tacademy.singleplay.pay;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Checkable;
@@ -33,8 +34,10 @@ public class CouponHolder extends RecyclerView.ViewHolder implements Checkable{
     public void drawCheck() {
         if(isChecked) {
             coupon_img.setImageResource(R.drawable.pay_coupon);
+            percentView.setTextColor(Color.RED);
         } else {
             coupon_img.setImageResource(R.drawable.pay_coupon_n);
+            percentView.setTextColor(Color.LTGRAY);
         }
     }
 

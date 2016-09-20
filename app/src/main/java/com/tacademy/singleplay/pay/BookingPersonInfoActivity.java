@@ -64,7 +64,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
 
         phoneView.setInputType(InputType.TYPE_CLASS_NUMBER); // 전화번호 칸에 숫자만 가능
         phoneView.addTextChangedListener(new PhoneNumberFormattingTextWatcher()); // 전화번호 입력에 하이픈(-) 입력하는 방법
-        InputFilter[] FilterArray = new InputFilter[1];
+        InputFilter[] FilterArray = new InputFilter[1]; // 길이 제한
         FilterArray[0] = new InputFilter.LengthFilter(13);
         phoneView.setFilters(FilterArray);
 

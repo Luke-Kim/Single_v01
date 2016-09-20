@@ -111,7 +111,6 @@ public class ShowDetailActivity extends AppCompatActivity {
 
         mAdapter = new CastingAdapter(getLayoutInflater());
         pager.setAdapter(mAdapter);
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);

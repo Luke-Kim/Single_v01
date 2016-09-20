@@ -59,7 +59,7 @@
             android:layout_alignParentEnd="true">
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/edit_point"
                 android:textColor="@android:color/black"
