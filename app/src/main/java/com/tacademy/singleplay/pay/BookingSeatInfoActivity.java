@@ -136,6 +136,7 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 intent = new Intent(BookingSeatInfoActivity.this, BookingPersonInfoActivity.class);
+                intent.putExtra("theme",theme);
                 startActivity(intent);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
