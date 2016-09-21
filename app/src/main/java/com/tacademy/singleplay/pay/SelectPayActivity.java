@@ -29,13 +29,16 @@ import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.Discount;
 import com.tacademy.singleplay.data2.DiscountCoupons;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.UserInfo;
 import com.tacademy.singleplay.detail.CheckedBookingActivity;
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.manager.UserInfoManager;
 import com.tacademy.singleplay.request.BookingRequest;
 import com.tacademy.singleplay.request.DiscountRequest;
+import com.tacademy.singleplay.request.UserInfoRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -206,6 +209,21 @@ public class SelectPayActivity extends AppCompatActivity {
                     public void onSuccess(NetworkRequest<ResultsList<Booking>> request, ResultsList<Booking> result) {
                         BookingManager.getInstance().setRid("" + result.getResult().getRsvId());// 여기서 rid를 넘겨줘야 한다!! , rid rvid 는 여기서 받아온다!!
                         Toast.makeText(SelectPayActivity.this, "예약성공", Toast.LENGTH_SHORT).show();
+                        UserInfoRequest request_user = new UserInfoRequest(MyApplication.getContext());
+                        NetworkManager.getInstance().getNetworkData(request_user, new NetworkManager.OnResultListener<ResultsList<UserInfo>>() {
+                            @Override
+                            public void onSuccess(NetworkRequest<ResultsList<UserInfo>> request, ResultsList<UserInfo> result) {
+                                int CouponCnt = result.getResult().getCoupons();
+                                int Mileage = result.getResult().getMileage();
+                                UserInfoManager.getInstance().setCoupons(CouponCnt);
+                                UserInfoManager.getInstance().setMileage(Mileage);
+                            }
+
+                            @Override
+                            public void onFail(NetworkRequest<ResultsList<UserInfo>> request, int errorCode, String errorMessage, Throwable e) {
+
+                            }
+                        });
                         Intent intent = new Intent(SelectPayActivity.this, CheckedBookingActivity.class);
                         startActivity(intent);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -19,6 +19,15 @@ public class UserInfoManager {
     private int mileage;
     private int[] day;
     private int[] theme;
+    private String noti;
+
+    public String getNoti() {
+        return noti;
+    }
+
+    public void setNoti(String noti) {
+        this.noti = noti;
+    }
 
     public String getName() {
         return name;

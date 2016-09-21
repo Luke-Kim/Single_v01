@@ -43,6 +43,11 @@ public class UserActivity extends AppCompatActivity {
     String token;
     boolean checkLogin;
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        initData();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +80,6 @@ public class UserActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-        initData();
     }
 
     @Override
@@ -122,9 +124,6 @@ public class UserActivity extends AppCompatActivity {
     public void initData() {
 
         final String userName = user_name.getText().toString();
-//        String userImage = imageView.getDrawable().toString();
-        String userEmail = "";
-        String userPhone = "";
         checkLogin = PropertyManager.getInstance().isCheckLogin();
         Toast.makeText(UserActivity.this, "" + checkLogin, Toast.LENGTH_SHORT).show();
         if (checkLogin) {
@@ -135,6 +134,7 @@ public class UserActivity extends AppCompatActivity {
             coupone_count.setText("" + UserInfoManager.getInstance().getCoupons());
             txt_mileage.setText("" + UserInfoManager.getInstance().getMileage());
         } else {
+            loginView.setVisibility(View.VISIBLE);
             user_name.setVisibility(View.GONE);
             profileView.setVisibility(View.GONE);
         }

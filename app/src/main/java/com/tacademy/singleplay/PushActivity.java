@@ -12,8 +12,6 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.data2.Push;
-import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.UserInfo;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.manager.PropertyManager;
@@ -72,6 +70,12 @@ public class PushActivity extends AppCompatActivity {
         setContentView(R.layout.activity_push);
         ButterKnife.bind(this);
 
+        if (UserInfoManager.getInstance().getNoti().equals("on")) {
+            switch_notice.setChecked(true);
+        } else {
+            switch_notice.setChecked(false);
+        }
+
         if (PropertyManager.getInstance().isCheckLogin()) {
             for (int i = 0; i < 7; i++) {
                 isDay[i] = "" + UserInfoManager.getInstance().getDay()[i];
@@ -83,7 +87,7 @@ public class PushActivity extends AppCompatActivity {
             setCheckBox();
         }
 
-        Toast.makeText(PushActivity.this, "" + isDay[0] + isDay[1] + isDay[2] + isDay[3] + isDay[4] + isDay[5] + isDay[6], Toast.LENGTH_SHORT).show();
+        Toast.makeText(PushActivity.this, "" + isTheme[0] + isTheme[1] + isTheme[2] , Toast.LENGTH_SHORT).show();
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -101,7 +105,6 @@ public class PushActivity extends AppCompatActivity {
                     checkBox_fri.setChecked(isForced);
                     checkBox_sat.setChecked(isForced);
                     checkBox_sun.setChecked(isForced);
-                    switch_notice.setChecked(isForced);
                     for (int i = 0; i < 7; i++) {
                         isDay[i] = "1";
                     }
@@ -129,7 +132,6 @@ public class PushActivity extends AppCompatActivity {
                     checkBox_musical.setChecked(isForced);
                     checkBox_opera.setChecked(isForced);
                     checkBox_concert.setChecked(isForced);
-                    switch_notice.setChecked(isChecked);
                     for (int i = 0; i < 3; i++) {
                         isTheme[i] = "1";
                     }
@@ -144,6 +146,7 @@ public class PushActivity extends AppCompatActivity {
                 }
             }
         });
+
 
         switch_notice.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -286,9 +289,9 @@ public class PushActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    isTheme[1] = "1";
+                    isTheme[2] = "1";
                 } else {
-                    isTheme[1] = "0";
+                    isTheme[2] = "0";
                 }
             }
         });

@@ -8,6 +8,15 @@ public class UserInfo {
     private int[] day;
     private String email;
     private int mileage;
+    private String noti;
+
+    public String getNoti() {
+        return noti;
+    }
+
+    public void setNoti(String noti) {
+        this.noti = noti;
+    }
 
     public String getPhone() {
         return this.phone;
