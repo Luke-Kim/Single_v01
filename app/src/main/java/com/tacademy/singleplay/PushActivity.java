@@ -75,14 +75,20 @@ public class PushActivity extends AppCompatActivity {
         setContentView(R.layout.activity_push);
         ButterKnife.bind(this);
 
-        Toast.makeText(PushActivity.this, "" + UserInfoManager.getInstance().getNoti(), Toast.LENGTH_SHORT).show();
-
         if (UserInfoManager.getInstance().getNoti().equals("on")) {
             switch_notice.setChecked(true);
             noti = "on";
         } else {
             switch_notice.setChecked(false);
             noti = "off";
+        }
+
+        if (UserInfoManager.getInstance().getWishnoti().equals("on")) {
+            switch_wish_notice.setChecked(true);
+            wishNoti = "on";
+        } else {
+            switch_wish_notice.setChecked(false);
+            wishNoti = "off";
         }
 
         if (PropertyManager.getInstance().isCheckLogin()) {
@@ -182,6 +188,7 @@ public class PushActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(NetworkRequest<WishListNoti> request, WishListNoti result) {
                         Toast.makeText(PushActivity.this, "위시리스트 공연알림 : " + wishNoti, Toast.LENGTH_SHORT).show();
+                        UserInfoManager.getInstance().setWishnoti(wishNoti);
                     }
 
                     @Override

@@ -9,6 +9,15 @@ public class UserInfo {
     private String email;
     private int mileage;
     private String noti;
+    private String wishnoti;
+
+    public String getWishnoti() {
+        return wishnoti;
+    }
+
+    public void setWishnoti(String wishnoti) {
+        this.wishnoti = wishnoti;
+    }
 
     public String getNoti() {
         return noti;

@@ -129,6 +129,7 @@ public class SplashActivity extends AppCompatActivity {
                 UserInfoManager.getInstance().setEmail(result.getResult().getEmail());
                 UserInfoManager.getInstance().setMileage(result.getResult().getMileage());
                 UserInfoManager.getInstance().setNoti(result.getResult().getNoti());
+                UserInfoManager.getInstance().setWishnoti(result.getResult().getWishnoti());
             }
 
             @Override

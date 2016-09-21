@@ -71,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
         ShowListManager.getInstance().setSort("0");
         ShowListManager.getInstance().setPosition(0);
 
+        String test = "17:50";
+        String[] testAraay = test.split(":");
+        Toast.makeText(MainActivity.this, "시간 : " + testAraay[0] + ",  분 : " + testAraay[1], Toast.LENGTH_SHORT).show();
+
         setPager();
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

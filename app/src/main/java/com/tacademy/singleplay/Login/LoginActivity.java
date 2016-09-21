@@ -193,6 +193,7 @@ public class LoginActivity extends AppCompatActivity {
                 UserInfoManager.getInstance().setEmail(result.getResult().getEmail());
                 UserInfoManager.getInstance().setMileage(result.getResult().getMileage());
                 UserInfoManager.getInstance().setNoti(result.getResult().getNoti());
+                UserInfoManager.getInstance().setWishnoti(result.getResult().getWishnoti());
             }
 
             @Override
@@ -212,5 +213,6 @@ public class LoginActivity extends AppCompatActivity {
         UserInfoManager.getInstance().setDay(day);
         UserInfoManager.getInstance().setMileage(0);
         UserInfoManager.getInstance().setNoti("off");
+        UserInfoManager.getInstance().setWishnoti("off");
     }
 }
