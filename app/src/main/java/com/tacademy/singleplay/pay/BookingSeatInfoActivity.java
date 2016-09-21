@@ -54,9 +54,13 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
     TextView show_day;
     @BindView(R.id.show_name)
     TextView show_name;
+    @BindView(R.id.show_theme)
+    ImageView themeView;
 
     PhotoViewAttacher mAttacher;
     EmptySeatAdapter mAdapter;
+
+    String theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +70,23 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
 
         final Button btn = (Button) findViewById(R.id.btn_nextstep);
 
-        // photoview opensource 설정
-//        mAttacher = new PhotoViewAttacher(seat_image);
-//        mAttacher.setScale(2.0f);
-        /////////////////////////////////// photoview
+        Intent intent = getIntent();
+        theme = intent.getStringExtra("theme");
+        switch (theme) {
+            case "뮤지컬": {
+
+                themeView.setBackgroundResource(R.drawable.contents_category_musical);
+                break;
+            }
+            case "오페라": {
+                themeView.setBackgroundResource(R.drawable.contents_category_opera);
+                break;
+            }
+            case "콘서트": {
+                themeView.setBackgroundResource(R.drawable.contents_category_concert);
+                break;
+            }
+        }
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

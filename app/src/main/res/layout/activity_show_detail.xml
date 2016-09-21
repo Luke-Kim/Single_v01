@@ -58,7 +58,7 @@
                 android:layout_marginLeft="6dp"
                 android:layout_toEndOf="@+id/img_category"
                 android:layout_toRightOf="@+id/img_category"
-                android:text="위키드"
+                android:text="Title"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <ImageView
@@ -193,13 +193,12 @@
 
             <TextView
                 android:id="@+id/text_theme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/img_category"
-                android:layout_alignStart="@+id/img_category"
+                android:layout_width="33dp"
+                android:layout_height="16dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
                 android:layout_alignTop="@+id/img_category"
-                android:text="      "
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:layout_toLeftOf="@+id/text_play_name"
+                android:layout_toStartOf="@+id/text_play_name" />
 
             <TextView
                 android:id="@+id/textView23"

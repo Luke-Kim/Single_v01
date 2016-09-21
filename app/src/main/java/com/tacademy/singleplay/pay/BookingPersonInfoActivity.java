@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ import com.tacademy.singleplay.ShowDetailActivity;
 import com.tacademy.singleplay.data.SignInData;
 import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.ShowDetail;
 import com.tacademy.singleplay.data2.UserInfo;
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
@@ -50,12 +52,13 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
     EditText phoneView;
     @BindView(R.id.edit_email)
     EditText emailView;
-    @BindView(R.id.show_name)
-    TextView showName;
-
-    static public SignInData signInData;
     @BindView(R.id.text_title)
     TextView titleView;
+    @BindView(R.id.show_theme)
+    ImageView themeView;
+
+    String theme;
+    static public SignInData signInData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +70,24 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         titleView.setText(BookingManager.getInstance().getPlayName());
-        //Button btn;
+
+        Intent intent = getIntent();
+        theme = intent.getStringExtra("theme");
+        switch (theme) {
+            case "뮤지컬": {
+
+                themeView.setBackgroundResource(R.drawable.contents_category_musical);
+                break;
+            }
+            case "오페라": {
+                themeView.setBackgroundResource(R.drawable.contents_category_opera);
+                break;
+            }
+            case "콘서트": {
+                themeView.setBackgroundResource(R.drawable.contents_category_concert);
+                break;
+            }
+        }
 
         phoneView.setInputType(InputType.TYPE_CLASS_NUMBER); // 전화번호 칸에 숫자만 가능
         phoneView.addTextChangedListener(new PhoneNumberFormattingTextWatcher()); // 전화번호 입력에 하이픈(-) 입력하는 방법
@@ -99,6 +119,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
                             BookingManager.getInstance().setBookerPhone(phoneView.getText().toString());
                             BookingManager.getInstance().setBookerEmail(emailView.getText().toString());
                             Intent intent = new Intent(BookingPersonInfoActivity.this, BookingSeatInfoActivity.class);
+                            intent.putExtra("theme", theme);
                             startActivity(intent);
                             finish();
                         }

@@ -100,6 +100,7 @@ public class ShowDetailActivity extends AppCompatActivity {
     int uid;
     boolean isStart = true;
     int isWish;
+    String theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +125,23 @@ public class ShowDetailActivity extends AppCompatActivity {
                 String[] cast = result.getResult().getCast();
                 mAdapter.addAll(Arrays.asList(cast));
                 playNameView.setText(result.getResult().getPlayName());
-                themeView.setText(result.getResult().getTheme());
+                theme = result.getResult().getTheme();
+                switch (theme) {
+                    case "뮤지컬": {
+
+                        themeView.setBackgroundResource(R.drawable.contents_category_musical);
+                        break;
+                    }
+                    case "오페라": {
+                        themeView.setBackgroundResource(R.drawable.contents_category_opera);
+                        break;
+                    }
+                    case "콘서트": {
+                        themeView.setBackgroundResource(R.drawable.contents_category_concert);
+                        break;
+                    }
+                }
+//                themeView.setText(result.getResult().getTheme());
                 placeView.setText(result.getResult().getPlaceName());
                 dayView.setText(result.getResult().getPlayDay());
                 timeView.setText(result.getResult().getPlayTime()); //배열이길래 [0]처리
@@ -140,19 +157,19 @@ public class ShowDetailActivity extends AppCompatActivity {
                 sSaleView.setText(result.getResult().getSaleSprice() + "");
                 scoreView.setText(result.getResult().getStarScore() + "");
                 reviewCountView.setText(result.getResult().getUserCount() + "");
-                int[] list= result.getResult().getUsableSeat();
-                vipEmptyView.setText(list[0]+"");
-                if(list[0] == 0 ){
+                int[] list = result.getResult().getUsableSeat();
+                vipEmptyView.setText(list[0] + "");
+                if (list[0] == 0) {
                     vip_call.setText("좌석없음");
                     vipEmptyView.setTextColor(Color.WHITE);
                 }
-                rEmptyView.setText(list[1]+"");
-                if(list[1] == 0 ){
+                rEmptyView.setText(list[1] + "");
+                if (list[1] == 0) {
                     r_call.setText("좌석없음");
                     rEmptyView.setTextColor(Color.WHITE);
                 }
-                sEmptyView.setText(list[2]+"");
-                if(list[2] == 0 ){
+                sEmptyView.setText(list[2] + "");
+                if (list[2] == 0) {
                     r_call.setText("좌석없음");
                     sEmptyView.setTextColor(Color.WHITE);
                 }
@@ -175,12 +192,12 @@ public class ShowDetailActivity extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(ShowDetailActivity.this, ""+isWish, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ShowDetailActivity.this, "" + isWish, Toast.LENGTH_SHORT).show();
         btn_wish.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (uid != 0) {
-                    if(isStart == false) {
+                    if (isStart == false) {
                         if (isChecked) {
                             Toast.makeText(ShowDetailActivity.this, "위시리스트 등록", Toast.LENGTH_SHORT).show();
                             Intent wish_intent = new Intent(ShowDetailActivity.this, WishPopupActivity.class);
@@ -223,16 +240,17 @@ public class ShowDetailActivity extends AppCompatActivity {
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingListAdd>() {
                         @Override
                         public void onSuccess(NetworkRequest<BookingListAdd> request, BookingListAdd result) {
-                            Toast.makeText(ShowDetailActivity.this, "성공"+result.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ShowDetailActivity.this, "성공" + result.getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
                         public void onFail(NetworkRequest<BookingListAdd> request, int errorCode, String errorMessage, Throwable e) {
-                            Toast.makeText(ShowDetailActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ShowDetailActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
                         }
                     });
 
                     Intent intent = new Intent(ShowDetailActivity.this, BookingPersonInfoActivity.class);
+                    intent.putExtra("theme", theme);
                     startActivity(intent);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

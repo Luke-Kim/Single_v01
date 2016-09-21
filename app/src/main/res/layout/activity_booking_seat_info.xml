@@ -130,10 +130,9 @@
                     android:layout_marginLeft="3dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="33dp"
+                    android:layout_height="16dp"
                     android:id="@+id/show_theme"
-                    android:src="@drawable/contents_category_musical"
                     android:layout_alignBottom="@+id/show_name"
                     android:layout_alignLeft="@+id/textView45"
                     android:layout_alignStart="@+id/textView45"
