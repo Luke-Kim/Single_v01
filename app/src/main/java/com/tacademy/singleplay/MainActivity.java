@@ -20,6 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tacademy.singleplay.detail.ReviewPopup;
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.ShowListManager;
@@ -131,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.search_iocn);
 
         radioScore.setChecked(true);
+
+//        ReviewPopup();
+
+        ReviewPopup reviewPopup = new ReviewPopup(MainActivity.this);
+        reviewPopup.show();
     }
 
     FragmentManager ft = getSupportFragmentManager();
@@ -276,4 +282,14 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("location", location);
         startActivity(intent);
     }
+
+//    public void ReviewPopup() {
+//        Dialog review_Dialog = new Dialog(MainActivity.this);
+//        review_Dialog.setContentView(R.layout.review_dialog);
+//        review_Dialog.setCancelable(true);
+////        review_Dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+////        ratingBar.setRating(userRankValue);
+//        review_Dialog.show();
+//    }
+
 }

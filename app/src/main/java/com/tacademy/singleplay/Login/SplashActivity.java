@@ -20,9 +20,9 @@ import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.FaceBook;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.UserInfo;
-import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.UserInfoManager;
 import com.tacademy.singleplay.request.FacebookLoginRequest;
 import com.tacademy.singleplay.request.UserInfoRequest;
@@ -138,7 +138,6 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

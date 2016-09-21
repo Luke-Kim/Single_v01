@@ -24,5 +24,11 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="StarScore_Ratingbar" parent="android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_progress</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="android:maxHeight">40dp</item>
+    </style>
+
 
 </resources>

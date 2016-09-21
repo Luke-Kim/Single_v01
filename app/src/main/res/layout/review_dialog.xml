@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/rank_dialog_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="[뮤지컬] 위키드"
+        android:textSize="24dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="재미있게 보셨나요?"
+        android:gravity="center"
+        android:textSize="18dp"
+        android:layout_below="@+id/rank_dialog_text1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:id="@+id/textView6"/>
+
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar2"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:numStars="5"
+        android:progressDrawable="@drawable/ratingbar_progress"
+        style="@style/StarScore_Ratingbar"
+        android:focusable="false"
+        android:layout_marginBottom="18dp"
+        android:layout_above="@+id/btn_starscore"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/btn_starscore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:text="보내기"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:background="@drawable/basic_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+</RelativeLayout>

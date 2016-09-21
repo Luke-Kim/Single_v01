@@ -107,6 +107,9 @@
             android:name=".SearchResultActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".detail.StarScoreActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".login.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.SplashStyle">
