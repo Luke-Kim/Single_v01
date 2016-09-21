@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -61,16 +62,22 @@ public class PushActivity extends AppCompatActivity {
 
     boolean isForced = false;
 
+    String noti;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_push);
         ButterKnife.bind(this);
 
+        Toast.makeText(PushActivity.this, "" + UserInfoManager.getInstance().getNoti(), Toast.LENGTH_SHORT).show();
+
         if (UserInfoManager.getInstance().getNoti().equals("on")) {
             switch_notice.setChecked(true);
+            noti = "on";
         } else {
             switch_notice.setChecked(false);
+            noti = "off";
         }
 
         if (PropertyManager.getInstance().isCheckLogin()) {
@@ -82,17 +89,17 @@ public class PushActivity extends AppCompatActivity {
             }
 
             setCheckBox();
+            checkTheme();
+            checkDay();
         }
-
-        Toast.makeText(PushActivity.this, "" + isTheme[0] + isTheme[1] + isTheme[2], Toast.LENGTH_SHORT).show();
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        btn_check_day.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        btn_check_day.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+            public void onClick(View view) {
                 if (btn_check_day.isChecked()) {
                     isForced = true;
                     checkBox_mon.setChecked(isForced);
@@ -106,7 +113,6 @@ public class PushActivity extends AppCompatActivity {
                         isDay[i] = "1";
                     }
                     isForced = false;
-                    checkIsDay = true;
                 } else {
                     checkBox_mon.setChecked(isForced);
                     checkBox_tue.setChecked(isForced);
@@ -118,14 +124,14 @@ public class PushActivity extends AppCompatActivity {
                     for (int i = 0; i < 7; i++) {
                         isDay[i] = "0";
                     }
-                    checkIsDay = false;
                 }
             }
         });
 
-        btn_check_category.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        btn_check_category.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+            public void onClick(View view) {
                 if (btn_check_category.isChecked()) {
                     isForced = true;
                     checkBox_musical.setChecked(isForced);
@@ -143,54 +149,25 @@ public class PushActivity extends AppCompatActivity {
                         isTheme[i] = "0";
                     }
                 }
-
-                checkDay();
             }
         });
-
 
         switch_notice.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                String noti;
                 if (b) {
                     noti = "on";
                 } else {
                     noti = "off";
                 }
-                if (PropertyManager.getInstance().isCheckLogin()) {
-                    PushRequest request = new PushRequest(MyApplication.getContext(), noti, isDay, isTheme);
-                    NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<Push>() {
-                        @Override
-                        public void onSuccess(NetworkRequest<Push> request, Push result) {
-                            int[] day = new int[7];
-                            int[] theme = new int[3];
-                            for (int i = 0; i < 7; i++) {
-                                day[i] = Integer.parseInt(isDay[i]);
-                            }
-                            for (int i = 0; i < 3; i++) {
-                                theme[i] = Integer.parseInt(isTheme[i]);
-                            }
-                            UserInfoManager.getInstance().setDay(day);
-                            UserInfoManager.getInstance().setTheme(theme);
-                            Toast.makeText(PushActivity.this, "알람설정 성공", Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onFail(NetworkRequest<Push> request, int errorCode, String errorMessage, Throwable e) {
-                            Toast.makeText(PushActivity.this, "알람설정 실패 : " + errorCode, Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                } else {
-                    Toast.makeText(PushActivity.this, "로그인후 사용해주삼", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(PushActivity.this, "" + noti, Toast.LENGTH_SHORT).show();
             }
         });
 
-        checkBox_mon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_mon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onClick(View view) {
+                if (checkBox_mon.isChecked()) {
                     isDay[0] = "1";
                 } else {
                     isDay[0] = "0";
@@ -199,10 +176,10 @@ public class PushActivity extends AppCompatActivity {
             }
         });
 
-        checkBox_tue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_tue.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onClick(View view) {
+                if (checkBox_tue.isChecked()) {
                     isDay[1] = "1";
                 } else {
                     isDay[1] = "0";
@@ -211,10 +188,10 @@ public class PushActivity extends AppCompatActivity {
             }
         });
 
-        checkBox_wed.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_wed.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onClick(View view) {
+                if (checkBox_wed.isChecked()) {
                     isDay[2] = "1";
                 } else {
                     isDay[2] = "0";
@@ -223,10 +200,10 @@ public class PushActivity extends AppCompatActivity {
             }
         });
 
-        checkBox_thur.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_thur.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onClick(View view) {
+                if (checkBox_thur.isChecked()) {
                     isDay[3] = "1";
                 } else {
                     isDay[3] = "0";
@@ -235,10 +212,10 @@ public class PushActivity extends AppCompatActivity {
             }
         });
 
-        checkBox_fri.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_fri.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onClick(View view) {
+                if (checkBox_fri.isChecked()) {
                     isDay[4] = "1";
                 } else {
                     isDay[4] = "0";
@@ -247,10 +224,10 @@ public class PushActivity extends AppCompatActivity {
             }
         });
 
-        checkBox_sat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_sat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onClick(View view) {
+                if (checkBox_sat.isChecked()) {
                     isDay[5] = "1";
                 } else {
                     isDay[5] = "0";
@@ -259,10 +236,10 @@ public class PushActivity extends AppCompatActivity {
             }
         });
 
-        checkBox_sun.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_sun.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onClick(View view) {
+                if (checkBox_sun.isChecked()) {
                     isDay[6] = "1";
                 } else {
                     isDay[6] = "0";
@@ -271,25 +248,39 @@ public class PushActivity extends AppCompatActivity {
             }
         });
 
-        checkBox_musical.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_musical.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onClick(View view) {
+                if (checkBox_musical.isChecked()) {
                     isTheme[0] = "1";
                 } else {
                     isTheme[0] = "0";
                 }
+                checkTheme();
             }
         });
 
-        checkBox_opera.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox_opera.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
+            public void onClick(View view) {
+                if (checkBox_opera.isChecked()) {
                     isTheme[1] = "1";
                 } else {
                     isTheme[1] = "0";
                 }
+                checkTheme();
+            }
+        });
+
+        checkBox_concert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (checkBox_concert.isChecked()) {
+                    isTheme[2] = "1";
+                } else {
+                    isTheme[2] = "0";
+                }
+                checkTheme();
             }
         });
 
@@ -301,6 +292,31 @@ public class PushActivity extends AppCompatActivity {
                 } else {
                     isTheme[2] = "0";
                 }
+            }
+        });
+    }
+
+    private void setRequest(PushRequest request) {
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<Push>() {
+            @Override
+            public void onSuccess(NetworkRequest<Push> request, Push result) {
+                int[] day = new int[7];
+                int[] theme = new int[3];
+                for (int i = 0; i < 7; i++) {
+                    day[i] = Integer.parseInt(isDay[i]);
+                }
+                for (int i = 0; i < 3; i++) {
+                    theme[i] = Integer.parseInt(isTheme[i]);
+                }
+                UserInfoManager.getInstance().setDay(day);
+                UserInfoManager.getInstance().setTheme(theme);
+                UserInfoManager.getInstance().setNoti(noti);
+                Toast.makeText(PushActivity.this, "알람설정 성공", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFail(NetworkRequest<Push> request, int errorCode, String errorMessage, Throwable e) {
+                Toast.makeText(PushActivity.this, "알람설정 실패 : " + errorCode, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -327,7 +343,6 @@ public class PushActivity extends AppCompatActivity {
         if (isDay[6].equals("1")) {
             checkBox_sun.setChecked(true);
         }
-
         if (isTheme[0].equals("1")) {
             checkBox_musical.setChecked(true);
         }
@@ -342,25 +357,43 @@ public class PushActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+            if (PropertyManager.getInstance().isCheckLogin()) {
+                PushRequest request = new PushRequest(MyApplication.getContext(), noti, isDay, isTheme);
+                setRequest(request);
+            } else {
+                Toast.makeText(PushActivity.this, "로그인후 사용해주삼", Toast.LENGTH_SHORT).show();
+            }
             finish();
         }
         return super.onOptionsItemSelected(item);
     }
 
-    boolean checkIsDay;
+    @Override
+    public void onBackPressed() {
+        if (PropertyManager.getInstance().isCheckLogin()) {
+            PushRequest request = new PushRequest(MyApplication.getContext(), noti, isDay, isTheme);
+            setRequest(request);
+        } else {
+            Toast.makeText(PushActivity.this, "로그인후 사용해주삼", Toast.LENGTH_SHORT).show();
+        }
+        finish();
+        super.onBackPressed();
+    }
 
     public void checkDay() {
         if (isDay[0].equals("1") && isDay[1].equals("1") && isDay[2].equals("1") && isDay[3].equals("1") &&
                 isDay[4].equals("1") && isDay[5].equals("1") && isDay[6].equals("1")) {
-            checkIsDay = true;
+            btn_check_day.setChecked(true);
         } else {
-            checkIsDay = false;
+            btn_check_day.setChecked(false);
         }
+    }
 
-        if (checkIsDay) {
-            btn_check_day.setChecked(true);
+    public void checkTheme() {
+        if (isTheme[0].equals("1") && isTheme[1].equals("1") && isTheme[2].equals("1")) {
+            btn_check_category.setChecked(true);
         } else {
-            btn_check_day.setChecked(true);
+            btn_check_category.setChecked(false);
         }
     }
 }

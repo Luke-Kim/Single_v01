@@ -116,6 +116,19 @@ public class CheckedBookingActivity extends AppCompatActivity {
         initData();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (from.equals("SelectPayActivity")) {
+            Intent intent;
+            intent = new Intent(CheckedBookingActivity.this, MainActivity.class);
+            startActivity(intent);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
+        finish();
+    }
+
     public void initData() {
         rid = BookingManager.getInstance().getRid();
         BookingDetailRequest request = new BookingDetailRequest(this, rid);
