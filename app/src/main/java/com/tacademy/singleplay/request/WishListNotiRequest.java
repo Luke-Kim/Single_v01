@@ -3,8 +3,7 @@ package com.tacademy.singleplay.request;
 import android.content.Context;
 
 import com.google.gson.reflect.TypeToken;
-import com.tacademy.singleplay.data2.Push;
-import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.WishListNoti;
 
 import java.lang.reflect.Type;
 
@@ -14,30 +13,19 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * Created by Tacademy on 2016-08-30.
+ * Created by Tacademy on 2016-09-21.
  */
-public class PushRequest extends AbstractRequest<Push> {
+public class WishListNotiRequest extends AbstractRequest<WishListNoti> {
     Request request;
-
-    public PushRequest(Context context, String noti, String[] day, String[] theme) {
+    public WishListNotiRequest(Context context, String noti) {
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment("users")
                 .addPathSegment("me")
-                .addQueryParameter("action", "push")
+                .addQueryParameter("action", "wish")
                 .build();
 
         RequestBody body = new FormBody.Builder()
                 .add("noti", noti)
-                .add("day", day[0])
-                .add("day", day[1])
-                .add("day", day[2])
-                .add("day", day[3])
-                .add("day", day[4])
-                .add("day", day[5])
-                .add("day", day[6])
-                .add("theme", theme[0])
-                .add("theme", theme[1])
-                .add("theme", theme[2])
                 .build();
 
         request = new Request.Builder()
@@ -49,7 +37,7 @@ public class PushRequest extends AbstractRequest<Push> {
 
     @Override
     protected Type getType() {
-        return new  TypeToken<Push>(){}.getType();
+        return new  TypeToken<WishListNoti>(){}.getType();
     }
 
     @Override

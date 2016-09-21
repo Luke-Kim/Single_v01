@@ -11,11 +11,13 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.data2.Push;
+import com.tacademy.singleplay.data2.WishListNoti;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.UserInfoManager;
 import com.tacademy.singleplay.request.PushRequest;
+import com.tacademy.singleplay.request.WishListNotiRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +28,8 @@ public class PushActivity extends AppCompatActivity {
     Toolbar toolbar;
     @BindView(R.id.push_notice_switch)
     Switch switch_notice;
+    @BindView(R.id.wish_notice_switch)
+    Switch switch_wish_notice;
 
     @BindView(R.id.btn_check_day)
     CheckBox btn_check_day;
@@ -63,6 +67,7 @@ public class PushActivity extends AppCompatActivity {
     boolean isForced = false;
 
     String noti;
+    String wishNoti;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,6 +166,29 @@ public class PushActivity extends AppCompatActivity {
                     noti = "off";
                 }
                 Toast.makeText(PushActivity.this, "" + noti, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        switch_wish_notice.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    wishNoti = "on";
+                } else {
+                    wishNoti = "off";
+                }
+                WishListNotiRequest request = new WishListNotiRequest(MyApplication.getContext(), wishNoti);
+                NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<WishListNoti>() {
+                    @Override
+                    public void onSuccess(NetworkRequest<WishListNoti> request, WishListNoti result) {
+                        Toast.makeText(PushActivity.this, "위시리스트 공연알림 : " + wishNoti, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFail(NetworkRequest<WishListNoti> request, int errorCode, String errorMessage, Throwable e) {
+
+                    }
+                });
             }
         });
 

@@ -341,7 +341,7 @@
             <Switch
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/switch1"
+                android:id="@+id/wish_notice_switch"
                 android:checked="false"
                 android:thumb="@drawable/circle_thumb"
                 android:track="@drawable/switch_btn"
