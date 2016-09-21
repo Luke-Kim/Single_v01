@@ -84,7 +84,7 @@ public class PushActivity extends AppCompatActivity {
             setCheckBox();
         }
 
-        Toast.makeText(PushActivity.this, "" + isTheme[0] + isTheme[1] + isTheme[2] , Toast.LENGTH_SHORT).show();
+        Toast.makeText(PushActivity.this, "" + isTheme[0] + isTheme[1] + isTheme[2], Toast.LENGTH_SHORT).show();
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -106,6 +106,7 @@ public class PushActivity extends AppCompatActivity {
                         isDay[i] = "1";
                     }
                     isForced = false;
+                    checkIsDay = true;
                 } else {
                     checkBox_mon.setChecked(isForced);
                     checkBox_tue.setChecked(isForced);
@@ -117,6 +118,7 @@ public class PushActivity extends AppCompatActivity {
                     for (int i = 0; i < 7; i++) {
                         isDay[i] = "0";
                     }
+                    checkIsDay = false;
                 }
             }
         });
@@ -141,6 +143,8 @@ public class PushActivity extends AppCompatActivity {
                         isTheme[i] = "0";
                     }
                 }
+
+                checkDay();
             }
         });
 
@@ -191,6 +195,7 @@ public class PushActivity extends AppCompatActivity {
                 } else {
                     isDay[0] = "0";
                 }
+                checkDay();
             }
         });
 
@@ -202,6 +207,7 @@ public class PushActivity extends AppCompatActivity {
                 } else {
                     isDay[1] = "0";
                 }
+                checkDay();
             }
         });
 
@@ -213,6 +219,7 @@ public class PushActivity extends AppCompatActivity {
                 } else {
                     isDay[2] = "0";
                 }
+                checkDay();
             }
         });
 
@@ -224,6 +231,7 @@ public class PushActivity extends AppCompatActivity {
                 } else {
                     isDay[3] = "0";
                 }
+                checkDay();
             }
         });
 
@@ -235,6 +243,7 @@ public class PushActivity extends AppCompatActivity {
                 } else {
                     isDay[4] = "0";
                 }
+                checkDay();
             }
         });
 
@@ -246,6 +255,7 @@ public class PushActivity extends AppCompatActivity {
                 } else {
                     isDay[5] = "0";
                 }
+                checkDay();
             }
         });
 
@@ -257,6 +267,7 @@ public class PushActivity extends AppCompatActivity {
                 } else {
                     isDay[6] = "0";
                 }
+                checkDay();
             }
         });
 
@@ -335,4 +346,23 @@ public class PushActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    boolean checkIsDay;
+
+    public void checkDay() {
+        if (isDay[0].equals("1") && isDay[1].equals("1") && isDay[2].equals("1") && isDay[3].equals("1") &&
+                isDay[4].equals("1") && isDay[5].equals("1") && isDay[6].equals("1")) {
+            checkIsDay = true;
+        } else {
+            checkIsDay = false;
+        }
+
+        if (checkIsDay) {
+            btn_check_day.setChecked(true);
+        } else {
+            btn_check_day.setChecked(true);
+        }
+    }
+
+
 }

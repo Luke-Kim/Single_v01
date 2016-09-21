@@ -266,13 +266,17 @@ public class ShowDetailActivity extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             if (TextUtils.isEmpty(from)) {
                 intent = new Intent(ShowDetailActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             } else if (from.equals("MainActivity")) {
                 intent = new Intent(ShowDetailActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             } else {
-                intent = new Intent(ShowDetailActivity.this, WishListActivity.class);
+//                intent = new Intent(ShowDetailActivity.this, WishListActivity.class);
+                finish();
             }
-            startActivity(intent);
-            finish();
+
         }
         return super.onOptionsItemSelected(item);
     }
