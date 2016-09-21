@@ -192,6 +192,7 @@ public class LoginActivity extends AppCompatActivity {
                 UserInfoManager.getInstance().setDay(result.getResult().getDay());
                 UserInfoManager.getInstance().setEmail(result.getResult().getEmail());
                 UserInfoManager.getInstance().setMileage(result.getResult().getMileage());
+                UserInfoManager.getInstance().setNoti(result.getResult().getNoti());
             }
 
             @Override
@@ -210,5 +211,6 @@ public class LoginActivity extends AppCompatActivity {
         int[] day = {0, 0, 0, 0, 0, 0, 0,};
         UserInfoManager.getInstance().setDay(day);
         UserInfoManager.getInstance().setMileage(0);
+        UserInfoManager.getInstance().setNoti("off");
     }
 }

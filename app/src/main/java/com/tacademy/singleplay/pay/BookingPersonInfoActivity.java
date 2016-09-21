@@ -15,12 +15,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.ShowDetailActivity;
 import com.tacademy.singleplay.data.SignInData;
+import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.UserInfo;
 import com.tacademy.singleplay.detail.UserActivity;
@@ -49,8 +51,9 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
     @BindView(R.id.edit_email)
     EditText emailView;
     static public SignInData signInData;
+    @BindView(R.id.text_title)
+    TextView titleView;
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking_person_info);
@@ -60,6 +63,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        titleView.setText(BookingManager.getInstance().getPlayName());
         //Button btn;
 
         phoneView.setInputType(InputType.TYPE_CLASS_NUMBER); // 전화번호 칸에 숫자만 가능
