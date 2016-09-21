@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.MyApplication;
@@ -48,6 +49,9 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
     EditText phoneView;
     @BindView(R.id.edit_email)
     EditText emailView;
+    @BindView(R.id.show_name)
+    TextView showName;
+
     static public SignInData signInData;
     @Override
 
