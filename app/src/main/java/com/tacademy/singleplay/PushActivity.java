@@ -363,6 +363,4 @@ public class PushActivity extends AppCompatActivity {
             btn_check_day.setChecked(true);
         }
     }
-
-
 }

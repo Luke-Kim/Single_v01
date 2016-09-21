@@ -1,5 +1,6 @@
 package com.tacademy.singleplay;
 
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -67,6 +68,7 @@ public class MainShowHolder extends RecyclerView.ViewHolder {
         salePriceView.setText(showList.getSalePrice()+"");
         starScoreView.setText(showList.getStarScore()+"");
         priceView.setText(showList.getPrice()+"");
+        priceView.setPaintFlags(priceView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); // 취소선
         Glide.with(MyApplication.getContext())
                 .load(showList.getPoster())
                 .into(poster);
