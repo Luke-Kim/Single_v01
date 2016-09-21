@@ -50,6 +50,9 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
     EditText phoneView;
     @BindView(R.id.edit_email)
     EditText emailView;
+    @BindView(R.id.show_name)
+    TextView showName;
+
     static public SignInData signInData;
     @BindView(R.id.text_title)
     TextView titleView;

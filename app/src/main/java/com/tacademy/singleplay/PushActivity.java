@@ -1,7 +1,5 @@
 package com.tacademy.singleplay;
 
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,7 +18,6 @@ import com.tacademy.singleplay.request.PushRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class PushActivity extends AppCompatActivity {
 
