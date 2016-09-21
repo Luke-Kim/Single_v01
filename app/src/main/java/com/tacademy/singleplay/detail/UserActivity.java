@@ -124,6 +124,9 @@ public class UserActivity extends AppCompatActivity {
     public void initData() {
 
         final String userName = user_name.getText().toString();
+//        String userImage = imageView.getDrawable().toString();
+        String userEmail = "";
+        String userPhone = "";
         checkLogin = PropertyManager.getInstance().isCheckLogin();
         Toast.makeText(UserActivity.this, "" + checkLogin, Toast.LENGTH_SHORT).show();
         if (checkLogin) {
@@ -135,6 +138,7 @@ public class UserActivity extends AppCompatActivity {
             txt_mileage.setText("" + UserInfoManager.getInstance().getMileage());
         } else {
             loginView.setVisibility(View.VISIBLE);
+
             user_name.setVisibility(View.GONE);
             profileView.setVisibility(View.GONE);
         }

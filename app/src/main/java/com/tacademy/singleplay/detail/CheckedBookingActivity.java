@@ -73,7 +73,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_checked_booking);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         from = getIntent().getStringExtra("from");
 
@@ -108,20 +108,12 @@ public class CheckedBookingActivity extends AppCompatActivity {
                     startActivity(intent);
                     intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                } else {
                 }
                 finish();
             }
         });
 
         initData();
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.activity_menu, menu);
-
-        return true;
     }
 
     public void initData() {
@@ -167,11 +159,13 @@ public class CheckedBookingActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.detail_menu:
-                intent = new Intent(CheckedBookingActivity.this, UserActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            case android.R.id.home:
+                if (from.equals("SelectPayActivity")) {
+                    intent = new Intent(CheckedBookingActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                }
                 finish();
                 break;
             default:

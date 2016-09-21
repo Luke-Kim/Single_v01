@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -265,7 +266,9 @@ public class ShowDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         if (item.getItemId() == android.R.id.home) {
-            if (from.equals("MainActivity")) {
+            if (TextUtils.isEmpty(from)) {
+                intent = new Intent(ShowDetailActivity.this, MainActivity.class);
+            } else if (from.equals("MainActivity")) {
                 intent = new Intent(ShowDetailActivity.this, MainActivity.class);
             } else {
                 intent = new Intent(ShowDetailActivity.this, WishListActivity.class);

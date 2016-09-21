@@ -252,10 +252,6 @@ public class SelectPayActivity extends AppCompatActivity {
         Intent intent;
         switch (item.getItemId()) {
             case android.R.id.home:
-                intent = new Intent(SelectPayActivity.this, BookingSeatInfoActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 finish();
                 break;
             case R.id.detail_menu:
