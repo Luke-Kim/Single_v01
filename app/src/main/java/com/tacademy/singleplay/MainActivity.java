@@ -24,6 +24,9 @@ import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.ShowListManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -71,9 +74,15 @@ public class MainActivity extends AppCompatActivity {
         ShowListManager.getInstance().setSort("0");
         ShowListManager.getInstance().setPosition(0);
 
-        String test = "17:50";
-        String[] testAraay = test.split(":");
-        Toast.makeText(MainActivity.this, "시간 : " + testAraay[0] + ",  분 : " + testAraay[1], Toast.LENGTH_SHORT).show();
+//        String test = "17:50";
+//        String[] testAraay = test.split(":");
+//        Toast.makeText(MainActivity.this, "시간 : " + testAraay[0] + ",  분 : " + testAraay[1], Toast.LENGTH_SHORT).show();
+
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy:MM:dd:h:mm:a");
+        String strNow = sdfNow.format(date);
+        String[] nowTime = strNow.split(":");
 
         setPager();
 
