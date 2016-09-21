@@ -27,6 +27,10 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListViewHolder> im
 //        notifyDataSetChanged();
 //    }
 
+    public void clear() {
+        items.clear();
+        notifyDataSetChanged();
+    }
     public void addAll(WishList[] results) {
         this.items.addAll(Arrays.asList(results));
         notifyDataSetChanged();

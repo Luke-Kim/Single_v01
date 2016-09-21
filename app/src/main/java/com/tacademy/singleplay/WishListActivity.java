@@ -59,9 +59,12 @@ public class WishListActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(wishListAdapter);
+    }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
         initData();
-
     }
 
     public void goDetailActivity(int playId, String playName) {
@@ -86,6 +89,7 @@ public class WishListActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<ResultsList<WishList[]>> request, ResultsList<WishList[]> result) {
                 Toast.makeText(WishListActivity.this, "성공" + result, Toast.LENGTH_SHORT).show();
 
+                wishListAdapter.clear();
                 wishListAdapter.addAll(result.getResults());
 
                 int wishItemCNT = wishListAdapter.getItemCount();
