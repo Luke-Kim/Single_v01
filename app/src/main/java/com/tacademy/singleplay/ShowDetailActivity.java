@@ -21,7 +21,6 @@ import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.data2.BookingListAdd;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowDetail;
-import com.tacademy.singleplay.data2.WishList;
 import com.tacademy.singleplay.data2.WishListDelete;
 import com.tacademy.singleplay.login.LoginActivity;
 import com.tacademy.singleplay.manager.BookingManager;
@@ -131,7 +130,6 @@ public class ShowDetailActivity extends AppCompatActivity {
                 theme = result.getResult().getTheme();
                 switch (theme) {
                     case "뮤지컬": {
-
                         themeView.setBackgroundResource(R.drawable.contents_category_musical);
                         break;
                     }

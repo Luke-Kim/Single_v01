@@ -59,29 +59,21 @@ public class WishListActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(wishListAdapter);
-    }
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
         initData();
+
     }
 
     public void goDetailActivity(int playId, String playName) {
         BookingManager.getInstance().setPlayId("" + playId);
         BookingManager.getInstance().setPlayName(playName);
         Intent intent = new Intent(WishListActivity.this, ShowDetailActivity.class);
-        intent.putExtra("from", "WishListActivity");
         startActivity(intent);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(WishListActivity.this, MainActivity.class);
-            startActivity(intent);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             finish();
         }
         return super.onOptionsItemSelected(item);
@@ -94,7 +86,6 @@ public class WishListActivity extends AppCompatActivity {
             public void onSuccess(NetworkRequest<ResultsList<WishList[]>> request, ResultsList<WishList[]> result) {
                 Toast.makeText(WishListActivity.this, "성공" + result, Toast.LENGTH_SHORT).show();
 
-                wishListAdapter.clear();
                 wishListAdapter.addAll(result.getResults());
 
                 int wishItemCNT = wishListAdapter.getItemCount();

@@ -16,7 +16,8 @@
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/my_toolbar"/>
+            android:id="@+id/my_toolbar"
+            android:background="@drawable/underline"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,7 +25,6 @@
             android:text="더보기"
             android:textSize="17dp"
             android:textColor="#000000"
-            android:background="@drawable/underline"
             android:textStyle="bold" />
     </FrameLayout>
 

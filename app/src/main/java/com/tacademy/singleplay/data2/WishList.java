@@ -1,6 +1,8 @@
 package com.tacademy.singleplay.data2;
 
-public class WishList extends WishListAdd {
+import java.io.Serializable;
+
+public class WishList extends WishListAdd implements Serializable {
     private int playId;
     private int salePrice;//
     private int price;//
