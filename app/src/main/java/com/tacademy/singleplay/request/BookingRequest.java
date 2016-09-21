@@ -19,10 +19,11 @@ import okhttp3.RequestBody;
  */
 public class BookingRequest extends AbstractRequest<ResultsList<Booking>> {
     Request request;
+
     public BookingRequest(Context context, String playId, String playName,
-                            String usableSeatNo, String seatClass, String booker,
+                          String usableSeatNo, String seatClass, String booker,
                           String bookerPhone, String bookerEmail, String useCoupon,
-                          String useMileage, String settlement ) {
+                          String useMileage, String settlement) {
         HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment("reservations")
                 .build();
@@ -47,7 +48,8 @@ public class BookingRequest extends AbstractRequest<ResultsList<Booking>> {
 
     @Override
     protected Type getType() {
-        return new  TypeToken<ResultsList<Booking>>(){}.getType();
+        return new TypeToken<ResultsList<Booking>>() {
+        }.getType();
     }
 
     @Override

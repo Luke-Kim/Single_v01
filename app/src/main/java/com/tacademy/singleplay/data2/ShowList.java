@@ -1,103 +1,31 @@
 package com.tacademy.singleplay.data2;
 
 public class ShowList {
-    private int playId;
-    private int salePrice;
-    private int salePer;
-    private int price;
-    private String playName;
-    private String theme;
-    private String playTime;
-    private double starScore;
-    private String playDay;
-    private String placeName;
-    private String poster;
+    private int code;
+    private ShowListReview[] review;
+    private ShowListResults[] results;
 
-    public int getPlayId() {
-        return playId;
+    public int getCode() {
+        return this.code;
     }
 
-    public void setPlayId(int playId) {
-        this.playId = playId;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public int getSalePrice() {
-        return salePrice;
+    public ShowListReview[] getReview() {
+        return this.review;
     }
 
-    public void setSalePrice(int salePrice) {
-        this.salePrice = salePrice;
+    public void setReview(ShowListReview[] review) {
+        this.review = review;
     }
 
-    public int getSalePer() {
-        return salePer;
+    public ShowListResults[] getResults() {
+        return this.results;
     }
 
-    public void setSalePer(int salePer) {
-        this.salePer = salePer;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getPlayName() {
-        return playName;
-    }
-
-    public void setPlayName(String playName) {
-        this.playName = playName;
-    }
-
-    public String getTheme() {
-        return theme;
-    }
-
-    public void setTheme(String theme) {
-        this.theme = theme;
-    }
-
-    public String getPlayTime() {
-        return playTime;
-    }
-
-    public void setPlayTime(String playTime) {
-        this.playTime = playTime;
-    }
-
-    public double getStarScore() {
-        return starScore;
-    }
-
-    public void setStarScore(double starScore) {
-        this.starScore = starScore;
-    }
-
-    public String getPlayDay() {
-        return playDay;
-    }
-
-    public void setPlayDay(String playDay) {
-        this.playDay = playDay;
-    }
-
-    public String getPlaceName() {
-        return placeName;
-    }
-
-    public void setPlaceName(String placeName) {
-        this.placeName = placeName;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
+    public void setResults(ShowListResults[] results) {
+        this.results = results;
     }
 }

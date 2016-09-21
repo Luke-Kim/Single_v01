@@ -20,10 +20,21 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tacademy.singleplay.data2.BookingList;
+import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.ShowList;
+import com.tacademy.singleplay.data2.ShowListReview;
+import com.tacademy.singleplay.data2.StarScore;
 import com.tacademy.singleplay.detail.ReviewPopup;
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
+import com.tacademy.singleplay.manager.NetworkManager;
+import com.tacademy.singleplay.manager.NetworkRequest;
+import com.tacademy.singleplay.manager.ReviewManager;
 import com.tacademy.singleplay.manager.ShowListManager;
+import com.tacademy.singleplay.request.BookingListRequest;
+import com.tacademy.singleplay.request.ShowListRequest;
+import com.tacademy.singleplay.request.StarScoreRequest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -63,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
     MenuItem detail, wishlist, back;
     private BackPressedCloseHandler backPressedCloseHandler;
 
+    boolean startMain = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,14 +92,11 @@ public class MainActivity extends AppCompatActivity {
 //        String[] testAraay = test.split(":");
 //        Toast.makeText(MainActivity.this, "시간 : " + testAraay[0] + ",  분 : " + testAraay[1], Toast.LENGTH_SHORT).show();
 
-        long now = System.currentTimeMillis();
-        Date date = new Date(now);
-        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy:MM:dd:h:mm:a");
-        String strNow = sdfNow.format(date);
-        String[] nowTime = strNow.split(":");
+        if (startMain) {
+            timeGap();
+        }
 
         setPager();
-
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -132,11 +142,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.search_iocn);
 
         radioScore.setChecked(true);
-
-//        ReviewPopup();
-
-        ReviewPopup reviewPopup = new ReviewPopup(MainActivity.this);
-        reviewPopup.show();
     }
 
     FragmentManager ft = getSupportFragmentManager();
@@ -222,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     boolean isSearch = false;
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
@@ -270,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goDetailActivity(int playId, String playName) {
-        BookingManager.getInstance().setPlayId(""+playId);
+        BookingManager.getInstance().setPlayId("" + playId);
         BookingManager.getInstance().setPlayName(playName);
         Intent intent = new Intent(MainActivity.this, ShowDetailActivity.class);
         intent.putExtra("from", "MainActivity");
@@ -283,13 +289,64 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void ReviewPopup() {
-//        Dialog review_Dialog = new Dialog(MainActivity.this);
-//        review_Dialog.setContentView(R.layout.review_dialog);
-//        review_Dialog.setCancelable(true);
-////        review_Dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-////        ratingBar.setRating(userRankValue);
-//        review_Dialog.show();
-//    }
+    int bookingCnt;
+    int[] nowTime = new int[3];
+
+    private void timeGap() {
+        //현재시간 구해오기
+        startMain = false;
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy:MM:dd");
+        String strNow = sdfNow.format(date);
+        String[] strNowTime = strNow.split(":");
+
+        for (int i = 0; i < 3; i++) {
+            nowTime[i] = Integer.parseInt(strNowTime[i]);
+        }
+
+
+        ShowListRequest request = new ShowListRequest(MyApplication.getContext(), "0", "0", "0");
+//        BookingListRequest request = new BookingListRequest(MyApplication.getContext());
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ShowList>() {
+            @Override
+            public void onSuccess(NetworkRequest<ShowList> request, ShowList result) {
+                bookingCnt = result.getReview().length;
+                ShowListReview[] showListReview = result.getReview(); //results로 데이터목록 받아오고
+                String[] endShowListDay; //여기다가 각 데이터의 날짜를 연/월/일 단위로 나눠서 배열로 저장
+
+                for (int i = 0; i < bookingCnt; i++) {
+                    endShowListDay = showListReview[i].getPlayDay().split("-"); //데이터 0~N개 까지 전부다 비교할꺼
+
+                    //비교해서 하나라도 얻어 걸리면 리뷰 ㄱㄱ
+                    if (nowTime[0] >Integer.parseInt(endShowListDay[0]) ) { //연 비교
+                        onReview(showListReview[i]); //리뷰리퀘스트
+                    } else if (nowTime[1] > Integer.parseInt(endShowListDay[1])) { //월 비교
+                        onReview(showListReview[i]); //리뷰리퀘스트
+                    } else if (nowTime[2] > Integer.parseInt(endShowListDay[2])) { //일 비교
+                        onReview(showListReview[i]); //리뷰리퀘스트
+                    } else {
+                        Toast.makeText(MainActivity.this, "리뷰할게 없음", Toast.LENGTH_SHORT).show(); //공연날짜가 지난게 없으면 리뷰 ㄴㄴ
+                        onReview(showListReview[i]);
+                    }
+                }
+            }
+
+            @Override
+            public void onFail(NetworkRequest<ShowList> request, int errorCode, String errorMessage, Throwable e) {
+
+            }
+        });
+    }
+
+    private void onReview(ShowListReview showListReview) {
+
+        ReviewManager.getInstance().setPlayId("" + showListReview.getPlayId());
+        ReviewManager.getInstance().setPlayName(showListReview.getPlayName());
+
+        ReviewPopup reviewPopup = new ReviewPopup(MainActivity.this);
+        reviewPopup.show();
+    }
+
 
 }

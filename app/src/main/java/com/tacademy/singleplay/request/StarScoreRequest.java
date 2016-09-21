@@ -17,11 +17,14 @@ import okhttp3.RequestBody;
  */
 public class StarScoreRequest extends AbstractRequest<StarScore> {
     Request request;
-    public StarScoreRequest(Context context) {
-        HttpUrl url = getBaseUrlBuilder()
+    public StarScoreRequest(Context context, String playId, String playName, String starScore) {
+        HttpUrl url = getBaseUrlHttpsBuilder()
                 .addPathSegment("reviews")
                 .build();
         RequestBody body = new FormBody.Builder()
+                .add("playId", playId)
+                .add("playName", playName)
+                .add("starScore", starScore)
                 .build();
 
         request = new Request.Builder()

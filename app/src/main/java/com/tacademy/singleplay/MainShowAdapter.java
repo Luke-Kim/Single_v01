@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tacademy.singleplay.data2.ShowList;
+import com.tacademy.singleplay.data2.ShowListResults;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,14 +18,14 @@ import java.util.List;
 public class MainShowAdapter extends RecyclerView.Adapter<MainShowHolder>
                                 implements MainShowHolder.OnShowItemClickListener{
 
-    List<ShowList> items = new ArrayList<>();
+    List<ShowListResults> items = new ArrayList<>();
 
     public void clear() {
         items.clear();
         notifyDataSetChanged();
     }
 
-    public void addAll(ShowList[] showList) {
+    public void addAll(ShowListResults[] showList) {
         items.addAll(Arrays.asList(showList));
         notifyDataSetChanged();
     }
@@ -51,7 +52,7 @@ public class MainShowAdapter extends RecyclerView.Adapter<MainShowHolder>
     }
 
     public interface OnShowAdapterItemClickLIstener {
-        public void onShowAdapterItemClick(View view, ShowList showList, int position);
+        public void onShowAdapterItemClick(View view, ShowListResults showList, int position);
     }
 
     OnShowAdapterItemClickLIstener listener;
@@ -60,7 +61,7 @@ public class MainShowAdapter extends RecyclerView.Adapter<MainShowHolder>
     }
 
     @Override
-    public void onShowItemClick(View view, ShowList showList, int position) {
+    public void onShowItemClick(View view, ShowListResults showList, int position) {
         if (listener != null) {
             listener.onShowAdapterItemClick(view, showList, position);
         }

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.tacademy.singleplay.PushActivity">
 
     <FrameLayout
         android:id="@+id/my_frame"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
+
         <android.support.v7.widget.Toolbar
+            android:id="@+id/my_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/my_toolbar"/>
+            android:layout_height="match_parent" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,94 +29,94 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/appbar"
-        android:weightSum="1">
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
+            android:id="@+id/relativeLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout7"
-            android:background="@drawable/underline"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/underline">
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Push 알림"
-                android:id="@+id/textView3"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_gravity="left|center_vertical"
+                android:layout_marginBottom="18dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="18dp"
-                android:layout_marginBottom="18dp" />
+                android:text="Push 알림"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <Switch
+                android:id="@+id/push_notice_switch"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/push_notice_switch"
-                android:checked="false"
-                android:track="@drawable/switch_btn"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="16dp"
-                android:switchMinWidth="39dp"
-                android:thumb="@drawable/circle_thumb"
-                android:longClickable="true"
                 android:allowUndo="false"
-                android:switchPadding="10dp" />
+                android:checked="false"
+                android:longClickable="true"
+                android:switchMinWidth="39dp"
+                android:switchPadding="10dp"
+                android:thumb="@drawable/circle_thumb"
+                android:track="@drawable/switch_btn" />
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/relativeLayout8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:id="@+id/relativeLayout8"
-            android:background="@drawable/underline"
-            android:layout_below="@+id/relativeLayout7"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayout7"
+            android:layout_weight="0.25"
+            android:background="@drawable/underline">
 
             <TextView
+                android:id="@+id/textView40"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="요일별 설정"
-                android:id="@+id/textView40"
-                android:layout_gravity="left|top"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="left|top"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:text="요일별 설정"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <CheckBox
+                android:id="@+id/btn_check_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_check_day"
-                android:checked="false"
-                android:text="전체선택"
-                android:layout_gravity="right|top"
-                android:paddingRight="30dp"
                 android:layout_alignBottom="@+id/textView40"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"/>
+                android:layout_gravity="right|top"
+                android:checked="false"
+                android:paddingRight="30dp"
+                android:text="전체선택" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView40"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView40"
                 android:contextClickable="false"
                 android:transitionGroup="true">
 
@@ -123,114 +124,114 @@
                     android:id="@+id/checkBox_mon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/checked_push"
-                    android:paddingLeft="14dp"
-                    android:button="@drawable/hhh"
-                    android:checked="false"
-                    android:text="월"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
+                    android:layout_alignParentTop="true"
                     android:layout_marginBottom="24dp"
+                    android:layout_marginLeft="16dp"
                     android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/checked_push"
+                    android:button="@drawable/hhh"
+                    android:checked="false"
+                    android:paddingLeft="14dp"
+                    android:text="월"
                     android:textColor="@color/checkbox_text_color" />
 
                 <CheckBox
                     android:id="@+id/checkBox_tue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@+id/checkBox_mon"
+                    android:layout_toRightOf="@+id/checkBox_mon"
                     android:background="@drawable/checked_push"
-                    android:paddingLeft="14dp"
                     android:button="@drawable/hhh"
                     android:checked="false"
+                    android:paddingLeft="14dp"
                     android:text="화"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox_mon"
-                    android:layout_toEndOf="@+id/checkBox_mon"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="8dp"
                     android:textColor="@color/checkbox_text_color" />
 
                 <CheckBox
                     android:id="@+id/checkBox_wed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@+id/checkBox_tue"
+                    android:layout_toRightOf="@+id/checkBox_tue"
                     android:background="@drawable/checked_push"
-                    android:paddingLeft="14dp"
                     android:button="@drawable/hhh"
                     android:checked="false"
+                    android:paddingLeft="14dp"
                     android:text="수"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox_tue"
-                    android:layout_toEndOf="@+id/checkBox_tue"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="8dp"
                     android:textColor="@color/checkbox_text_color" />
 
                 <CheckBox
                     android:id="@+id/checkBox_thur"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:text="목"
-                    android:background="@drawable/checked_push"
-                    android:paddingLeft="14dp"
-                    android:button="@drawable/hhh"
                     android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox_wed"
-                    android:layout_toEndOf="@+id/checkBox_wed"
-                    android:layout_marginTop="16dp"
                     android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@+id/checkBox_wed"
+                    android:layout_toRightOf="@+id/checkBox_wed"
+                    android:background="@drawable/checked_push"
+                    android:button="@drawable/hhh"
+                    android:checked="false"
+                    android:paddingLeft="14dp"
+                    android:text="목"
                     android:textColor="@color/checkbox_text_color" />
 
                 <CheckBox
                     android:id="@+id/checkBox_fri"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@+id/checkBox_thur"
+                    android:layout_toRightOf="@+id/checkBox_thur"
                     android:background="@drawable/checked_push"
-                    android:paddingLeft="14dp"
                     android:button="@drawable/hhh"
                     android:checked="false"
+                    android:paddingLeft="14dp"
                     android:text="금"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox_thur"
-                    android:layout_toEndOf="@+id/checkBox_thur"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="8dp"
                     android:textColor="@color/checkbox_text_color" />
 
                 <CheckBox
                     android:id="@+id/checkBox_sat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@+id/checkBox_fri"
+                    android:layout_toRightOf="@+id/checkBox_fri"
                     android:background="@drawable/checked_push"
-                    android:paddingLeft="14dp"
                     android:button="@drawable/hhh"
                     android:checked="false"
+                    android:paddingLeft="14dp"
                     android:text="토"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox_fri"
-                    android:layout_toEndOf="@+id/checkBox_fri"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="8dp"
                     android:textColor="@color/checkbox_text_color" />
 
                 <CheckBox
                     android:id="@+id/checkBox_sun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@+id/checkBox_sat"
+                    android:layout_toRightOf="@+id/checkBox_sat"
                     android:background="@drawable/checked_push"
-                    android:paddingLeft="14dp"
                     android:button="@drawable/hhh"
                     android:checked="false"
+                    android:paddingLeft="14dp"
                     android:text="일"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox_sat"
-                    android:layout_toEndOf="@+id/checkBox_sat"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="8dp"
                     android:textColor="@color/checkbox_text_color" />
 
             </RelativeLayout>
@@ -238,119 +239,119 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/relativeLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout6"
-            android:background="@drawable/underline"
-            android:layout_below="@+id/relativeLayout8"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayout8"
+            android:background="@drawable/underline">
 
             <TextView
+                android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="장르"
-                android:id="@+id/textView10"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp" />
+                android:layout_marginTop="16dp"
+                android:text="장르"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <CheckBox
+                android:id="@+id/btn_check_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_check_category"
-                android:checked="false"
-                android:text="전체선택"
-                android:paddingRight="30dp"
-                android:layout_alignTop="@+id/textView10"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignTop="@+id/textView10"
+                android:checked="false"
+                android:paddingRight="30dp"
+                android:text="전체선택" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView10"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView10"
                 android:gravity="center">
 
                 <CheckBox
-                    android:button="@drawable/push_musical"
+                    android:id="@+id/checkBox_musical"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox_musical"
-                    android:checked="false"
-                    android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="18dp" />
-
-                <CheckBox
-                    android:button="@drawable/push_opera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/checkBox_opera"
-                    android:checked="false"
                     android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox_musical"
-                    android:layout_toEndOf="@+id/checkBox_musical"
+                    android:layout_marginRight="18dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="19dp"
-                    android:layout_marginRight="5dp" />
+                    android:button="@drawable/push_musical"
+                    android:checked="false" />
 
                 <CheckBox
-                    android:button="@drawable/push_concert"
+                    android:id="@+id/checkBox_opera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@+id/checkBox_musical"
+                    android:layout_toRightOf="@+id/checkBox_musical"
+                    android:button="@drawable/push_opera"
+                    android:checked="false" />
+
+                <CheckBox
                     android:id="@+id/checkBox_concert"
-                    android:checked="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignTop="@+id/checkBox_opera"
+                    android:layout_toEndOf="@+id/checkBox_opera"
                     android:layout_toRightOf="@+id/checkBox_opera"
-                    android:layout_toEndOf="@+id/checkBox_opera" />
+                    android:button="@drawable/push_concert"
+                    android:checked="false" />
             </RelativeLayout>
 
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/relativeLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/relativeLayout5"
-            android:layout_marginTop="40dp"
-            android:layout_below="@+id/relativeLayout6"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_below="@+id/relativeLayout6"
+            android:layout_marginTop="40dp"
             android:background="@drawable/underline">
 
             <TextView
+                android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="위시리스트 공연 알람"
-                android:id="@+id/textView11"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="18dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="18dp"
-                android:layout_marginBottom="18dp" />
+                android:text="위시리스트 공연 알람"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <Switch
+                android:id="@+id/wish_notice_switch"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:id="@+id/wish_notice_switch"
-                android:checked="false"
-                android:thumb="@drawable/circle_thumb"
-                android:track="@drawable/switch_btn"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="16dp"
+                android:checked="false"
+                android:nestedScrollingEnabled="false"
                 android:switchMinWidth="39dp"
-                android:nestedScrollingEnabled="false" />
+                android:thumb="@drawable/circle_thumb"
+                android:track="@drawable/switch_btn" />
         </RelativeLayout>
 
     </RelativeLayout>

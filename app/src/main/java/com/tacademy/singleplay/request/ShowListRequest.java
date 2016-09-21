@@ -15,7 +15,7 @@ import okhttp3.Request;
  * Created by Tacademy on 2016-08-30.
  */
 //?action=0&theme=0&sort=0&start=20
-public class ShowListRequest extends AbstractRequest<ResultsList<ShowList[]>> {
+public class ShowListRequest extends AbstractRequest<ShowList> {
     Request request;
 
     public ShowListRequest(Context context, String action, String theme, String sort) {
@@ -34,7 +34,7 @@ public class ShowListRequest extends AbstractRequest<ResultsList<ShowList[]>> {
 
     @Override
     protected Type getType() {
-        return new TypeToken<ResultsList<ShowList[]>>(){}.getType();
+        return new TypeToken<ShowList>(){}.getType();
     }
 
     @Override

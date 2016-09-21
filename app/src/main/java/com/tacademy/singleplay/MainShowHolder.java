@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.data2.ShowList;
+import com.tacademy.singleplay.data2.ShowListResults;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,7 +40,7 @@ public class MainShowHolder extends RecyclerView.ViewHolder {
 
 
     public interface OnShowItemClickListener {
-        public void onShowItemClick(View view, ShowList showList, int position);
+        public void onShowItemClick(View view, ShowListResults showList, int position);
     }
 
     OnShowItemClickListener listener;
@@ -58,8 +59,8 @@ public class MainShowHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    ShowList showList;
-    public void setData(ShowList showList) {
+    ShowListResults showList;
+    public void setData(ShowListResults showList) {
         this.showList = showList;
         placeNameView.setText(showList.getPlaceName());
         playDayView.setText(showList.getPlayDay());

@@ -17,6 +17,7 @@ import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowList;
+import com.tacademy.singleplay.data2.ShowListResults;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.manager.ShowListManager;
@@ -84,7 +85,7 @@ public class ThemeFragment extends Fragment {
         }
         mAdapter.setOnAdapterItemClickListener(new MainShowAdapter.OnShowAdapterItemClickLIstener() {
             @Override
-            public void onShowAdapterItemClick(View view, ShowList showList, int position) {
+            public void onShowAdapterItemClick(View view, ShowListResults showList, int position) {
                 int playId = showList.getPlayId();
                 String playName = showList.getPlayName();
                 ((MainActivity) getActivity()).goDetailActivity(playId, playName);
@@ -108,16 +109,16 @@ public class ThemeFragment extends Fragment {
         sort = ShowListManager.getInstance().getSort();
 
         ShowListRequest request = new ShowListRequest(MyApplication.getContext(), action, theme, sort);
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<ShowList[]>>() {
+        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ShowList>() {
             @Override
-            public void onSuccess(NetworkRequest<ResultsList<ShowList[]>> request, ResultsList<ShowList[]> result) {
-                ShowList[] datas = result.getResults();
+            public void onSuccess(NetworkRequest<ShowList> request, ShowList result) {
+                ShowListResults[] datas = result.getResults();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
             }
 
             @Override
-            public void onFail(NetworkRequest<ResultsList<ShowList[]>> request, int errorCode, String errorMessage, Throwable e) {
+            public void onFail(NetworkRequest<ShowList> request, int errorCode, String errorMessage, Throwable e) {
 
             }
         });
