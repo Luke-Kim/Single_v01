@@ -254,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
         BookingManager.getInstance().setPlayId(""+playId);
         BookingManager.getInstance().setPlayName(playName);
         Intent intent = new Intent(MainActivity.this, ShowDetailActivity.class);
+        intent.putExtra("from", "MainActivity");
         startActivity(intent);
     }
 

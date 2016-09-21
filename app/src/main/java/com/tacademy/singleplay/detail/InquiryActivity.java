@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.tacademy.singleplay.R;
+import com.tacademy.singleplay.inquirydetail.InquiryPagerAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +19,8 @@ public class InquiryActivity extends AppCompatActivity {
 
     @BindView(R.id.my_toolbar)
     Toolbar toolbar;
-    @Nullable @BindView(R.id.rc_event)
+    @Nullable
+    @BindView(R.id.rc_event)
     RecyclerView recyclerView;
 //
 //    @BindView(R.id.tabs)
@@ -27,11 +29,12 @@ public class InquiryActivity extends AppCompatActivity {
     @BindView(R.id.inquiry_tabs)
     TabLayout inquiry_tabs;
 
-    @Nullable@BindView(R.id.pager)
+    @Nullable
+    @BindView(R.id.pager)
     ViewPager pager;
 
 
-    com.tacademy.singleplay.inquirydetail.InquiryPagerAdapter mAdapter;
+    InquiryPagerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,7 @@ public class InquiryActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == android.R.id.home) {
+        if (item.getItemId() == android.R.id.home) {
             finish();
         }
         return super.onOptionsItemSelected(item);

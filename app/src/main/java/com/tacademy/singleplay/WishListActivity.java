@@ -71,12 +71,17 @@ public class WishListActivity extends AppCompatActivity {
         BookingManager.getInstance().setPlayId("" + playId);
         BookingManager.getInstance().setPlayName(playName);
         Intent intent = new Intent(WishListActivity.this, ShowDetailActivity.class);
+        intent.putExtra("from", "WishListActivity");
         startActivity(intent);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(WishListActivity.this, MainActivity.class);
+            startActivity(intent);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             finish();
         }
         return super.onOptionsItemSelected(item);

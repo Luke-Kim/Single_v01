@@ -63,19 +63,8 @@ public class CouponActivity extends AppCompatActivity {
         Intent intent;
         switch (item.getItemId()) {
             case R.id.menu_finish :
-                intent = new Intent(CouponActivity.this, UserActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 finish();
                 break;
-//            case R.id.detail_menu :
-//                intent = new Intent(CouponActivity.this, UserActivity.class);
-//                startActivity(intent);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                finish();
-//                break;
             default:
                 break;
         }

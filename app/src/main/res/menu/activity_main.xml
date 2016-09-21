@@ -18,8 +18,8 @@
 
     <item
         android:id="@+id/menu_finish"
-        android:title="지역검색"
-        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="지역검색취소"
+        android:icon="@drawable/x_icon"
         android:visible="false"
         app:showAsAction="always"/>
 

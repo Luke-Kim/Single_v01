@@ -47,8 +47,9 @@ public class BookingListActivity extends AppCompatActivity {
             @Override
             public void onBookingAdapterItemClick(View view, BookingList bookingList, int position) {
                 BookingManager.getInstance().setRid("" + bookingList.getRsvId());
-                startActivity(new Intent(BookingListActivity.this, CheckedBookingActivity.class));
-                finish();
+                Intent intent = new Intent(BookingListActivity.this, CheckedBookingActivity.class);
+                intent.putExtra("from", "BookingActivity");
+                startActivity(intent);
             }
         });
 

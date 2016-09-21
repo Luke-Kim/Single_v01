@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.data2.BookingListAdd;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowDetail;
+import com.tacademy.singleplay.data2.WishList;
 import com.tacademy.singleplay.data2.WishListDelete;
 import com.tacademy.singleplay.login.LoginActivity;
 import com.tacademy.singleplay.manager.BookingManager;
@@ -101,6 +102,7 @@ public class ShowDetailActivity extends AppCompatActivity {
     boolean isStart = true;
     int isWish;
     String theme;
+    String from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +117,7 @@ public class ShowDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        from = getIntent().getStringExtra("from");
         playId = BookingManager.getInstance().getPlayId();
         ShowDetailReqest reqest = new ShowDetailReqest(MyApplication.getContext(), playId);
         NetworkManager.getInstance().getNetworkData(reqest, new NetworkManager.OnResultListener<ResultsList<ShowDetail>>() {
@@ -261,11 +263,14 @@ public class ShowDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         if (item.getItemId() == android.R.id.home) {
-            Intent intent = new Intent(ShowDetailActivity.this, MainActivity.class);
+            if (from.equals("MainActivity")) {
+                intent = new Intent(ShowDetailActivity.this, MainActivity.class);
+            } else {
+                intent = new Intent(ShowDetailActivity.this, WishListActivity.class);
+            }
             startActivity(intent);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             finish();
         }
         return super.onOptionsItemSelected(item);

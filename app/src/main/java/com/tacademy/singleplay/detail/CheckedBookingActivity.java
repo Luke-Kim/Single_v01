@@ -60,12 +60,12 @@ public class CheckedBookingActivity extends AppCompatActivity {
     Button btn_cancel;
     @BindView(R.id.btn_finish)
     Button btn_finish;
-//    @BindView(R.id.txt_reservation_no)
-//    TextView txt_reservation_no;
+
     String rid;
     String rsvId;
     int status;
     Booking booking;
+    String from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,18 +73,22 @@ public class CheckedBookingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_checked_booking);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        from = getIntent().getStringExtra("from");
 
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CheckedBookingActivity.this, MainActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-//                startActivity(new Intent(CheckedBookingActivity.this, StarScoreActivity.class));
+                if (from.equals("SelectPayActivity")) {
+                    Intent intent;
+                    intent = new Intent(CheckedBookingActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                } else {
+                }
+                finish();
             }
         });
 
@@ -98,12 +102,15 @@ public class CheckedBookingActivity extends AppCompatActivity {
         btn_finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent(CheckedBookingActivity.this, MainActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
+                if (from.equals("SelectPayActivity")) {
+                    Intent intent;
+                    intent = new Intent(CheckedBookingActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                } else {
+                }
+                finish();
             }
         });
 
@@ -131,7 +138,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 txt_place_name.setText(result.getResult().getPlaceName());
                 txt_seat_class.setText(result.getResult().getSeatClass());
                 txt_seat_info.setText(result.getResult().getSeatInfo());
-                txt_settlement.setText(result.getResult().getSettlement()+"원");
+                txt_settlement.setText(result.getResult().getSettlement() + "원");
                 txt_reservation_no.setText(result.getResult().getReservationNo());
                 Glide.with(image_poster.getContext())
                         .load(result.getResult().getPoster())
@@ -140,7 +147,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 status = result.getResult().getStatus();
                 Toast.makeText(CheckedBookingActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
 
-                if (status == 0 ) {
+                if (status == 0) {
                     txt_reservation_no.setText("예약 취소된 공연입니다");
                     btn_confirm.setVisibility(View.INVISIBLE);
                     btn_cancel.setVisibility(View.INVISIBLE);
@@ -150,7 +157,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
 
             @Override
             public void onFail(NetworkRequest<ResultsList<BookingDetail>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(CheckedBookingActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CheckedBookingActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -160,13 +167,6 @@ public class CheckedBookingActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case android.R.id.home:
-                intent = new Intent(CheckedBookingActivity.this, MainActivity.class);
-                startActivity(intent);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                finish();
-                break;
             case R.id.detail_menu:
                 intent = new Intent(CheckedBookingActivity.this, UserActivity.class);
                 startActivity(intent);
@@ -181,7 +181,6 @@ public class CheckedBookingActivity extends AppCompatActivity {
     }
 
 
-
     private void DialogSimple() {
         AlertDialog.Builder simpleDialog = new AlertDialog.Builder(this);
         simpleDialog.setMessage("예매를 취소하시겠습니까?");
@@ -189,7 +188,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(CheckedBookingActivity.this, "예매가 취소되었습니다", Toast.LENGTH_SHORT).show();
-                BookingCancelRequest request = new BookingCancelRequest(MyApplication.getContext(), ""+rsvId);
+                BookingCancelRequest request = new BookingCancelRequest(MyApplication.getContext(), "" + rsvId);
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingCancel>() {
                     @Override
                     public void onSuccess(NetworkRequest<BookingCancel> request, BookingCancel result) {
