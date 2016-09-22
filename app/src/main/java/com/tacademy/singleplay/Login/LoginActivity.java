@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -38,8 +39,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity {
-    @BindView(R.id.btn_facebook)
-    Button facebookButton;
+    @BindView(R.id.btn_fb)
+    RelativeLayout facebookButton;
 
     CallbackManager callbackManager;
     LoginManager mLoginManager;
@@ -65,17 +66,17 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        setButtonLabel();
+//        setButtonLabel();
     }
 
-    private void setButtonLabel() {
-        if (isLogin()) {
-            facebookButton.setText("logout");
-        } else {
-            facebookButton.setText("login");
-        }
-
-    }
+//    private void setButtonLabel() {
+//        if (isLogin()) {
+//            facebookButton.setText("logout");
+//        } else {
+//            facebookButton.setText("login");
+//        }
+//
+//    }
 
     AccessTokenTracker mTracker;
 
@@ -86,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
             mTracker = new AccessTokenTracker() {
                 @Override
                 protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
-                    setButtonLabel();
+//                    setButtonLabel();
                 }
             };
         } else {
@@ -124,7 +125,6 @@ public class LoginActivity extends AppCompatActivity {
         mLoginManager.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(LoginActivity.this, "login manager...", Toast.LENGTH_SHORT).show();
                 AccessToken accessToken = AccessToken.getCurrentAccessToken();
 //                Log.i("jeahyun : ", accessToken.getToken()+"");
                 String token = accessToken.getToken();

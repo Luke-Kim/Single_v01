@@ -13,24 +13,41 @@
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:background="@drawable/sns_login_back">
 
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Facebook"
-            android:id="@+id/btn_facebook"
-            android:layout_marginBottom="146dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true" />
+<RelativeLayout
+    android:layout_width="250dp"
+    android:layout_height="50dp"
+    android:layout_marginBottom="102dp"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/btn_fb">
 
-        <!--<com.facebook.login.widget.LoginButton-->
-            <!--android:id="@+id/login_button"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_marginTop="30dp"-->
-            <!--android:layout_marginBottom="30dp" />-->
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@drawable/sns_login_fb"
+        android:id="@+id/btn_facebook"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true" />
+
+    <TextView
+        android:layout_width="70dp"
+        android:layout_height="100dp"
+        android:text="   페이스북으로 로그인"
+        android:layout_toRightOf="@+id/btn_facebook"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:textSize="15dp"
+        android:textColor="@android:color/white"
+        android:gravity="left|center_vertical|center"
+        android:background="#4c70bd" />
+</RelativeLayout>
 
     </RelativeLayout>
 </RelativeLayout>
