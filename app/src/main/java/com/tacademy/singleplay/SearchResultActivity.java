@@ -77,7 +77,7 @@ public class SearchResultActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Search[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Search[]>> request, ResultsList<Search[]> result) {
-                Toast.makeText(SearchResultActivity.this, "성공" + title, Toast.LENGTH_SHORT).show();
+
                 Search[] datas = result.getResults();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
@@ -90,7 +90,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void onFail(NetworkRequest<ResultsList<Search[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(SearchResultActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+
             }
         });
     }

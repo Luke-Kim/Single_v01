@@ -4,22 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.PushActivity;
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.Profile;
-import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.login.LoginActivity;
-import com.tacademy.singleplay.manager.NetworkManager;
-import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.manager.PropertyManager;
 import com.tacademy.singleplay.manager.UserInfoManager;
-import com.tacademy.singleplay.request.ProfileRequest;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,7 +47,6 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         ButterKnife.bind(this);
-        Toast.makeText(UserActivity.this, "이름 : " + UserInfoManager.getInstance().getCoupons(), Toast.LENGTH_SHORT).show();
 //        signInData = InsertPersonInfoActivity.signInData;
 
         setSupportActionBar(toolbar);
@@ -123,12 +115,7 @@ public class UserActivity extends AppCompatActivity {
 
     public void initData() {
 
-        final String userName = user_name.getText().toString();
-//        String userImage = imageView.getDrawable().toString();
-        String userEmail = "";
-        String userPhone = "";
         checkLogin = PropertyManager.getInstance().isCheckLogin();
-        Toast.makeText(UserActivity.this, "" + checkLogin, Toast.LENGTH_SHORT).show();
         if (checkLogin) {
             profileView.setText("프로필 수정 및 로그아웃");
             profileView.setVisibility(View.VISIBLE);

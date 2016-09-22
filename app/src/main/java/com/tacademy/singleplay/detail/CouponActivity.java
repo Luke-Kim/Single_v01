@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.Coupon;
@@ -76,13 +75,13 @@ public class CouponActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Coupon[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Coupon[]>> request, ResultsList<Coupon[]> result) {
-                Toast.makeText(CouponActivity.this, "성공", Toast.LENGTH_SHORT).show();
+
                 couponAdapter.addAll(result.getResults());
             }
 
             @Override
             public void onFail(NetworkRequest<ResultsList<Coupon[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(CouponActivity.this, "실패"+errorCode, Toast.LENGTH_SHORT).show();
+
             }
         });
 

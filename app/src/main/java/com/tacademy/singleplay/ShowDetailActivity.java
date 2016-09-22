@@ -178,7 +178,7 @@ public class ShowDetailActivity extends AppCompatActivity {
                         .load(result.getResult().getPoster()) //배열되있길래 [0]처리
                         .into(posterView);
                 isWish = result.getResult().getIsWish();
-                Toast.makeText(ShowDetailActivity.this, "위시 여부 : " + isWish, Toast.LENGTH_SHORT).show();
+
                 if (isWish == 1) {
                     btn_wish.setChecked(true);
                 }
@@ -241,12 +241,12 @@ public class ShowDetailActivity extends AppCompatActivity {
                     NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingListAdd>() {
                         @Override
                         public void onSuccess(NetworkRequest<BookingListAdd> request, BookingListAdd result) {
-                            Toast.makeText(ShowDetailActivity.this, "성공" + result.getMessage(), Toast.LENGTH_SHORT).show();
+
                         }
 
                         @Override
                         public void onFail(NetworkRequest<BookingListAdd> request, int errorCode, String errorMessage, Throwable e) {
-                            Toast.makeText(ShowDetailActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+
                         }
                     });
 

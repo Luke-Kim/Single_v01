@@ -17,7 +17,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
@@ -101,7 +100,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String a = emailView.getText().toString();
                 if(phoneView.getText().length() < 10 || checkEmailForm(a) == false){ // 이메일 정규식과 핸드폰 번호 입력 체크
-                    Toast.makeText(BookingPersonInfoActivity.this, "알맞은 전화번호 / 이메일 형식을 넣어주세요", Toast.LENGTH_SHORT).show();
+
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(BookingPersonInfoActivity.this);
                     builder.setTitle("가입정보 확인");
@@ -139,7 +138,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
             NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<UserInfo>>() {
                 @Override
                 public void onSuccess(NetworkRequest<ResultsList<UserInfo>> request, ResultsList<UserInfo> result) {
-                    Toast.makeText(BookingPersonInfoActivity.this, "성공" + result.getResult().getName(), Toast.LENGTH_SHORT).show();
+
                     nameView.setText(result.getResult().getName());
                     phoneView.setText(result.getResult().getPhone());
                     emailView.setText(result.getResult().getEmail());
@@ -147,7 +146,7 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
 
                 @Override
                 public void onFail(NetworkRequest<ResultsList<UserInfo>> request, int errorCode, String errorMessage, Throwable e) {
-                    Toast.makeText(BookingPersonInfoActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+
                 }
             });
         } else {

@@ -18,13 +18,9 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.tacademy.singleplay.data2.BookingList;
-import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.ShowList;
 import com.tacademy.singleplay.data2.ShowListReview;
-import com.tacademy.singleplay.data2.StarScore;
 import com.tacademy.singleplay.detail.ReviewPopup;
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
@@ -32,9 +28,7 @@ import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.manager.ReviewManager;
 import com.tacademy.singleplay.manager.ShowListManager;
-import com.tacademy.singleplay.request.BookingListRequest;
 import com.tacademy.singleplay.request.ShowListRequest;
-import com.tacademy.singleplay.request.StarScoreRequest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -88,9 +82,6 @@ public class MainActivity extends AppCompatActivity {
         ShowListManager.getInstance().setSort("0");
         ShowListManager.getInstance().setPosition(0);
 
-//        String test = "17:50";
-//        String[] testAraay = test.split(":");
-//        Toast.makeText(MainActivity.this, "시간 : " + testAraay[0] + ",  분 : " + testAraay[1], Toast.LENGTH_SHORT).show();
 
         if (startMain) {
             timeGap();
@@ -150,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.text_toolbarTitle)
     public void onToolbarTitle() {
-//            startActivity(new Intent(MainActivity.this, LocationActivity.class));
 
         if (!isLocation) {
             isLocation = true;
@@ -250,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
                 detail.setVisible(true);
                 wishlist.setVisible(true);
                 back.setVisible(false);
-                Toast.makeText(MainActivity.this, "click title 4", Toast.LENGTH_SHORT).show();
+
                 ft.beginTransaction()
                         .setCustomAnimations(R.anim.slide_up_in, R.anim.slide_up_out)
                         .remove(lf)
@@ -324,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
                     } else if (nowTime[2] > Integer.parseInt(endShowListDay[2])) { //일 비교
                         onReview(showListReview[i]); //리뷰리퀘스트
                     } else {
-                        Toast.makeText(MainActivity.this, "리뷰할게 없음", Toast.LENGTH_SHORT).show(); //공연날짜가 지난게 없으면 리뷰 ㄴㄴ
+
                         onReview(showListReview[i]);
                     }
                 }

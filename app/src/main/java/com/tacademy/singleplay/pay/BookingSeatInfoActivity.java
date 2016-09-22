@@ -13,7 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -162,7 +161,7 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<EmptySeat>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<EmptySeat>> request, ResultsList<EmptySeat> result) {
-                Toast.makeText(BookingSeatInfoActivity.this, "성공", Toast.LENGTH_SHORT).show();
+
                 show_day.setText(result.getResult().getPlayDay());
                 show_time.setText(result.getResult().getPlayTime());
                 show_location.setText(result.getResult().getPlaceName());
@@ -198,7 +197,7 @@ public class BookingSeatInfoActivity extends AppCompatActivity {
 
             @Override
             public void onFail(NetworkRequest<ResultsList<EmptySeat>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(BookingSeatInfoActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+
             }
         });
     }

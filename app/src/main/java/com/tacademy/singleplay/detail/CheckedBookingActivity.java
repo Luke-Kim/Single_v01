@@ -1,18 +1,14 @@
 package com.tacademy.singleplay.detail;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tacademy.singleplay.MainActivity;
@@ -22,14 +18,11 @@ import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingCancel;
 import com.tacademy.singleplay.data2.BookingDetail;
 import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.ShowList;
-import com.tacademy.singleplay.data2.ShowListReview;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.BookingCancelRequest;
 import com.tacademy.singleplay.request.BookingDetailRequest;
-import com.tacademy.singleplay.request.ShowListRequest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -138,7 +131,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<BookingDetail>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<BookingDetail>> request, ResultsList<BookingDetail> result) {
-                Toast.makeText(CheckedBookingActivity.this, "성공", Toast.LENGTH_SHORT).show();
+
                 txt_play_name.setText(result.getResult().getPlayName());
                 txt_play_day.setText(result.getResult().getPlayDay());
                 txt_play_time.setText(result.getResult().getPlayTime());
@@ -153,7 +146,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 rsvId = "" + result.getResult().getRsvId();
                 status = result.getResult().getStatus();
                 showname = result.getResult().getPlayName();
-                Toast.makeText(CheckedBookingActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
+
 
                 if (status == 0) {
                     txt_reservation_no.setText("예약 취소된 공연입니다");
@@ -173,7 +166,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
 
             @Override
             public void onFail(NetworkRequest<ResultsList<BookingDetail>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(CheckedBookingActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -218,7 +211,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingCancel>() {
                     @Override
                     public void onSuccess(NetworkRequest<BookingCancel> request, BookingCancel result) {
-                        Toast.makeText(CheckedBookingActivity.this, "성공", Toast.LENGTH_SHORT).show();
+
                         status = 0;
                         BookingCancelCheckFinal dialog = new BookingCancelCheckFinal(CheckedBookingActivity.this);
                         dialog.show();
@@ -231,7 +224,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
 
                     @Override
                     public void onFail(NetworkRequest<BookingCancel> request, int errorCode, String errorMessage, Throwable e) {
-                        Toast.makeText(CheckedBookingActivity.this, "실패", Toast.LENGTH_SHORT).show();
+
                     }
                 });
                 break;

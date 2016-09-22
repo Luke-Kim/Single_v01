@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.Search;
@@ -96,7 +95,7 @@ public class SearchFragment extends Fragment {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Search[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Search[]>> request, ResultsList<Search[]> result) {
-                Toast.makeText(MyApplication.getContext(), "성공", Toast.LENGTH_SHORT).show();
+
                 Search[] datas = result.getResults();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
@@ -105,7 +104,7 @@ public class SearchFragment extends Fragment {
 
             @Override
             public void onFail(NetworkRequest<ResultsList<Search[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(MyApplication.getContext(), "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+
             }
         });
     }

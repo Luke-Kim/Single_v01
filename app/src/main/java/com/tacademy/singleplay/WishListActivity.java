@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.data2.WishList;
@@ -88,7 +87,6 @@ public class WishListActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<WishList[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<WishList[]>> request, ResultsList<WishList[]> result) {
-                Toast.makeText(WishListActivity.this, "성공" + result, Toast.LENGTH_SHORT).show();
 
                 wishListAdapter.clear();
                 wishListAdapter.addAll(result.getResults());
@@ -104,7 +102,7 @@ public class WishListActivity extends AppCompatActivity {
 
             @Override
             public void onFail(NetworkRequest<ResultsList<WishList[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(WishListActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
+
             }
         });
     }

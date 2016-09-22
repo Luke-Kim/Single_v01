@@ -8,12 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.EventNotice;
@@ -63,8 +61,6 @@ public class EventNoticeActivity extends AppCompatActivity {
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<EventNoticeDetail>>() {
                     @Override
                     public void onSuccess(NetworkRequest<ResultsList<EventNoticeDetail>> request, ResultsList<EventNoticeDetail> result) {
-                        Log.d("result",result.getResult().getImage().toString());
-                        Toast.makeText(EventNoticeActivity.this, "성공", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(EventNoticeActivity.this, EventDetailActivity.class);
                         intent.putExtra("result",  result.getResult());
 
@@ -74,7 +70,7 @@ public class EventNoticeActivity extends AppCompatActivity {
 
                     @Override
                     public void onFail(NetworkRequest<ResultsList<EventNoticeDetail>> request, int errorCode, String errorMessage, Throwable e) {
-                        Toast.makeText(EventNoticeActivity.this, "실패", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
@@ -105,17 +101,11 @@ public class EventNoticeActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<EventNotice[]>> request, ResultsList<EventNotice[]> result) {
                 eventNoticeAdapter.addAll(result.getResults());
-                Toast.makeText(EventNoticeActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                if (result != null) {
-
-                }
             }
 
             @Override
             public void onFail(NetworkRequest<ResultsList<EventNotice[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Log.e("error", request + " , " + errorCode + " , " + errorMessage);
 
-                Toast.makeText(EventNoticeActivity.this, "실패", Toast.LENGTH_SHORT).show();
             }
         });
     }

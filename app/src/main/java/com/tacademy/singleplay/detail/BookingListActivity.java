@@ -8,10 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
-import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingList;
 import com.tacademy.singleplay.data2.ResultsList;
 import com.tacademy.singleplay.manager.BookingManager;
@@ -73,13 +71,13 @@ public class BookingListActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<BookingList[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<BookingList[]>> request, ResultsList<BookingList[]> result) {
-                Toast.makeText(BookingListActivity.this, "성공", Toast.LENGTH_SHORT).show();
+
                 bookingListAdapter.addAll(result.getResults());
             }
 
             @Override
             public void onFail(NetworkRequest<ResultsList<BookingList[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(BookingListActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+
             }
         });
     }

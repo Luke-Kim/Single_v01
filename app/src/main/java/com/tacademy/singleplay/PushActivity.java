@@ -187,7 +187,7 @@ public class PushActivity extends AppCompatActivity {
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<WishListNoti>() {
                     @Override
                     public void onSuccess(NetworkRequest<WishListNoti> request, WishListNoti result) {
-                        Toast.makeText(PushActivity.this, "위시리스트 공연알림 : " + wishNoti, Toast.LENGTH_SHORT).show();
+
                         UserInfoManager.getInstance().setWishnoti(wishNoti);
                     }
 
@@ -346,12 +346,12 @@ public class PushActivity extends AppCompatActivity {
                 UserInfoManager.getInstance().setDay(day);
                 UserInfoManager.getInstance().setTheme(theme);
                 UserInfoManager.getInstance().setNoti(noti);
-                Toast.makeText(PushActivity.this, "알람설정 성공", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void onFail(NetworkRequest<Push> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(PushActivity.this, "알람설정 실패 : " + errorCode, Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -396,7 +396,7 @@ public class PushActivity extends AppCompatActivity {
                 PushRequest request = new PushRequest(MyApplication.getContext(), noti, isDay, isTheme);
                 setRequest(request);
             } else {
-                Toast.makeText(PushActivity.this, "로그인후 사용해주삼", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PushActivity.this, "로그인후 사용해주세요", Toast.LENGTH_SHORT).show();
             }
             finish();
         }
@@ -409,7 +409,7 @@ public class PushActivity extends AppCompatActivity {
             PushRequest request = new PushRequest(MyApplication.getContext(), noti, isDay, isTheme);
             setRequest(request);
         } else {
-            Toast.makeText(PushActivity.this, "로그인후 사용해주삼", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PushActivity.this, "로그인후 사용해주세요", Toast.LENGTH_SHORT).show();
         }
         finish();
         super.onBackPressed();

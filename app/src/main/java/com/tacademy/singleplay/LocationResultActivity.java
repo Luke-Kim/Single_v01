@@ -1,8 +1,8 @@
 package com.tacademy.singleplay;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.data2.Location;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -79,7 +78,7 @@ public class LocationResultActivity extends AppCompatActivity {
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Location[]>>() {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<Location[]>> request, ResultsList<Location[]> result) {
-                Toast.makeText(MyApplication.getContext(), "지역검색 성공", Toast.LENGTH_SHORT).show();
+
                 Location[] datas = result.getResults();
                 locationAdapter.clear();
                 locationAdapter.addAll(datas);
@@ -92,7 +91,7 @@ public class LocationResultActivity extends AppCompatActivity {
 
             @Override
             public void onFail(NetworkRequest<ResultsList<Location[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(MyApplication.getContext(), "지역검색 실패", Toast.LENGTH_SHORT).show();
+
 
             }
         });

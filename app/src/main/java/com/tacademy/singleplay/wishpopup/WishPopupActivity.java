@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Display;
 import android.view.Gravity;
-import android.widget.Toast;
 
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.data2.ResultsList;
@@ -22,11 +21,9 @@ public class WishPopupActivity extends AppCompatActivity {
 
     @BindView(R.id.rcv_wish_pop)
     RecyclerView rcv;
-//    @BindView(R.id.wish_popup_layout)
-//    RelativeLayout wish_popup_layout;
 
     WishPopAdater mAdapter;
-//    public static final String EXTRA_PLAYID = "play id";
+
     String playId;
     int isWish;
 
@@ -38,8 +35,6 @@ public class WishPopupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_wish_popup);
         ButterKnife.bind(this);
 
-//        Intent intent = getIntent();
-//        playId = intent.getIntExtra(EXTRA_PLAYID, 0);
         playId = BookingManager.getInstance().getPlayId();
 
         display = WishPopupActivity.this.getWindowManager().getDefaultDisplay();
@@ -69,13 +64,13 @@ public class WishPopupActivity extends AppCompatActivity {
                     mAdapter.addAll(result.getResults());
                 } else  {
                     String errorMessage = result.getError();
-                    Toast.makeText(WishPopupActivity.this, ""+errorMessage, Toast.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
             public void onFail(NetworkRequest<ResultsList<String[]>> request, int errorCode, String errorMessage, Throwable e) {
-                Toast.makeText(WishPopupActivity.this, "실패"+errorCode+errorMessage, Toast.LENGTH_SHORT).show();
+
             }
         });
     }
