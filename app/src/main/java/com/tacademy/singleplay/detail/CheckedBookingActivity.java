@@ -22,11 +22,17 @@ import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingCancel;
 import com.tacademy.singleplay.data2.BookingDetail;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.ShowList;
+import com.tacademy.singleplay.data2.ShowListReview;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.BookingCancelRequest;
 import com.tacademy.singleplay.request.BookingDetailRequest;
+import com.tacademy.singleplay.request.ShowListRequest;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,6 +66,8 @@ public class CheckedBookingActivity extends AppCompatActivity {
     Button btn_cancel;
     @BindView(R.id.btn_finish)
     Button btn_finish;
+    @BindView(R.id.image_stamp)
+    ImageView stampView;
 
     String rid;
     String rsvId;
@@ -152,11 +160,19 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 status = result.getResult().getStatus();
                 Toast.makeText(CheckedBookingActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
 
-                if (status == 0) {
+                if (status == 1) {
                     txt_reservation_no.setText("예약 취소된 공연입니다");
                     btn_confirm.setVisibility(View.INVISIBLE);
                     btn_cancel.setVisibility(View.INVISIBLE);
                     btn_finish.setVisibility(View.VISIBLE);
+                }
+                String[] Day = result.getResult().getPlayDay().split("-");
+                for (int i = 0; i < 3; i++) {
+                    playDay[i] = Integer.parseInt(Day[i]);
+
+                }
+                if (status == 0) {
+                    timeGap();
                 }
             }
 
@@ -201,6 +217,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                     public void onSuccess(NetworkRequest<BookingCancel> request, BookingCancel result) {
                         Toast.makeText(CheckedBookingActivity.this, "성공", Toast.LENGTH_SHORT).show();
 
+                        status = 1;
                         txt_reservation_no.setText("예약 취소된 공연입니다");
                         btn_confirm.setVisibility(View.INVISIBLE);
                         btn_cancel.setVisibility(View.INVISIBLE);
@@ -228,4 +245,39 @@ public class CheckedBookingActivity extends AppCompatActivity {
     }
 
     AlertDialog dialog;
+
+
+    int bookingCnt;
+    int[] nowTime = new int[3];
+    int[] playDay = new int[3];
+
+    private void timeGap() {
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy:MM:dd");
+        String strNow = sdfNow.format(date);
+        String[] strNowTime = strNow.split(":");
+
+        for (int i = 0; i < 3; i++) {
+            nowTime[i] = Integer.parseInt(strNowTime[i]);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            //비교해서 하나라도 얻어 걸리면 리뷰 ㄱㄱ
+            if (nowTime[0] > playDay[0]) { //연 비교
+                setStamp();
+            } else if (nowTime[1] > playDay[1]) { //월 비교
+                setStamp();
+            } else if (nowTime[2] > playDay[2]) { //일 비교
+                setStamp();
+            } else {
+            }
+        }
+    }
+    public void setStamp() {
+        stampView.setVisibility(View.VISIBLE);
+        btn_confirm.setVisibility(View.INVISIBLE);
+        btn_cancel.setVisibility(View.INVISIBLE);
+        btn_finish.setVisibility(View.VISIBLE);
+    }
 }

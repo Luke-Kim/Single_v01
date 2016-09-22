@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                 }
                 setPager();
-
             }
         });
 
@@ -307,7 +306,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         ShowListRequest request = new ShowListRequest(MyApplication.getContext(), "0", "0", "0");
-//        BookingListRequest request = new BookingListRequest(MyApplication.getContext());
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ShowList>() {
             @Override
             public void onSuccess(NetworkRequest<ShowList> request, ShowList result) {
