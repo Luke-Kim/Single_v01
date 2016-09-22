@@ -1,9 +1,12 @@
 package com.tacademy.singleplay.detail;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -57,6 +60,8 @@ public class CheckedBookingActivity extends AppCompatActivity {
     Button btn_cancel;
     @BindView(R.id.btn_finish)
     Button btn_finish;
+    @BindView(R.id.image_stamp)
+    ImageView stampView;
 
     String rid;
     String rsvId;
@@ -144,11 +149,19 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 showname = result.getResult().getPlayName();
                 Toast.makeText(CheckedBookingActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
 
-                if (status == 0) {
+                if (status == 1) {
                     txt_reservation_no.setText("예약 취소된 공연입니다");
                     btn_confirm.setVisibility(View.INVISIBLE);
                     btn_cancel.setVisibility(View.INVISIBLE);
                     btn_finish.setVisibility(View.VISIBLE);
+                }
+                String[] Day = result.getResult().getPlayDay().split("-");
+                for (int i = 0; i < 3; i++) {
+                    playDay[i] = Integer.parseInt(Day[i]);
+
+                }
+                if (status == 0) {
+                    timeGap();
                 }
             }
 
@@ -199,6 +212,9 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingCancel>() {
                     @Override
                     public void onSuccess(NetworkRequest<BookingCancel> request, BookingCancel result) {
+                        Toast.makeText(CheckedBookingActivity.this, "성공", Toast.LENGTH_SHORT).show();
+
+                        status = 1;
                         BookingCancelCheckFinal dialog = new BookingCancelCheckFinal(CheckedBookingActivity.this);
                         dialog.show();
                         txt_reservation_no.setText("예약 취소된 공연입니다");
@@ -216,5 +232,42 @@ public class CheckedBookingActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    AlertDialog dialog;
+
+
+    int bookingCnt;
+    int[] nowTime = new int[3];
+    int[] playDay = new int[3];
+
+    private void timeGap() {
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy:MM:dd");
+        String strNow = sdfNow.format(date);
+        String[] strNowTime = strNow.split(":");
+
+        for (int i = 0; i < 3; i++) {
+            nowTime[i] = Integer.parseInt(strNowTime[i]);
+        }
+
+        for (int i = 0; i < 3; i++) {
+            //비교해서 하나라도 얻어 걸리면 리뷰 ㄱㄱ
+            if (nowTime[0] > playDay[0]) { //연 비교
+                setStamp();
+            } else if (nowTime[1] > playDay[1]) { //월 비교
+                setStamp();
+            } else if (nowTime[2] > playDay[2]) { //일 비교
+                setStamp();
+            } else {
+            }
+        }
+    }
+    public void setStamp() {
+        stampView.setVisibility(View.VISIBLE);
+        btn_confirm.setVisibility(View.INVISIBLE);
+        btn_cancel.setVisibility(View.INVISIBLE);
+        btn_finish.setVisibility(View.VISIBLE);
     }
 }

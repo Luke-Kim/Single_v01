@@ -6,6 +6,15 @@ package com.tacademy.singleplay.manager;
 public class ReviewManager {
     private String playId;
     private String playName;
+    private String theme;
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
 
     private static ReviewManager instance;
     public static ReviewManager getInstance() {
