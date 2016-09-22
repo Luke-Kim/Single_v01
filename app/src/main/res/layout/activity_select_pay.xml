@@ -106,7 +106,8 @@
                 android:layout_alignEnd="@+id/text_point"
                 android:layout_alignLeft="@+id/text_point"
                 android:layout_alignStart="@+id/text_point"
-                android:textSize="13dp" />
+                android:textSize="13dp"
+                android:minWidth="20dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -244,7 +245,8 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="추후 다른결제 수단 업데이트가 예정이며, 현재 현장 결제만 가능한 점 양해바랍니다."
+            android:text="추후 다른결제 수단 업데이트가 예정이며, 현재 현장 결제만 가능한 점 양해바랍니다.
+             또한 마일리지는 1000원 이상부터 사용이 가능합니다."
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="13dp"
             android:layout_below="@+id/radioGroup_paid"
@@ -261,7 +263,10 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="16dp" />
+            android:layout_marginLeft="16dp"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:layout_marginTop="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -271,7 +276,8 @@
             android:layout_below="@+id/textView7"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="16dp" />
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -291,7 +297,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="16dp" />
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -301,7 +308,8 @@
             android:layout_below="@+id/text_total"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="16dp" />
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="5dp" />
 
         <TextView
             android:layout_width="wrap_content"

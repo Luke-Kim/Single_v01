@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.Menu;
@@ -76,7 +78,6 @@ public class SelectPayActivity extends AppCompatActivity {
 
     private static final String KEY_COUPON = "coupon";
     private static final String KEY_POINT = "point";
-    public static int rsvid;
 
     CouponAdapter mAdapter;
 
@@ -136,6 +137,11 @@ public class SelectPayActivity extends AppCompatActivity {
         listView.setHasFixedSize(true);
         listView.setLayoutManager(layoutManager);
         listView.setAdapter(mAdapter);
+        inputView.setInputType(InputType.TYPE_CLASS_NUMBER); // 숫자만 입력 가능
+        final InputFilter[] FilterArray = new InputFilter[1]; // 길이 제한
+        FilterArray[0] = new InputFilter.LengthFilter(7);
+        inputView.setFilters(FilterArray);
+
 
         DiscountRequest request = new DiscountRequest(this);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ResultsList<Discount>>() {
@@ -170,10 +176,15 @@ public class SelectPayActivity extends AppCompatActivity {
                 String inputPoint = inputView.getText().toString();
                 if (!TextUtils.isEmpty(inputPoint)) {
                     BookingManager.getInstance().setUseMileage(inputPoint);
-                    if (Integer.parseInt(inputPoint) <=  userPoint) {
-                        priceCalculator(KEY_POINT, Integer.parseInt(inputPoint));
+                    if(userPoint >= 1000){
+                        if (Integer.parseInt(inputPoint) <=  userPoint) {
+                            priceCalculator(KEY_POINT, Integer.parseInt(inputPoint));
+                        } else {
+                            priceCalculator(KEY_POINT, userPoint);
+                            Toast.makeText(SelectPayActivity.this, "입력하신 마일리지보다 보유하신 마일리지가 부족합니다.", Toast.LENGTH_LONG).show();
+                        }
                     } else {
-                        priceCalculator(KEY_POINT, userPoint);
+                        inputView.setEnabled(false);
                     }
                 }
             }
