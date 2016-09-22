@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="120dp"
+    android:background="#ffffff"
+    android:gravity="center">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/img_check"
+        android:src="@drawable/done_icon"
+        android:paddingLeft="65dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="예매가 취소되었어요."
+        android:textSize="20dp"
+        android:id="@+id/textView18"
+        android:layout_below="@+id/img_check"/>
+</RelativeLayout>

@@ -34,7 +34,7 @@
         android:layout_below="@+id/my_frame"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/underline_green" />
+        android:background="@drawable/under_lgtgray" />
 
 
     <RelativeLayout

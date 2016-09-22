@@ -19,6 +19,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     @BindView(R.id.event_title)
     TextView textView;
+
 //    @Nullable @BindView(R.id.cardview)
 //    CardView cardView;
 

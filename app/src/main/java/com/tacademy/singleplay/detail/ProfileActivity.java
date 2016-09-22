@@ -32,7 +32,6 @@ import butterknife.OnClick;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    String userImage = "asdf";
 
     @BindView(R.id.my_toolbar)
     Toolbar toolbar;

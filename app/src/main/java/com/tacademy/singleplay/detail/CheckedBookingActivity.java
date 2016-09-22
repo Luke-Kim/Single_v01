@@ -1,12 +1,9 @@
 package com.tacademy.singleplay.detail;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -66,6 +63,8 @@ public class CheckedBookingActivity extends AppCompatActivity {
     int status;
     Booking booking;
     String from;
+    String showname;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,13 +88,6 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 } else {
                 }
                 finish();
-            }
-        });
-
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DialogSimple();
             }
         });
 
@@ -136,7 +128,6 @@ public class CheckedBookingActivity extends AppCompatActivity {
             @Override
             public void onSuccess(NetworkRequest<ResultsList<BookingDetail>> request, ResultsList<BookingDetail> result) {
                 Toast.makeText(CheckedBookingActivity.this, "성공", Toast.LENGTH_SHORT).show();
-
                 txt_play_name.setText(result.getResult().getPlayName());
                 txt_play_day.setText(result.getResult().getPlayDay());
                 txt_play_time.setText(result.getResult().getPlayTime());
@@ -150,6 +141,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                         .into(image_poster);
                 rsvId = "" + result.getResult().getRsvId();
                 status = result.getResult().getStatus();
+                showname = result.getResult().getPlayName();
                 Toast.makeText(CheckedBookingActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
 
                 if (status == 0) {
@@ -165,7 +157,18 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 Toast.makeText(CheckedBookingActivity.this, "실패" + errorCode + errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
+
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CheckedBookingActivity.this, ShowCancelActivity.class);
+                intent.putExtra("name", showname);
+                startActivityForResult(intent, 0);
+            }
+        });
     }
+
 
 
     @Override
@@ -187,20 +190,17 @@ public class CheckedBookingActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-    private void DialogSimple() {
-        AlertDialog.Builder simpleDialog = new AlertDialog.Builder(this);
-        simpleDialog.setMessage("예매를 취소하시겠습니까?");
-        simpleDialog.setPositiveButton("네", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(CheckedBookingActivity.this, "예매가 취소되었습니다", Toast.LENGTH_SHORT).show();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode){
+            case 1 :
                 BookingCancelRequest request = new BookingCancelRequest(MyApplication.getContext(), "" + rsvId);
                 NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<BookingCancel>() {
                     @Override
                     public void onSuccess(NetworkRequest<BookingCancel> request, BookingCancel result) {
-                        Toast.makeText(CheckedBookingActivity.this, "성공", Toast.LENGTH_SHORT).show();
-
+                        BookingCancelCheckFinal dialog = new BookingCancelCheckFinal(CheckedBookingActivity.this);
+                        dialog.show();
                         txt_reservation_no.setText("예약 취소된 공연입니다");
                         btn_confirm.setVisibility(View.INVISIBLE);
                         btn_cancel.setVisibility(View.INVISIBLE);
@@ -212,20 +212,9 @@ public class CheckedBookingActivity extends AppCompatActivity {
                         Toast.makeText(CheckedBookingActivity.this, "실패", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }
-        });
-        simpleDialog.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(CheckedBookingActivity.this, "취소되지 않았습니다", Toast.LENGTH_SHORT).show();
-            }
-        });
-        simpleDialog.setCancelable(false);
-        AlertDialog alert = simpleDialog.create();
-        alert.setTitle("예매취소");
-        dialog = simpleDialog.create();
-        dialog.show();
+                break;
+            default:
+                break;
+        }
     }
-
-    AlertDialog dialog;
 }

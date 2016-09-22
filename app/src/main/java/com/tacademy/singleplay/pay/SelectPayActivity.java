@@ -66,6 +66,13 @@ public class SelectPayActivity extends AppCompatActivity {
     RelativeLayout mileage_layout;
     @BindView(R.id.coupon_conainer)
     FrameLayout coupon_layout;
+    @BindView(R.id.rb1)
+    RadioButton rb1;
+    @BindView(R.id.rb2)
+    RadioButton rb2;
+    @BindView(R.id.rb3)
+    RadioButton rb3;
+
 
     private static final String KEY_COUPON = "coupon";
     private static final String KEY_POINT = "point";
@@ -102,7 +109,6 @@ public class SelectPayActivity extends AppCompatActivity {
         });
 
         coupon_layout.setVisibility(View.GONE);
-        mileage_layout.setVisibility(View.GONE);
         chk_coupon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -174,7 +180,9 @@ public class SelectPayActivity extends AppCompatActivity {
         });
 
         final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroup_paid);
-
+        rb1.setEnabled(false);
+        rb2.setEnabled(false);
+        rb3.setEnabled(false);
         radioGroup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

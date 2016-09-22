@@ -24,7 +24,7 @@
             android:name=".MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".detail.BookingListActivity"
             android:launchMode="singleTop"
@@ -107,9 +107,6 @@
             android:name=".SearchResultActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".detail.StarScoreActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".login.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.SplashStyle">
@@ -126,7 +123,7 @@
             android:theme="@style/Theme.Design.BottomSheetDialog.NoActionBar" />
         <activity
             android:name=".LocationResultActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <!-- [START firebase_service] -->
         <service android:name=".gcm.MyFirebaseMessagingService">
             <intent-filter>
@@ -142,6 +139,10 @@
         </service>
         <!-- [END firebase_iid_service] -->
 
+        <activity android:name=".detail.ShowCancelActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.BottomSheetDialog.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

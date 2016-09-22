@@ -40,7 +40,7 @@
     <RelativeLayout
         android:id="@+id/point_container"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -54,10 +54,39 @@
             android:layout_alignParentTop="true" />
 
 
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/relativeLayout8"
+            android:layout_below="@+id/imageView4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="적립금 사용"
+                android:id="@+id/textView22"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="10dp" />
+            <CheckBox
+                android:layout_width="39dp"
+                android:layout_height="31dp"
+                android:checked="true"
+                android:button="@drawable/folding_spread_btn"
+                android:id="@+id/chk_mileage"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/mileage_layout"
             android:background="@drawable/underline"
             android:layout_below="@+id/relativeLayout8"
@@ -99,7 +128,9 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="19dp" />
+                android:layout_marginTop="19dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="16dp" />
 
             <TextView
                 android:id="@+id/textView"
@@ -114,37 +145,6 @@
                 android:layout_marginTop="11dp" />
 
         </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView4"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-
-            android:id="@+id/relativeLayout8">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="적립금 사용"
-                android:id="@+id/textView22"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginBottom="10dp" />
-            <CheckBox
-                android:layout_width="39dp"
-                android:layout_height="31dp"
-                android:checked="true"
-                android:button="@drawable/folding_spread_btn"
-                android:id="@+id/chk_mileage"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="5dp" />
-
-       </RelativeLayout>
 
     </RelativeLayout>
 
@@ -213,28 +213,31 @@
             android:paddingLeft="16dp">
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/rb1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="현장 결제"
-                android:checked="false" />
+                android:checked="false"
+                android:enabled="true" />
 
             <RadioButton
-                android:id="@+id/radioButton6"
+                android:id="@+id/rb2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:text="무통장 입금"
-                android:checked="false" />
+                android:checked="false"
+                android:enabled="true" />
 
             <RadioButton
-                android:id="@+id/radioButton4"
+                android:id="@+id/rb3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="계좌이체"
-                android:checked="false" />
+                android:checked="false"
+                android:enabled="true" />
         </RadioGroup>
 
         <TextView

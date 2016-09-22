@@ -1,5 +1,6 @@
 package com.tacademy.singleplay.bookingdetail;
 
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Checkable;
@@ -51,14 +52,17 @@ public class EmptySeatHolder extends RecyclerView.ViewHolder
         if(isChecked != checked) {
             isChecked = checked;
             drawCheck();
+
         }
     }
 
     public void drawCheck() {
         if (isChecked) {
-            checkImage.setImageResource(android.R.drawable.checkbox_on_background);
+            checkImage.setImageResource(R.drawable.radio_btn_on);
+            priceView.setTextColor(Color.RED);
         } else {
-            checkImage.setImageResource(android.R.drawable.checkbox_off_background);
+            checkImage.setImageResource(R.drawable.radio_btn_off);
+            priceView.setTextColor(Color.LTGRAY);
         }
     }
 
