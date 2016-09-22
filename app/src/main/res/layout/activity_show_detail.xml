@@ -287,7 +287,8 @@
                 android:layout_alignStart="@+id/text_time_two"
                 android:layout_alignTop="@+id/textView15"
                 android:text="2"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginRight="2dp" />
 
             <TextView
                 android:id="@+id/text_r_empty"
@@ -297,7 +298,8 @@
                 android:layout_alignStart="@+id/text_vip_empty"
                 android:layout_below="@+id/text_vip_empty"
                 android:text="2"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginRight="2dp" />
 
             <TextView
                 android:id="@+id/text_s_empty"
@@ -308,7 +310,7 @@
                 android:layout_below="@+id/text_r_empty"
                 android:text="1"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#b0b0b0" />
+                android:layout_marginRight="2dp" />
 
             <TextView
                 android:id="@+id/text_vip_sale"

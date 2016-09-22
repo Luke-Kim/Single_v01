@@ -23,9 +23,7 @@ import com.tacademy.singleplay.MyApplication;
 import com.tacademy.singleplay.R;
 import com.tacademy.singleplay.ShowDetailActivity;
 import com.tacademy.singleplay.data.SignInData;
-import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.ResultsList;
-import com.tacademy.singleplay.data2.ShowDetail;
 import com.tacademy.singleplay.data2.UserInfo;
 import com.tacademy.singleplay.detail.UserActivity;
 import com.tacademy.singleplay.manager.BookingManager;
@@ -98,7 +96,6 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
         emailView.setInputType(InputType.TYPE_CLASS_TEXT
                 | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
-        //btn = (Button)findViewById(R.id.btn_move_seat);
         btn_move_seat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,13 +105,12 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(BookingPersonInfoActivity.this);
                     builder.setTitle("가입정보 확인");
-                    builder.setMessage("사용자 이름 : " + nameView.getText().toString() + "\n"
+                    builder.setMessage("이름 : " + nameView.getText().toString() + "\n"
                             + "E-Mail : " + emailView.getText().toString() + "\n"
-                            + "전화번호 : " + phoneView.getText().toString() + "\n" + "입력 정보가 확실합니까?");
+                            + "전화번호 : " + phoneView.getText().toString() + "\n" + "입력하신 정보가 확실합니까?");
                     builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-//                            Toast.makeText(BookingPersonInfoActivity.this, "회원가입이 완료 되었습니다.", Toast.LENGTH_SHORT).show();
                             BookingManager.getInstance().setBooker(nameView.getText().toString());
                             BookingManager.getInstance().setBookerPhone(phoneView.getText().toString());
                             BookingManager.getInstance().setBookerEmail(emailView.getText().toString());
@@ -132,10 +128,6 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
                     });
                     builder.show();
                 }
-//                Intent intent = new Intent(BookingPersonInfoActivity.this, BookingSeatInfoActivity.class);
-//                startActivity(intent);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
         });
     }
@@ -193,7 +185,6 @@ public class BookingPersonInfoActivity extends AppCompatActivity {
                 break;
             default:
                 break;
-
         }
         return super.onOptionsItemSelected(item);
     }

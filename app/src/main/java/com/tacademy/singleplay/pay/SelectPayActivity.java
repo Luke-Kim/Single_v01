@@ -113,7 +113,8 @@ public class SelectPayActivity extends AppCompatActivity {
                 }
             }
         });
-
+        mileage_layout.setVisibility(View.VISIBLE);
+        chk_mileage.setChecked(true);
         chk_mileage.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
