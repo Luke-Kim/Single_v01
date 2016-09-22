@@ -2,16 +2,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.begentgroup.sampledesignsupport.main.ThemeFragment">
+    tools:context="com.tacademy.singleplay.main.ThemeFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_theme_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appbar">
+        android:layout_below="@+id/appbar"
+        android:visibility="visible"></android.support.v7.widget.RecyclerView>
 
+    <ImageView
+        android:id="@+id/no_list"
+        android:layout_width="wrap_content"
+        android:layout_height="109dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-65dp"
+        android:src="@drawable/no_show"
+        android:visibility="gone" />
 
-    </android.support.v7.widget.RecyclerView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="아직 공연목록 없어요!"
+        android:id="@+id/txt_no_list"
+        android:layout_below="@+id/no_list"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        android:layout_gravity="center" />
 
 </FrameLayout>

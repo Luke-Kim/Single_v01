@@ -1,9 +1,12 @@
 package com.tacademy.singleplay.detail;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -19,11 +22,14 @@ import com.tacademy.singleplay.data2.Booking;
 import com.tacademy.singleplay.data2.BookingCancel;
 import com.tacademy.singleplay.data2.BookingDetail;
 import com.tacademy.singleplay.data2.ResultsList;
+import com.tacademy.singleplay.data2.ShowList;
+import com.tacademy.singleplay.data2.ShowListReview;
 import com.tacademy.singleplay.manager.BookingManager;
 import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.BookingCancelRequest;
 import com.tacademy.singleplay.request.BookingDetailRequest;
+import com.tacademy.singleplay.request.ShowListRequest;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -149,7 +155,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                 showname = result.getResult().getPlayName();
                 Toast.makeText(CheckedBookingActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
 
-                if (status == 1) {
+                if (status == 0) {
                     txt_reservation_no.setText("예약 취소된 공연입니다");
                     btn_confirm.setVisibility(View.INVISIBLE);
                     btn_cancel.setVisibility(View.INVISIBLE);
@@ -160,7 +166,7 @@ public class CheckedBookingActivity extends AppCompatActivity {
                     playDay[i] = Integer.parseInt(Day[i]);
 
                 }
-                if (status == 0) {
+                if (status == 1) {
                     timeGap();
                 }
             }
@@ -213,9 +219,10 @@ public class CheckedBookingActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(NetworkRequest<BookingCancel> request, BookingCancel result) {
                         Toast.makeText(CheckedBookingActivity.this, "성공", Toast.LENGTH_SHORT).show();
-                        status = 1;
+                        status = 0;
                         BookingCancelCheckFinal dialog = new BookingCancelCheckFinal(CheckedBookingActivity.this);
                         dialog.show();
+
                         txt_reservation_no.setText("예약 취소된 공연입니다");
                         btn_confirm.setVisibility(View.INVISIBLE);
                         btn_cancel.setVisibility(View.INVISIBLE);

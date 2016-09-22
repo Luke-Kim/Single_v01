@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +29,10 @@ public class SearchResultActivity extends AppCompatActivity {
     TextView titleView;
     @BindView(R.id.search_rc)
     RecyclerView listView;
+    @BindView(R.id.no_search)
+    ImageView noSearchView;
+    @BindView(R.id.txt_no_search)
+    TextView noSearchMessage;
 
     SearchAdapter mAdapter;
 
@@ -75,6 +81,11 @@ public class SearchResultActivity extends AppCompatActivity {
                 Search[] datas = result.getResults();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
+                int cnt = mAdapter.getItemCount();
+                if (cnt == 0) {
+                    noSearchView.setVisibility(View.VISIBLE);
+                    noSearchMessage.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

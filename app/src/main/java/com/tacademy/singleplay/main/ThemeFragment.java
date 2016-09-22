@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,6 +74,10 @@ public class ThemeFragment extends Fragment {
     TextView titleView;
     @BindView(R.id.fragment_theme_rv)
     RecyclerView listView;
+    @BindView(R.id.no_list)
+    ImageView noList;
+    @BindView(R.id.txt_no_list)
+    TextView noListMessage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -115,6 +120,12 @@ public class ThemeFragment extends Fragment {
                 ShowListResults[] datas = result.getResults();
                 mAdapter.clear();
                 mAdapter.addAll(datas);
+                int cnt = mAdapter.getItemCount();
+                if (cnt == 0) {
+                    noList.setVisibility(View.VISIBLE);
+                    noListMessage.setVisibility(View.VISIBLE);
+                }
+
             }
 
             @Override
