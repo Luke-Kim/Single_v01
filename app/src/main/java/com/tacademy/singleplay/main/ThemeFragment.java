@@ -112,27 +112,31 @@ public class ThemeFragment extends Fragment {
         listView.setAdapter(mAdapter);
 
         sort = ShowListManager.getInstance().getSort();
+        if (theme.equals("4")) {
+            noList.setVisibility(View.VISIBLE);
+            noListMessage.setVisibility(View.VISIBLE);
+        } else {
+            ShowListRequest request = new ShowListRequest(MyApplication.getContext(), action, theme, sort);
+            NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ShowList>() {
+                @Override
+                public void onSuccess(NetworkRequest<ShowList> request, ShowList result) {
+                    ShowListResults[] datas = result.getResults();
+                    mAdapter.clear();
+                    mAdapter.addAll(datas);
+                    int cnt = mAdapter.getItemCount();
+                    if (cnt == 0) {
+                        noList.setVisibility(View.VISIBLE);
+                        noListMessage.setVisibility(View.VISIBLE);
+                    }
 
-        ShowListRequest request = new ShowListRequest(MyApplication.getContext(), action, theme, sort);
-        NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<ShowList>() {
-            @Override
-            public void onSuccess(NetworkRequest<ShowList> request, ShowList result) {
-                ShowListResults[] datas = result.getResults();
-                mAdapter.clear();
-                mAdapter.addAll(datas);
-                int cnt = mAdapter.getItemCount();
-                if (cnt == 0) {
-                    noList.setVisibility(View.VISIBLE);
-                    noListMessage.setVisibility(View.VISIBLE);
                 }
 
-            }
+                @Override
+                public void onFail(NetworkRequest<ShowList> request, int errorCode, String errorMessage, Throwable e) {
 
-            @Override
-            public void onFail(NetworkRequest<ShowList> request, int errorCode, String errorMessage, Throwable e) {
-
-            }
-        });
+                }
+            });
+        }
         return view;
     }
 

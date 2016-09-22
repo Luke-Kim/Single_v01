@@ -67,7 +67,8 @@ public class ReviewPopup extends Dialog {
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                score = "" + ratingBar.getRating();
+                float ratingScore = ratingBar.getRating();
+                score = "" + (ratingScore*2);
 
             }
         });
