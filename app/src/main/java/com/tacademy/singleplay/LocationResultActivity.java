@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +29,10 @@ public class LocationResultActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     @BindView(R.id.location_toolbar_name)
     TextView location_toolbar_name;
+    @BindView(R.id.no_search)
+    ImageView noSearchView;
+    @BindView(R.id.txt_no_search)
+    TextView noSearchMessage;
 
     LocationAdapter locationAdapter;
 
@@ -77,6 +83,11 @@ public class LocationResultActivity extends AppCompatActivity {
                 Location[] datas = result.getResults();
                 locationAdapter.clear();
                 locationAdapter.addAll(datas);
+                int cnt = locationAdapter.getItemCount();
+                if(cnt == 0) {
+                    noSearchView.setVisibility(View.VISIBLE);
+                    noSearchMessage.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
