@@ -5,6 +5,15 @@ public class ShowListReview {
     private String playName;
     private String playTime;
     private String playDay;
+    private String theme;
+
+    public String getTheme() {
+        return theme;
+    }
+
+    public void setTheme(String theme) {
+        this.theme = theme;
+    }
 
     public int getPlayId() {
         return this.playId;

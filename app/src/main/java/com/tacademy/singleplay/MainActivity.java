@@ -343,6 +343,7 @@ public class MainActivity extends AppCompatActivity {
 
         ReviewManager.getInstance().setPlayId("" + showListReview.getPlayId());
         ReviewManager.getInstance().setPlayName(showListReview.getPlayName());
+        ReviewManager.getInstance().setTheme(showListReview.getTheme());
 
         ReviewPopup reviewPopup = new ReviewPopup(MainActivity.this);
         reviewPopup.show();
