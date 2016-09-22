@@ -3,8 +3,12 @@ package com.tacademy.singleplay.detail;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.DragEvent;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tacademy.singleplay.MyApplication;
@@ -26,7 +30,14 @@ public class ReviewPopup extends Dialog {
 
     @BindView(R.id.btn_starscore)
     Button btn_starscore;
+    @BindView(R.id.rank_dialog_text1)
+    TextView titleView;
+    @BindView(R.id.ratingBar2)
+    RatingBar ratingBar;
 
+    String playId;
+    String playName;
+    String score;
     public ReviewPopup(Context context) {
         super(context);
     }
@@ -38,26 +49,30 @@ public class ReviewPopup extends Dialog {
         setContentView(R.layout.review_dialog);
         ButterKnife.bind(this);
 
-//        btn_starscore = (Button)findViewById(R.id.btn_starscore);
+        playId = ReviewManager.getInstance().getPlayId();
+        playName = ReviewManager.getInstance().getPlayName();
 
+        titleView.setText(playName);
 
-
-//        btn_starscore.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // request
-//            }
-//        });
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                score = "" + ratingBar.getRating();
+            }
+        });
+//        ratingBar.on
     }
+
+
     @OnClick(R.id.btn_starscore)
     public void clickScore(){
-        String playId = ReviewManager.getInstance().getPlayId();
-        String playName = ReviewManager.getInstance().getPlayName();
-        StarScoreRequest request = new StarScoreRequest(MyApplication.getContext(), playId, playName, "8.5");
+
+        StarScoreRequest request = new StarScoreRequest(MyApplication.getContext(), playId, playName, score);
         NetworkManager.getInstance().getNetworkData(request, new NetworkManager.OnResultListener<StarScore>() {
             @Override
             public void onSuccess(NetworkRequest<StarScore> request, StarScore result) {
                 Toast.makeText(MyApplication.getContext(), "리뷰완료", Toast.LENGTH_SHORT).show();
+                ReviewPopup.this.dismiss();
             }
 
             @Override
