@@ -1,12 +1,9 @@
 package com.tacademy.singleplay.detail;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +24,9 @@ import com.tacademy.singleplay.manager.NetworkManager;
 import com.tacademy.singleplay.manager.NetworkRequest;
 import com.tacademy.singleplay.request.BookingCancelRequest;
 import com.tacademy.singleplay.request.BookingDetailRequest;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -213,7 +213,6 @@ public class CheckedBookingActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(NetworkRequest<BookingCancel> request, BookingCancel result) {
                         Toast.makeText(CheckedBookingActivity.this, "성공", Toast.LENGTH_SHORT).show();
-
                         status = 1;
                         BookingCancelCheckFinal dialog = new BookingCancelCheckFinal(CheckedBookingActivity.this);
                         dialog.show();
@@ -234,10 +233,6 @@ public class CheckedBookingActivity extends AppCompatActivity {
         }
     }
 
-    AlertDialog dialog;
-
-
-    int bookingCnt;
     int[] nowTime = new int[3];
     int[] playDay = new int[3];
 
