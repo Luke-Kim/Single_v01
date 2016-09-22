@@ -60,6 +60,7 @@ public class EmptySeatHolder extends RecyclerView.ViewHolder
         if (isChecked) {
             checkImage.setImageResource(R.drawable.radio_btn_on);
             priceView.setTextColor(Color.RED);
+
         } else {
             checkImage.setImageResource(R.drawable.radio_btn_off);
             priceView.setTextColor(Color.LTGRAY);
